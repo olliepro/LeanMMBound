@@ -1,0 +1,6 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "SuppliedCertifiedPipeline",
+  "theorem_names": ["MatrixBounds.Numeric.SuppliedCertifiedPipeline.exponent_lt"],
+  "permitted_axioms": ["propext", "Quot.sound", "Classical.choice"]
+}

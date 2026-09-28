@@ -1,0 +1,12 @@
+{
+  "certificate_sha256": "61b184d2a8e92e5a6330841867776fb95b569b9a7d5fbe8f90fa3e66d404ac6c",
+  "array": "mu",
+  "shape": [
+    945,
+    3,
+    6
+  ],
+  "denominator": 17592186044416,
+  "entry_count": 17010,
+  "order": "C"
+}

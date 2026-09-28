@@ -1,0 +1,14 @@
+START Mon Sep 21 08:15:49 AM EDT 2026 host=c0039.ten.osc.edu job=14743425
+L4E:3245035 chore: correctly export axiom dependencies
+COMMIT:bd86c756d40e4dc32debc65b80c2b24828b79edb
+COMPARATOR_RC:0
+END Tue Sep 22 04:50:32 AM EDT 2026
+EXPORT_SHA256:cb2f914376284b9f081f21d837781bf60cb0b962fe088123dddfe7c27da69539
+COMPARATOR_COMMIT:2a117fd
+LEAN4EXPORT_COMMIT:3245035
+LANDRUN_COMMIT:811cfff
+PANICS:26
+STATEMENT_MATCH_OK
+AXIOM_CHECK_OK (kernel replay skipped in this build; done separately)
+Your solution is okay!
+== B. export to file, then nanoda (independent Rust kernel, multi-threaded)

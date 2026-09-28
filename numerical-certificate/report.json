@@ -1,0 +1,146 @@
+{
+  "certificate_file": "pipeline_certificate.npz",
+  "certificate_sha256": "61b184d2a8e92e5a6330841867776fb95b569b9a7d5fbe8f90fa3e66d404ac6c",
+  "candidate_interval": {
+    "lo": 2.371044660379687,
+    "hi": 2.371044660461296
+  },
+  "C": {
+    "lo": 22.458839376460812,
+    "hi": 22.458839376460855
+  },
+  "E": {
+    "lo": 8.097644500388482,
+    "hi": 8.09764450082916
+  },
+  "M": {
+    "lo": [
+      6.097497310039024,
+      6.021780268963324,
+      6.0514407320712635
+    ],
+    "hi": [
+      6.0974973100617,
+      6.021780268985714,
+      6.051440732093764
+    ]
+  },
+  "root_retention": {
+    "lo": [
+      [
+        2.6566880876591457,
+        2.6566880874452488,
+        2.656688087456922
+      ]
+    ],
+    "hi": [
+      [
+        2.656688087667746,
+        2.656688087896607,
+        2.656688087906655
+      ]
+    ]
+  },
+  "retention4": {
+    "lo": [
+      1.6451078312767349,
+      1.663716410804207,
+      1.6313447139439183
+    ],
+    "hi": [
+      1.6451078312781902,
+      1.6637164109536058,
+      1.6313447140911375
+    ]
+  },
+  "retention3": {
+    "lo": [
+      2.2081356481962815,
+      2.267823261854799,
+      1.8906286403332768
+    ],
+    "hi": [
+      2.208135648241205,
+      2.2678232619022145,
+      1.8906286403727552
+    ]
+  },
+  "terminal_retention": {
+    "lo": [
+      1.5877129335460578,
+      1.5094167402903567,
+      1.91898305866604
+    ],
+    "hi": [
+      1.5877129336420162,
+      1.5094167403815832,
+      1.9189830587820151
+    ]
+  },
+  "combined_retention": {
+    "lo": [
+      5.440956413019073,
+      5.440956412949362,
+      5.440956412943234
+    ],
+    "hi": [
+      5.4409564131614125,
+      5.440956413237405,
+      5.440956413245909
+    ]
+  },
+  "target_exact_rational": "2371177/1000000",
+  "target_residual": {
+    "lo": 0.0008015681597299816,
+    "hi": 0.0008015686540403523
+  },
+  "proposed_exact_rational": "23710449/10000000",
+  "proposed_residual": {
+    "lo": 1.4508634365029136e-06,
+    "hi": 1.4513577397679003e-06
+  },
+  "finite_pipeline": {
+    "batches": 1000000,
+    "boundary_loss": {
+      "lo": 0.44193801466605137,
+      "hi": 0.4419380156662048
+    },
+    "candidate_interval": {
+      "lo": 2.3710447333440032,
+      "hi": 2.371044733425613
+    },
+    "proposed_residual": {
+      "lo": 1.0089254161016468e-06,
+      "hi": 1.0094197264720608e-06
+    },
+    "conditional_inequality_verified": true
+  },
+  "conditional_inequality_verified": true,
+  "conditional_proposed_inequality_verified": true,
+  "exact_simplex_support_and_symmetry_checks": true,
+  "normalization_enclosures": {
+    "leaf2": {
+      "maximum_normalization_enclosure_width": 3.3084646133829665e-14,
+      "off_support_mass": 0
+    },
+    "parent3": {
+      "maximum_normalization_enclosure_width": 2.9176661087149114e-13,
+      "off_support_mass": 0
+    },
+    "child3": {
+      "maximum_normalization_enclosure_width": 3.1374902675906924e-13,
+      "off_support_mass": 0
+    },
+    "parent4": {
+      "maximum_normalization_enclosure_width": 2.336464355323642e-11,
+      "off_support_mass": 0
+    },
+    "root4": {
+      "maximum_normalization_enclosure_width": 2.336464355323642e-11,
+      "off_support_mass": 0
+    }
+  },
+  "seconds": 8.213050457998179,
+  "mathematical_composition_lemma_formally_verified": false,
+  "interval_method": "IEEE-754 outward operations; conservative reductions; rational-series logarithms; rational Gibbs upper bounds"
+}

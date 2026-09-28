@@ -1,0 +1,13 @@
+{
+  "root_modules": 5492,
+  "named_theorems": 47316,
+  "named_declarations": 88134,
+  "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "certificate_sha256": "61b184d2a8e92e5a6330841867776fb95b569b9a7d5fbe8f90fa3e66d404ac6c",
+  "target_bound_proved": true,
+  "numerical_scalar_bound_checked": true
+}

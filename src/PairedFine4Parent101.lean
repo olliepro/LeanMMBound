@@ -1,0 +1,70 @@
+import PairedFine4Children101
+import RootFineParent4CacheTable
+import RootFineSparseLookup
+import SuppliedRootFineParent4IntegerValidity
+
+namespace MatrixBounds.Numeric.SuppliedPairedFine.PairedFine4Parent101
+open scoped BigOperators
+set_option maxRecDepth 100000
+set_option maxHeartbeats 256000000
+set_option exponentiation.threshold 1000
+
+/-- The complete original parent law evaluated from the checked literal children. -/
+def source (axis : Fin 3) (orbit : Fin 231) : ℤ :=
+  SuppliedRootFineParent3Integers.sparseIntegerParent (RootFineCachedParent4.weight 101)
+    (RootFineCachedParent4.complement 101) OrbitLevel4.sizes OrbitLevel4.encoding.columns
+    SuppliedRootFineParent4Integers.wordScale (fun column => PairedFine4Children101.numerator column axis) orbit
+
+/-- Literal children preserve the complete original parent4 integer law. -/
+theorem source_eq (axis : Fin 3) (orbit : Fin 231) :
+    source axis orbit = SuppliedRootFineParent4Integers.numerator 101 axis orbit := by
+  have childrenEq : (fun column => PairedFine4Children101.numerator column axis) =
+      fun column => RootFineCachedParent4.child PairedFine4Children101.parent3 101 column axis := by
+    funext column orbit
+    rw [PairedFine4Children101.numerator_eq, RootFineCachedParent4.child_eq _ PairedFine4Children101.parent3_eq]
+  rw [source, childrenEq]
+  exact RootFineCachedParent4.numerator_eq _ PairedFine4Children101.parent3_eq 101 axis orbit
+
+/-- Every parent4 source orbit mass is nonnegative. -/
+theorem source_nonnegative (axis : Fin 3) (orbit : Fin 231) : 0 ≤ source axis orbit := by
+  rw [source_eq]
+  exact SuppliedRootFineParent4Integers.numerator_nonnegative 101 axis orbit
+
+/-- Every complete parent4 source vector has total 2^406. -/
+theorem source_normalized (axis : Fin 3) : ∑ orbit, source axis orbit = (2:ℤ)^406 := by
+  simp only [source_eq]
+  exact SuppliedRootFineParent4Integers.numerator_normalized 101 axis
+
+/-- Prepared complete parent law on physical axis 0; omitted coordinates are zero. -/
+def row0 (orbit : Fin 231) : ℤ := sparseIntegerLookup [(110,1171612431272407710965613793739366395112713950601238988976121107643991755758243144386503052819994803844212443421081600), (164,275318767623764935277239452845016277314945144069424770263289225067608395385612768535187134693639820456476155400327004160), (174,1533658566947457022995914596897947209150339986181974304663934250921204445691970541954447894226492383686972843995483340800), (185,421272072315135513787502086602253356586015960300898392700774947053738808836790264388177239995684901736183445365719040), (194,145107742625100919994674303833239537601922560829621211587503696186332899243407703878457370975758568255831886827565875200), (201,3768579789908904572960403552195751827899380839038742298023981737479526748822680380696203320251137131284979302368333004800), (203,839259010610685160005741890070484734464429664537930500323788731370193940230783874761039479906122706466768819322880), (206,374285547449396672684726892840624282595426635156492900778686893435743464239289203198918015095708082248586092832454868992), (207,2856976500105731994745132759884776118555864674944297024097856179984412550542063354607973866499619771013208693113765232640), (215,1328798187779215001708626518563351925037937454803352033398362106997146058459551692232838412740982022745635320201855631360), (219,61346424704337932198747171117522146171570938612446040533767200133472297302993208584028860948372658181286119200592368762880), (221,4217746691815387010778892774014232775171595078490724326133696474912837227200839500931782771148662241109582730493750673408), (222,38823170744216244452099360073165364605796540907169025617715129534775735606325449511275461158067874874213517967273958047744), (225,50592331230990416802076771844808077536169845653600043125420381365525174009415227950764522276523992549768605950498371010560)] orbit.val
+/-- Independent kernel check of every nonzero value and the complete exact total on axis 0. -/
+theorem checked0 : sparseIntegerVectorCheck ((2:ℤ)^406) row0 (source 0) = true := by
+  decide +kernel
+/-- Prepared complete parent law on physical axis 1; omitted coordinates are zero. -/
+def row1 (orbit : Fin 231) : ℤ := sparseIntegerLookup [(4,1580136815772020592294233386483372973429214187876016531165047338160625316563401729678152036553919954555957448976032071680), (7,2790864665857293199410399405402027256267167322101510421640397625418389767280141934602723342335729027621099623595659755520), (8,28766777187257780091179088494981527249240132202749908678562737840342892161244207980927278448250573595472082233329419550720), (22,4360216599903882868005963533107509596889359231363180966158225120114545670541385170444600698248726761082591976475244625920), (23,48052673946008358917615473356131304556438909401442225905854860112456142806166633514621987699909845710130964571188220657664), (26,79713322982762814069473668832087018324836388395537462317780930782108852087282066126022560384630026163035107152691262914560)] orbit.val
+/-- Independent kernel check of every nonzero value and the complete exact total on axis 1. -/
+theorem checked1 : sparseIntegerVectorCheck ((2:ℤ)^406) row1 (source 1) = true := by
+  decide +kernel
+/-- Prepared complete parent law on physical axis 2; omitted coordinates are zero. -/
+def row2 (orbit : Fin 231) : ℤ := sparseIntegerLookup [(1,165263992197562149737978827008192759957101170741070304821162198818601447809077836456297302609928821211897803006255839576064)] orbit.val
+/-- Independent kernel check of every nonzero value and the complete exact total on axis 2. -/
+theorem checked2 : sparseIntegerVectorCheck ((2:ℤ)^406) row2 (source 2) = true := by
+  decide +kernel
+
+/-- Complete original physical-axis and orbit lookup for this parent. -/
+def value (axis : Fin 3) (orbit : Fin 231) : ℤ :=
+  if axis = 0 then row0 orbit else if axis = 1 then row1 orbit else row2 orbit
+
+/-- This complete original parent law is independently verified at all axes and orbit coordinates. -/
+def table : RootFineParent4CacheTable 101 1 :=
+  RootFineParent4CacheTable.single 101 value (by
+    intro axis orbit
+    have checked : value axis orbit = source axis orbit :=
+      finThreeCases (predicate := fun selected => value selected orbit = source selected orbit)
+        (sparseIntegerVectorCheck_sound _ _ _ (source_nonnegative 0) (source_normalized 0) checked0 orbit)
+        (sparseIntegerVectorCheck_sound _ _ _ (source_nonnegative 1) (source_normalized 1) checked1 orbit)
+        (sparseIntegerVectorCheck_sound _ _ _ (source_nonnegative 2) (source_normalized 2) checked2 orbit)
+        axis
+    exact checked.trans (source_eq axis orbit))
+
+end MatrixBounds.Numeric.SuppliedPairedFine.PairedFine4Parent101

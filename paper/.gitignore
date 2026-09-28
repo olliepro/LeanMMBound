@@ -1,0 +1,34 @@
+# >>> latex-build managed block >>>
+# LaTeX build artifacts (managed by latex-build).
+#
+# NOTE: figures usually live in subdirs (imgs/, figs/, figures/) and are NOT
+# ignored here. Do NOT add a blanket *.pdf — it would swallow committed figures.
+# Only the conventional root output main.pdf is ignored below; if your main
+# file has a different name, add its .pdf (root-anchored, e.g. /paper.pdf).
+/main.pdf
+
+*.aux
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.bbl
+*.blg
+*.bcf
+*.run.xml
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.nav
+*.snm
+*.vrb
+*.idx
+*.ind
+*.ilg
+*.brf
+*.dvi
+
+# OS / editor cruft
+.DS_Store
+# <<< latex-build managed block <<<

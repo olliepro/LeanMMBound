@@ -1,0 +1,9 @@
+COMMIT:bd86c756d40e4dc32debc65b80c2b24828b79edb
+END Sun Sep 20 02:30:36 PM EDT 2026 rc=0
+LOGLINES:201964
+LOGSHA256:cb635751b4bdac1c8022c07fb52f53432108b98458e7d86fce0fec9dd438e866
+ERRORLINES:0
+SORRYWARN:0
+MAIN:info: src/AuditPart044.lean:567:0: 'MatrixBounds.Numeric.SuppliedCertifiedPipeline.exponent_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+TIME:	Elapsed (wall clock) time (h:mm:ss or m:ss): 1:30:56
+TIME:	Maximum resident set size (kbytes): 21850800

@@ -1,0 +1,87 @@
+import RateCertificateData.Level32Block000
+import RateCertificateData.Level32Block001
+import RateCertificateData.Level32Block002
+import RateCertificateData.Level32Block003
+import RateCertificateData.Level32Block004
+import RateCertificateData.Level32Block005
+import RateCertificateData.Level32Block006
+import RateCertificateData.Level32Block007
+import RateCertificateData.Level32Block008
+import RateCertificateData.Level32Block009
+import RateCertificateData.Level32Block010
+import RateCertificateData.Level32Block011
+import RateCertificateData.Level32Block012
+import RateCertificateData.Level32Block013
+import RateCertificateData.Level32Block014
+import RateCertificateData.Level32Block015
+import RateCertificateData.Level32Block016
+import RateCertificateData.Level32Block017
+import RateCertificateData.Level32Block018
+import RateCertificateData.Level32Block019
+import RateCertificateData.Level32Block020
+import RateCertificateData.Level32Block021
+import RateCertificateData.Level32Block022
+import RateCertificateData.Level32Block023
+import RateCertificateData.Level32Block024
+import RateCertificateData.Level32Block025
+import RateCertificateData.Level32Block026
+import RateCertificateData.Level32Block027
+import RateCertificateData.Level32Block028
+import RateCertificateData.Level32Block029
+import RateCertificateData.Level32Block030
+import RateCertificateData.Level32Block031
+import RateCertificateData.Level32Block032
+import RateCertificateData.Level32Block033
+import RateCertificateData.Level32Block034
+import RateCertificateData.Level32Block035
+import RateCertificateData.Level32Block036
+import RateCertificateData.Level32Block037
+import RateCertificateData.Level32Block038
+import RateCertificateData.Level32Block039
+import RateCertificateData.Level32Block040
+import RateCertificateData.Level32Block041
+import RateCertificateData.Level32Block042
+import RateCertificateData.Level32Block043
+import RateCertificateData.Level32Block044
+import RateCertificateData.Level32Block045
+import RateCertificateData.Level32Block046
+import RateCertificateData.Level32Block047
+import RateCertificateData.Level32Block048
+import RateCertificateData.Level32Block049
+import RateCertificateData.Level32Block050
+import RateCertificateData.Level32Block051
+import RateCertificateData.Level32Block052
+import RateCertificateData.Level32Block053
+import RateCertificateData.Level32Block054
+import RateCertificateData.Level32Block055
+import RateCertificateData.Level32Block056
+import RateCertificateData.Level32Block057
+import RateCertificateData.Level32Block058
+import RateCertificateData.Level32Block059
+import RateCertificateData.Level32Block060
+import RateCertificateData.Level32Block061
+import RateCertificateData.Level32Block062
+import RateCertificateData.Level32Block063
+import RateCertificateData.Level32Block064
+import RateCertificateData.Level32Block065
+import RateCertificateData.Level32Block066
+
+namespace MatrixBounds.Numeric.CertifiedLevel3Rate2
+set_option maxRecDepth 100000
+set_option maxHeartbeats 32000000
+
+/-- All exact expression blocks, in their complete original order. -/
+def blocks : List CertifiedLogBlock := [
+  RateCertificateData.Level32Block000.certificate, RateCertificateData.Level32Block001.certificate, RateCertificateData.Level32Block002.certificate, RateCertificateData.Level32Block003.certificate, RateCertificateData.Level32Block004.certificate, RateCertificateData.Level32Block005.certificate, RateCertificateData.Level32Block006.certificate, RateCertificateData.Level32Block007.certificate, RateCertificateData.Level32Block008.certificate, RateCertificateData.Level32Block009.certificate, RateCertificateData.Level32Block010.certificate, RateCertificateData.Level32Block011.certificate, RateCertificateData.Level32Block012.certificate, RateCertificateData.Level32Block013.certificate, RateCertificateData.Level32Block014.certificate, RateCertificateData.Level32Block015.certificate, RateCertificateData.Level32Block016.certificate, RateCertificateData.Level32Block017.certificate, RateCertificateData.Level32Block018.certificate, RateCertificateData.Level32Block019.certificate, RateCertificateData.Level32Block020.certificate, RateCertificateData.Level32Block021.certificate, RateCertificateData.Level32Block022.certificate, RateCertificateData.Level32Block023.certificate, RateCertificateData.Level32Block024.certificate, RateCertificateData.Level32Block025.certificate, RateCertificateData.Level32Block026.certificate, RateCertificateData.Level32Block027.certificate, RateCertificateData.Level32Block028.certificate, RateCertificateData.Level32Block029.certificate, RateCertificateData.Level32Block030.certificate, RateCertificateData.Level32Block031.certificate, RateCertificateData.Level32Block032.certificate, RateCertificateData.Level32Block033.certificate, RateCertificateData.Level32Block034.certificate, RateCertificateData.Level32Block035.certificate, RateCertificateData.Level32Block036.certificate, RateCertificateData.Level32Block037.certificate, RateCertificateData.Level32Block038.certificate, RateCertificateData.Level32Block039.certificate, RateCertificateData.Level32Block040.certificate, RateCertificateData.Level32Block041.certificate, RateCertificateData.Level32Block042.certificate, RateCertificateData.Level32Block043.certificate, RateCertificateData.Level32Block044.certificate, RateCertificateData.Level32Block045.certificate, RateCertificateData.Level32Block046.certificate, RateCertificateData.Level32Block047.certificate, RateCertificateData.Level32Block048.certificate, RateCertificateData.Level32Block049.certificate, RateCertificateData.Level32Block050.certificate, RateCertificateData.Level32Block051.certificate, RateCertificateData.Level32Block052.certificate, RateCertificateData.Level32Block053.certificate, RateCertificateData.Level32Block054.certificate, RateCertificateData.Level32Block055.certificate, RateCertificateData.Level32Block056.certificate, RateCertificateData.Level32Block057.certificate, RateCertificateData.Level32Block058.certificate, RateCertificateData.Level32Block059.certificate, RateCertificateData.Level32Block060.certificate, RateCertificateData.Level32Block061.certificate, RateCertificateData.Level32Block062.certificate, RateCertificateData.Level32Block063.certificate, RateCertificateData.Level32Block064.certificate, RateCertificateData.Level32Block065.certificate, RateCertificateData.Level32Block066.certificate
+]
+/-- Complete real logarithmic expression; the `Supplied*Certified*` modules identify it with the actual tensor-pipeline rate. -/
+noncomputable def value : ℝ := certifiedBlocksValue blocks
+/-- Exact integer enclosure of the complete expression at scale 2^60. -/
+def bounds : FixedBounds := ⟨1510885083062482854, 1510885083064210728⟩
+/-- All block endpoint sums agree exactly with the reported complete rate interval. -/
+theorem bounds_checked : certifiedBlocksBounds blocks = bounds := by decide +kernel
+/-- The reported interval contains the complete exact real logarithmic expression. -/
+theorem sound : (bounds.interval (2^60)).Contains value :=
+  certifiedBlocks_sound blocks bounds bounds_checked
+
+end MatrixBounds.Numeric.CertifiedLevel3Rate2

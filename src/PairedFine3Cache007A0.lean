@@ -1,0 +1,215 @@
+import SuppliedPairedFineBlocks
+import SuppliedPairedFineTableReads
+import SuppliedRootFineParent3Block049
+import SuppliedRootFineParent3Block050
+import SuppliedRootFineParent3Block051
+import SuppliedRootFineParent3Block052
+import SuppliedRootFineParent3Block053
+import SuppliedRootFineParent3Block054
+import SuppliedRootFineParent3Block055
+
+namespace MatrixBounds.Numeric.SuppliedPairedFine.PairedFine3Cache007A0
+set_option maxRecDepth 100000
+set_option maxHeartbeats 256000000
+
+/-- Proof-free read of the checked complete parent3 table of original node 49. -/
+def read49 (strategy : Fin 6) (axis : Fin 3) (orbit : Fin 21) : ℤ :=
+  SuppliedRootFineParent3Block049.value 0 strategy axis orbit
+/-- The proof-free read equals the complete original integer parent3 law of node 49. -/
+theorem read49_eq (strategy : Fin 6) (axis : Fin 3) (orbit : Fin 21) :
+    read49 strategy axis orbit =
+      SuppliedRootFineParent3Integers.numerator ⟨49, by omega⟩ strategy axis orbit :=
+  nodeRead_eq SuppliedRootFineParent3Block049.table read49 (fun _ _ _ => rfl) strategy axis orbit
+
+/-- Proof-free read of the checked complete parent3 table of original node 50. -/
+def read50 (strategy : Fin 6) (axis : Fin 3) (orbit : Fin 21) : ℤ :=
+  SuppliedRootFineParent3Block050.value 0 strategy axis orbit
+/-- The proof-free read equals the complete original integer parent3 law of node 50. -/
+theorem read50_eq (strategy : Fin 6) (axis : Fin 3) (orbit : Fin 21) :
+    read50 strategy axis orbit =
+      SuppliedRootFineParent3Integers.numerator ⟨50, by omega⟩ strategy axis orbit :=
+  nodeRead_eq SuppliedRootFineParent3Block050.table read50 (fun _ _ _ => rfl) strategy axis orbit
+
+/-- Proof-free read of the checked complete parent3 table of original node 51. -/
+def read51 (strategy : Fin 6) (axis : Fin 3) (orbit : Fin 21) : ℤ :=
+  SuppliedRootFineParent3Block051.value 0 strategy axis orbit
+/-- The proof-free read equals the complete original integer parent3 law of node 51. -/
+theorem read51_eq (strategy : Fin 6) (axis : Fin 3) (orbit : Fin 21) :
+    read51 strategy axis orbit =
+      SuppliedRootFineParent3Integers.numerator ⟨51, by omega⟩ strategy axis orbit :=
+  nodeRead_eq SuppliedRootFineParent3Block051.table read51 (fun _ _ _ => rfl) strategy axis orbit
+
+/-- Proof-free read of the checked complete parent3 table of original node 52. -/
+def read52 (strategy : Fin 6) (axis : Fin 3) (orbit : Fin 21) : ℤ :=
+  SuppliedRootFineParent3Block052.value 0 strategy axis orbit
+/-- The proof-free read equals the complete original integer parent3 law of node 52. -/
+theorem read52_eq (strategy : Fin 6) (axis : Fin 3) (orbit : Fin 21) :
+    read52 strategy axis orbit =
+      SuppliedRootFineParent3Integers.numerator ⟨52, by omega⟩ strategy axis orbit :=
+  nodeRead_eq SuppliedRootFineParent3Block052.table read52 (fun _ _ _ => rfl) strategy axis orbit
+
+/-- Proof-free read of the checked complete parent3 table of original node 53. -/
+def read53 (strategy : Fin 6) (axis : Fin 3) (orbit : Fin 21) : ℤ :=
+  SuppliedRootFineParent3Block053.value 0 strategy axis orbit
+/-- The proof-free read equals the complete original integer parent3 law of node 53. -/
+theorem read53_eq (strategy : Fin 6) (axis : Fin 3) (orbit : Fin 21) :
+    read53 strategy axis orbit =
+      SuppliedRootFineParent3Integers.numerator ⟨53, by omega⟩ strategy axis orbit :=
+  nodeRead_eq SuppliedRootFineParent3Block053.table read53 (fun _ _ _ => rfl) strategy axis orbit
+
+/-- Proof-free read of the checked complete parent3 table of original node 54. -/
+def read54 (strategy : Fin 6) (axis : Fin 3) (orbit : Fin 21) : ℤ :=
+  SuppliedRootFineParent3Block054.value 0 strategy axis orbit
+/-- The proof-free read equals the complete original integer parent3 law of node 54. -/
+theorem read54_eq (strategy : Fin 6) (axis : Fin 3) (orbit : Fin 21) :
+    read54 strategy axis orbit =
+      SuppliedRootFineParent3Integers.numerator ⟨54, by omega⟩ strategy axis orbit :=
+  nodeRead_eq SuppliedRootFineParent3Block054.table read54 (fun _ _ _ => rfl) strategy axis orbit
+
+/-- Proof-free read of the checked complete parent3 table of original node 55. -/
+def read55 (strategy : Fin 6) (axis : Fin 3) (orbit : Fin 21) : ℤ :=
+  SuppliedRootFineParent3Block055.value 0 strategy axis orbit
+/-- The proof-free read equals the complete original integer parent3 law of node 55. -/
+theorem read55_eq (strategy : Fin 6) (axis : Fin 3) (orbit : Fin 21) :
+    read55 strategy axis orbit =
+      SuppliedRootFineParent3Integers.numerator ⟨55, by omega⟩ strategy axis orbit :=
+  nodeRead_eq SuppliedRootFineParent3Block055.table read55 (fun _ _ _ => rfl) strategy axis orbit
+
+/-- Complete parent3 lookup through the proof-free read of original node 49. -/
+def parents0 : ParentValues3 :=
+  extendParent3 49 read49 SuppliedRootFineParent3Integers.numerator
+/-- Every value equals the complete original integer hierarchy. -/
+theorem parents0_eq : ∀ node strategy axis orbit, parents0 node strategy axis orbit =
+    SuppliedRootFineParent3Integers.numerator node strategy axis orbit :=
+  extendParent3_eq 49 (by omega) read49 read49_eq _ (fun _ _ _ _ => rfl)
+/-- Complete parent3 lookup through the proof-free read of original node 50. -/
+def parents1 : ParentValues3 :=
+  extendParent3 50 read50 SuppliedRootFineParent3Integers.numerator
+/-- Every value equals the complete original integer hierarchy. -/
+theorem parents1_eq : ∀ node strategy axis orbit, parents1 node strategy axis orbit =
+    SuppliedRootFineParent3Integers.numerator node strategy axis orbit :=
+  extendParent3_eq 50 (by omega) read50 read50_eq _ (fun _ _ _ _ => rfl)
+/-- Complete parent3 lookup through the proof-free read of original node 51. -/
+def parents2 : ParentValues3 :=
+  extendParent3 51 read51 SuppliedRootFineParent3Integers.numerator
+/-- Every value equals the complete original integer hierarchy. -/
+theorem parents2_eq : ∀ node strategy axis orbit, parents2 node strategy axis orbit =
+    SuppliedRootFineParent3Integers.numerator node strategy axis orbit :=
+  extendParent3_eq 51 (by omega) read51 read51_eq _ (fun _ _ _ _ => rfl)
+/-- Complete parent3 lookup through the proof-free read of original node 52. -/
+def parents3 : ParentValues3 :=
+  extendParent3 52 read52 SuppliedRootFineParent3Integers.numerator
+/-- Every value equals the complete original integer hierarchy. -/
+theorem parents3_eq : ∀ node strategy axis orbit, parents3 node strategy axis orbit =
+    SuppliedRootFineParent3Integers.numerator node strategy axis orbit :=
+  extendParent3_eq 52 (by omega) read52 read52_eq _ (fun _ _ _ _ => rfl)
+/-- Complete parent3 lookup through the proof-free read of original node 53. -/
+def parents4 : ParentValues3 :=
+  extendParent3 53 read53 SuppliedRootFineParent3Integers.numerator
+/-- Every value equals the complete original integer hierarchy. -/
+theorem parents4_eq : ∀ node strategy axis orbit, parents4 node strategy axis orbit =
+    SuppliedRootFineParent3Integers.numerator node strategy axis orbit :=
+  extendParent3_eq 53 (by omega) read53 read53_eq _ (fun _ _ _ _ => rfl)
+/-- Complete parent3 lookup through the proof-free read of original node 54. -/
+def parents5 : ParentValues3 :=
+  extendParent3 54 read54 SuppliedRootFineParent3Integers.numerator
+/-- Every value equals the complete original integer hierarchy. -/
+theorem parents5_eq : ∀ node strategy axis orbit, parents5 node strategy axis orbit =
+    SuppliedRootFineParent3Integers.numerator node strategy axis orbit :=
+  extendParent3_eq 54 (by omega) read54 read54_eq _ (fun _ _ _ _ => rfl)
+/-- Complete parent3 lookup through the proof-free read of original node 55. -/
+def parents6 : ParentValues3 :=
+  extendParent3 55 read55 SuppliedRootFineParent3Integers.numerator
+/-- Every value equals the complete original integer hierarchy. -/
+theorem parents6_eq : ∀ node strategy axis orbit, parents6 node strategy axis orbit =
+    SuppliedRootFineParent3Integers.numerator node strategy axis orbit :=
+  extendParent3_eq 55 (by omega) read55 read55_eq _ (fun _ _ _ _ => rfl)
+
+/-- Exact summary of original node 49 on fine axis 0. -/
+def summary0 : RationalLogExpression := [
+  ⟨(37633 : ℚ) / 4398046511104, (-2713064414769421824702201585 : ℚ) / 93536104789177786765035829293842113257979682750464⟩, ⟨(9201022468003101266567 : ℚ) / 9671406556917033397649408, (663326512301255153307420509169321628690427415 : ℚ) / 205688069665150755269371147819668813122841983204197482918576128⟩, ⟨(296554897393436544220017 : ℚ) / 9671406556917033397649408, (-21379441956360902813150628959855542938357997665 : ℚ) / 205688069665150755269371147819668813122841983204197482918576128⟩,
+  ⟨(197349114755 : ℚ) / 2199023255552, (10358057722029823829921604225343110654833785125 : ℚ) / 102844034832575377634685573909834406561420991602098741459288064⟩, ⟨(737217956751 : ℚ) / 4398046511104, (-277605547247838989635515127903887 : ℚ) / 93536104789177786765035829293842113257979682750464⟩, ⟨(394578297951 : ℚ) / 1099511627776, (-810756051054113382526333316796684253237017 : ℚ) / 11692013098647223345629478661730264157247460343808⟩,
+  ⟨(704933329825 : ℚ) / 1099511627776, (-1448455137328201840782596730537041530220775 : ℚ) / 11692013098647223345629478661730264157247460343808⟩, ⟨(6460276452323307612679545 : ℚ) / 9671406556917033397649408, (465738743984567034325284550012813609849233986025 : ℚ) / 205688069665150755269371147819668813122841983204197482918576128⟩, ⟨(2941977743281 : ℚ) / 4398046511104, (-212095106006412738442391842237149345 : ℚ) / 93536104789177786765035829293842113257979682750464⟩,
+  ⟨(3660828554353 : ℚ) / 4398046511104, (-1378515410409258633159686309333361 : ℚ) / 93536104789177786765035829293842113257979682750464⟩, ⟨(2001674140797 : ℚ) / 2199023255552, (105059788673536371817953245409943190867482707675 : ℚ) / 102844034832575377634685573909834406561420991602098741459288064⟩, ⟨(9374851576767754677240975 : ℚ) / 9671406556917033397649408, (-675858321331639777961191040832699991584199401375 : ℚ) / 205688069665150755269371147819668813122841983204197482918576128⟩,
+  ⟨(2 : ℚ) / 1, (-38954232752932554688213393109473735431162395705934253689 : ℚ) / 205688069665150755269371147819668813122841983204197482918576128⟩, ⟨(4 : ℚ) / 1, (26608602336711229290801625193528976874524433985662293675 : ℚ) / 205688069665150755269371147819668813122841983204197482918576128⟩, ⟨(8 : ℚ) / 1, (21379441956360902813150628959855542938357997665 : ℚ) / 205688069665150755269371147819668813122841983204197482918576128⟩
+]
+/-- Original node 49: all strategies and physical roles normalize to the summary. -/
+theorem checked0 : mergeNormalizeLogExpression (cachedNode3 parents0 49 0) = summary0 := by decide +kernel
+/-- Exact summary of original node 50 on fine axis 0. -/
+def summary1 : RationalLogExpression := [
+  ⟨(43323429699 : ℚ) / 549755813888, (-21294705872373650065668504741742648737 : ℚ) / 11692013098647223345629478661730264157247460343808⟩, ⟨(346589406403 : ℚ) / 4398046511104, (-108885964685069266525340426930657074083 : ℚ) / 93536104789177786765035829293842113257979682750464⟩, ⟨(346700421417 : ℚ) / 4398046511104, (-340430124794155599739803352018486424865 : ℚ) / 187072209578355573530071658587684226515959365500928⟩,
+  ⟨(4051346089687 : ℚ) / 4398046511104, (-3978074930683751516707163855401095138015 : ℚ) / 187072209578355573530071658587684226515959365500928⟩, ⟨(4051457104701 : ℚ) / 4398046511104, (-1272822559130957893475305455442337031261 : ℚ) / 93536104789177786765035829293842113257979682750464⟩, ⟨(506432384189 : ℚ) / 549755813888, (-248926013948489695989266680067959808607 : ℚ) / 11692013098647223345629478661730264157247460343808⟩,
+  ⟨(2 : ℚ) / 1, (-139725258442378619917966468060956506139802504481998513767 : ℚ) / 205688069665150755269371147819668813122841983204197482918576128⟩, ⟨(4 : ℚ) / 1, (279429389506127219290655080623161558873159382627205654119 : ℚ) / 411376139330301510538742295639337626245683966408394965837152256⟩
+]
+/-- Original node 50: all strategies and physical roles normalize to the summary. -/
+theorem checked1 : mergeNormalizeLogExpression (cachedNode3 parents1 50 0) = summary1 := by decide +kernel
+/-- Exact summary of original node 51 on fine axis 0. -/
+def summary2 : RationalLogExpression := [
+  ⟨(1029596860310244047 : ℚ) / 302231454903657293676544, (4187199304312385309299901763416085531 : ℚ) / 1606938044258990275541962092341162602522202993782792835301376⟩, ⟨(120787025 : ℚ) / 2199023255552, (-491220754983231375790760325 : ℚ) / 11692013098647223345629478661730264157247460343808⟩, ⟨(318856577 : ℚ) / 4398046511104, (-1189596421745438287938408051 : ℚ) / 23384026197294446691258957323460528314494920687616⟩,
+  ⟨(5847421800262824669205 : ℚ) / 302231454903657293676544, (21815676864739488128790960399283422770415 : ℚ) / 1606938044258990275541962092341162602522202993782792835301376⟩, ⟨(1157853971393980302473869 : ℚ) / 19342813113834066795298816, (-4319744488990183291361203993133083713682647 : ℚ) / 102844034832575377634685573909834406561420991602098741459288064⟩, ⟨(359001570283502639390957 : ℚ) / 4835703278458516698824704, (-1459999717642087535010549656794433863562961 : ℚ) / 25711008708143844408671393477458601640355247900524685364822016⟩,
+  ⟨(494834096339 : ℚ) / 4398046511104, (2923541169646856051118582527578944656376087 : ℚ) / 102844034832575377634685573909834406561420991602098741459288064⟩, ⟨(451611129771 : ℚ) / 2199023255552, (1459932722453218536845600858366219206194465 : ℚ) / 25711008708143844408671393477458601640355247900524685364822016⟩, ⟨(789452959475 : ℚ) / 2199023255552, (-1719329662060998291008531127045525 : ℚ) / 46768052394588893382517914646921056628989841375232⟩,
+  ⟨(1586815711213 : ℚ) / 4398046511104, (-10815383619563272894260627504015 : ℚ) / 23384026197294446691258957323460528314494920687616⟩, ⟨(1617492786911 : ℚ) / 4398046511104, (-14081366247694399495070434145193 : ℚ) / 93536104789177786765035829293842113257979682750464⟩, ⟨(187537999580578125402091 : ℚ) / 302231454903657293676544, (699670476743383105501871722283984869378833 : ℚ) / 1606938044258990275541962092341162602522202993782792835301376⟩,
+  ⟨(2780553724193 : ℚ) / 4398046511104, (-24206596578725058457570336361559 : ℚ) / 93536104789177786765035829293842113257979682750464⟩, ⟨(192963780002236023289137 : ℚ) / 302231454903657293676544, (784751621269888416702336751734756722224101 : ℚ) / 1606938044258990275541962092341162602522202993782792835301376⟩, ⟨(175500471959 : ℚ) / 274877906944, (-713731249988261633086627672707 : ℚ) / 1461501637330902918203684832716283019655932542976⟩,
+  ⟨(2811230799891 : ℚ) / 4398046511104, (-19160725047718943374801314645105 : ℚ) / 23384026197294446691258957323460528314494920687616⟩, ⟨(87941508073 : ℚ) / 137438953472, (-328093917054558275426944729899 : ℚ) / 730750818665451459101842416358141509827966271488⟩, ⟨(1409570296077 : ℚ) / 2199023255552, (-3069867547797870284361170964476523 : ℚ) / 46768052394588893382517914646921056628989841375232⟩,
+  ⟨(1747412125781 : ℚ) / 2199023255552, (5648895640222193758611769025307344636283615 : ℚ) / 25711008708143844408671393477458601640355247900524685364822016⟩, ⟨(3903212414765 : ℚ) / 4398046511104, (23060662700624883524730032491439047415168745 : ℚ) / 102844034832575377634685573909834406561420991602098741459288064⟩, ⟨(4476436094698070118620947 : ℚ) / 4835703278458516698824704, (-18204921580540408425849157053063452191869231 : ℚ) / 25711008708143844408671393477458601640355247900524685364822016⟩,
+  ⟨(18183556796384069078893939 : ℚ) / 19342813113834066795298816, (-67839573212201402276849822717614079055414057 : ℚ) / 102844034832575377634685573909834406561420991602098741459288064⟩, ⟨(2 : ℚ) / 1, (-10544505462345217770324205584336202041040367283 : ℚ) / 102844034832575377634685573909834406561420991602098741459288064⟩, ⟨(4 : ℚ) / 1, (7287656428602285066069180497765970313134166833 : ℚ) / 102844034832575377634685573909834406561420991602098741459288064⟩,
+  ⟨(8 : ℚ) / 1, (10159743359558533431403402620310819167934491 : ℚ) / 102844034832575377634685573909834406561420991602098741459288064⟩
+]
+/-- Original node 51: all strategies and physical roles normalize to the summary. -/
+theorem checked2 : mergeNormalizeLogExpression (cachedNode3 parents2 51 0) = summary2 := by decide +kernel
+/-- Exact summary of original node 52 on fine axis 0. -/
+def summary3 : RationalLogExpression := [
+  ⟨(4117 : ℚ) / 274877906944, (-56211706349341542041030694965919 : ℚ) / 5846006549323611672814739330865132078623730171904⟩, ⟨(86697 : ℚ) / 4398046511104, (-118681140825062583845118159145461291 : ℚ) / 374144419156711147060143317175368453031918731001856⟩, ⟨(53305 : ℚ) / 2199023255552, (-2597210023993951724957763516268455 : ℚ) / 187072209578355573530071658587684226515959365500928⟩,
+  ⟨(83367 : ℚ) / 2199023255552, (-338154807097042226506138412570895 : ℚ) / 23384026197294446691258957323460528314494920687616⟩, ⟨(172207 : ℚ) / 4398046511104, (-2693343296464351032851496223588281 : ℚ) / 374144419156711147060143317175368453031918731001856⟩, ⟨(4398046338897 : ℚ) / 4398046511104, (-68786104074792641091869456760997291540551 : ℚ) / 374144419156711147060143317175368453031918731001856⟩,
+  ⟨(2199023172185 : ℚ) / 2199023255552, (-8919719512422715799566060688117957994225 : ℚ) / 23384026197294446691258957323460528314494920687616⟩, ⟨(2199023202247 : ℚ) / 2199023255552, (-107144266088944516026199240565950747476057 : ℚ) / 187072209578355573530071658587684226515959365500928⟩, ⟨(4398046424407 : ℚ) / 4398046511104, (-6020567805693508780834660499349712417790421 : ℚ) / 374144419156711147060143317175368453031918731001856⟩,
+  ⟨(274877902827 : ℚ) / 274877906944, (-3753061927528336970752676856392072129889 : ℚ) / 5846006549323611672814739330865132078623730171904⟩, ⟨(2 : ℚ) / 1, (-7370775510748838623459864514848723858244568814584116649 : ℚ) / 205688069665150755269371147819668813122841983204197482918576128⟩, ⟨(4 : ℚ) / 1, (7389607388508930948457347862111772255155015190446388649 : ℚ) / 411376139330301510538742295639337626245683966408394965837152256⟩
+]
+/-- Original node 52: all strategies and physical roles normalize to the summary. -/
+theorem checked3 : mergeNormalizeLogExpression (cachedNode3 parents3 52 0) = summary3 := by decide +kernel
+/-- Exact summary of original node 53 on fine axis 0. -/
+def summary4 : RationalLogExpression := [
+  ⟨(74235 : ℚ) / 1099511627776, (-1664484041792375549364465 : ℚ) / 46768052394588893382517914646921056628989841375232⟩, ⟨(308587 : ℚ) / 4398046511104, (-2230989334399241451294721 : ℚ) / 46768052394588893382517914646921056628989841375232⟩, ⟨(311281 : ℚ) / 4398046511104, (-6120620909698089147681097 : ℚ) / 374144419156711147060143317175368453031918731001856⟩,
+  ⟨(346925 : ℚ) / 4398046511104, (-1498120092340664369467275 : ℚ) / 93536104789177786765035829293842113257979682750464⟩, ⟨(384985 : ℚ) / 4398046511104, (-2615117072423137564539565 : ℚ) / 374144419156711147060143317175368453031918731001856⟩, ⟨(4398046126119 : ℚ) / 4398046511104, (-29874944503599466291171505882451 : ℚ) / 374144419156711147060143317175368453031918731001856⟩,
+  ⟨(4398046164179 : ℚ) / 4398046511104, (-18992004973980970549473247703157 : ℚ) / 93536104789177786765035829293842113257979682750464⟩, ⟨(4398046199823 : ℚ) / 4398046511104, (-86477406370626135942134359930551 : ℚ) / 374144419156711147060143317175368453031918731001856⟩, ⟨(4398046202517 : ℚ) / 4398046511104, (-31796524707815019111084146470911 : ℚ) / 46768052394588893382517914646921056628989841375232⟩,
+  ⟨(1099511553541 : ℚ) / 1099511627776, (-24653053608612347416321495889679 : ℚ) / 46768052394588893382517914646921056628989841375232⟩, ⟨(2 : ℚ) / 1, (-1582251599958848830346331928814147056159952969 : ℚ) / 102844034832575377634685573909834406561420991602098741459288064⟩, ⟨(4 : ℚ) / 1, (2810506112209786932051321761982798853303701577 : ℚ) / 205688069665150755269371147819668813122841983204197482918576128⟩
+]
+/-- Original node 53: all strategies and physical roles normalize to the summary. -/
+theorem checked4 : mergeNormalizeLogExpression (cachedNode3 parents4 53 0) = summary4 := by decide +kernel
+/-- Exact summary of original node 54 on fine axis 0. -/
+def summary5 : RationalLogExpression := [
+  ⟨(2 : ℚ) / 1, (-41955882526754625 : ℚ) / 2417851639229258349412352⟩, ⟨(4 : ℚ) / 1, (41955882526754625 : ℚ) / 2417851639229258349412352⟩
+]
+/-- Original node 54: all strategies and physical roles normalize to the summary. -/
+theorem checked5 : mergeNormalizeLogExpression (cachedNode3 parents5 54 0) = summary5 := by decide +kernel
+/-- Exact summary of original node 55 on fine axis 0. -/
+def summary6 : RationalLogExpression := [
+  ⟨(284335641169617527 : ℚ) / 9671406556917033397649408, (22838263367514760601638914391017975 : ℚ) / 12855504354071922204335696738729300820177623950262342682411008⟩, ⟨(108399269678674498972977 : ℚ) / 19342813113834066795298816, (-8706791240043667076007411170582403234225 : ℚ) / 25711008708143844408671393477458601640355247900524685364822016⟩, ⟨(956786075 : ℚ) / 137438953472, (-76850486549400048034606875 : ℚ) / 182687704666362864775460604089535377456991567872⟩,
+  ⟨(151580332649 : ℚ) / 4398046511104, (8706745563516932046486207892753621198275 : ℚ) / 25711008708143844408671393477458601640355247900524685364822016⟩, ⟨(8031504607242856412355977 : ℚ) / 9671406556917033397649408, (645102445486951356735793812702678792009225 : ℚ) / 12855504354071922204335696738729300820177623950262342682411008⟩, ⟨(3652305573077 : ℚ) / 4398046511104, (-293358638521210525255152976725 : ℚ) / 5846006549323611672814739330865132078623730171904⟩,
+  ⟨(4246466178455 : ℚ) / 4398046511104, (243916212042510569785127861117616145816125 : ℚ) / 25711008708143844408671393477458601640355247900524685364822016⟩, ⟨(19099758175066539813868239 : ℚ) / 19342813113834066795298816, (-1534121103016413283256715486522973729834575 : ℚ) / 25711008708143844408671393477458601640355247900524685364822016⟩, ⟨(2 : ℚ) / 1, (-32231117852544433076944217834162716164700056891963825 : ℚ) / 25711008708143844408671393477458601640355247900524685364822016⟩,
+  ⟨(4 : ℚ) / 1, (32231117852527019494464130500010701342358892085495375 : ℚ) / 25711008708143844408671393477458601640355247900524685364822016⟩, ⟨(8 : ℚ) / 1, (8706791240043667076007411170582403234225 : ℚ) / 25711008708143844408671393477458601640355247900524685364822016⟩
+]
+/-- Original node 55: all strategies and physical roles normalize to the summary. -/
+theorem checked6 : mergeNormalizeLogExpression (cachedNode3 parents6 55 0) = summary6 := by decide +kernel
+
+/-- Every complete node summary in original source order. -/
+def summaries : Fin 7 → RationalLogExpression := ![summary0, summary1, summary2, summary3, summary4, summary5, summary6]
+/-- Each original node is identified separately without omitting any strategy or role. -/
+theorem checked : ∀ offset, rationalLogValue (summaries offset) =
+    rationalLogValue (sourceSum3 (finProdFinEquiv ((7 : Fin 135), offset)) 0) := by
+  intro offset
+  fin_cases offset
+  · exact node3_value parents0 parents0_eq 49 0 summary0 checked0
+  · exact node3_value parents1 parents1_eq 50 0 summary1 checked1
+  · exact node3_value parents2 parents2_eq 51 0 summary2 checked2
+  · exact node3_value parents3 parents3_eq 52 0 summary3 checked3
+  · exact node3_value parents4 parents4_eq 53 0 summary4 checked4
+  · exact node3_value parents5 parents5_eq 54 0 summary5 checked5
+  · exact node3_value parents6 parents6_eq 55 0 summary6 checked6
+/-- Seven independently checked complete node summaries. -/
+def expression : RationalLogExpression := finiteLogSum summaries
+/-- Combining the seven exact summaries preserves the whole source-block value. -/
+theorem value : rationalLogValue expression =
+    ∑ offset : Fin 7, rationalLogValue (sourceSum3 (finProdFinEquiv ((7 : Fin 135), offset)) 0) :=
+  block3_value 7 0 summaries checked
+
+end MatrixBounds.Numeric.SuppliedPairedFine.PairedFine3Cache007A0

@@ -1,0 +1,36 @@
+
+\begin{minipage}[t]{.478\linewidth}
+\centering
+\vspace*{-2.5pt}
+{\bfseries\small Level-separated extraction}\par\vspace{7pt}
+{\footnotesize\setlength{\tabcolsep}{4pt}\renewcommand{\arraystretch}{1.35}
+\begin{tabular}{@{}lccc@{}}
+\toprule
+ & $X$ & $Y$ & $Z$\\
+\midrule
+Level 4 & 1.6637 & 1.6451 & \cellcolor{wash}\textbf{1.6313}\\
+Level 3 & 2.2678 & 2.2081 & \cellcolor{wash}\textbf{1.8906}\\
+Level 2 & \cellcolor{wash}\textbf{1.5094} & 1.5877 & 1.9190\\
+\bottomrule
+\end{tabular}}\par\vspace{8pt}
+{\small Select each row's minimum, then add.}\par\vspace{5pt}
+{\color{muted}$\displaystyle\sum_\ell\min_W e_{\ell,W}=$}\par\vspace{3pt}
+{\fontsize{17}{20}\selectfont\bfseries\color{muted}5.031390}
+\end{minipage}\hfill
+\begin{minipage}[t]{.478\linewidth}
+\centering
+{\bfseries\small\color{accent} Shared extraction}\par\vspace{7pt}
+{\footnotesize\setlength{\tabcolsep}{4pt}\renewcommand{\arraystretch}{1.35}
+\begin{tabular}{@{}lccc@{}}
+\toprule
+ & $X$ & $Y$ & $Z$\\
+\midrule
+Level 4 & 1.6637 & 1.6451 & 1.6313\\
+Level 3 & 2.2678 & 2.2081 & 1.8906\\
+Level 2 & 1.5094 & 1.5877 & 1.9190\\
+\bottomrule
+\end{tabular}}\par\vspace{8pt}
+{\small Add each column, then take the minimum.}\par\vspace{5pt}
+{\color{accent}$\displaystyle\min_W\sum_\ell e_{\ell,W}=$}\par\vspace{3pt}
+{\fontsize{17}{20}\selectfont\bfseries\color{accent}5.440956}
+\end{minipage}

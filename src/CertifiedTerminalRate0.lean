@@ -1,0 +1,59 @@
+import RateCertificateData.Terminal0Block000
+import RateCertificateData.Terminal0Block001
+import RateCertificateData.Terminal0Block002
+import RateCertificateData.Terminal0Block003
+import RateCertificateData.Terminal0Block004
+import RateCertificateData.Terminal0Block005
+import RateCertificateData.Terminal0Block006
+import RateCertificateData.Terminal0Block007
+import RateCertificateData.Terminal0Block008
+import RateCertificateData.Terminal0Block009
+import RateCertificateData.Terminal0Block010
+import RateCertificateData.Terminal0Block011
+import RateCertificateData.Terminal0Block012
+import RateCertificateData.Terminal0Block013
+import RateCertificateData.Terminal0Block014
+import RateCertificateData.Terminal0Block015
+import RateCertificateData.Terminal0Block016
+import RateCertificateData.Terminal0Block017
+import RateCertificateData.Terminal0Block018
+import RateCertificateData.Terminal0Block019
+import RateCertificateData.Terminal0Block020
+import RateCertificateData.Terminal0Block021
+import RateCertificateData.Terminal0Block022
+import RateCertificateData.Terminal0Block023
+import RateCertificateData.Terminal0Block024
+import RateCertificateData.Terminal0Block025
+import RateCertificateData.Terminal0Block026
+import RateCertificateData.Terminal0Block027
+import RateCertificateData.Terminal0Block028
+import RateCertificateData.Terminal0Block029
+import RateCertificateData.Terminal0Block030
+import RateCertificateData.Terminal0Block031
+import RateCertificateData.Terminal0Block032
+import RateCertificateData.Terminal0Block033
+import RateCertificateData.Terminal0Block034
+import RateCertificateData.Terminal0Block035
+import RateCertificateData.Terminal0Block036
+import RateCertificateData.Terminal0Block037
+import RateCertificateData.Terminal0Block038
+
+namespace MatrixBounds.Numeric.CertifiedTerminalRate0
+set_option maxRecDepth 100000
+set_option maxHeartbeats 32000000
+
+/-- All exact expression blocks, in their complete original order. -/
+def blocks : List CertifiedLogBlock := [
+  RateCertificateData.Terminal0Block000.certificate, RateCertificateData.Terminal0Block001.certificate, RateCertificateData.Terminal0Block002.certificate, RateCertificateData.Terminal0Block003.certificate, RateCertificateData.Terminal0Block004.certificate, RateCertificateData.Terminal0Block005.certificate, RateCertificateData.Terminal0Block006.certificate, RateCertificateData.Terminal0Block007.certificate, RateCertificateData.Terminal0Block008.certificate, RateCertificateData.Terminal0Block009.certificate, RateCertificateData.Terminal0Block010.certificate, RateCertificateData.Terminal0Block011.certificate, RateCertificateData.Terminal0Block012.certificate, RateCertificateData.Terminal0Block013.certificate, RateCertificateData.Terminal0Block014.certificate, RateCertificateData.Terminal0Block015.certificate, RateCertificateData.Terminal0Block016.certificate, RateCertificateData.Terminal0Block017.certificate, RateCertificateData.Terminal0Block018.certificate, RateCertificateData.Terminal0Block019.certificate, RateCertificateData.Terminal0Block020.certificate, RateCertificateData.Terminal0Block021.certificate, RateCertificateData.Terminal0Block022.certificate, RateCertificateData.Terminal0Block023.certificate, RateCertificateData.Terminal0Block024.certificate, RateCertificateData.Terminal0Block025.certificate, RateCertificateData.Terminal0Block026.certificate, RateCertificateData.Terminal0Block027.certificate, RateCertificateData.Terminal0Block028.certificate, RateCertificateData.Terminal0Block029.certificate, RateCertificateData.Terminal0Block030.certificate, RateCertificateData.Terminal0Block031.certificate, RateCertificateData.Terminal0Block032.certificate, RateCertificateData.Terminal0Block033.certificate, RateCertificateData.Terminal0Block034.certificate, RateCertificateData.Terminal0Block035.certificate, RateCertificateData.Terminal0Block036.certificate, RateCertificateData.Terminal0Block037.certificate, RateCertificateData.Terminal0Block038.certificate
+]
+/-- Complete real logarithmic expression; the `Supplied*Certified*` modules identify it with the actual tensor-pipeline rate. -/
+noncomputable def value : ℝ := certifiedBlocksValue blocks
+/-- Exact integer enclosure of the complete expression at scale 2^60. -/
+def bounds : FixedBounds := ⟨1268811725556869392, 1268811725557312495⟩
+/-- All block endpoint sums agree exactly with the reported complete rate interval. -/
+theorem bounds_checked : certifiedBlocksBounds blocks = bounds := by decide +kernel
+/-- The reported interval contains the complete exact real logarithmic expression. -/
+theorem sound : (bounds.interval (2^60)).Contains value :=
+  certifiedBlocks_sound blocks bounds bounds_checked
+
+end MatrixBounds.Numeric.CertifiedTerminalRate0

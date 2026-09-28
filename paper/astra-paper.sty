@@ -1,0 +1,87 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{astra-paper}[2026/09/19 Research paper typography]
+\RequirePackage[T1]{fontenc}
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[a4paper,left=27mm,right=27mm,top=24mm,bottom=25mm,headheight=21pt,headsep=7mm,footskip=12mm]{geometry}
+\RequirePackage{amsmath,amsthm,amssymb,mathtools}
+\RequirePackage{libertinus}
+\RequirePackage[scaled=.91]{sourcesanspro}
+\RequirePackage[scaled=.84]{inconsolata}
+\RequirePackage[final,protrusion=true,expansion=true]{microtype}
+\RequirePackage[table]{xcolor}
+\definecolor{ink}{HTML}{183A48}
+\definecolor{accent}{HTML}{196A76}
+\definecolor{muted}{HTML}{53636B}
+\definecolor{wash}{HTML}{F1F6F7}
+\definecolor{rulegray}{HTML}{CFDADC}
+\definecolor{warm}{HTML}{9D6527}
+\RequirePackage{graphicx,booktabs,array,tabularx,multirow}
+\RequirePackage{tikz,pgfplots}
+\usetikzlibrary{arrows.meta,positioning,calc,decorations.pathreplacing,fit}
+\pgfplotsset{compat=1.18}
+\RequirePackage{enumitem}
+\RequirePackage{algorithm,algpseudocode}
+\RequirePackage{needspace}
+\RequirePackage[most]{tcolorbox}
+\RequirePackage{caption}
+\captionsetup{font=small,labelfont={bf,sf},labelsep=period,skip=8pt}
+\RequirePackage[round,authoryear]{natbib}
+\RequirePackage{url}
+\RequirePackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=ink,citecolor=accent,urlcolor=accent,bookmarksnumbered=true,pdftitle={Cross-Level Laser Extraction for Faster Matrix Multiplication},pdfsubject={Mixed-level laser extraction, numerical optimization, and exact-rank certification}}
+\RequirePackage[nameinlink,noabbrev]{cleveref}
+\RequirePackage{bookmark}
+
+\pagestyle{plain}
+\RequirePackage{titlesec}
+\titleformat{\section}{\large\bfseries\color{ink}}{\thesection}{.65em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{.65em}{}
+\titleformat{\subsubsection}[runin]{\normalsize\bfseries}{}{0pt}{}[.]
+\titlespacing*{\section}{0pt}{3.0ex plus .6ex minus .3ex}{1.3ex plus .2ex}
+\titlespacing*{\subsection}{0pt}{2.4ex plus .4ex minus .2ex}{.85ex plus .2ex}
+\titlespacing*{\subsubsection}{0pt}{1.5ex plus .2ex}{.7em}
+\setlength{\parindent}{1.1em}
+\setlength{\parskip}{2.5pt plus .4pt}
+\linespread{1.035}
+\setlength{\abovedisplayskip}{8pt plus 2pt minus 2pt}
+\setlength{\belowdisplayskip}{8pt plus 2pt minus 2pt}
+\setlength{\abovedisplayshortskip}{4pt plus 1pt}
+\setlength{\belowdisplayshortskip}{5pt plus 1pt}
+\setlength{\textfloatsep}{14pt plus 3pt minus 2pt}
+\setlength{\intextsep}{12pt plus 3pt minus 2pt}
+\setlength{\emergencystretch}{1.5em}
+\setlength{\bibsep}{4pt plus 1pt}
+\renewcommand{\arraystretch}{1.15}
+\widowpenalty=10000
+\clubpenalty=10000
+\displaywidowpenalty=10000
+\raggedbottom
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtcolorbox{resultbox}{enhanced,breakable,colback=wash,colframe=rulegray,boxrule=.45pt,arc=0pt,boxsep=0pt,left=11pt,right=11pt,top=8pt,bottom=8pt,borderline west={2pt}{0pt}{accent},before skip=11pt,after skip=11pt}
+\newtcolorbox{algorithmnote}{enhanced,breakable,colback=wash,colframe=rulegray,boxrule=.4pt,arc=0pt,left=9pt,right=9pt,top=6pt,bottom=6pt}
+\newcommand{\code}[1]{\texttt{\small #1}}
+
+\newcommand{\paperTitle}{
+  \thispagestyle{plain}
+  \begingroup
+  \hypersetup{urlcolor=black}
+  \centering\color{black}
+  \vspace*{6pt}
+
+  {\fontsize{18}{22}\selectfont\bfseries
+    Cross-Level Laser Extraction for Faster Matrix Multiplication\par}
+
+  \vspace{10pt}
+
+  {\small September 2026\par}
+
+  \endgroup
+  \vspace{10pt}
+}
