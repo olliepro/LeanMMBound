@@ -1,5 +1,12 @@
-import CWWindowCollisionRates
-import MixedSelection
+module
+
+public import CWWindowCollisionRates
+public import MixedSelection
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! One common seed selects actual prescribed CW edges with unique coarse-X
 owners and sparse fine-axis collision holes inside the parent windows. -/
@@ -70,9 +77,9 @@ theorem exists_actual_selection (data : SplitRestrictionData length) (symmetric 
     buckets badX holesY holesZ (data.coarseDegree (P := P))
     (data.windowDegree Shape.y yClass data.fineY acceptY)
     (data.windowDegree Shape.z zClass data.fineZ acceptZ) scale
-    (fun edge bucket _ => by simpa only [ZMod.card] using data.uniform_coarse_collision_count edge large bucket)
-    (fun edge bucket _ parts => by simpa only [ZMod.card] using boundY edge bucket parts)
-    (fun edge bucket _ parts => by simpa only [ZMod.card] using boundZ edge bucket parts)
+    (fun edge bucket _ => by simpa only [ZMod.card] using! data.uniform_coarse_collision_count edge large bucket)
+    (fun edge bucket _ parts => by simpa only [ZMod.card] using! boundY edge bucket parts)
+    (fun edge bucket _ parts => by simpa only [ZMod.card] using! boundZ edge bucket parts)
     (by simpa only [ZMod.card] using largeX) (by simpa only [ZMod.card] using largeY)
     (by simpa only [ZMod.card] using largeZ)
   have activeIff (edge : data.PrescribedEdges (P := P)) : data.active seed edge.val ↔

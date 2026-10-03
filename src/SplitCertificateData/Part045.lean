@@ -1,4 +1,12 @@
-import SplitData
+module
+
+public import SplitData
+public import FKLMeta.SplitFast
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 namespace MatrixBounds.Numeric.SplitCertificateData.Part045
 set_option maxRecDepth 100000
@@ -72,7 +80,10 @@ def rows : List SplitRow := [
   ⟨⟨3,4,1⟩,4,⟨15, [(3,225189369188),(4,2673200900),(7,7445215577408),(8,1123014874712),(10,1123014874712),(11,7445215577408),(12,2673200900),(13,225189369188)]⟩⟩
 ]
 
+theorem fkl_checked : FKLMeta.SplitFast.allFast 17592186044416 rows = true := by decide +kernel
+
 /-- Lean checks normalization, shape support, and complement symmetry for every row. -/
-theorem rows_checked : rows.all (fun row => row.check 17592186044416) = true := by decide
+theorem rows_checked : rows.all (fun row => row.check 17592186044416) = true :=
+  FKLMeta.SplitFast.allFast_sound 17592186044416 rows fkl_checked
 
 end MatrixBounds.Numeric.SplitCertificateData.Part045

@@ -1,4 +1,11 @@
-import CWRootGraph
+module
+
+public import CWRootGraph
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! A shared hash and complete-graph coarse owner on the unrestricted root
 source. All filtering is by variables, and the original CW budget is preserved. -/

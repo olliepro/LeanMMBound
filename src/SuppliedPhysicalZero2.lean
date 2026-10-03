@@ -1,7 +1,14 @@
-import SuppliedZeroLeafSupport
-import ZeroWindowOrientation
-import VerifiedZeroOrbitLaws
-import VerifiedOrbitComplements
+module
+
+public import SuppliedZeroLeafSupport
+public import ZeroWindowOrientation
+public import VerifiedZeroOrbitLaws
+public import VerifiedOrbitComplements
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Every original source two-letter zero leaf yields its genuine matrix factor
 from the actual complete physically oriented source window. -/

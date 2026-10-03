@@ -1,7 +1,14 @@
-import SuppliedBatchTransitions
-import SuppliedRoundWidths
-import FiniteTensorEquality
-import PartitionedContextExtraction
+module
+
+public import SuppliedBatchTransitions
+public import SuppliedRoundWidths
+public import FiniteTensorEquality
+public import PartitionedContextExtraction
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Actual labelled tensors before and after a shared round. Coordinate maps
 separate active windows, retain waiting windows, and restore every batch. -/
@@ -77,9 +84,9 @@ theorem outputs_reduction (round : ℕ) (parameters : Parameters batches) (selec
         ((parameters batch.val).update (phase round batch) (selected batch)) size =
         state (Pipeline.completedBefore batch.val.val (round+1)) (advance round parameters selected batch.val) size := by
       rw [advance_active, (Pipeline.active_stage_states round batch).2]
-    simpa only [one_mul] using changed.trans (FiniteTensor.equalRestriction same).context
+    simpa only [one_mul] using! changed.trans (FiniteTensor.equalRestriction same).context
   have combined := ContextReduction.heterogeneous (fun _ : Pipeline.ActiveBatch batches round => 1) steps
-  simpa only [Finset.prod_const_one, one_mul] using restored.trans combined
+  simpa only [Finset.prod_const_one, one_mul] using! restored.trans combined
 
 /-- Inactive batches retain their complete original tensors throughout this round. -/
 def inactiveRestriction (round : ℕ) (parameters : Parameters batches) (selected : Selected batches round) (size : ℕ) :

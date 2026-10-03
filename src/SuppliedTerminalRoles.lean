@@ -1,6 +1,13 @@
-import SuppliedTerminalRationalRates
-import SuppliedTypedParameters
-import WeightedSectorAllocation
+module
+
+public import SuppliedTerminalRationalRates
+public import SuppliedTypedParameters
+public import WeightedSectorAllocation
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The source certificate's three-way terminal role policy is realized by
 actual physical permutations and has its stated weighted entropy vector. -/

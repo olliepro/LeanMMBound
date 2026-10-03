@@ -1,35 +1,43 @@
-import LogGridData.Part000
-import LogGridData.Part001
-import LogGridData.Part002
-import LogGridData.Part003
-import LogGridData.Part004
-import LogGridData.Part005
-import LogGridData.Part006
-import LogGridData.Part007
-import LogGridData.Part008
-import LogGridData.Part009
-import LogGridData.Part010
-import LogGridData.Part011
-import LogGridData.Part012
-import LogGridData.Part013
-import LogGridData.Part014
-import LogGridData.Part015
-import LogGridData.Part016
-import LogGridData.Part017
-import LogGridData.Part018
-import LogGridData.Part019
-import LogGridData.Part020
-import LogGridData.Part021
-import LogGridData.Part022
-import LogGridData.Part023
-import LogGridData.Part024
-import LogGridData.Part025
-import LogGridData.Part026
-import LogGridData.Part027
-import LogGridData.Part028
-import LogGridData.Part029
-import LogGridData.Part030
-import LogGridData.Part031
+module
+
+public import LogGridData.Part000
+public import LogGridData.Part001
+public import LogGridData.Part002
+public import LogGridData.Part003
+public import LogGridData.Part004
+public import LogGridData.Part005
+public import LogGridData.Part006
+public import LogGridData.Part007
+public import LogGridData.Part008
+public import LogGridData.Part009
+public import LogGridData.Part010
+public import LogGridData.Part011
+public import LogGridData.Part012
+public import LogGridData.Part013
+public import LogGridData.Part014
+public import LogGridData.Part015
+public import LogGridData.Part016
+public import LogGridData.Part017
+public import LogGridData.Part018
+public import LogGridData.Part019
+public import LogGridData.Part020
+public import LogGridData.Part021
+public import LogGridData.Part022
+public import LogGridData.Part023
+public import LogGridData.Part024
+public import LogGridData.Part025
+public import LogGridData.Part026
+public import LogGridData.Part027
+public import LogGridData.Part028
+public import LogGridData.Part029
+public import LogGridData.Part030
+public import LogGridData.Part031
+public import FKLLog.GridTrace
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 namespace MatrixBounds.Numeric.CertifiedLogGrid
 set_option maxRecDepth 100000
@@ -78,8 +86,13 @@ def entry (index : Fin 256) : CertifiedLogBound :=
   | 31 => LogGridData.Part031.entries[index.val%8]?.getD defaultEntry
   | _ => defaultEntry
 
+/-- Nat-only kernel check of every grid input (`FKLLog.inputOK`). -/
+theorem input_fast : FKLLog.allBelow (fun k => FKLLog.inputOK (entry (FKLLog.finOf k)).input k) 256 = true := by
+  decide +kernel
 /-- The lookup table covers exactly the intended grid, in order, without an unchecked indexing assumption. -/
-theorem input_correct : ∀ index : Fin 256, (entry index).input = 1+(index.val : ℚ)/256 := by decide +kernel
+theorem input_correct : ∀ index : Fin 256, (entry index).input = 1+(index.val : ℚ)/256 :=
+  FKLLog.forall_fin_of_allBelow _ _ input_fast
+    (fun i h => by rw [FKLLog.finOf_val] at h; exact FKLLog.inputOK_sound _ _ h)
 
 /-- Every looked-up interval contains the actual real logarithm of its intended grid point. -/
 theorem bounds_sound (index : Fin 256) :

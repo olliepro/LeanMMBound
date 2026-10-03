@@ -1,4 +1,11 @@
-import ParameterIndexData.DyadicRootAPart000
+module
+
+public import ParameterIndexData.DyadicRootAPart000
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 namespace MatrixBounds.Numeric.ParameterIndexData.DyadicRootA
 

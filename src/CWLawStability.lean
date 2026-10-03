@@ -1,4 +1,11 @@
-import CWProfileLaws
+module
+
+public import CWProfileLaws
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Parent mixtures and compatibility pools are uniformly stable under child
 law perturbations, including zero-weight child types and empty sectors. -/

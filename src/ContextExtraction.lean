@@ -1,7 +1,14 @@
-import ContextRestrictions
-import SelectedTargets
-import RefinedOwnership
-import AcceptedRestrictions
+module
+
+public import ContextRestrictions
+public import SelectedTargets
+public import RefinedOwnership
+public import AcceptedRestrictions
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Acceptance masks and unique-owner extraction have context-preserving
 reductions, so they can process an incoming batch without losing its copies. -/
@@ -19,7 +26,7 @@ theorem contextReduction_accepted (source : Coeff K X Y Z)
     (typeX : X → PX) (typeY : Y → PY) (typeZ : Z → PZ)
     (acceptX : PX → Prop) (acceptY : PY → Prop) (acceptZ : PZ → Prop) :
     ContextReduction.{v} source (acceptedTensor source typeX typeY typeZ acceptX acceptY acceptZ) 1 := by
-  simpa only [restrict_mask, decide_eq_true_eq, acceptedTensor] using contextReduction_restrict source
+  simpa only [restrict_mask, decide_eq_true_eq, acceptedTensor] using! contextReduction_restrict source
     (mask (fun x => decide (acceptX (typeX x)))) (mask (fun y => decide (acceptY (typeY y))))
     (mask (fun z => decide (acceptZ (typeZ z))))
 

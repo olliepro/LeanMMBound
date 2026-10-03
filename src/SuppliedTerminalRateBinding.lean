@@ -1,8 +1,13 @@
-import TerminalRateAxis0Binding
-import TerminalRateAxis1Binding
-import TerminalRateAxis2Binding
-import CertifiedPipelineScalar
-import SuppliedNormalizedRates
+module
+
+public import FKLTerm.Rates
+public import CertifiedPipelineScalar
+public import SuppliedNormalizedRates
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Exact identification of every actual terminal extraction rate with the
 independently interval-certified original numerical expressions. -/
@@ -15,9 +20,9 @@ noncomputable section
 theorem normalized_rate_eq (axis : Fin 3) :
     SuppliedPathStages.terminal.rates axis/(rootWeight : ℝ) = certificateValue axis := by
   fin_cases axis
-  · exact TerminalRateAxis0Binding.rate_eq
-  · exact TerminalRateAxis1Binding.rate_eq
-  · exact TerminalRateAxis2Binding.rate_eq
+  · exact FKLTermData.A0.rate_eq
+  · exact FKLTermData.A1.rate_eq
+  · exact FKLTermData.A2.rate_eq
 
 /-- All original terminal source expressions have exactly their complete certificate values. -/
 theorem expression_certificate_value (axis : Fin 3) :

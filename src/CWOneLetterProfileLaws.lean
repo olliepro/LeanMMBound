@@ -1,5 +1,12 @@
-import CWOneLetterData
-import CWActiveLaws
+module
+
+public import CWOneLetterData
+public import CWActiveLaws
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The empirical child laws of forced one-letter profiles are exactly their
 Dirac laws with the established zero convention on empty child pools. -/

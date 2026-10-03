@@ -1,4 +1,11 @@
-import CWRationalSixfoldInterfaces
+module
+
+public import CWRationalSixfoldInterfaces
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! A physical presentation records the original source windows and role labels
 of an already checked rational stage. Its equalities give the actual interfaces. -/

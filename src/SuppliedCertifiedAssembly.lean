@@ -1,5 +1,12 @@
-import SuppliedNormalizedExtraction
-import CertifiedPipelineScalar
+module
+
+public import SuppliedNormalizedExtraction
+public import CertifiedPipelineScalar
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Final assembly. Once the actual normalized construction rates are identified with the
 kernel-checked numerical expressions, the algebraic matrix multiplication exponent is below

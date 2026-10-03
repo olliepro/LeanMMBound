@@ -1,6 +1,13 @@
-import CWRationalData
-import VerifiedSplitProfiles
-import CWTargetMaps
+module
+
+public import CWRationalData
+public import VerifiedSplitProfiles
+public import CWTargetMaps
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The supplied checked split rows directly instantiate the integer data,
 symmetry, and reference edges required by complete approximate extraction. -/

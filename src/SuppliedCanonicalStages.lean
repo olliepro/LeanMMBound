@@ -1,5 +1,12 @@
-import CWRationalCanonicalAssembly
-import SuppliedStagePresentations
+module
+
+public import CWRationalCanonicalAssembly
+public import SuppliedStagePresentations
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Any shared round of the supplied phases extracts its actual sixfold
 canonical parents into actual canonical children with all history labels. -/

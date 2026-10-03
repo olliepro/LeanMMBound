@@ -1,5 +1,12 @@
-import CWMixedNearbyExtraction
-import RetentionLossRates
+module
+
+public import CWMixedNearbyExtraction
+public import RetentionLossRates
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The actual mixed CW prescribed-edge count supplies the exponential cap
 needed to remove the common-prime and Behrend losses uniformly. -/

@@ -1,4 +1,11 @@
-import SuppliedPipelineRoot
+module
+
+public import SuppliedPipelineRoot
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The actual original CW sources supply every completed batch of the finite
 pipeline. Root extraction, all shared rounds, and all boundary errors are

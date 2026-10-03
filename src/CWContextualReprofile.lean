@@ -1,5 +1,12 @@
-import ContextExtraction
-import CWReprofiledSource
+module
+
+public import ContextExtraction
+public import CWReprofiledSource
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Every nearby exact tuple uses a contextual restriction of the same nominal
 parent tensor. Empty child pools are included through their canonical laws. -/

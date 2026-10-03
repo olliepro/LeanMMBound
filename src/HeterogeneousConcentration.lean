@@ -1,4 +1,11 @@
-import ProductSampling
+module
+
+public import ProductSampling
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Parent-block concentration for independent exact child pools with different
 alphabets, slot counts, and population sizes. All choices remain separately labelled. -/
@@ -35,7 +42,7 @@ theorem heterogeneousBlockCenter_bounds (profile : ∀ t, B t → ℕ)
       heterogeneousBlockCenter (P := P) profile pattern ≤ 1 := by
   have bounds := fun t => blockCenter_bounds (profile t) (representative t) (positions t) (pattern t)
   exact ⟨Finset.prod_nonneg (fun t _ => (bounds t).1),
-    Finset.prod_le_one (fun t _ => (bounds t).1) (fun t _ => (bounds t).2)⟩
+    Finset.prod_le_one₀ (fun t _ => (bounds t).1) (fun t _ => (bounds t).2)⟩
 
 omit [Fintype Parent] in
 /-- A single heterogeneous block has the independent product law up to the summed pool errors. -/
@@ -74,6 +81,7 @@ theorem heterogeneous_block_joint_error (profile : ∀ t, B t → ℕ)
     (fun t => block_joint_error (profile t) (representative t) (positions t) (pattern t) first second different)
   simp only [forall_and, Finset.prod_pow] at result
   convert result using 1
+  · rfl
   simp only [heterogeneousBlockError, Finset.mul_sum]
   apply Finset.sum_congr rfl
   intro t _

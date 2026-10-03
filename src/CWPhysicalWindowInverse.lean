@@ -1,4 +1,11 @@
-import CWPhysicalWindows
+module
+
+public import CWPhysicalWindows
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Physical CW window orientation is a coordinate isomorphism. Both directions
 are available when routing symmetric source copies through extraction regions. -/

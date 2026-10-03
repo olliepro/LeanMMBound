@@ -1,5 +1,12 @@
-import SuppliedBatchTensors
-import SuppliedLevel4SixfoldTransition
+module
+
+public import SuppliedBatchTensors
+public import SuppliedLevel4SixfoldTransition
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Actual complete output transitions for each scheduled batch, retaining
 all waiting windows and recording the newly chosen output widths. -/
@@ -34,7 +41,7 @@ theorem next_reduction (index : Fin 3) (widths : Widths) (next : Width (phaseAt 
     have grouped := (associateLeftRestriction (rootWaiting (K := K) widths size).coefficient
       (zero3Waiting (K := K) (widths.update .level4 next) size).coefficient
       (active (K := K) (widths.update .level4 next) size .level3).coefficient).context
-    simpa only [one_mul] using carried.trans grouped
+    simpa only [one_mul] using! carried.trans grouped
   · have converted := SuppliedLevel3Transition.sixfold_positive_transition (K := K) sizePositive next.val next.property
     have carried := converted.keep_left (waiting (K := K) widths size .level3).coefficient
     have grouped := (associateLeftRestriction (waiting (K := K) widths size .level3).coefficient
@@ -45,7 +52,7 @@ theorem next_reduction (index : Fin 3) (widths : Widths) (next : Width (phaseAt 
       SuppliedCanonicalStages.children, SuppliedStagePresentations.presentation,
       SuppliedPathStages.fixed, SuppliedPathStages.Labels, SuppliedPathStages.labelsFinite,
       FiniteTensor.ofCoeff, FiniteTensor.product, FiniteTensor.sixfold] at carried grouped ⊢
-    simpa only [one_mul] using carried.trans grouped
+    simpa only [one_mul] using! carried.trans grouped
   · dsimp only [phaseAt, Widths.update, state, completed, waiting, output,
       rootWaiting, zero3Waiting, zero2Waiting, SuppliedCanonicalStages.children,
       SuppliedStagePresentations.presentation, SuppliedPathStages.fixed,

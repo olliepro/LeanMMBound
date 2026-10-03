@@ -1,5 +1,12 @@
-import CWFineCollisionCounts
-import CWTargetSupport
+module
+
+public import CWFineCollisionCounts
+public import CWTargetSupport
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Uniform finite degrees and collision counts inside the accepted parent
 windows. Blocks outside these windows are already charged as parent holes. -/
@@ -41,7 +48,7 @@ theorem degree_le_windowDegree (data : SplitRestrictionData length) (axis : Shap
     (f := fun fine => if accept fine then Nat.card {word : TypedWord (P := P) data.split //
       compatibleFine length data.parent data.balanced axisClass (pooledProfile profile axisClass)
         (fun child => axis child.val) word.val fine} else 0) (Finset.mem_univ fine)
-  simpa only [if_pos accepted] using bound
+  simpa only [if_pos accepted] using! bound
 
 /-- The collision event charged at a fine axis includes only accepted parent blocks. -/
 def windowCollision (data : SplitRestrictionData length) (symmetric : data.Symmetric)

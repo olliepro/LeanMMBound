@@ -1,7 +1,14 @@
-import RationalLogExpressions
-import CWZeroOrbitDimensions
-import CWRationalOrbitRates
-import RationalOrbitArithmetic
+module
+
+public import RationalLogExpressions
+public import CWZeroOrbitDimensions
+public import CWRationalOrbitRates
+public import RationalOrbitArithmetic
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Symbolic expressions for actual compressed compatibility-pool entropies,
 paired fine retention, and zero-leaf matrix dimensions. -/

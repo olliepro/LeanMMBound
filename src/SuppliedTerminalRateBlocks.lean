@@ -1,4 +1,11 @@
-import SuppliedTerminalRateFastExpression
+module
+
+public import SuppliedTerminalRateFastExpression
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Small disjoint original-source blocks for bounded exact terminal checks. -/
 namespace MatrixBounds.Numeric.SuppliedTerminalRates

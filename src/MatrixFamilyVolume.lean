@@ -1,4 +1,11 @@
-import MatrixProductVolume
+module
+
+public import MatrixProductVolume
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Complete families of actual finite matrices retain their multiplicative
 volumes and additive logarithmic volumes. -/

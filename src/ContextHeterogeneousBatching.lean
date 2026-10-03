@@ -1,5 +1,12 @@
-import ContextHeterogeneousReductions
-import ContextCopies
+module
+
+public import ContextHeterogeneousReductions
+public import ContextCopies
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Independent labelled extractions earn the Cartesian product of their copy
 labels. Regrouping these copies multiplies counts without merging variables. -/

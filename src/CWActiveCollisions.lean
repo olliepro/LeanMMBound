@@ -1,5 +1,12 @@
-import CWTargetOwnership
-import CWCompatibleCollisions
+module
+
+public import CWTargetOwnership
+public import CWCompatibleCollisions
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Conditional collision counts for the actual active edges used by the
 sequential CW restriction. No independent hash is introduced at a later axis. -/

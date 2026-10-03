@@ -1,6 +1,13 @@
-import MatrixBounds
-import RepairRates
-import Mathlib.GroupTheory.GroupAction.Basic
+module
+
+public import MatrixBounds
+public import RepairRates
+public import Mathlib.GroupTheory.GroupAction.Basic
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Transitive symmetry converts a fraction of missing parts into a pointwise
 failure bound. Parts need not be individual variables or have equal sizes. -/

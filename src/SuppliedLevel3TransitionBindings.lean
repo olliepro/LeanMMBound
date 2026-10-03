@@ -1,10 +1,17 @@
-import SuppliedAllocationWindows
-import SuppliedChildEquivalences
-import SuppliedShapeInterfaceBindings
-import SuppliedTerminalPhysicalSplit
-import CWRationalCanonicalInterfaces
-import SuppliedStagePresentations
-import ZeroParentRestoration
+module
+
+public import SuppliedAllocationWindows
+public import SuppliedChildEquivalences
+public import SuppliedShapeInterfaceBindings
+public import SuppliedTerminalPhysicalSplit
+public import CWRationalCanonicalInterfaces
+public import SuppliedStagePresentations
+public import ZeroParentRestoration
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Exact complete-window bindings at the level-three to terminal interface. -/
 namespace MatrixBounds.Numeric.SuppliedLevel3Transition
@@ -42,7 +49,7 @@ theorem terminalChild_inverse (child : Fin 3) :
   apply SuppliedChildKinds.child2Equiv.injective
   rw [Equiv.apply_symm_apply]
   simpa only [SuppliedChildKinds.child2Equiv, Equiv.trans_apply, Equiv.ofBijective_apply,
-    terminalChild, Equiv.symm_apply_apply] using (SuppliedShapeInterfaceBindings.terminal_kind child).symm
+    terminalChild, (shapeColumnEquiv 4).symm_apply_apply (terminalColumn child)] using! (SuppliedShapeInterfaceBindings.terminal_kind child).symm
 
 /-- The actual original positive child shape is exactly the terminal rational parent shape. -/
 theorem terminalChild_shape (label : Label3) (child : Fin 3) :

@@ -1,7 +1,14 @@
-import SuppliedWaitingZero4Data
-import SuppliedWaitingZero3Data
-import SuppliedWaitingZero2Data
-import SuppliedTerminalRateExpression
+module
+
+public import SuppliedWaitingZero4Data
+public import SuppliedWaitingZero3Data
+public import SuppliedWaitingZero2Data
+public import SuppliedTerminalRateExpression
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Original source populations for all matrix contributions. Summing old
 physical roles recovers the exact original unallocated coefficient. -/
@@ -94,7 +101,7 @@ theorem root_scaled_mass (depth consumed numerator : ℕ) (total : depth+consume
 theorem zero4_root_mass (node : Fin 48) :
     (rootWeight : ℝ)*(zero4Mass node : ℝ) = (SuppliedWaitingZero4.weight node : ℝ) := by
   simpa only [zero4Mass, SuppliedWaitingZero4.weight, SuppliedRootPopulation.weight,
-    SuppliedRootPopulation.numerator, zero4_column, TypedProbabilityRow.rational, pow_one] using
+    SuppliedRootPopulation.numerator, zero4_column, TypedProbabilityRow.rational, pow_one] using!
     root_scaled_mass 7 1 (SuppliedTypedParameters.rootDistribution.numerator (zero4Column node)) rfl
 
 /-- The summed zero3 population is precisely its original rational source mass at the common scale. -/

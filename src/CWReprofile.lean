@@ -1,5 +1,12 @@
-import CWExactProfileValidity
-import CWTargetMaps
+module
+
+public import CWExactProfileValidity
+public import CWTargetMaps
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Every valid exact child-type tuple can replace the fine profiles of a split
 instance while retaining its complete coarse graph and prescribed split count. -/

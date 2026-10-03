@@ -1,9 +1,16 @@
-import SuppliedDimensionBlocks
-import SuppliedDimensionCertificateTable0
-import SuppliedDimensionCertificateTable1
-import SuppliedDimensionCertificateTable2
-import TerminalRateWindowCorrection
-import CertifiedPipelineScalar
+module
+
+public import SuppliedDimensionBlocks
+public import SuppliedDimensionCertificateTable0
+public import SuppliedDimensionCertificateTable1
+public import SuppliedDimensionCertificateTable2
+public import TerminalRateWindowCorrection
+public import CertifiedPipelineScalar
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The original source dimension and all three unchanged certificates admit
 the same complete finite block accounting. -/

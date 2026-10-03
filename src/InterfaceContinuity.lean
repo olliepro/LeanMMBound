@@ -1,7 +1,14 @@
-import EntropyBounds
-import Mathlib.Analysis.SpecialFunctions.Log.NegMulLog
-import Mathlib.Analysis.Normed.Group.Constructions
-import Mathlib.Topology.UniformSpace.HeineCantor
+module
+
+public import EntropyBounds
+public import Mathlib.Analysis.SpecialFunctions.Log.NegMulLog
+public import Mathlib.Analysis.Normed.Group.Constructions
+public import Mathlib.Topology.UniformSpace.HeineCantor
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Uniform entropy control and stable independent-concatenation distributions
 for passing from exact empirical types to approximate interfaces. -/

@@ -1,9 +1,16 @@
-import TensorProduct
-import Mathlib.Algebra.Polynomial.Coeff
-import Mathlib.Algebra.BigOperators.NatAntidiagonal
-import Mathlib.Algebra.BigOperators.Fin
-import Mathlib.Data.Fintype.Sum
-import Mathlib.Tactic.Linarith
+module
+
+public import TensorProduct
+public import Mathlib.Algebra.Polynomial.Coeff
+public import Mathlib.Algebra.BigOperators.NatAntidiagonal
+public import Mathlib.Algebra.BigOperators.Fin
+public import Mathlib.Data.Fintype.Sum
+public import Mathlib.Tactic.Linarith
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Polynomial rank approximations and exact coefficient extraction. A polynomial
 approximation is represented by actual polynomial-valued rank factors. -/

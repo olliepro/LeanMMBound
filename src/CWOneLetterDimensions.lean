@@ -1,5 +1,12 @@
-import CWOneLetterInterfaces
-import CWFiberCounts
+module
+
+public import CWOneLetterInterfaces
+public import CWFiberCounts
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The full dimensions of one-letter leaves, obtained from their actual
 coordinate alphabets rather than from a numerical dimension assignment. -/

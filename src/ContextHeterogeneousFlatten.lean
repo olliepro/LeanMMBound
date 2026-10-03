@@ -1,5 +1,12 @@
-import ContextComposition
-import HeterogeneousFlatten
+module
+
+public import ContextComposition
+public import HeterogeneousFlatten
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Explicit regrouping of heterogeneous axes is valid inside every context. -/
 namespace MatrixBounds.Interface

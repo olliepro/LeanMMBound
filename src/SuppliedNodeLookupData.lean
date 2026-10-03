@@ -1,6 +1,16 @@
-import CheckedIndexTable
-import SuppliedHierarchyParentData
-import FiniteIndexBlockComposition
+module
+
+public import CheckedIndexTable
+public import SuppliedHierarchyParentData
+public import FiniteIndexBlockComposition
+public import FKLMeta.Flat
+public import FKL.Range
+public import FKLMeta.Grid
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Complete source hierarchy lookup, including the exact absent support entries. -/
 namespace MatrixBounds.Numeric.SuppliedNodeLookup
@@ -386,219 +396,322 @@ def positiveInverse (node : Fin 945) : Prop :=
 def zeroInverse (node : Fin 840) : Prop :=
   lookup ⟨(SuppliedShapeIndices.zeroNode node).parent, (SuppliedShapeIndices.zeroNode_bounds node).1⟩
     ⟨(SuppliedShapeIndices.zeroNode node).child, (SuppliedShapeIndices.zeroNode_bounds node).2.1⟩ = some (Sum.inr node)
+/-- All 4725 grid codes in 11-bit lanes (FKLMeta). -/
+def fkl_codes : ℕ := 0x6f9df1bdc003b100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000dedbd77a6f3760000003af000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001bcb78ef0000ebb77800000eb4000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000003776eddd9badd6000dd4eac00000000ea80000000000000000000000000000000000000000000000000000000000000000000000000000000000000000006e9dd1b9f733a9dca001d43a7000000003a60000000000000000000000000000000000000000000000000000000000000000000000000000000000000000dc9b8f7100074bb8400000749b8000000000e8c0000000000000000000000000000000000000000000000000000000000000000000000000000000000001b7f6f6dddb8e88006db742000006da74000000000000e7c000000000000000000000000000000000000000000000000000000000000000000000000000036ced8dafb59cf6d5da8e75ce000000e6dcd00000000000399000000000000000000000000000000000000000000000000000000000000000000000000006d3da5b4768398d9e001cbb96d9c0000039572800000000000e4c00000000000000000000000000000000000000000000000000000000000000000000000d9bb3365800725b2800000723b2400000000e43640000000000038f000000000000000000000000000000000000000000000000000000000000000000001b1f636c5d88e38006c371a000006c271800000000d82e2c000000000000038a0000000000000000000000000000000000000000000000000000000000003606bfd7daf5c4ebcd76e21c3800d74e19c2800000001c238300000000000000e080000000000000000000000000000000000000000000000000000000006b9d71adf5b381d6bad1c037fd66001bf37d6f8000000006f6de800000000000003790000000000000000000000000000000000000000000000000000000d65ac7586af6f1ab8003776edab4000006eadd356000000001b9b7200000000000000dc40000000000000000000000000000000000000000000000000001aaf556a9000dc354000000dbf53800000001b76a6000000000006dba94000000000000036c00000000000000000000000000000000000000000000000003526a3d45a85b5800d40da800000d3eda400000001a79b40000000000069d6ce00000000000000003660000000000000000000000000000000000000000069cd37a6b4cb65d31a5db2363001a59b13610000034ab606be00000000000d79ae80000000000000000d7000000000000000000000000000000000000000d29a4f496916b7a4347b5a6b3a3b46b586aed58000006aad51a9800000000003526a20000000000000000350000000000000000000000000000000000001a3345e8ad12d3f4468769cd3743000698d2da5685000001a4b4868e00000000000d19a280000000000000000d1000000000000000000000000000000000342683d05a05a1e80000d09a0e7f000001a033fcfc0000000067ccf73e8000000000033c676000000000000000033a00000000000000000000000000000067ccf79e800339cf200000338cf00000000066f9dc000000000019b67600000000000000cd73a80000000000000000cd0000000000000000000000000000ce99cf396716660033833200000337b310000000066e660000000000019b59780000000000000cd8cb800000000000000000019ac00000000000000000019ab34e68ccecb733665658cac00664654ca400000cc6ca1938000000033132664a00000000000001923230000000000000000000661000000000000000033065fcbd9759165ccb6c859065acb2c7d8f31d0019618e31b63400000000632c618b8000000000000062cc54000000000000000000195c0000000000000656cab95329b14ca594589b12ca193d88b1061f9380030e61ac3185800000001853096100000000000000183b06000000000000000000064d00000000000c9992f2564960b92323b0460791800302602c0322800000bfd7f2fdc88000000005f8bed7d000000000000005f2be0000000000000000000190c0000000190b20e40c7ebdf1f0005ecbd71e800000bd179e3c000000002f25e38ec00000000001782efc7400000000000001772ed00000000000000000006390000031c637c6c0017663500000175e34000000002eac6600000000000ba719000000000000005d18c400000000000000005cf8c000000000000000000018bc00000c5d8b7162e60018ad728000018a97200000000314ae300000000000c50b8800000000000006275c20000000000000000626c4a000000000000000000000189311e225c1887102df5bc0030fadd5b80000061e5b6b68000000018756cad800000000000c38b5d6b0000000000000000186f0d000000000000000000030ce18c2eb570b6155a8b4f0a6135a4b4568000c24b3d672cd00000308acc596b280000000000164ac858e0000000000000000610c1e000000000000000060ec1b8316360bc14b1562609c10b0d612c1c0f819602bf57caf400000578aed5d2b900000000000570add5b000000000000000018170200000000000000c0780b00ab5c017fd5a2b3bfd7f5592b15617f0002af55cab5565fb00000155aaa552aa00000000000153aa654a00000000000000005fabf2000000000017e2fbdf65497d6fa2a35457cc002a1540a7ef9000000a794ea9cbe200000000536a694cdf000000000000530a5d4b000000000000000017bef7000000002f6decbd6a56f5000528a4ef4800000a4948de80000000029051f79c000000000014728dbcc000000000000014628bbca00000000000000005e4bc6000005e2bc2001455e000000144ddf00000000288bbc00000000000a1eee8000000000000050d770000000000000000050b76c000000000000000000176aec800000002ec28400175d4180000175941000000002eaa8100000000000ba8a0000000000000005d34fe00000000000000005d2ba20000000000000000000000000005d04fd73ee727d4f8002e6a7b4f4000005cc4f29e00000000172d3ba7600000000000b949d53a00000000000000b93722e38000000000000000000000000b8c9cee2dc44e49c6e1dc24e09bd37000b829b53626b000002e026a4d29a0000000016fd33a664ca00000000000002df5bdb7800000000000000000000016ed325bab7298d315b8b6e9853025fb6d6d52f25d4b896c005b44b49652c257000000002564aa9512980000000000000b676cad880000000000000000002d8252b5f6b928a50b5b6b127a4e49b6aed524c49692924da900092123a4648a9100000000090d2124148000000000000002d45a7b4c00000000000000005a547f692d1a3e47b68ad0a3c4768ead00004728e11ba36b3e000002354688cd1959e000000002314608bd1700000000000000b3b672cd80000000000000b348b6ccd984588aecb8004548a51459600000113a2644b6540000000089111a22b28000000000008851021fb2600000000000002c9591b200000000000163d0f58e0008750e58d0000010da1ab1800000000432862c58000000000021742d62800000000000002154296240000000000000000b1161ec300000000000213b0a00000212b080000000042360c00000000001085820000000000000083ec08000000000000000083ac000000000000000000002bfd7e00000000000000002bea0d000002be20c0000000057b416000000000015e90500000000000000af28240000000000000000af15dc0000000000000000000000000000000000057641081c0057540c81400000ae881101800000002b9a02402000000000015c9001ff000000000000015c6b856f000000000000000000000000000000000adc7f8fed6dad87f0fd9fa0015acfc9f83ee0000056a3ec7d4fa000000002b49f33e47c400000000002b4567acd594000000000000000000000000000001590f81efac7588f71ed3d9586b01eb3d47a4f4000abe79cf31e53c80000055e3c6788f09e000000000000abb572add5a0000000000000000000000000002ac9df3bd562ab9dd3b876eab5553b4764ec1d7aa954ceb1d53a874ce9000000744e81cf39c73400000000002a9551aa153c00000000000000000000000054e39872ea6d4c394724e454ba9471ce31c5389524001c3384704e01bfa90000001be37a6f0dd9ba00000000000a8f51aa2d440000000000000000000000a866e4dc542a826dcdb1b5a80000da1b33646c69f8000006c0d79ae35b4f8000000006b0d59aa3534f4000000000029e53ba754e400000000000000000014e0d41a7a6e000d31a53494d800000346688d0d35000000001a033e67a9a0000000000019d33866e9980000000000000a654c69852f000000000000000000019a3334b80000033065e96800000000cb195a5800000000000650c9d2b00000000000000648c8d2a0000000000000000294d28a4e000000000000000000000064293000000000c7d250000000000031d490000000000000018da46000000000000000018ca440000000000000000000a43480000000000000000000000000000a3e62c00000001478c50000000000051d312000000000000028e188000000000000000028dd1a00000000000000000000000000000000000000000000001464c39860000028c18530800000000a2e60cc1000000000005163026000000000000000515a2944c000000000000000000000000000000000000000000028917f2fc5f4005112f85ecbd000001440bc9782ee00000000a1e5d8ba97400000000000a1d4368650b0000000000000000000000000000000000000000050a2e65c8b8d09a105c0b796e2da0028396c2d65a8b4800001418b41672cc5940000000141682503a0540400000000000000000000000000000000000000a00590b19629ff3f8b09602be57a7ecfc2ba570ad95a2b20027d9582ae558aa954000000004fa9f33e27bcf60000000000000000000000000000000000013d4a99522a33d27995029e538a6cf29e2530a594a2925227800028e518a2944286508000000013be774ed9d93ac000000000000000000000000000000002751412804fe74ce827c4f49e13b9ce0009d1392704dc9b4e60000009a9342664c898ce5000000004e49c738a70ce00000000000000000000000000000004df2604bc974de0004b49612b255374000002524a0939269b80000000024a490919229b60000000000136a6ccd89af3580000000000000000000000000000004849011f9aa0000011e23a4726a0000000008d91a23334c000000000008c11722d34800000000000004d19a133e670000000000000000000000000000000001152293340000000044c894cc00000000000222442658000000000000021e43a6500000000000000001326644c7000000000000000000000000000000000000436630000000000010c98a0000000000000085cc400000000000000000854c300000000000000000004c298200000000000000000000000000000000000000000980424000000000025f908000000000000012f883800000000000000012f65e00000000000000000000000000000000000000000000000000000000000012ec83105000000004ba20840c000000000025c902202000000000000025c4b796c00000000000000000000000000000000000000000000000000000000025a9001fe3f8000009683f47e0fb000000004b31f43e47c000000000004b29632c25780000000000000000000000000000000000000000000000000000004ae1ee3d87a8f40012b4798f21e23c0000009583bc770ed1d8000000009572aa54ca894e000000000000000000000000000000000000000000000000000094c3ac750e91d1296520e71cc394720e300128c710e11c037c6f00000128a50ca093f27a4e800000000000000000000000000000000000000000000000012706e8dc1b636a4dc9a1b23606b8d61ab2664c0d41a6348688d019e0000049792d2564a49392400000000000000000000000000000000000000000000002488ce19a33065c9091e328648c818e31a4700018a310618c21823024680000123245c8a913222438000000000000000000000000000000000000000000048617e2f85e8bc90a0005d8ba1722e05bc840000005b0b51682cc59483000000004829032023fc7e8fa000000000000000000000000000000000000000000002c4580af15d1f00000015a2b0558aa8f6000000001522a0538a68f4000000000011e63c4778ed1d400000000000000000000000000000000000000000000000a514828e3a000000000510a11411cc000000000004f89e13b1c800000000000004718e11be37000000000000000000000000000000000000000000000000002704dc6d00000000000134266360000000000000013025e35800000000000000011aa34c6800000000000000000000000000000000000000000000000000000968ce000000000000004ac66000000000000000004a46500000000000000000004648c60000000000000000000000000000000000000000000000000000000002310930000000000000118449000000000000000011822f8000000000000000000000000000000000000000000000000000000000000000000000000000045e122240000000000022e88f11c000000000000022e45b8b4000000000000000000000000000000000000000000000000000000000000000000000000008b22344608b0000000045811422444000000000004578ad1562a00000000000000000000000000000000000000000000000000000000000000000000000114c4388610a210000008a420c41081100000000008a314227c4e89a0000000000000000000000000000000000000000000000000000000000000000000022607f0fc1f43e07b00112c3d0790f01dc3b00000112a24c4888f11a228000000000000000000000000000000000000000000000000000000000000000004440ea1d0398720e310e210700de1b83686c0d600220c4087f0fa1ec3c8760000000000000000000000000000000000000000000000000000000000000008741a8348680ce19a1cc380ca190318620c21821b80086d0d61a4338650c61800000000000000000000000000000000000000000000000000000000000010bc2f85e0ba1702dc2e0001682c8580ae1582ac2d0000021642b8550a61442784c0000000000000000000000000000000000000000000000000000000000000540a61482885084a0000004f09c1342604b8480000000084708a10c2083f0780000000000000000000000000000000000000000000000000000000000000001282484808f0740000000011822844087070000000000020dc1a8330620b8000000000000000000000000000000000000000000000000000000000000000000420821020b0000000000003f07c0f60a8000000000000082904e094110000000000000000000000000000000000000000000000000000000000000000000000f01dc10000000000000000e81cc0f000000000000000020740d81800000000000000000000000000000000000000000000000000000000000000000000000038816000000000000000003781400000000000000000008130200000000000000000000000000000000000000000000000000000000000000000000000000000203836000000000000000020340500000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000040406a0d000000000000004038050040000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000008000cc19031000000000007feff9febfc0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000fec1802f05c0b400000000fe9fcbf87eefd80000000000000000000000000000000000000000000000000000000000000000000000000000000000000001fa82c0560a814828000001fa3f37e4fc5f83ef00000000000000000000000000000000000000000000000000000000000000000000000000000000000003ee04e09812824046088003ed7d8fadf53e97d0f9c00000000000000000000000000000000000000000000000000000000000000000000000000000000007cc0841001f03c0740e3e57c8f8df13e17c0f7def3dd00000000000000000000000000000000000000000000000000000000000000000000000000000000f700d81a0320600b8167b6001ed3d97b0f5deb3d57a8f4c000000000000000000000000000000000000000000000000000000000000000000000000000000001502804c09011020f48000007a2f41e7bce79af31e58000000000000000000000000000000000000000000000000000000000000000000000000000000000003c0700d01802de5000000001e4bc878ef19e2bc4000000000000000000000000000000000000000000000000000000000000000000000000000000000000000a01202003bc300000000000784f05e03bf77c00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000180280477a00000000000001de3bb774ee4000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000003004ee0000000000000000076eed9da8000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000005da00000000000000000001d9bb2
+
+theorem fkl_leaves_checked : (Bool.and (FKLBridge.lanesEq 11 2047 leaf000.entries (FKL.lane fkl_codes 1408 0)) (Bool.and (FKLBridge.lanesEq 11 2047 leaf001.entries (FKL.lane fkl_codes 1408 1)) (Bool.and (FKLBridge.lanesEq 11 2047 leaf002.entries (FKL.lane fkl_codes 1408 2)) (Bool.and (FKLBridge.lanesEq 11 2047 leaf003.entries (FKL.lane fkl_codes 1408 3)) (Bool.and (FKLBridge.lanesEq 11 2047 leaf004.entries (FKL.lane fkl_codes 1408 4)) (Bool.and (FKLBridge.lanesEq 11 2047 leaf005.entries (FKL.lane fkl_codes 1408 5)) (Bool.and (FKLBridge.lanesEq 11 2047 leaf006.entries (FKL.lane fkl_codes 1408 6)) (Bool.and (FKLBridge.lanesEq 11 2047 leaf007.entries (FKL.lane fkl_codes 1408 7)) (Bool.and (FKLBridge.lanesEq 11 2047 leaf008.entries (FKL.lane fkl_codes 1408 8)) (Bool.and (FKLBridge.lanesEq 11 2047 leaf009.entries (FKL.lane fkl_codes 1408 9)) (Bool.and (FKLBridge.lanesEq 11 2047 leaf010.entries (FKL.lane fkl_codes 1408 10)) (Bool.and (FKLBridge.lanesEq 11 2047 leaf011.entries (FKL.lane fkl_codes 1408 11)) (Bool.and (FKLBridge.lanesEq 11 2047 leaf012.entries (FKL.lane fkl_codes 1408 12)) (Bool.and (FKLBridge.lanesEq 11 2047 leaf013.entries (FKL.lane fkl_codes 1408 13)) (Bool.and (FKLBridge.lanesEq 11 2047 leaf014.entries (FKL.lane fkl_codes 1408 14)) (Bool.and (FKLBridge.lanesEq 11 2047 leaf015.entries (FKL.lane fkl_codes 1408 15)) (Bool.and (FKLBridge.lanesEq 11 2047 leaf016.entries (FKL.lane fkl_codes 1408 16)) (Bool.and (FKLBridge.lanesEq 11 2047 leaf017.entries (FKL.lane fkl_codes 1408 17)) (Bool.and (FKLBridge.lanesEq 11 2047 leaf018.entries (FKL.lane fkl_codes 1408 18)) (Bool.and (FKLBridge.lanesEq 11 2047 leaf019.entries (FKL.lane fkl_codes 1408 19)) (Bool.and (FKLBridge.lanesEq 11 2047 leaf020.entries (FKL.lane fkl_codes 1408 20)) (Bool.and (FKLBridge.lanesEq 11 2047 leaf021.entries (FKL.lane fkl_codes 1408 21)) (Bool.and (FKLBridge.lanesEq 11 2047 leaf022.entries (FKL.lane fkl_codes 1408 22)) (Bool.and (FKLBridge.lanesEq 11 2047 leaf023.entries (FKL.lane fkl_codes 1408 23)) (Bool.and (FKLBridge.lanesEq 11 2047 leaf024.entries (FKL.lane fkl_codes 1408 24)) (Bool.and (FKLBridge.lanesEq 11 2047 leaf025.entries (FKL.lane fkl_codes 1408 25)) (Bool.and (FKLBridge.lanesEq 11 2047 leaf026.entries (FKL.lane fkl_codes 1408 26)) (Bool.and (FKLBridge.lanesEq 11 2047 leaf027.entries (FKL.lane fkl_codes 1408 27)) (Bool.and (FKLBridge.lanesEq 11 2047 leaf028.entries (FKL.lane fkl_codes 1408 28)) (Bool.and (FKLBridge.lanesEq 11 2047 leaf029.entries (FKL.lane fkl_codes 1408 29)) (Bool.and (FKLBridge.lanesEq 11 2047 leaf030.entries (FKL.lane fkl_codes 1408 30)) (Bool.and (FKLBridge.lanesEq 11 2047 leaf031.entries (FKL.lane fkl_codes 1408 31)) (Bool.and (FKLBridge.lanesEq 11 2047 leaf032.entries (FKL.lane fkl_codes 1408 32)) (Bool.and (FKLBridge.lanesEq 11 2047 leaf033.entries (FKL.lane fkl_codes 1408 33)) (Bool.and (FKLBridge.lanesEq 11 2047 leaf034.entries (FKL.lane fkl_codes 1408 34)) (Bool.and (FKLBridge.lanesEq 11 2047 leaf035.entries (FKL.lane fkl_codes 1408 35)) (FKLBridge.lanesEq 11 2047 leaf036.entries (FKL.lane fkl_codes 1408 36)))))))))))))))))))))))))))))))))))))) = true := by
+  decide +kernel
+
+theorem fkl_reads : FKLBridge.Reads table (fun i => FKL.lane fkl_codes 11 i) 0 := by
+  have h := fkl_leaves_checked
+  simp only [Bool.and_eq_true] at h
+  obtain ⟨h00, h01, h02, h03, h04, h05, h06, h07, h08, h09, h10, h11, h12, h13, h14, h15, h16, h17, h18, h19, h20, h21, h22, h23, h24, h25, h26, h27, h28, h29, h30, h31, h32, h33, h34, h35, h36⟩ := h
+  exact (FKLBridge.reads_append ((((((((((((((((((((((((((((((((((((leaf000).append leaf001).append leaf002).append leaf003).append leaf004).append leaf005).append leaf006).append leaf007).append leaf008).append leaf009).append leaf010).append leaf011).append leaf012).append leaf013).append leaf014).append leaf015).append leaf016).append leaf017).append leaf018).append leaf019).append leaf020).append leaf021).append leaf022).append leaf023).append leaf024).append leaf025).append leaf026).append leaf027).append leaf028).append leaf029).append leaf030).append leaf031).append leaf032).append leaf033).append leaf034).append leaf035) leaf036 _ 0 4608 (by norm_num) (FKLBridge.reads_append (((((((((((((((((((((((((((((((((((leaf000).append leaf001).append leaf002).append leaf003).append leaf004).append leaf005).append leaf006).append leaf007).append leaf008).append leaf009).append leaf010).append leaf011).append leaf012).append leaf013).append leaf014).append leaf015).append leaf016).append leaf017).append leaf018).append leaf019).append leaf020).append leaf021).append leaf022).append leaf023).append leaf024).append leaf025).append leaf026).append leaf027).append leaf028).append leaf029).append leaf030).append leaf031).append leaf032).append leaf033).append leaf034) leaf035 _ 0 4480 (by norm_num) (FKLBridge.reads_append ((((((((((((((((((((((((((((((((((leaf000).append leaf001).append leaf002).append leaf003).append leaf004).append leaf005).append leaf006).append leaf007).append leaf008).append leaf009).append leaf010).append leaf011).append leaf012).append leaf013).append leaf014).append leaf015).append leaf016).append leaf017).append leaf018).append leaf019).append leaf020).append leaf021).append leaf022).append leaf023).append leaf024).append leaf025).append leaf026).append leaf027).append leaf028).append leaf029).append leaf030).append leaf031).append leaf032).append leaf033) leaf034 _ 0 4352 (by norm_num) (FKLBridge.reads_append (((((((((((((((((((((((((((((((((leaf000).append leaf001).append leaf002).append leaf003).append leaf004).append leaf005).append leaf006).append leaf007).append leaf008).append leaf009).append leaf010).append leaf011).append leaf012).append leaf013).append leaf014).append leaf015).append leaf016).append leaf017).append leaf018).append leaf019).append leaf020).append leaf021).append leaf022).append leaf023).append leaf024).append leaf025).append leaf026).append leaf027).append leaf028).append leaf029).append leaf030).append leaf031).append leaf032) leaf033 _ 0 4224 (by norm_num) (FKLBridge.reads_append ((((((((((((((((((((((((((((((((leaf000).append leaf001).append leaf002).append leaf003).append leaf004).append leaf005).append leaf006).append leaf007).append leaf008).append leaf009).append leaf010).append leaf011).append leaf012).append leaf013).append leaf014).append leaf015).append leaf016).append leaf017).append leaf018).append leaf019).append leaf020).append leaf021).append leaf022).append leaf023).append leaf024).append leaf025).append leaf026).append leaf027).append leaf028).append leaf029).append leaf030).append leaf031) leaf032 _ 0 4096 (by norm_num) (FKLBridge.reads_append (((((((((((((((((((((((((((((((leaf000).append leaf001).append leaf002).append leaf003).append leaf004).append leaf005).append leaf006).append leaf007).append leaf008).append leaf009).append leaf010).append leaf011).append leaf012).append leaf013).append leaf014).append leaf015).append leaf016).append leaf017).append leaf018).append leaf019).append leaf020).append leaf021).append leaf022).append leaf023).append leaf024).append leaf025).append leaf026).append leaf027).append leaf028).append leaf029).append leaf030) leaf031 _ 0 3968 (by norm_num) (FKLBridge.reads_append ((((((((((((((((((((((((((((((leaf000).append leaf001).append leaf002).append leaf003).append leaf004).append leaf005).append leaf006).append leaf007).append leaf008).append leaf009).append leaf010).append leaf011).append leaf012).append leaf013).append leaf014).append leaf015).append leaf016).append leaf017).append leaf018).append leaf019).append leaf020).append leaf021).append leaf022).append leaf023).append leaf024).append leaf025).append leaf026).append leaf027).append leaf028).append leaf029) leaf030 _ 0 3840 (by norm_num) (FKLBridge.reads_append (((((((((((((((((((((((((((((leaf000).append leaf001).append leaf002).append leaf003).append leaf004).append leaf005).append leaf006).append leaf007).append leaf008).append leaf009).append leaf010).append leaf011).append leaf012).append leaf013).append leaf014).append leaf015).append leaf016).append leaf017).append leaf018).append leaf019).append leaf020).append leaf021).append leaf022).append leaf023).append leaf024).append leaf025).append leaf026).append leaf027).append leaf028) leaf029 _ 0 3712 (by norm_num) (FKLBridge.reads_append ((((((((((((((((((((((((((((leaf000).append leaf001).append leaf002).append leaf003).append leaf004).append leaf005).append leaf006).append leaf007).append leaf008).append leaf009).append leaf010).append leaf011).append leaf012).append leaf013).append leaf014).append leaf015).append leaf016).append leaf017).append leaf018).append leaf019).append leaf020).append leaf021).append leaf022).append leaf023).append leaf024).append leaf025).append leaf026).append leaf027) leaf028 _ 0 3584 (by norm_num) (FKLBridge.reads_append (((((((((((((((((((((((((((leaf000).append leaf001).append leaf002).append leaf003).append leaf004).append leaf005).append leaf006).append leaf007).append leaf008).append leaf009).append leaf010).append leaf011).append leaf012).append leaf013).append leaf014).append leaf015).append leaf016).append leaf017).append leaf018).append leaf019).append leaf020).append leaf021).append leaf022).append leaf023).append leaf024).append leaf025).append leaf026) leaf027 _ 0 3456 (by norm_num) (FKLBridge.reads_append ((((((((((((((((((((((((((leaf000).append leaf001).append leaf002).append leaf003).append leaf004).append leaf005).append leaf006).append leaf007).append leaf008).append leaf009).append leaf010).append leaf011).append leaf012).append leaf013).append leaf014).append leaf015).append leaf016).append leaf017).append leaf018).append leaf019).append leaf020).append leaf021).append leaf022).append leaf023).append leaf024).append leaf025) leaf026 _ 0 3328 (by norm_num) (FKLBridge.reads_append (((((((((((((((((((((((((leaf000).append leaf001).append leaf002).append leaf003).append leaf004).append leaf005).append leaf006).append leaf007).append leaf008).append leaf009).append leaf010).append leaf011).append leaf012).append leaf013).append leaf014).append leaf015).append leaf016).append leaf017).append leaf018).append leaf019).append leaf020).append leaf021).append leaf022).append leaf023).append leaf024) leaf025 _ 0 3200 (by norm_num) (FKLBridge.reads_append ((((((((((((((((((((((((leaf000).append leaf001).append leaf002).append leaf003).append leaf004).append leaf005).append leaf006).append leaf007).append leaf008).append leaf009).append leaf010).append leaf011).append leaf012).append leaf013).append leaf014).append leaf015).append leaf016).append leaf017).append leaf018).append leaf019).append leaf020).append leaf021).append leaf022).append leaf023) leaf024 _ 0 3072 (by norm_num) (FKLBridge.reads_append (((((((((((((((((((((((leaf000).append leaf001).append leaf002).append leaf003).append leaf004).append leaf005).append leaf006).append leaf007).append leaf008).append leaf009).append leaf010).append leaf011).append leaf012).append leaf013).append leaf014).append leaf015).append leaf016).append leaf017).append leaf018).append leaf019).append leaf020).append leaf021).append leaf022) leaf023 _ 0 2944 (by norm_num) (FKLBridge.reads_append ((((((((((((((((((((((leaf000).append leaf001).append leaf002).append leaf003).append leaf004).append leaf005).append leaf006).append leaf007).append leaf008).append leaf009).append leaf010).append leaf011).append leaf012).append leaf013).append leaf014).append leaf015).append leaf016).append leaf017).append leaf018).append leaf019).append leaf020).append leaf021) leaf022 _ 0 2816 (by norm_num) (FKLBridge.reads_append (((((((((((((((((((((leaf000).append leaf001).append leaf002).append leaf003).append leaf004).append leaf005).append leaf006).append leaf007).append leaf008).append leaf009).append leaf010).append leaf011).append leaf012).append leaf013).append leaf014).append leaf015).append leaf016).append leaf017).append leaf018).append leaf019).append leaf020) leaf021 _ 0 2688 (by norm_num) (FKLBridge.reads_append ((((((((((((((((((((leaf000).append leaf001).append leaf002).append leaf003).append leaf004).append leaf005).append leaf006).append leaf007).append leaf008).append leaf009).append leaf010).append leaf011).append leaf012).append leaf013).append leaf014).append leaf015).append leaf016).append leaf017).append leaf018).append leaf019) leaf020 _ 0 2560 (by norm_num) (FKLBridge.reads_append (((((((((((((((((((leaf000).append leaf001).append leaf002).append leaf003).append leaf004).append leaf005).append leaf006).append leaf007).append leaf008).append leaf009).append leaf010).append leaf011).append leaf012).append leaf013).append leaf014).append leaf015).append leaf016).append leaf017).append leaf018) leaf019 _ 0 2432 (by norm_num) (FKLBridge.reads_append ((((((((((((((((((leaf000).append leaf001).append leaf002).append leaf003).append leaf004).append leaf005).append leaf006).append leaf007).append leaf008).append leaf009).append leaf010).append leaf011).append leaf012).append leaf013).append leaf014).append leaf015).append leaf016).append leaf017) leaf018 _ 0 2304 (by norm_num) (FKLBridge.reads_append (((((((((((((((((leaf000).append leaf001).append leaf002).append leaf003).append leaf004).append leaf005).append leaf006).append leaf007).append leaf008).append leaf009).append leaf010).append leaf011).append leaf012).append leaf013).append leaf014).append leaf015).append leaf016) leaf017 _ 0 2176 (by norm_num) (FKLBridge.reads_append ((((((((((((((((leaf000).append leaf001).append leaf002).append leaf003).append leaf004).append leaf005).append leaf006).append leaf007).append leaf008).append leaf009).append leaf010).append leaf011).append leaf012).append leaf013).append leaf014).append leaf015) leaf016 _ 0 2048 (by norm_num) (FKLBridge.reads_append (((((((((((((((leaf000).append leaf001).append leaf002).append leaf003).append leaf004).append leaf005).append leaf006).append leaf007).append leaf008).append leaf009).append leaf010).append leaf011).append leaf012).append leaf013).append leaf014) leaf015 _ 0 1920 (by norm_num) (FKLBridge.reads_append ((((((((((((((leaf000).append leaf001).append leaf002).append leaf003).append leaf004).append leaf005).append leaf006).append leaf007).append leaf008).append leaf009).append leaf010).append leaf011).append leaf012).append leaf013) leaf014 _ 0 1792 (by norm_num) (FKLBridge.reads_append (((((((((((((leaf000).append leaf001).append leaf002).append leaf003).append leaf004).append leaf005).append leaf006).append leaf007).append leaf008).append leaf009).append leaf010).append leaf011).append leaf012) leaf013 _ 0 1664 (by norm_num) (FKLBridge.reads_append ((((((((((((leaf000).append leaf001).append leaf002).append leaf003).append leaf004).append leaf005).append leaf006).append leaf007).append leaf008).append leaf009).append leaf010).append leaf011) leaf012 _ 0 1536 (by norm_num) (FKLBridge.reads_append (((((((((((leaf000).append leaf001).append leaf002).append leaf003).append leaf004).append leaf005).append leaf006).append leaf007).append leaf008).append leaf009).append leaf010) leaf011 _ 0 1408 (by norm_num) (FKLBridge.reads_append ((((((((((leaf000).append leaf001).append leaf002).append leaf003).append leaf004).append leaf005).append leaf006).append leaf007).append leaf008).append leaf009) leaf010 _ 0 1280 (by norm_num) (FKLBridge.reads_append (((((((((leaf000).append leaf001).append leaf002).append leaf003).append leaf004).append leaf005).append leaf006).append leaf007).append leaf008) leaf009 _ 0 1152 (by norm_num) (FKLBridge.reads_append ((((((((leaf000).append leaf001).append leaf002).append leaf003).append leaf004).append leaf005).append leaf006).append leaf007) leaf008 _ 0 1024 (by norm_num) (FKLBridge.reads_append (((((((leaf000).append leaf001).append leaf002).append leaf003).append leaf004).append leaf005).append leaf006) leaf007 _ 0 896 (by norm_num) (FKLBridge.reads_append ((((((leaf000).append leaf001).append leaf002).append leaf003).append leaf004).append leaf005) leaf006 _ 0 768 (by norm_num) (FKLBridge.reads_append (((((leaf000).append leaf001).append leaf002).append leaf003).append leaf004) leaf005 _ 0 640 (by norm_num) (FKLBridge.reads_append ((((leaf000).append leaf001).append leaf002).append leaf003) leaf004 _ 0 512 (by norm_num) (FKLBridge.reads_append (((leaf000).append leaf001).append leaf002) leaf003 _ 0 384 (by norm_num) (FKLBridge.reads_append ((leaf000).append leaf001) leaf002 _ 0 256 (by norm_num) (FKLBridge.reads_append (leaf000) leaf001 _ 0 128 (by norm_num) (FKLMeta.reads_flat 11 7 fkl_codes 0 leaf000 0 (by norm_num) (by norm_num) h00) (FKLMeta.reads_flat 11 7 fkl_codes 1 leaf001 128 (by norm_num) (by norm_num) h01)) (FKLMeta.reads_flat 11 7 fkl_codes 2 leaf002 256 (by norm_num) (by norm_num) h02)) (FKLMeta.reads_flat 11 7 fkl_codes 3 leaf003 384 (by norm_num) (by norm_num) h03)) (FKLMeta.reads_flat 11 7 fkl_codes 4 leaf004 512 (by norm_num) (by norm_num) h04)) (FKLMeta.reads_flat 11 7 fkl_codes 5 leaf005 640 (by norm_num) (by norm_num) h05)) (FKLMeta.reads_flat 11 7 fkl_codes 6 leaf006 768 (by norm_num) (by norm_num) h06)) (FKLMeta.reads_flat 11 7 fkl_codes 7 leaf007 896 (by norm_num) (by norm_num) h07)) (FKLMeta.reads_flat 11 7 fkl_codes 8 leaf008 1024 (by norm_num) (by norm_num) h08)) (FKLMeta.reads_flat 11 7 fkl_codes 9 leaf009 1152 (by norm_num) (by norm_num) h09)) (FKLMeta.reads_flat 11 7 fkl_codes 10 leaf010 1280 (by norm_num) (by norm_num) h10)) (FKLMeta.reads_flat 11 7 fkl_codes 11 leaf011 1408 (by norm_num) (by norm_num) h11)) (FKLMeta.reads_flat 11 7 fkl_codes 12 leaf012 1536 (by norm_num) (by norm_num) h12)) (FKLMeta.reads_flat 11 7 fkl_codes 13 leaf013 1664 (by norm_num) (by norm_num) h13)) (FKLMeta.reads_flat 11 7 fkl_codes 14 leaf014 1792 (by norm_num) (by norm_num) h14)) (FKLMeta.reads_flat 11 7 fkl_codes 15 leaf015 1920 (by norm_num) (by norm_num) h15)) (FKLMeta.reads_flat 11 7 fkl_codes 16 leaf016 2048 (by norm_num) (by norm_num) h16)) (FKLMeta.reads_flat 11 7 fkl_codes 17 leaf017 2176 (by norm_num) (by norm_num) h17)) (FKLMeta.reads_flat 11 7 fkl_codes 18 leaf018 2304 (by norm_num) (by norm_num) h18)) (FKLMeta.reads_flat 11 7 fkl_codes 19 leaf019 2432 (by norm_num) (by norm_num) h19)) (FKLMeta.reads_flat 11 7 fkl_codes 20 leaf020 2560 (by norm_num) (by norm_num) h20)) (FKLMeta.reads_flat 11 7 fkl_codes 21 leaf021 2688 (by norm_num) (by norm_num) h21)) (FKLMeta.reads_flat 11 7 fkl_codes 22 leaf022 2816 (by norm_num) (by norm_num) h22)) (FKLMeta.reads_flat 11 7 fkl_codes 23 leaf023 2944 (by norm_num) (by norm_num) h23)) (FKLMeta.reads_flat 11 7 fkl_codes 24 leaf024 3072 (by norm_num) (by norm_num) h24)) (FKLMeta.reads_flat 11 7 fkl_codes 25 leaf025 3200 (by norm_num) (by norm_num) h25)) (FKLMeta.reads_flat 11 7 fkl_codes 26 leaf026 3328 (by norm_num) (by norm_num) h26)) (FKLMeta.reads_flat 11 7 fkl_codes 27 leaf027 3456 (by norm_num) (by norm_num) h27)) (FKLMeta.reads_flat 11 7 fkl_codes 28 leaf028 3584 (by norm_num) (by norm_num) h28)) (FKLMeta.reads_flat 11 7 fkl_codes 29 leaf029 3712 (by norm_num) (by norm_num) h29)) (FKLMeta.reads_flat 11 7 fkl_codes 30 leaf030 3840 (by norm_num) (by norm_num) h30)) (FKLMeta.reads_flat 11 7 fkl_codes 31 leaf031 3968 (by norm_num) (by norm_num) h31)) (FKLMeta.reads_flat 11 7 fkl_codes 32 leaf032 4096 (by norm_num) (by norm_num) h32)) (FKLMeta.reads_flat 11 7 fkl_codes 33 leaf033 4224 (by norm_num) (by norm_num) h33)) (FKLMeta.reads_flat 11 7 fkl_codes 34 leaf034 4352 (by norm_num) (by norm_num) h34)) (FKLMeta.reads_flat 11 7 fkl_codes 35 leaf035 4480 (by norm_num) (by norm_num) h35)) (FKLMeta.reads_flat 11 7 fkl_codes 36 leaf036 4608 (by norm_num) (by norm_num) h36))
+
+theorem fkl_get (i : Fin 4725) : (table.get i).val = FKL.lane fkl_codes 11 i.val :=
+  FKLBridge.reads_get fkl_reads i
+
+theorem fkl_cell (i : Fin (105*45))
+    (h : FKLMeta.Grid.cellB (FKL.lane fkl_codes 11 i.val) i.divNat.val i.modNat.val = true) : correctAt i := by
+  have hi : finProdFinEquiv (i.divNat, i.modNat) = i := Equiv.apply_symm_apply finProdFinEquiv i
+  unfold FKLMeta.Grid.cellB at h
+  rw [← fkl_get i] at h
+  simp only [Bool.and_eq_true, Nat.blt_eq] at h
+  obtain ⟨hb, h⟩ := h
+  have hfit := FKLMeta.Grid.fitsB_iff i.modNat.val i.modNat.isLt i.divNat hb
+  unfold correctAt correct lookup decode
+  rw [hi]
+  by_cases h0 : (table.get i).val = 0
+  · rw [dif_pos h0]
+    rw [h0] at h
+    change (!FKLMeta.Grid.fitsB i.modNat.val i.divNat.val) = true at h
+    intro hF
+    rw [hfit.mpr hF] at h
+    exact absurd h (by decide)
+  · have e0 : Nat.beq (table.get i).val 0 = false := Bool.eq_false_iff.mpr (fun hb => h0 (Nat.eq_of_beq_eq_true hb))
+    rw [e0, cond_false] at h
+    rw [dif_neg h0]
+    by_cases h1 : (table.get i).val ≤ 945
+    · have e1 : Nat.ble (table.get i).val 945 = true := by rw [Nat.ble_eq]; exact h1
+      rw [e1, cond_true] at h
+      simp only [Bool.and_eq_true, Nat.beq_eq] at h
+      rw [dif_pos h1]
+      dsimp only
+      rw [FKLMeta.Nodes.positiveNode_eq]
+      exact ⟨h.1, h.2.1, hfit.mp h.2.2⟩
+    · have e1 : Nat.ble (table.get i).val 945 = false := Bool.eq_false_iff.mpr (fun hb => h1 (by rw [Nat.ble_eq] at hb; exact hb))
+      rw [e1, cond_false] at h
+      simp only [Bool.and_eq_true, Nat.beq_eq] at h
+      rw [dif_neg h1]
+      dsimp only
+      rw [FKLMeta.Nodes.zeroNode_eq]
+      exact ⟨h.1, h.2.1, hfit.mp h.2.2⟩
+
+/-- Fast check of all 4725 grid cells (FKLMeta). -/
+theorem fkl_checked : FKL.allRange (fun i => FKLMeta.Grid.cellB (FKL.lane fkl_codes 11 i) (Nat.div i 45) (Nat.mod i 45))
+    13 0 4725 = true := by
+  decide +kernel
+
+theorem fkl_all (index : Fin (105*45)) : correctAt index := by
+  have h := FKL.allRange_sound _ 13 0 4725 fkl_checked index.val index.isLt
+  rw [Nat.zero_add] at h
+  exact fkl_cell index h
+
+/-- Fast check of the positive-node inverse (FKLMeta). -/
+theorem fkl_checkedP : FKL.allRange (fun n => Nat.beq (FKL.lane fkl_codes 11
+    (Nat.add (FKL.lane FKLMeta.Nodes.positiveC 6 n) (Nat.mul 45 (FKL.lane FKLMeta.Nodes.positiveP 7 n)))) (Nat.add n 1))
+    10 0 945 = true := by
+  decide +kernel
+
+theorem fkl_allP (node : Fin 945) : positiveInverse node := by
+  have h := Nat.eq_of_beq_eq_true (FKL.allRange_sound _ 10 0 945 fkl_checkedP node.val node.isLt)
+  rw [Nat.zero_add] at h
+  have hv : (table.get (finProdFinEquiv (⟨(SuppliedShapeIndices.positiveNode node).parent,
+      (SuppliedShapeIndices.positiveNode_bounds node).1⟩, ⟨(SuppliedShapeIndices.positiveNode node).child,
+      (SuppliedShapeIndices.positiveNode_bounds node).2.1⟩))).val = node.val + 1 := by
+    rw [fkl_get, finProdFinEquiv_apply_val]
+    dsimp only
+    rw [FKLMeta.Nodes.positiveNode_eq]
+    exact h
+  unfold positiveInverse lookup decode
+  rw [dif_neg (by rw [hv]; omega), dif_pos (by rw [hv]; have := node.isLt; omega)]
+  congr 2
+  exact Fin.ext (by dsimp only; rw [hv]; omega)
+
+/-- Fast check of the zero-node inverse (FKLMeta). -/
+theorem fkl_checkedZ : FKL.allRange (fun n => Nat.beq (FKL.lane fkl_codes 11
+    (Nat.add (FKL.lane FKLMeta.Nodes.zeroC 6 n) (Nat.mul 45 (FKL.lane FKLMeta.Nodes.zeroP 7 n)))) (Nat.add n 946))
+    10 0 840 = true := by
+  decide +kernel
+
+theorem fkl_allZ (node : Fin 840) : zeroInverse node := by
+  have h := Nat.eq_of_beq_eq_true (FKL.allRange_sound _ 10 0 840 fkl_checkedZ node.val node.isLt)
+  rw [Nat.zero_add] at h
+  have hv : (table.get (finProdFinEquiv (⟨(SuppliedShapeIndices.zeroNode node).parent,
+      (SuppliedShapeIndices.zeroNode_bounds node).1⟩, ⟨(SuppliedShapeIndices.zeroNode node).child,
+      (SuppliedShapeIndices.zeroNode_bounds node).2.1⟩))).val = node.val + 946 := by
+    rw [fkl_get, finProdFinEquiv_apply_val]
+    dsimp only
+    rw [FKLMeta.Nodes.zeroNode_eq]
+    exact h
+  unfold zeroInverse lookup decode
+  rw [dif_neg (by rw [hv]; omega), dif_neg (by rw [hv]; omega)]
+  congr 2
+  exact Fin.ext (by dsimp only; rw [hv]; omega)
+
 /-- Independent original-source checks at positions 0 through 127. -/
 theorem correctBlock000 : IndexBlockCertificate correctAt 0 128 :=
-  ⟨by decide +kernel, by unfold correctAt; decide +kernel⟩
+  ⟨by decide +kernel, fun _ => fkl_all _⟩
 
 /-- Independent original-source checks at positions 128 through 255. -/
 theorem correctBlock001 : IndexBlockCertificate correctAt 128 128 :=
-  ⟨by decide +kernel, by unfold correctAt; decide +kernel⟩
+  ⟨by decide +kernel, fun _ => fkl_all _⟩
 
 /-- Independent original-source checks at positions 256 through 383. -/
 theorem correctBlock002 : IndexBlockCertificate correctAt 256 128 :=
-  ⟨by decide +kernel, by unfold correctAt; decide +kernel⟩
+  ⟨by decide +kernel, fun _ => fkl_all _⟩
 
 /-- Independent original-source checks at positions 384 through 511. -/
 theorem correctBlock003 : IndexBlockCertificate correctAt 384 128 :=
-  ⟨by decide +kernel, by unfold correctAt; decide +kernel⟩
+  ⟨by decide +kernel, fun _ => fkl_all _⟩
 
 /-- Independent original-source checks at positions 512 through 639. -/
 theorem correctBlock004 : IndexBlockCertificate correctAt 512 128 :=
-  ⟨by decide +kernel, by unfold correctAt; decide +kernel⟩
+  ⟨by decide +kernel, fun _ => fkl_all _⟩
 
 /-- Independent original-source checks at positions 640 through 767. -/
 theorem correctBlock005 : IndexBlockCertificate correctAt 640 128 :=
-  ⟨by decide +kernel, by unfold correctAt; decide +kernel⟩
+  ⟨by decide +kernel, fun _ => fkl_all _⟩
 
 /-- Independent original-source checks at positions 768 through 895. -/
 theorem correctBlock006 : IndexBlockCertificate correctAt 768 128 :=
-  ⟨by decide +kernel, by unfold correctAt; decide +kernel⟩
+  ⟨by decide +kernel, fun _ => fkl_all _⟩
 
 /-- Independent original-source checks at positions 896 through 1023. -/
 theorem correctBlock007 : IndexBlockCertificate correctAt 896 128 :=
-  ⟨by decide +kernel, by unfold correctAt; decide +kernel⟩
+  ⟨by decide +kernel, fun _ => fkl_all _⟩
 
 /-- Independent original-source checks at positions 1024 through 1151. -/
 theorem correctBlock008 : IndexBlockCertificate correctAt 1024 128 :=
-  ⟨by decide +kernel, by unfold correctAt; decide +kernel⟩
+  ⟨by decide +kernel, fun _ => fkl_all _⟩
 
 /-- Independent original-source checks at positions 1152 through 1279. -/
 theorem correctBlock009 : IndexBlockCertificate correctAt 1152 128 :=
-  ⟨by decide +kernel, by unfold correctAt; decide +kernel⟩
+  ⟨by decide +kernel, fun _ => fkl_all _⟩
 
 /-- Independent original-source checks at positions 1280 through 1407. -/
 theorem correctBlock010 : IndexBlockCertificate correctAt 1280 128 :=
-  ⟨by decide +kernel, by unfold correctAt; decide +kernel⟩
+  ⟨by decide +kernel, fun _ => fkl_all _⟩
 
 /-- Independent original-source checks at positions 1408 through 1535. -/
 theorem correctBlock011 : IndexBlockCertificate correctAt 1408 128 :=
-  ⟨by decide +kernel, by unfold correctAt; decide +kernel⟩
+  ⟨by decide +kernel, fun _ => fkl_all _⟩
 
 /-- Independent original-source checks at positions 1536 through 1663. -/
 theorem correctBlock012 : IndexBlockCertificate correctAt 1536 128 :=
-  ⟨by decide +kernel, by unfold correctAt; decide +kernel⟩
+  ⟨by decide +kernel, fun _ => fkl_all _⟩
 
 /-- Independent original-source checks at positions 1664 through 1791. -/
 theorem correctBlock013 : IndexBlockCertificate correctAt 1664 128 :=
-  ⟨by decide +kernel, by unfold correctAt; decide +kernel⟩
+  ⟨by decide +kernel, fun _ => fkl_all _⟩
 
 /-- Independent original-source checks at positions 1792 through 1919. -/
 theorem correctBlock014 : IndexBlockCertificate correctAt 1792 128 :=
-  ⟨by decide +kernel, by unfold correctAt; decide +kernel⟩
+  ⟨by decide +kernel, fun _ => fkl_all _⟩
 
 /-- Independent original-source checks at positions 1920 through 2047. -/
 theorem correctBlock015 : IndexBlockCertificate correctAt 1920 128 :=
-  ⟨by decide +kernel, by unfold correctAt; decide +kernel⟩
+  ⟨by decide +kernel, fun _ => fkl_all _⟩
 
 /-- Independent original-source checks at positions 2048 through 2175. -/
 theorem correctBlock016 : IndexBlockCertificate correctAt 2048 128 :=
-  ⟨by decide +kernel, by unfold correctAt; decide +kernel⟩
+  ⟨by decide +kernel, fun _ => fkl_all _⟩
 
 /-- Independent original-source checks at positions 2176 through 2303. -/
 theorem correctBlock017 : IndexBlockCertificate correctAt 2176 128 :=
-  ⟨by decide +kernel, by unfold correctAt; decide +kernel⟩
+  ⟨by decide +kernel, fun _ => fkl_all _⟩
 
 /-- Independent original-source checks at positions 2304 through 2431. -/
 theorem correctBlock018 : IndexBlockCertificate correctAt 2304 128 :=
-  ⟨by decide +kernel, by unfold correctAt; decide +kernel⟩
+  ⟨by decide +kernel, fun _ => fkl_all _⟩
 
 /-- Independent original-source checks at positions 2432 through 2559. -/
 theorem correctBlock019 : IndexBlockCertificate correctAt 2432 128 :=
-  ⟨by decide +kernel, by unfold correctAt; decide +kernel⟩
+  ⟨by decide +kernel, fun _ => fkl_all _⟩
 
 /-- Independent original-source checks at positions 2560 through 2687. -/
 theorem correctBlock020 : IndexBlockCertificate correctAt 2560 128 :=
-  ⟨by decide +kernel, by unfold correctAt; decide +kernel⟩
+  ⟨by decide +kernel, fun _ => fkl_all _⟩
 
 /-- Independent original-source checks at positions 2688 through 2815. -/
 theorem correctBlock021 : IndexBlockCertificate correctAt 2688 128 :=
-  ⟨by decide +kernel, by unfold correctAt; decide +kernel⟩
+  ⟨by decide +kernel, fun _ => fkl_all _⟩
 
 /-- Independent original-source checks at positions 2816 through 2943. -/
 theorem correctBlock022 : IndexBlockCertificate correctAt 2816 128 :=
-  ⟨by decide +kernel, by unfold correctAt; decide +kernel⟩
+  ⟨by decide +kernel, fun _ => fkl_all _⟩
 
 /-- Independent original-source checks at positions 2944 through 3071. -/
 theorem correctBlock023 : IndexBlockCertificate correctAt 2944 128 :=
-  ⟨by decide +kernel, by unfold correctAt; decide +kernel⟩
+  ⟨by decide +kernel, fun _ => fkl_all _⟩
 
 /-- Independent original-source checks at positions 3072 through 3199. -/
 theorem correctBlock024 : IndexBlockCertificate correctAt 3072 128 :=
-  ⟨by decide +kernel, by unfold correctAt; decide +kernel⟩
+  ⟨by decide +kernel, fun _ => fkl_all _⟩
 
 /-- Independent original-source checks at positions 3200 through 3327. -/
 theorem correctBlock025 : IndexBlockCertificate correctAt 3200 128 :=
-  ⟨by decide +kernel, by unfold correctAt; decide +kernel⟩
+  ⟨by decide +kernel, fun _ => fkl_all _⟩
 
 /-- Independent original-source checks at positions 3328 through 3455. -/
 theorem correctBlock026 : IndexBlockCertificate correctAt 3328 128 :=
-  ⟨by decide +kernel, by unfold correctAt; decide +kernel⟩
+  ⟨by decide +kernel, fun _ => fkl_all _⟩
 
 /-- Independent original-source checks at positions 3456 through 3583. -/
 theorem correctBlock027 : IndexBlockCertificate correctAt 3456 128 :=
-  ⟨by decide +kernel, by unfold correctAt; decide +kernel⟩
+  ⟨by decide +kernel, fun _ => fkl_all _⟩
 
 /-- Independent original-source checks at positions 3584 through 3711. -/
 theorem correctBlock028 : IndexBlockCertificate correctAt 3584 128 :=
-  ⟨by decide +kernel, by unfold correctAt; decide +kernel⟩
+  ⟨by decide +kernel, fun _ => fkl_all _⟩
 
 /-- Independent original-source checks at positions 3712 through 3839. -/
 theorem correctBlock029 : IndexBlockCertificate correctAt 3712 128 :=
-  ⟨by decide +kernel, by unfold correctAt; decide +kernel⟩
+  ⟨by decide +kernel, fun _ => fkl_all _⟩
 
 /-- Independent original-source checks at positions 3840 through 3967. -/
 theorem correctBlock030 : IndexBlockCertificate correctAt 3840 128 :=
-  ⟨by decide +kernel, by unfold correctAt; decide +kernel⟩
+  ⟨by decide +kernel, fun _ => fkl_all _⟩
 
 /-- Independent original-source checks at positions 3968 through 4095. -/
 theorem correctBlock031 : IndexBlockCertificate correctAt 3968 128 :=
-  ⟨by decide +kernel, by unfold correctAt; decide +kernel⟩
+  ⟨by decide +kernel, fun _ => fkl_all _⟩
 
 /-- Independent original-source checks at positions 4096 through 4223. -/
 theorem correctBlock032 : IndexBlockCertificate correctAt 4096 128 :=
-  ⟨by decide +kernel, by unfold correctAt; decide +kernel⟩
+  ⟨by decide +kernel, fun _ => fkl_all _⟩
 
 /-- Independent original-source checks at positions 4224 through 4351. -/
 theorem correctBlock033 : IndexBlockCertificate correctAt 4224 128 :=
-  ⟨by decide +kernel, by unfold correctAt; decide +kernel⟩
+  ⟨by decide +kernel, fun _ => fkl_all _⟩
 
 /-- Independent original-source checks at positions 4352 through 4479. -/
 theorem correctBlock034 : IndexBlockCertificate correctAt 4352 128 :=
-  ⟨by decide +kernel, by unfold correctAt; decide +kernel⟩
+  ⟨by decide +kernel, fun _ => fkl_all _⟩
 
 /-- Independent original-source checks at positions 4480 through 4607. -/
 theorem correctBlock035 : IndexBlockCertificate correctAt 4480 128 :=
-  ⟨by decide +kernel, by unfold correctAt; decide +kernel⟩
+  ⟨by decide +kernel, fun _ => fkl_all _⟩
 
 /-- Independent original-source checks at positions 4608 through 4724. -/
 theorem correctBlock036 : IndexBlockCertificate correctAt 4608 117 :=
-  ⟨by decide +kernel, by unfold correctAt; decide +kernel⟩
+  ⟨by decide +kernel, fun _ => fkl_all _⟩
 
 /-- Complete kernel-checked correspondence across all 4725 source positions. -/
 theorem correctComplete : IndexBlockCertificate correctAt 0 4725 :=
   ((((((((((((((((((((((((((((((((((((correctBlock000).append correctBlock001).append correctBlock002).append correctBlock003).append correctBlock004).append correctBlock005).append correctBlock006).append correctBlock007).append correctBlock008).append correctBlock009).append correctBlock010).append correctBlock011).append correctBlock012).append correctBlock013).append correctBlock014).append correctBlock015).append correctBlock016).append correctBlock017).append correctBlock018).append correctBlock019).append correctBlock020).append correctBlock021).append correctBlock022).append correctBlock023).append correctBlock024).append correctBlock025).append correctBlock026).append correctBlock027).append correctBlock028).append correctBlock029).append correctBlock030).append correctBlock031).append correctBlock032).append correctBlock033).append correctBlock034).append correctBlock035).append correctBlock036
 /-- Independent original-source checks at positions 0 through 127. -/
 theorem positiveBlock000 : IndexBlockCertificate positiveInverse 0 128 :=
-  ⟨by decide +kernel, by unfold positiveInverse; decide +kernel⟩
+  ⟨by decide +kernel, fun _ => fkl_allP _⟩
 
 /-- Independent original-source checks at positions 128 through 255. -/
 theorem positiveBlock001 : IndexBlockCertificate positiveInverse 128 128 :=
-  ⟨by decide +kernel, by unfold positiveInverse; decide +kernel⟩
+  ⟨by decide +kernel, fun _ => fkl_allP _⟩
 
 /-- Independent original-source checks at positions 256 through 383. -/
 theorem positiveBlock002 : IndexBlockCertificate positiveInverse 256 128 :=
-  ⟨by decide +kernel, by unfold positiveInverse; decide +kernel⟩
+  ⟨by decide +kernel, fun _ => fkl_allP _⟩
 
 /-- Independent original-source checks at positions 384 through 511. -/
 theorem positiveBlock003 : IndexBlockCertificate positiveInverse 384 128 :=
-  ⟨by decide +kernel, by unfold positiveInverse; decide +kernel⟩
+  ⟨by decide +kernel, fun _ => fkl_allP _⟩
 
 /-- Independent original-source checks at positions 512 through 639. -/
 theorem positiveBlock004 : IndexBlockCertificate positiveInverse 512 128 :=
-  ⟨by decide +kernel, by unfold positiveInverse; decide +kernel⟩
+  ⟨by decide +kernel, fun _ => fkl_allP _⟩
 
 /-- Independent original-source checks at positions 640 through 767. -/
 theorem positiveBlock005 : IndexBlockCertificate positiveInverse 640 128 :=
-  ⟨by decide +kernel, by unfold positiveInverse; decide +kernel⟩
+  ⟨by decide +kernel, fun _ => fkl_allP _⟩
 
 /-- Independent original-source checks at positions 768 through 895. -/
 theorem positiveBlock006 : IndexBlockCertificate positiveInverse 768 128 :=
-  ⟨by decide +kernel, by unfold positiveInverse; decide +kernel⟩
+  ⟨by decide +kernel, fun _ => fkl_allP _⟩
 
 /-- Independent original-source checks at positions 896 through 944. -/
 theorem positiveBlock007 : IndexBlockCertificate positiveInverse 896 49 :=
-  ⟨by decide +kernel, by unfold positiveInverse; decide +kernel⟩
+  ⟨by decide +kernel, fun _ => fkl_allP _⟩
 
 /-- Complete kernel-checked correspondence across all 945 source positions. -/
 theorem positiveComplete : IndexBlockCertificate positiveInverse 0 945 :=
   (((((((positiveBlock000).append positiveBlock001).append positiveBlock002).append positiveBlock003).append positiveBlock004).append positiveBlock005).append positiveBlock006).append positiveBlock007
 /-- Independent original-source checks at positions 0 through 127. -/
 theorem zeroBlock000 : IndexBlockCertificate zeroInverse 0 128 :=
-  ⟨by decide +kernel, by unfold zeroInverse; decide +kernel⟩
+  ⟨by decide +kernel, fun _ => fkl_allZ _⟩
 
 /-- Independent original-source checks at positions 128 through 255. -/
 theorem zeroBlock001 : IndexBlockCertificate zeroInverse 128 128 :=
-  ⟨by decide +kernel, by unfold zeroInverse; decide +kernel⟩
+  ⟨by decide +kernel, fun _ => fkl_allZ _⟩
 
 /-- Independent original-source checks at positions 256 through 383. -/
 theorem zeroBlock002 : IndexBlockCertificate zeroInverse 256 128 :=
-  ⟨by decide +kernel, by unfold zeroInverse; decide +kernel⟩
+  ⟨by decide +kernel, fun _ => fkl_allZ _⟩
 
 /-- Independent original-source checks at positions 384 through 511. -/
 theorem zeroBlock003 : IndexBlockCertificate zeroInverse 384 128 :=
-  ⟨by decide +kernel, by unfold zeroInverse; decide +kernel⟩
+  ⟨by decide +kernel, fun _ => fkl_allZ _⟩
 
 /-- Independent original-source checks at positions 512 through 639. -/
 theorem zeroBlock004 : IndexBlockCertificate zeroInverse 512 128 :=
-  ⟨by decide +kernel, by unfold zeroInverse; decide +kernel⟩
+  ⟨by decide +kernel, fun _ => fkl_allZ _⟩
 
 /-- Independent original-source checks at positions 640 through 767. -/
 theorem zeroBlock005 : IndexBlockCertificate zeroInverse 640 128 :=
-  ⟨by decide +kernel, by unfold zeroInverse; decide +kernel⟩
+  ⟨by decide +kernel, fun _ => fkl_allZ _⟩
 
 /-- Independent original-source checks at positions 768 through 839. -/
 theorem zeroBlock006 : IndexBlockCertificate zeroInverse 768 72 :=
-  ⟨by decide +kernel, by unfold zeroInverse; decide +kernel⟩
+  ⟨by decide +kernel, fun _ => fkl_allZ _⟩
 
 /-- Complete kernel-checked correspondence across all 840 source positions. -/
 theorem zeroComplete : IndexBlockCertificate zeroInverse 0 840 :=

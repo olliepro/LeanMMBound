@@ -1,5 +1,12 @@
-import ActivePools
-import CoordinateRestriction
+module
+
+public import ActivePools
+public import CoordinateRestriction
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Positive population labels can be selected before choosing the asymptotic
 scale. Zero-weight pools contribute exactly the scalar one on every axis. -/

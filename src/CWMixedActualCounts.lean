@@ -1,4 +1,11 @@
-import CWMixedEvents
+module
+
+public import CWMixedEvents
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Integer bounds for the actual global coarse and fine ownership events. -/
 namespace MatrixBounds.Tensor.CW.Mixed

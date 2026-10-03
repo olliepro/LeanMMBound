@@ -1,5 +1,12 @@
-import ContextSubtypeExtension
-import ContextOperations
+module
+
+public import ContextSubtypeExtension
+public import ContextOperations
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! A common output batch glues across all accepted exact profile triples
 without changing previously produced copies or waiting tensor factors. -/
@@ -35,7 +42,7 @@ theorem contextReduction_glue_exact_types (source : Coeff K U V W) (tensor : Coe
     · have extension := (contextReduction_extend_subtypes.{v} tensor
         (fun x => typeX x = labels.1) (fun y => typeY y = labels.2.1) (fun z => typeZ z = labels.2.2)).batch (I := Fin copies)
       have result := (reductions labels accepted.1 accepted.2.1 accepted.2.2).trans extension
-      simpa only [acceptedTensor, exactPiece, id_eq, one_mul] using result
+      simpa only [acceptedTensor, exactPiece, id_eq, one_mul] using! result
     · have zero : directSum (fun _ : Fin copies => (fun (_ : X) (_ : Y) (_ : Z) => (0 : K))) = fun _ _ _ => 0 := by
         funext x y z
         simp only [directSum, ite_self]

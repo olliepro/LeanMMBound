@@ -1,4 +1,11 @@
-import CWPermutedTerminalData
+module
+
+public import CWPermutedTerminalData
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Repeated original terminal counts agree exactly on every complete child
 shape, including inadmissible and zero-population children. -/

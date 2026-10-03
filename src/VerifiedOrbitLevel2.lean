@@ -1,5 +1,12 @@
-import FineWordOrbits
-import FiniteIndexBlocks
+module
+
+public import FineWordOrbits
+public import FiniteIndexBlocks
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Exact supplied recursive orbit metadata, checked against actual fine words. -/
 namespace MatrixBounds.Numeric.OrbitLevel2

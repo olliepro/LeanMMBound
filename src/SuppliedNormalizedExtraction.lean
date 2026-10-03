@@ -1,5 +1,12 @@
-import SuppliedNormalizedRates
-import SuppliedRectangularAlgorithms
+module
+
+public import SuppliedNormalizedRates
+public import SuppliedRectangularAlgorithms
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Actual rectangular algorithms with the source certificate's normalized
 rates, ready for direct identification with its checked numerical expressions. -/

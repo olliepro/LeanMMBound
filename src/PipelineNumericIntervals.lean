@@ -1,5 +1,12 @@
-import RationalIntervalOperations
-import MatrixBounds
+module
+
+public import RationalIntervalOperations
+public import MatrixBounds
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Exact interval accounting for the physical axes, finite pipeline boundary
 terms, and final rectangular volume budget. -/
@@ -41,7 +48,7 @@ theorem boundaryLossBounds_sound {level4 level3 terminal : RateBounds} {x y z : 
     (hy : ∀ axis, (level3 axis).Contains (y axis))
     (hz : ∀ axis, (terminal axis).Contains (z axis)) :
     (boundaryLossBounds level4 level3 terminal).Contains (boundaryLoss x y z) := by
-  simpa only [Rat.cast_ofNat] using Interval.sub_sound
+  simpa only [Rat.cast_ofNat] using! Interval.sub_sound
     (Interval.sub_sound (Interval.sub_sound (Interval.sub_sound
       (Interval.scale_sound 2 (bottleneckBounds_sound (addRateBounds_sound (addRateBounds_sound hx hy) hz)))
       (bottleneckBounds_sound hx)) (bottleneckBounds_sound (addRateBounds_sound hx hy)))
@@ -70,7 +77,7 @@ theorem finitePipelineRetentionBounds_sound (batches : ℕ) {root level4 level3 
   have shift : ((1/(batches : ℚ) : ℚ) : ℝ)*boundaryLoss x y z = boundaryLoss x y z/batches := by
     push_cast
     ring
-  simpa only [finitePipelineRetention, shift] using result
+  simpa only [finitePipelineRetention, shift] using! result
 
 /-- All interval inputs needed for the final finite-pipeline scalar budget. -/
 structure PipelineBounds where
@@ -97,7 +104,7 @@ theorem PipelineBounds.residual_sound (bounds : PipelineBounds) (batches : ℕ) 
     (dimensionSound : ∀ axis, (bounds.dimension axis).Contains (dimension axis)) :
     (bounds.residual batches rate).Contains
       (finitePipelineRetention batches root level4 level3 terminal+(rate : ℝ)/3*(∑ axis, dimension axis)-cost) := by
-  simpa only [Rat.cast_div, Rat.cast_ofNat] using Interval.sub_sound
+  simpa only [Rat.cast_div, Rat.cast_ofNat] using! Interval.sub_sound
     (Interval.add_sound (finitePipelineRetentionBounds_sound batches rootSound level4Sound level3Sound terminalSound)
       (Interval.scale_sound (rate/3) (Interval.sum_sound bounds.dimension dimension dimensionSound))) costSound
 

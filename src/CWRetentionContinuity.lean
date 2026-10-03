@@ -1,5 +1,12 @@
-import CWLawStability
-import MassEntropyContinuity
+module
+
+public import CWLawStability
+public import MassEntropyContinuity
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Fine retention varies uniformly continuously with the complete child laws.
 The tolerance is fixed before the population, split counts, and parent shape. -/

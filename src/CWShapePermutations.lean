@@ -1,6 +1,13 @@
-import ShapePermutations
-import CWOneLetterData
-import TypeRelabeling
+module
+
+public import ShapePermutations
+public import CWOneLetterData
+public import TypeRelabeling
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Permuting physical roles reindexes the actual split alphabet, its bounded
 coarse coordinates, and its empirical marginal profiles. -/

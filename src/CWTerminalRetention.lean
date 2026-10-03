@@ -1,6 +1,13 @@
-import CWTerminalParentLaws
-import CWOneLetterProfileLaws
-import CWTerminalDegreeRate
+module
+
+public import CWTerminalParentLaws
+public import CWOneLetterProfileLaws
+public import CWTerminalDegreeRate
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The three actual terminal entropy rates, with their empirical centers and
 one-letter compatibility penalties identified with the verifier formulas. -/

@@ -1,4 +1,11 @@
-import FineWordOrbits
+module
+
+public import FineWordOrbits
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Every additive fine-symbol statistic is constant on the actual recursive
 word orbits. This includes total degree and middle-symbol multiplicity. -/

@@ -1,7 +1,14 @@
-import CWCoarseHalves
-import RegularFibers
-import HashIntegerWords
-import TypePartition
+module
+
+public import CWCoarseHalves
+public import RegularFibers
+public import HashIntegerWords
+public import TypePartition
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The complete coarse graph of an actual CW constituent power. Its alphabet
 contains exactly the admissible child shapes, so Gibbs counting uses the right support. -/

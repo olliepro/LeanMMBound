@@ -1,6 +1,13 @@
-import ParameterIndexData.SplitAlpha3Part000
-import ParameterIndexData.SplitAlpha3Part001
-import ParameterIndexData.SplitAlpha3Part002
+module
+
+public import ParameterIndexData.SplitAlpha3Part000
+public import ParameterIndexData.SplitAlpha3Part001
+public import ParameterIndexData.SplitAlpha3Part002
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 namespace MatrixBounds.Numeric.ParameterIndexData.SplitAlpha3
 

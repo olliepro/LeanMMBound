@@ -1,5 +1,12 @@
-import OrbitEntropy
-import Mathlib.Logic.Equiv.Sum
+module
+
+public import OrbitEntropy
+public import Mathlib.Logic.Equiv.Sum
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Explicit finite orbit labels with representatives connect compressed
 probability arrays to their complete word distributions and exact entropies. -/

@@ -1,5 +1,12 @@
-import CWTerminalAlphabet
-import RegularFibers
+module
+
+public import CWTerminalAlphabet
+public import RegularFibers
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The terminal full marginal graph has no extra joint types: its complete
 edge count equals the prescribed multinomial count, even at endpoint laws. -/

@@ -1,6 +1,13 @@
-import MatrixTensor
-import TensorTranspose
-import HeterogeneousInterface
+module
+
+public import MatrixTensor
+public import TensorTranspose
+public import HeterogeneousInterface
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Rectangular matrix factors can be permuted and multiplied through actual
 coordinate maps, preserving all waiting tensors and copy labels. -/

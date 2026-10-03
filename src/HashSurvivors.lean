@@ -1,5 +1,12 @@
-import HashCollisionRates
-import CollisionHoles
+module
+
+public import HashCollisionRates
+public import CollisionHoles
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! A finite surviving-copy bound that combines conditioned deletion estimates
 across all hash buckets. Earlier deletion events may be arbitrarily correlated. -/

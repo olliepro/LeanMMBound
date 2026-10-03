@@ -1,5 +1,12 @@
-import CoordinateRestriction
-import ContextMatrixProducts
+module
+
+public import CoordinateRestriction
+public import ContextMatrixProducts
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Concrete coordinate selections for relabeling, rotating, and multiplying
 rectangular matrix tensors. -/

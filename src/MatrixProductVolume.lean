@@ -1,5 +1,12 @@
-import MatrixCoordinateRestrictions
-import Mathlib.Analysis.SpecialFunctions.Log.Basic
+module
+
+public import MatrixCoordinateRestrictions
+public import Mathlib.Analysis.SpecialFunctions.Log.Basic
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Two actual matrix factors combine by explicit coordinate maps, and their
 full finite volumes multiply before logarithms are taken. -/
@@ -21,7 +28,7 @@ def productCoordinateRestriction [DecidableEq I] [DecidableEq J] [DecidableEq L]
   right := regroup
   coefficient x y z := by
     simp only [product, tensor, regroup, Equiv.coe_fn_mk, Prod.ext_iff]
-    split_ifs <;> simp_all
+    split_ifs <;> simp_all <;> grind
 
 variable [Fintype I] [Fintype J] [Fintype L] [Fintype I'] [Fintype J'] [Fintype L']
 

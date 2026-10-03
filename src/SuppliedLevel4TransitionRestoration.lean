@@ -1,7 +1,14 @@
-import SuppliedLevel4TransitionWindows
-import SuppliedStagePresentations
-import CWRationalCanonicalInterfaces
-import ZeroParentRestoration
+module
+
+public import SuppliedLevel4TransitionWindows
+public import SuppliedStagePresentations
+public import CWRationalCanonicalInterfaces
+public import ZeroParentRestoration
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The actual positive-parent stage output restores precisely the empty
 original parent sectors, then regroups its complete children without loss. -/

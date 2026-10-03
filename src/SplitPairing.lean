@@ -1,4 +1,11 @@
-import CWPairing
+module
+
+public import CWPairing
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Construct the actual labelled child pairing from an exact split word.
 Complementary symmetry gives two copies of every prescribed split count. -/

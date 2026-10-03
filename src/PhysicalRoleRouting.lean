@@ -1,6 +1,13 @@
-import PhysicalRoles
-import ShapePermutations
-import HeterogeneousFiniteRegrouping
+module
+
+public import PhysicalRoles
+public import ShapePermutations
+public import HeterogeneousFiniteRegrouping
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Exact sixfold tensor routing preserves every source and strategy label.
 The coordinate convention uses original-axis permutations composed on the right. -/
@@ -51,7 +58,7 @@ theorem region_sum {T A : Type*} [Fintype T] [AddCommMonoid A]
     (role : T → AxisOrder) (value : AxisOrder × T → A) :
     (∑ region, ∑ label, value (regionSourceEquiv (role label) region, label)) =
       ∑ source, ∑ label, value (source, label) := by
-  simpa only [Fintype.sum_prod_type] using (labelledRegionEquiv role).sum_comp value
+  simpa only [Fintype.sum_prod_type] using! (labelledRegionEquiv role).sum_comp value
 
 end
 end MatrixBounds.Tensor.AxisOrder

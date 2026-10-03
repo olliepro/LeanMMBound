@@ -1,5 +1,12 @@
-import RationalIntervalOperations
-import Mathlib.Data.Rat.Floor
+module
+
+public import RationalIntervalOperations
+public import Mathlib.Data.Rat.Floor
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Deterministic outward rounding keeps every intermediate rational interval
 on a fixed denominator without adding external numerical assumptions. -/
@@ -13,7 +20,8 @@ def Interval.round (bounds : Interval) (scale : ℕ) : Interval :=
 theorem Interval.round_encloses (bounds : Interval) {scale : ℕ} (positive : 0 < scale) :
     (bounds.round scale).encloses bounds = true := by
   have positiveRat : (0 : ℚ) < scale := by exact_mod_cast positive
-  simp only [encloses, round, decide_eq_true_eq]
+  unfold encloses round
+  simp only [decide_eq_true_eq]
   constructor
   · rw [div_le_iff₀ positiveRat]
     exact Int.floor_le _

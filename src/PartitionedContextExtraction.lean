@@ -1,5 +1,12 @@
-import HeterogeneousPartition
-import ContextProductReductions
+module
+
+public import HeterogeneousPartition
+public import ContextProductReductions
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! A shared extraction of a labelled active subset extends to all source
 factors when the complementary waiting factors have explicit restrictions. -/

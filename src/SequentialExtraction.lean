@@ -1,4 +1,11 @@
-import VariableExtraction
+module
+
+public import VariableExtraction
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Sequential compatibility restrictions: the Z conditions may use full Y
 types that are imposed only after Y has acquired its unique owner. -/

@@ -1,4 +1,11 @@
-import TensorPowers
+module
+
+public import TensorPowers
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The actual CW tensor carries the coarse support used by the shared hash.
 These statements inspect coefficients, including all middle and extreme terms. -/

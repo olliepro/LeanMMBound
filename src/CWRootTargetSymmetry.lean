@@ -1,5 +1,12 @@
-import CWRootExtractedTargets
-import CWInterfaceSize
+module
+
+public import CWRootExtractedTargets
+public import CWInterfaceSize
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The common child target has the exact group action and finite coordinate
 growth required by simultaneous sparse repair. These are derived from its

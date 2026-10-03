@@ -1,6 +1,13 @@
-import CWOneLetterInterfaces
-import CWRetentionContinuity
-import EntropyPointMass
+module
+
+public import CWOneLetterInterfaces
+public import CWRetentionContinuity
+public import EntropyPointMass
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Every terminal one-letter compatibility sector has only one possible
 fine symbol. Its actual pooled mass entropy vanishes, even for empty pools. -/

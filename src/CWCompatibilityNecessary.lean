@@ -1,5 +1,12 @@
-import CWPooledDegrees
-import PartialSectorTypes
+module
+
+public import CWPooledDegrees
+public import PartialSectorTypes
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Necessary asymmetric compatibility of actual nonzero CW coefficients.
 The first pooled test depends only on its own axis, and zero sectors supply

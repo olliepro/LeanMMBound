@@ -1,7 +1,14 @@
-import Mathlib.Data.Rat.Cast.Order
-import Mathlib.Data.Rat.Cast.Lemmas
-import Mathlib.Data.Real.Basic
-import Mathlib.Tactic.Positivity
+module
+
+public import Mathlib.Data.Rat.Cast.Order
+public import Mathlib.Data.Rat.Cast.Lemmas
+public import Mathlib.Basic.Real.Basic
+public import Mathlib.Tactic.Positivity
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Exact positive binary rationals encode all supplied Gibbs potentials.
 Their real values and strict positivity do not depend on floating point. -/

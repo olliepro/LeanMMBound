@@ -1,4 +1,11 @@
-import SuppliedWaitingZero2TargetCertificates
+module
+
+public import SuppliedWaitingZero2TargetCertificates
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Every original level-two zero-leaf reference selects a registry row with
 exactly its intended first-positive-axis coarse total. -/

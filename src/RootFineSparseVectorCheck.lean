@@ -1,4 +1,11 @@
-import RootFineIntegerVectorCheck
+module
+
+public import RootFineIntegerVectorCheck
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Normalization and nonnegativity justify checking only nonzero candidate coordinates. -/
 namespace MatrixBounds.Numeric

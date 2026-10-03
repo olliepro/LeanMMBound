@@ -1,5 +1,12 @@
-import CWRootFineTypes
-import CWRootFineCollisions
+module
+
+public import CWRootFineTypes
+public import CWRootFineCollisions
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Finite degree bounds for the root's actual coarse and fine collision
 events. Fine maxima only range over the proved global exact fine profile. -/

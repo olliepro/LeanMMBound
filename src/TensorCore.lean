@@ -1,8 +1,16 @@
-import Mathlib.Algebra.BigOperators.Field
-import Mathlib.Algebra.BigOperators.Group.Finset.Sigma
-import Mathlib.Data.Fintype.Prod
-import Mathlib.Data.Fintype.BigOperators
-import Mathlib.Tactic.Ring
+module
+
+public import Mathlib.Algebra.BigOperators.Field
+public import Mathlib.Algebra.BigOperators.Group.Finset.Sigma
+public import Mathlib.Data.Fintype.Prod
+public import Mathlib.Data.Fintype.BigOperators
+public import Mathlib.Tactic.Ring
+public import MatrixBoundsStatement
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Finite coefficient tensors, actual axis maps, and rank decompositions.
 These are operations on tensor coefficients in specified finite bases. Unlike
@@ -15,17 +23,6 @@ open scoped BigOperators
 noncomputable section
 
 variable {K X Y Z U V W R : Type*} [CommSemiring K]
-
-/-- Coefficients of a three-way tensor in fixed bases X, Y, and Z. -/
-abbrev Coeff (K X Y Z : Type*) := X → Y → Z → K
-
-/-- An explicit rank decomposition indexed by R, with its reconstruction proof.
-For example, R = Fin 7 represents seven scalar multiplications. -/
-structure Decomposition (tensor : Coeff K X Y Z) (R : Type*) [Fintype R] where
-  left : R → X → K
-  middle : R → Y → K
-  right : R → Z → K
-  reconstruct : ∀ x y z, tensor x y z = ∑ r, left r x * middle r y * right r z
 
 /-- Apply a matrix to the first tensor axis; rows are target coordinates. -/
 def mapX [Fintype X] (matrix : U → X → K) (tensor : Coeff K X Y Z) : Coeff K U Y Z :=
@@ -101,20 +98,6 @@ def Decomposition.restrict [Fintype X] [Fintype Y] [Fintype Z] [Fintype R]
     (mx : U → X → K) (my : V → Y → K) (mz : W → Z → K) :
     Decomposition (Tensor.restrict mx my mz tensor) R :=
   (d.mapX mx |>.mapY my).mapZ mz
-
-/-- Rank at most n means an actual decomposition with n terms, allowing zero terms. -/
-def RankLE (tensor : Coeff K X Y Z) (n : ℕ) : Prop :=
-  Nonempty (Decomposition tensor (Fin n))
-
-/-- Relabel decomposition terms by a finite equivalence without changing the tensor. -/
-def Decomposition.reindex {S : Type*} [Fintype R] [Fintype S]
-    {tensor : Coeff K X Y Z} (d : Decomposition tensor R) (equiv : S ≃ R) :
-    Decomposition tensor S where
-  left s := d.left (equiv s)
-  middle s := d.middle (equiv s)
-  right s := d.right (equiv s)
-  reconstruct x y z := (d.reconstruct x y z).trans
-    (Equiv.sum_comp equiv (fun r => d.left r x * d.middle r y * d.right r z)).symm
 
 /-- Coordinate restrictions cannot increase tensor rank. -/
 theorem rankLE_restrict [Fintype X] [Fintype Y] [Fintype Z]

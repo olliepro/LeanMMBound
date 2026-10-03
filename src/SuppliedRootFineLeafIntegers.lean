@@ -1,4 +1,11 @@
-import SuppliedRootFineFastArithmetic
+module
+
+public import SuppliedRootFineFastArithmetic
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Exact integer leaf numerators share the original dyadic denominator.
 Their rational interpretations are the complete supplied physical leaf laws. -/

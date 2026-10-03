@@ -1,9 +1,16 @@
-import IndexedCertificateRows
-import ParameterIndexData
-import CertifiedTerminalParameters
-import CertifiedRootParameters
-import SuppliedShapeIndices
-import Mathlib.Logic.Equiv.Fin.Basic
+module
+
+public import IndexedCertificateRows
+public import ParameterIndexData
+public import CertifiedTerminalParameters
+public import CertifiedRootParameters
+public import SuppliedShapeIndices
+public import Mathlib.Logic.Equiv.Fin.Basic
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Original array coordinates select the previously checked exact rows.
 All shapes and role coordinates retain the source file's row-major order. -/

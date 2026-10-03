@@ -1,6 +1,13 @@
-import CWRoleWindowRouting
-import OrientedHeterogeneousProducts
-import SixfoldComposition
+module
+
+public import CWRoleWindowRouting
+public import OrientedHeterogeneousProducts
+public import SixfoldComposition
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Canonical complete window families and their physically oriented source
 copies have explicit coordinate maps in both directions. -/

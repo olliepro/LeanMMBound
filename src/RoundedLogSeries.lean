@@ -1,5 +1,12 @@
-import RationalIntervalRounding
-import NormalizedLogTrace
+module
+
+public import RationalIntervalRounding
+public import NormalizedLogTrace
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! A deterministic fixed-denominator logarithm calculation has a general
 soundness proof, avoiding a separate stored power trace for every input mass. -/
@@ -90,6 +97,8 @@ theorem roundedNormalizedLog_sound (input : ℚ) (terms : ℕ) {scale : ℕ}
     push_cast
     constructor <;> linarith [analytic.1, analytic.2]
   have result := Interval.add_sound series remainder
-  convert result using 1; ring
+  convert result using 1
+  · rfl
+  · ring
 
 end MatrixBounds.Numeric

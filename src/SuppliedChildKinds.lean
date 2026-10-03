@@ -1,4 +1,11 @@
-import SuppliedShapeIndices
+module
+
+public import SuppliedShapeIndices
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The full source shape alphabets split into their original positive and zero
 subarrays, with a checked inverse column binding at every shape. -/

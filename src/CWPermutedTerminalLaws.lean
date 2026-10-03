@@ -1,5 +1,12 @@
-import CWPermutedTerminalData
-import CWTerminalParentLaws
+module
+
+public import CWPermutedTerminalData
+public import CWTerminalParentLaws
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The full fine parent laws of every physical terminal orientation are the
 same binary and ternary laws assigned to their actual permuted coordinates. -/
@@ -40,11 +47,11 @@ theorem permuted_parent_law (axes : Equiv.Perm (Fin 3)) (extreme middle : ℕ)
   rw [permuted_parentLaw]
   generalize axes axis = coordinate
   fin_cases coordinate
-  · simpa only [show (0 : Fin 3) ≠ 2 from by decide, if_false, shapeCoordinate_x] using
+  · simpa only [show (0 : Fin 3) ≠ 2 from by decide, if_false, shapeCoordinate_x] using!
       terminal_parent_law_x extreme middle positive
-  · simpa only [show (1 : Fin 3) ≠ 2 from by decide, if_false, shapeCoordinate_y] using
+  · simpa only [show (1 : Fin 3) ≠ 2 from by decide, if_false, shapeCoordinate_y] using!
       terminal_parent_law_y extreme middle positive
-  · simpa only [if_true, shapeCoordinate_z] using terminal_parent_law_z extreme middle positive
+  · simpa only [if_true, shapeCoordinate_z] using! terminal_parent_law_z extreme middle positive
 
 /-- The corresponding fine parent entropy vector is the physical permutation of the terminal vector. -/
 theorem permuted_parent_entropy (axes : Equiv.Perm (Fin 3)) (extreme middle : ℕ)

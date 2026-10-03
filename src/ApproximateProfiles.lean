@@ -1,5 +1,12 @@
-import ApproximateTypes
-import HeterogeneousTypeGluing
+module
+
+public import ApproximateTypes
+public import HeterogeneousTypeGluing
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Tolerance windows on finite profile labels, with the neutral empty-pool
 convention. Empty tensor-power factors impose no distribution constraint. -/

@@ -1,4 +1,11 @@
-import CWRationalMixedRates
+module
+
+public import CWRationalMixedRates
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Exact integer population propagation through a paired split. A fixed
 denominator divisibility choice makes all subsequent child populations linear

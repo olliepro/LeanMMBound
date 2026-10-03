@@ -1,5 +1,12 @@
-import FiniteOrbitProducts
-import Mathlib.Data.Fin.Basic
+module
+
+public import FiniteOrbitProducts
+public import Mathlib.Data.Fin.Basic
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! A checked encoding of unordered child-orbit pairs gives the recursive
 word orbits used by the supplied numerical distributions. -/

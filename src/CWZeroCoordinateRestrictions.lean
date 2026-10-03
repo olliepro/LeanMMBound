@@ -1,6 +1,13 @@
-import CWZeroPower
-import MatrixCoordinateRestrictions
-import CWAxisPermutations
+module
+
+public import CWZeroPower
+public import MatrixCoordinateRestrictions
+public import CWAxisPermutations
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Full zero-coordinate CW powers have explicit maps into matrix tensors.
 All three physical orientations are retained at the coefficient level. -/

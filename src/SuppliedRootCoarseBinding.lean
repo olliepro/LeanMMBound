@@ -1,5 +1,12 @@
-import SuppliedRootCoarseExpression
-import RootCoarseEnumeration
+module
+
+public import SuppliedRootCoarseExpression
+public import RootCoarseEnumeration
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Semantic identification of the exact source-column root expression. -/
 namespace MatrixBounds.Numeric.SuppliedRootCoarse
@@ -15,7 +22,7 @@ theorem mass_enumeration (column : Fin 153) :
     (CertifiedRoot.numerator (enumeration column) : ℚ)/17592186044416 = mass column := by
   change (CertifiedRoot.numerator (SuppliedRootPopulation.physicalChild (shapeColumnEquiv 16 column)) : ℚ)/_ = _
   rw [SuppliedRootPopulation.numerator_physical]
-  simp only [SuppliedRootPopulation.numerator, Equiv.symm_apply_apply, mass, TypedProbabilityRow.rational, Nat.cast_ofNat]
+  simp only [SuppliedRootPopulation.numerator, (shapeColumnEquiv 16).symm_apply_apply column, mass, TypedProbabilityRow.rational, Nat.cast_ofNat]
 
 /-- The directly computed source coordinate equals the actual physical coarse coordinate. -/
 theorem coordinate_enumeration (column : Fin 153) (axis : Fin 3) :

@@ -1,4 +1,11 @@
-import SixfoldExtraction
+module
+
+public import SixfoldExtraction
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Every finite contextual preprocessing or output conversion can be performed
 on all six physical source copies with its exact sixth-power cost. -/

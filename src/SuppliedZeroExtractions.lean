@@ -1,5 +1,12 @@
-import SuppliedZeroSupportData
-import CertifiedZeroOrbitExtraction
+module
+
+public import SuppliedZeroSupportData
+public import CertifiedZeroOrbitExtraction
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Original higher zero-coordinate rows now instantiate actual matrix-factor
 extraction, with their checked source totals and exact compressed dimension rates. -/

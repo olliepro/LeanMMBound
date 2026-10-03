@@ -1,4 +1,11 @@
-import EntropyBounds
+module
+
+public import EntropyBounds
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Reindexing and deleting zero-mass symbols preserve actual entropy values. -/
 namespace MatrixBounds.Entropy

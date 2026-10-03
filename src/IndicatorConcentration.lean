@@ -1,4 +1,11 @@
-import SamplingBounds
+module
+
+public import SamplingBounds
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! A finite second-moment concentration theorem for indicators whose one- and
 two-point laws approximate a common independent distribution. -/

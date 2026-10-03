@@ -1,6 +1,13 @@
-import PositiveLookupEquivalence
-import ZeroWeightRestoration
-import HeterogeneousFiniteRegrouping
+module
+
+public import PositiveLookupEquivalence
+public import ZeroWeightRestoration
+public import HeterogeneousFiniteRegrouping
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! A partial original lookup reindexes full empirical-window tensors exactly
 when every absent source label has zero population. -/

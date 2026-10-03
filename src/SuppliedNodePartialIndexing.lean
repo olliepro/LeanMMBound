@@ -1,5 +1,12 @@
-import PositiveLookupEquivalence
-import SuppliedPopulationWeights
+module
+
+public import PositiveLookupEquivalence
+public import SuppliedPopulationWeights
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The original hierarchy lookup is an exact partial bijection of all parent
 and complete child labels. Positive population cannot enter an absent cell. -/
@@ -47,7 +54,7 @@ theorem child_supported (weight : Fin 105 → ℕ) (pair : Fin 105 × Fin 45)
   have fits := (SuppliedTypedParameters.level4Split pair.1).supported (shapeColumnEquiv 8 pair.2) (Nat.ne_of_gt massPositive)
   apply SuppliedNodeLookup.lookup_ne_none
   have selected := SuppliedNodeLookup.shapeAt_column 8 (shapeColumnEquiv 8 pair.2)
-  rw [Equiv.symm_apply_apply] at selected
+  rw [(shapeColumnEquiv 8).symm_apply_apply pair.2] at selected
   rw [selected]
   simpa only [SuppliedHierarchyParents.level4Split_parent] using fits
 

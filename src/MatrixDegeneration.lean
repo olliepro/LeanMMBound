@@ -1,5 +1,12 @@
-import PolynomialDegeneration
-import RankAmplification
+module
+
+public import PolynomialDegeneration
+public import RankAmplification
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Polynomial degeneration certificates for matrix multiplication compose with
 multiplied dimensions and power to exact algorithms with polynomial overhead. -/
@@ -25,7 +32,7 @@ def matrixProduct {I J L I' J' L' : Type*}
       tensor (K := K) (I := I × I') (J := J × J') (L := L × L') := by
     funext x y z
     simp only [product, tensor, regroup, Equiv.coe_fn_mk, Prod.ext_iff]
-    split_ifs <;> simp_all
+    split_ifs <;> simp_all <;> grind
   exact identity ▸ combined
 
 /-- Relabel matrix indices in a degeneration certificate, retaining all source terms. -/
@@ -63,9 +70,9 @@ def matrixPower {base rank degree : ℕ}
   | zero =>
     have budget : RankLE (tensor (K := K) (I := Fin 1) (J := Fin 1) (L := Fin 1)) 1 := by
       simpa using (schoolbook_rank (K := K) (I := Fin 1) (J := Fin 1) (L := Fin 1))
-    simpa using Certificate.ofDecomposition (Classical.choice budget)
+    simpa using! Certificate.ofDecomposition (Classical.choice budget)
   | succ power ih =>
-    simpa only [pow_succ, Nat.mul_succ] using finMatrixProduct ih certificate
+    simpa only [pow_succ, Nat.mul_succ] using! finMatrixProduct ih certificate
 
 /-- One polynomial degeneration supplies exact algorithms at every power size.
 The overhead (d*k+1)^2 is polynomial in k, rather than exponential in k. -/

@@ -1,4 +1,12 @@
-import TabulatedLogBounds
+module
+
+public import TabulatedLogBounds
+public import FKLLog.GridTrace
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 namespace MatrixBounds.Numeric.LogGridData.Part025
 set_option maxRecDepth 100000
@@ -56,15 +64,17 @@ def trace : ScaledLogTrace := ⟨0, (57:ℚ)/32,
   ⟨⟨(339585904386131790647802:ℚ)/2^80,(339585904386131790647803:ℚ)/2^80⟩, powers, powers.negateBase⟩⟩
 /-- Reported outward-rounded enclosure of the original natural logarithm. -/
 def bounds : Interval := ⟨(665599299288599925:ℚ)/2^60,(665599299288599926:ℚ)/2^60⟩
+/-- Nat-only kernel evaluation of the whole certificate (`FKLLog.gridCheck2`). -/
+theorem fast_checked : FKLLog.gridCheck2 input trace bounds = true := by decide +kernel
 /-- Every rational identity and every rounded series multiplication is checked by Lean's kernel. -/
-theorem trace_checked : trace.check input 40 = true := by decide +kernel
+theorem trace_checked : trace.check input 40 = true := (FKLLog.gridCheck2_sound input trace bounds rfl fast_checked).1
 /-- The reported endpoints enclose the entire exact certificate interval. -/
-theorem bounds_checked : bounds.encloses (trace.bounds 40) = true := by decide +kernel
+theorem bounds_checked : bounds.encloses (trace.bounds 40) = true := (FKLLog.gridCheck2_sound input trace bounds rfl fast_checked).2.1
 /-- The reported interval contains the actual real natural logarithm. -/
 theorem log_bounds : bounds.Contains (Real.log (input : ℝ)) :=
   Interval.encloses_sound bounds_checked (ScaledLogTrace.sound trace_checked)
 /-- The complete enclosure has width at most one trillionth. -/
-theorem tight : bounds.upper-bounds.lower ≤ (1:ℚ)/10^12 := by decide +kernel
+theorem tight : bounds.upper-bounds.lower ≤ (1:ℚ)/10^12 := (FKLLog.gridCheck2_sound input trace bounds rfl fast_checked).2.2
 end Point200
 
 namespace Point201
@@ -119,15 +129,17 @@ def trace : ScaledLogTrace := ⟨0, (457:ℚ)/256,
   ⟨⟨(340805174954474704229931:ℚ)/2^80,(340805174954474704229932:ℚ)/2^80⟩, powers, powers.negateBase⟩⟩
 /-- Reported outward-rounded enclosure of the original natural logarithm. -/
 def bounds : Interval := ⟨(668124867668984151:ℚ)/2^60,(668124867668984152:ℚ)/2^60⟩
+/-- Nat-only kernel evaluation of the whole certificate (`FKLLog.gridCheck2`). -/
+theorem fast_checked : FKLLog.gridCheck2 input trace bounds = true := by decide +kernel
 /-- Every rational identity and every rounded series multiplication is checked by Lean's kernel. -/
-theorem trace_checked : trace.check input 40 = true := by decide +kernel
+theorem trace_checked : trace.check input 40 = true := (FKLLog.gridCheck2_sound input trace bounds rfl fast_checked).1
 /-- The reported endpoints enclose the entire exact certificate interval. -/
-theorem bounds_checked : bounds.encloses (trace.bounds 40) = true := by decide +kernel
+theorem bounds_checked : bounds.encloses (trace.bounds 40) = true := (FKLLog.gridCheck2_sound input trace bounds rfl fast_checked).2.1
 /-- The reported interval contains the actual real natural logarithm. -/
 theorem log_bounds : bounds.Contains (Real.log (input : ℝ)) :=
   Interval.encloses_sound bounds_checked (ScaledLogTrace.sound trace_checked)
 /-- The complete enclosure has width at most one trillionth. -/
-theorem tight : bounds.upper-bounds.lower ≤ (1:ℚ)/10^12 := by decide +kernel
+theorem tight : bounds.upper-bounds.lower ≤ (1:ℚ)/10^12 := (FKLLog.gridCheck2_sound input trace bounds rfl fast_checked).2.2
 end Point201
 
 namespace Point202
@@ -182,15 +194,17 @@ def trace : ScaledLogTrace := ⟨0, (229:ℚ)/128,
   ⟨⟨(342021030199096769314632:ℚ)/2^80,(342021030199096769314633:ℚ)/2^80⟩, powers, powers.negateBase⟩⟩
 /-- Reported outward-rounded enclosure of the original natural logarithm. -/
 def bounds : Interval := ⟨(670644915676923236:ℚ)/2^60,(670644915676923237:ℚ)/2^60⟩
+/-- Nat-only kernel evaluation of the whole certificate (`FKLLog.gridCheck2`). -/
+theorem fast_checked : FKLLog.gridCheck2 input trace bounds = true := by decide +kernel
 /-- Every rational identity and every rounded series multiplication is checked by Lean's kernel. -/
-theorem trace_checked : trace.check input 40 = true := by decide +kernel
+theorem trace_checked : trace.check input 40 = true := (FKLLog.gridCheck2_sound input trace bounds rfl fast_checked).1
 /-- The reported endpoints enclose the entire exact certificate interval. -/
-theorem bounds_checked : bounds.encloses (trace.bounds 40) = true := by decide +kernel
+theorem bounds_checked : bounds.encloses (trace.bounds 40) = true := (FKLLog.gridCheck2_sound input trace bounds rfl fast_checked).2.1
 /-- The reported interval contains the actual real natural logarithm. -/
 theorem log_bounds : bounds.Contains (Real.log (input : ℝ)) :=
   Interval.encloses_sound bounds_checked (ScaledLogTrace.sound trace_checked)
 /-- The complete enclosure has width at most one trillionth. -/
-theorem tight : bounds.upper-bounds.lower ≤ (1:ℚ)/10^12 := by decide +kernel
+theorem tight : bounds.upper-bounds.lower ≤ (1:ℚ)/10^12 := (FKLLog.gridCheck2_sound input trace bounds rfl fast_checked).2.2
 end Point202
 
 namespace Point203
@@ -245,15 +259,17 @@ def trace : ScaledLogTrace := ⟨0, (459:ℚ)/256,
   ⟨⟨(343233484450027583867627:ℚ)/2^80,(343233484450027583867628:ℚ)/2^80⟩, powers, powers.negateBase⟩⟩
 /-- Reported outward-rounded enclosure of the original natural logarithm. -/
 def bounds : Interval := ⟨(673159467392587406:ℚ)/2^60,(673159467392587407:ℚ)/2^60⟩
+/-- Nat-only kernel evaluation of the whole certificate (`FKLLog.gridCheck2`). -/
+theorem fast_checked : FKLLog.gridCheck2 input trace bounds = true := by decide +kernel
 /-- Every rational identity and every rounded series multiplication is checked by Lean's kernel. -/
-theorem trace_checked : trace.check input 40 = true := by decide +kernel
+theorem trace_checked : trace.check input 40 = true := (FKLLog.gridCheck2_sound input trace bounds rfl fast_checked).1
 /-- The reported endpoints enclose the entire exact certificate interval. -/
-theorem bounds_checked : bounds.encloses (trace.bounds 40) = true := by decide +kernel
+theorem bounds_checked : bounds.encloses (trace.bounds 40) = true := (FKLLog.gridCheck2_sound input trace bounds rfl fast_checked).2.1
 /-- The reported interval contains the actual real natural logarithm. -/
 theorem log_bounds : bounds.Contains (Real.log (input : ℝ)) :=
   Interval.encloses_sound bounds_checked (ScaledLogTrace.sound trace_checked)
 /-- The complete enclosure has width at most one trillionth. -/
-theorem tight : bounds.upper-bounds.lower ≤ (1:ℚ)/10^12 := by decide +kernel
+theorem tight : bounds.upper-bounds.lower ≤ (1:ℚ)/10^12 := (FKLLog.gridCheck2_sound input trace bounds rfl fast_checked).2.2
 end Point203
 
 namespace Point204
@@ -308,15 +324,17 @@ def trace : ScaledLogTrace := ⟨0, (115:ℚ)/64,
   ⟨⟨(344442551957240714581089:ℚ)/2^80,(344442551957240714581090:ℚ)/2^80⟩, powers, powers.negateBase⟩⟩
 /-- Reported outward-rounded enclosure of the original natural logarithm. -/
 def bounds : Interval := ⟨(675668546738931164:ℚ)/2^60,(675668546738931165:ℚ)/2^60⟩
+/-- Nat-only kernel evaluation of the whole certificate (`FKLLog.gridCheck2`). -/
+theorem fast_checked : FKLLog.gridCheck2 input trace bounds = true := by decide +kernel
 /-- Every rational identity and every rounded series multiplication is checked by Lean's kernel. -/
-theorem trace_checked : trace.check input 40 = true := by decide +kernel
+theorem trace_checked : trace.check input 40 = true := (FKLLog.gridCheck2_sound input trace bounds rfl fast_checked).1
 /-- The reported endpoints enclose the entire exact certificate interval. -/
-theorem bounds_checked : bounds.encloses (trace.bounds 40) = true := by decide +kernel
+theorem bounds_checked : bounds.encloses (trace.bounds 40) = true := (FKLLog.gridCheck2_sound input trace bounds rfl fast_checked).2.1
 /-- The reported interval contains the actual real natural logarithm. -/
 theorem log_bounds : bounds.Contains (Real.log (input : ℝ)) :=
   Interval.encloses_sound bounds_checked (ScaledLogTrace.sound trace_checked)
 /-- The complete enclosure has width at most one trillionth. -/
-theorem tight : bounds.upper-bounds.lower ≤ (1:ℚ)/10^12 := by decide +kernel
+theorem tight : bounds.upper-bounds.lower ≤ (1:ℚ)/10^12 := (FKLLog.gridCheck2_sound input trace bounds rfl fast_checked).2.2
 end Point204
 
 namespace Point205
@@ -371,15 +389,17 @@ def trace : ScaledLogTrace := ⟨0, (461:ℚ)/256,
   ⟨⟨(345648246891211967663551:ℚ)/2^80,(345648246891211967663552:ℚ)/2^80⟩, powers, powers.negateBase⟩⟩
 /-- Reported outward-rounded enclosure of the original natural logarithm. -/
 def bounds : Interval := ⟨(678172177483058901:ℚ)/2^60,(678172177483058902:ℚ)/2^60⟩
+/-- Nat-only kernel evaluation of the whole certificate (`FKLLog.gridCheck2`). -/
+theorem fast_checked : FKLLog.gridCheck2 input trace bounds = true := by decide +kernel
 /-- Every rational identity and every rounded series multiplication is checked by Lean's kernel. -/
-theorem trace_checked : trace.check input 40 = true := by decide +kernel
+theorem trace_checked : trace.check input 40 = true := (FKLLog.gridCheck2_sound input trace bounds rfl fast_checked).1
 /-- The reported endpoints enclose the entire exact certificate interval. -/
-theorem bounds_checked : bounds.encloses (trace.bounds 40) = true := by decide +kernel
+theorem bounds_checked : bounds.encloses (trace.bounds 40) = true := (FKLLog.gridCheck2_sound input trace bounds rfl fast_checked).2.1
 /-- The reported interval contains the actual real natural logarithm. -/
 theorem log_bounds : bounds.Contains (Real.log (input : ℝ)) :=
   Interval.encloses_sound bounds_checked (ScaledLogTrace.sound trace_checked)
 /-- The complete enclosure has width at most one trillionth. -/
-theorem tight : bounds.upper-bounds.lower ≤ (1:ℚ)/10^12 := by decide +kernel
+theorem tight : bounds.upper-bounds.lower ≤ (1:ℚ)/10^12 := (FKLLog.gridCheck2_sound input trace bounds rfl fast_checked).2.2
 end Point205
 
 namespace Point206
@@ -434,15 +454,17 @@ def trace : ScaledLogTrace := ⟨0, (231:ℚ)/128,
   ⟨⟨(346850583343472994414306:ℚ)/2^80,(346850583343472994414307:ℚ)/2^80⟩, powers, powers.negateBase⟩⟩
 /-- Reported outward-rounded enclosure of the original natural logarithm. -/
 def bounds : Interval := ⟨(680670383237575712:ℚ)/2^60,(680670383237575713:ℚ)/2^60⟩
+/-- Nat-only kernel evaluation of the whole certificate (`FKLLog.gridCheck2`). -/
+theorem fast_checked : FKLLog.gridCheck2 input trace bounds = true := by decide +kernel
 /-- Every rational identity and every rounded series multiplication is checked by Lean's kernel. -/
-theorem trace_checked : trace.check input 40 = true := by decide +kernel
+theorem trace_checked : trace.check input 40 = true := (FKLLog.gridCheck2_sound input trace bounds rfl fast_checked).1
 /-- The reported endpoints enclose the entire exact certificate interval. -/
-theorem bounds_checked : bounds.encloses (trace.bounds 40) = true := by decide +kernel
+theorem bounds_checked : bounds.encloses (trace.bounds 40) = true := (FKLLog.gridCheck2_sound input trace bounds rfl fast_checked).2.1
 /-- The reported interval contains the actual real natural logarithm. -/
 theorem log_bounds : bounds.Contains (Real.log (input : ℝ)) :=
   Interval.encloses_sound bounds_checked (ScaledLogTrace.sound trace_checked)
 /-- The complete enclosure has width at most one trillionth. -/
-theorem tight : bounds.upper-bounds.lower ≤ (1:ℚ)/10^12 := by decide +kernel
+theorem tight : bounds.upper-bounds.lower ≤ (1:ℚ)/10^12 := (FKLLog.gridCheck2_sound input trace bounds rfl fast_checked).2.2
 end Point206
 
 namespace Point207
@@ -497,15 +519,17 @@ def trace : ScaledLogTrace := ⟨0, (463:ℚ)/256,
   ⟨⟨(348049575327160277001638:ℚ)/2^80,(348049575327160277001639:ℚ)/2^80⟩, powers, powers.negateBase⟩⟩
 /-- Reported outward-rounded enclosure of the original natural logarithm. -/
 def bounds : Interval := ⟨(683163187461923606:ℚ)/2^60,(683163187461923607:ℚ)/2^60⟩
+/-- Nat-only kernel evaluation of the whole certificate (`FKLLog.gridCheck2`). -/
+theorem fast_checked : FKLLog.gridCheck2 input trace bounds = true := by decide +kernel
 /-- Every rational identity and every rounded series multiplication is checked by Lean's kernel. -/
-theorem trace_checked : trace.check input 40 = true := by decide +kernel
+theorem trace_checked : trace.check input 40 = true := (FKLLog.gridCheck2_sound input trace bounds rfl fast_checked).1
 /-- The reported endpoints enclose the entire exact certificate interval. -/
-theorem bounds_checked : bounds.encloses (trace.bounds 40) = true := by decide +kernel
+theorem bounds_checked : bounds.encloses (trace.bounds 40) = true := (FKLLog.gridCheck2_sound input trace bounds rfl fast_checked).2.1
 /-- The reported interval contains the actual real natural logarithm. -/
 theorem log_bounds : bounds.Contains (Real.log (input : ℝ)) :=
   Interval.encloses_sound bounds_checked (ScaledLogTrace.sound trace_checked)
 /-- The complete enclosure has width at most one trillionth. -/
-theorem tight : bounds.upper-bounds.lower ≤ (1:ℚ)/10^12 := by decide +kernel
+theorem tight : bounds.upper-bounds.lower ≤ (1:ℚ)/10^12 := (FKLLog.gridCheck2_sound input trace bounds rfl fast_checked).2.2
 end Point207
 
 /-- Reusable proved logarithm bounds for these consecutive exact grid inputs. -/

@@ -1,4 +1,11 @@
-import ContextComposition
+module
+
+public import ContextComposition
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! A stage can act on its active factor while carrying its waiting factor
 unchanged; new independent copies contain both resulting factors. -/

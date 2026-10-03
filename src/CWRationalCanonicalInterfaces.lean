@@ -1,5 +1,12 @@
-import CWRationalStagePresentation
-import CWPhysicalWindowFamilies
+module
+
+public import CWRationalStagePresentation
+public import CWPhysicalWindowFamilies
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The checked physical extraction yields six literal orientations of the
 complete original parent and child families, ready for canonical allocations. -/
@@ -54,7 +61,7 @@ theorem eventual_canonical_extraction {K : Type} [CommRing K]
       (fun index => (presentation.original index.1).childWeight (stage.weight index.1) index.2*RepairRates.scale k)
       (fun index => index.2.val) (fun index axis => presentation.law index.1 axis index.2)
       (fun index => delta index.1) order)).context.batch (I := Fin (copies^6))
-  simpa only [one_mul, mul_one] using (before.trans reduction).trans after
+  simpa only [one_mul, mul_one] using! (before.trans reduction).trans after
 
 end
 end MatrixBounds.Tensor.CW.Mixed.RationalStage

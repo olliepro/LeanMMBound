@@ -1,5 +1,12 @@
-import CWPrescribedGraph
-import CWRootData
+module
+
+public import CWPrescribedGraph
+public import CWRootData
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Canonical coarse data for approximate extraction. Fine profiles are supplied
 by the complete window gluing, so the initial record only needs its coarse law. -/

@@ -1,6 +1,13 @@
-import CWMixedGraph
-import CWWindowedSource
-import HeterogeneousProducts
+module
+
+public import CWMixedGraph
+public import CWWindowedSource
+public import HeterogeneousProducts
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! One physical hash restriction on a heterogeneous product of CW parents.
 Global coarse ownership recovers each type's actual natural child coordinates. -/

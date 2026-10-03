@@ -1,6 +1,13 @@
-import SuppliedTerminalRationalSplit
-import ShapePermutationComposition
-import CWRationalOrientedParents
+module
+
+public import SuppliedTerminalRationalSplit
+public import ShapePermutationComposition
+public import CWRationalOrientedParents
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The supplied terminal records use precisely the same original-split plus
 physical-role convention as the two higher shared extraction phases. -/

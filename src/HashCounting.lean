@@ -1,7 +1,14 @@
-import MatrixBounds
-import Mathlib.Data.Fintype.BigOperators
-import Mathlib.Data.Fintype.Pi
-import Mathlib.Logic.Equiv.Sum
+module
+
+public import MatrixBounds
+public import Mathlib.Data.Fintype.BigOperators
+public import Mathlib.Data.Fintype.Pi
+public import Mathlib.Logic.Equiv.Sum
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Exact finite counting for the collision step. No asymptotic or probabilistic
 claim is assumed: all probabilities below are ratios of finite cardinalities. -/

@@ -1,5 +1,12 @@
-import HashCounting
-import Mathlib.SetTheory.Cardinal.Finite
+module
+
+public import HashCounting
+public import Mathlib.SetTheory.Cardinal.Finite
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Conditioning on a fixed bucket preserves uniformity of the weight vector.
 This is established by an equivalence of the finite sample spaces, not assumed

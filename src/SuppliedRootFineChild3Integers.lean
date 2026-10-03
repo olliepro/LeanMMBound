@@ -1,5 +1,12 @@
-import RootFineIntegerMixture
-import SuppliedRootFineParent3Integers
+module
+
+public import RootFineIntegerMixture
+public import SuppliedRootFineParent3Integers
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Complete actual four-letter child laws admit exact numerators at denominator 2^178. -/
 namespace MatrixBounds.Numeric.SuppliedRootFineChild3Integers

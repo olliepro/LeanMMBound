@@ -1,0 +1,114 @@
+module
+
+public import FKLDim.Block
+public import FKLDimData.C0Reads
+public import FKLDimData.C1Reads
+public import FKLDimData.C2Reads
+
+@[expose] public section
+
+namespace MatrixBounds.Numeric.FKLDimData
+
+open FKL FKLCert FKLDim SuppliedDimensionRates
+open scoped BigOperators
+
+def keys009 : Nat := 0x5000000000002000000000000fffeea264fc0ffc9ca6b6e40ffc1045eb880ff01061414c0f5527bb945c0f3601b6cbf40efd319bffa80efd20a0c7cc0ed0dcfcd2780ed0322b6ab00ed029355ed80ed0163fe7f00ecf2094e31c0e940e982de40e8aee536a2c0e8aee006b2c0e8125ed55280e72fe6c93740e72fe6b62280e72fe6b52780e72fe6b19a00e72fe6aed6c0e72fe6ad5f40e6f6998a2900e6f6953c7280e6f693b7af80e56b4c478040e56b49e7f800e568f141aec0e568ee78d280e4dad967f140e39035ce7e40e37692ada300e343696a5140e32f21d923c0db1fef9de480d8411aaaa1c0d3b0ec474c80cb64ab8b69c0a10d4d1fd2c05ef2b2e02d40349b547496402c4f13b8b38027bee5555e4024e010621b801cd0de26dc401cbc9695aec01c896d525d001c6fca3181c01b2526980ec01a9711872d801a970ebe51401a94b61808001a94b3b87fc019096c48508019096ac38d8019096675d70018d01952a0c018d01951294018d0194e660018d0194ad88018d01949dd8018d01936c8c017eda12aad8017511ff94d4017511ac95d4016bf167d21c0130df6b1ce4012fe9c01810012fd6caa128012fcdd49550012f23032d880102df5f38340102ce64005800c9fe49340c00aad8446ba4000fef9ebeb40003efba147800036359491c0000115d9b04
+def corr009 : List Raw := [⟨0x200000000000, 0x1707175df9a81cde2ba23dfd5573f02c6e971b508a02184fe9000, false⟩, ⟨0x500000000000, 0x3f07b760a1fa02a994add01f39e60de40d9e8b16c2bbb1f06e800, false⟩]
+theorem check009 : check2 213 keys009 48 82 7 (leafRaw 9 [])
+    (windowRaw C0.tree C0.KW C0.MW 446 46 (windowRaw C1.tree C1.KW C1.MW 38 24 (windowRaw C2.tree C2.KW C2.MW 12 10 corr009))) = true := by decide +kernel
+theorem boundary009 : rationalLogValue (orderedBlockExpression ⟨9, by decide⟩) =
+    rationalLogValue (SuppliedDimensionRates.certificateWindow ⟨9, by decide⟩) + rawValue 44 220 corr009 :=
+  boundary_of_check SuppliedDimensionRates.SuppliedDimensionCertificateTable0.table SuppliedDimensionRates.SuppliedDimensionCertificateTable1.table SuppliedDimensionRates.SuppliedDimensionCertificateTable2.table C0.tree C1.tree C2.tree C0.KW C0.MW C1.KW C1.MW C2.KW C2.MW
+    C0.reads C1.reads C2.reads _ _ (leafRaw 9 []) (leaf_ordered ⟨9, by decide⟩)
+    446 492 38 62 12 22 (by decide) (by decide) (by decide) rfl
+    213 keys009 48 82 7 corr009 check009
+
+def keys010 : Nat := 0x5000000000002000000000000ffffffef0fc0ffdf71e0d0c0ffd3716c5900ff911b41cec0f8cfab45c7c0f685d4d99a00f2c4248da5c0f1c6fb4e6e40f0788fd1e6c0efc64e150440efb75b267580efb2152df1c0ed992a763f80ed8f4180bc00ec26d78f9cc0eb675df975c0eaeac9419c80eae70cbc9ec0ea9cc5f9bdc0e83f28685280e7bdc9769c40e731892014c0e6fb04f154c0e6fb00dca080e6fb00cb8c40e6fb00c76e80e6fb00bd9c40e6fb00bc1700e6769d280a80e6769d056980e6769ccf8940e5e0d91b1480e5e03d0016c0e5df5ad57980e5dec0da9d40e5cf2f976080e51fe41bcec0e3b1e32f9380e34471909e00e343aca5df80e341bb3ef8c0e32c868ab080e308ab45e5c0e308a5e1be80e17684f861c0dda541d549c0dba6f7f0ce00d21682c72040cf4757e19200cbc581182640ca9a9ff28080929f0fba4b806d60f045b4803565600d7f80343a7ee7d9c030b8a81e6e002de97d38dfc02459080f3200225abe2ab6401e897b079e401cf75a1e41801cf754ba1a401cd379754f801cbe44c107401cbc535a20801cbb8e6f62001c4e1cd06c801ae01be431401a30d0689f801a213f2562c01a20a52a86801a1fc2ffe9401a1f26e4eb801989633076c0198962fa9680198962d7f5801904ff43e9001904ff4263c01904ff3891801904ff3473c01904ff235f801904fb0eab4018ce76dfeb401842368963c017c0d797ad8015633a0642401518f3436140151536be63801498a2068a4013d9287063401270be7f44001266d589c080104dead20e401048a4d98a801039b1eafbc00f87702e19400e3904b191c00d3bdb725a40097a2b266600073054ba3840006ee4be3140002c8e93a70000208e1f2f4000000010f04
+def corr010 : List Raw := [⟨0x200000000000, 0x5abab63d364a2c460a95dff3c6cb3cae16b74af7d6e2fe6a94c00, false⟩, ⟨0x500000000000, 0x1b20848ca48e9a01a724666bd758c25713c5a78f56b610f7401000, false⟩]
+theorem check010 : check2 216 keys010 48 106 7 (leafRaw 10 [])
+    (windowRaw C0.tree C0.KW C0.MW 492 46 (windowRaw C1.tree C1.KW C1.MW 62 34 (windowRaw C2.tree C2.KW C2.MW 22 24 corr010))) = true := by decide +kernel
+theorem boundary010 : rationalLogValue (orderedBlockExpression ⟨10, by decide⟩) =
+    rationalLogValue (SuppliedDimensionRates.certificateWindow ⟨10, by decide⟩) + rawValue 44 220 corr010 :=
+  boundary_of_check SuppliedDimensionRates.SuppliedDimensionCertificateTable0.table SuppliedDimensionRates.SuppliedDimensionCertificateTable1.table SuppliedDimensionRates.SuppliedDimensionCertificateTable2.table C0.tree C1.tree C2.tree C0.KW C0.MW C1.KW C1.MW C2.KW C2.MW
+    C0.reads C1.reads C2.reads _ _ (leafRaw 10 []) (leaf_ordered ⟨10, by decide⟩)
+    492 538 62 96 22 46 (by decide) (by decide) (by decide) rfl
+    216 keys010 48 106 7 corr010 check010
+
+def keys011 : Nat := 0x5000000000002000000000000fffffff6d600fffffe1caf00fffe4b10b7c0fffe0e179700ffe1a3965b80ffabd0b706c0ff8dc03ae140ff71b7400840f569489de5c0f0712547ad00efa7c97f6140efa7c97ec680ed6fd6aa5d40ed45407d9240ecc4017964c0ec9d7f410cc0ec9d15347500ec9d11298440ec9d10b81e40ec949a0ecf80ec91f74adbc0ec9187afcac0ec917b7e4d00ec9151f4aa00ec5f794c5840ec1ba3d73340ec16c65dbb40ec16c65cc800ec16c65c2e40ec16c65b4fc0ec16c65a4200ec16c658c1c0eb5ee7e5f400eb5633d525c0eb458bdde340eb42ce1cf300eb36a5035a40eb3679486980eb2feb4eb080eb26ea5e08c0eb0f6815db00eb0e76efb840eabf151df300eabe39dbff40ea5450f7f6c0e86ac0d31f00e752a2175200e65f2ac7e880e60f6817b180e5d63cedcc40e5d4f4aee640e549c2c12f80e549c2bfe8c0e4af06a4cb80e4af06a37a00e40b40d8bac0e3d369666dc0e3d36636dd40e3d339cdc040e3d3166c54c0e3d264dca9c0e3d25ffe9180e32a2137df40e32a0af99440e3173c3f0fc0e2df0bd4a840e25c797e17c0e1e6fc114cc0e1d563a3c780e1d3fd69be80ddd55efe6c40c47d8e841e00b3fcd677acc09f8e9a7a1ac082fe7bf868007d018407980060716585e5404c03298853403b82717be200222aa10193c01e2c029641801e2a9c5c38801e1903eeb3401da38681e8401d20f42b57c01ce8c3c0f0401cd5f5066bc01cd5dec820c01c2da0016e801c2d9b2356401c2ce993ab401c2cc6323fc01c2c99c922c01c2c969992401bf4bf2745401b50f95c86001b50f95b34801ab63d4017401ab63d3ed0801a2b0b5119c01a29c31233c019f097e84e8019a0d538178018ad5de8ae0017953f2ce10015abaf0809401541c62400c01540eae20d0014f1891047c014f097ea250014d915a1f74014d014b14f8014c986b7968014c95afca5c014bd31e30d0014ba74221cc014a9cc2ada4014a1181a0c0013e939a73e4013e939a5be0013e939a4b04013e939a3d1c013e939a3380013e939a244c013e45c28ccc013a086b3a7c0136eae0b5600136e8481b300136e78503540136e08b52440136b65f130801362ef47e1c01362eed67bc01362eacb8b00136280bef340133bfe869b4012babf826dc012902955a2c0105836813980105836809ec00f8edab853000a96b7621a40008e48bff7c000723fc51ec000542f48f940001e5c69a4800001f1e869000001b4ef4840000001e35100000000092a0
+def corr011 : List Raw := [⟨0x200000000000, 0x1bbe139c9b9c23692cbaf34f5b62e16baf41f7054ded8ab954c00, false⟩, ⟨0x500000000000, 0xfb2c1e4777a68b50725c9589015dac65a6baf1cde104370d66800, false⟩]
+theorem check011 : check2 215 keys011 48 152 8 (leafRaw 11 [])
+    (windowRaw C0.tree C0.KW C0.MW 538 60 (windowRaw C1.tree C1.KW C1.MW 96 44 (windowRaw C2.tree C2.KW C2.MW 46 46 corr011))) = true := by decide +kernel
+theorem boundary011 : rationalLogValue (orderedBlockExpression ⟨11, by decide⟩) =
+    rationalLogValue (SuppliedDimensionRates.certificateWindow ⟨11, by decide⟩) + rawValue 44 220 corr011 :=
+  boundary_of_check SuppliedDimensionRates.SuppliedDimensionCertificateTable0.table SuppliedDimensionRates.SuppliedDimensionCertificateTable1.table SuppliedDimensionRates.SuppliedDimensionCertificateTable2.table C0.tree C1.tree C2.tree C0.KW C0.MW C1.KW C1.MW C2.KW C2.MW
+    C0.reads C1.reads C2.reads _ _ (leafRaw 11 []) (leaf_ordered ⟨11, by decide⟩)
+    538 598 96 140 46 92 (by decide) (by decide) (by decide) rfl
+    215 keys011 48 152 8 corr011 check011
+
+def keys012 : Nat := 0x5000000000002000000000000ec1cd14aa780ec1cd008f880ec1cd0067700ec1cd0062ac0ec1cd002e680ec1cd002cd40eb7d3cee51c0eb7cb5e30f40eb7b10af1a00eb494c3c84c0eb49465cc780eb4932cd1c80eb4930c016c0eb4930c013c0eb4930b97ec0e7107082e900e71043e76d80e710430134c0e3d342385540e3d338612e80e3d33337d500e3d32b907b40e3d2fe6283c0e3d2e6521380e3c57c4e5bc0e3c576080f00e3c569121a80e3c5442192c0e3c542dbec80e3c5160d31401c3ae9f2cec01c3abd2413801c3abbde6d401c3a96ede5801c3a89f7f1001c3a83b1a4401c2d19adec801c2d019d7c401c2cd46f84c01c2cccc82b001c2cc79ed1801c2cbdc7aac018efbcfecb4018efbc18928018ef8f7d170014b6cf46814014b6cf3fec4014b6cf3fe94014b6cd32e38014b6b9a3388014b6b3c37b401484ef50e60014834a1cf0c01482c311ae4013e32ffd32c013e32ffd198013e32ff9d54013e32ff9890013e32ff7078013e32eb5588
+def corr012 : List Raw := [⟨0x200000000000, 0x9e5f0ff805ae82ef2af54034dcea1f1aa185f6ca13ec98e702000, false⟩, ⟨0x500000000000, 0x5b72f0b4a1e141cf1c1644a2ee1e914647566073c672165136c000, false⟩]
+theorem check012 : check2 217 keys012 48 62 6 (leafRaw 12 [])
+    (windowRaw C0.tree C0.KW C0.MW 598 48 (windowRaw C1.tree C1.KW C1.MW 140 12 (windowRaw C2.tree C2.KW C2.MW 92 0 corr012))) = true := by decide +kernel
+theorem boundary012 : rationalLogValue (orderedBlockExpression ⟨12, by decide⟩) =
+    rationalLogValue (SuppliedDimensionRates.certificateWindow ⟨12, by decide⟩) + rawValue 44 220 corr012 :=
+  boundary_of_check SuppliedDimensionRates.SuppliedDimensionCertificateTable0.table SuppliedDimensionRates.SuppliedDimensionCertificateTable1.table SuppliedDimensionRates.SuppliedDimensionCertificateTable2.table C0.tree C1.tree C2.tree C0.KW C0.MW C1.KW C1.MW C2.KW C2.MW
+    C0.reads C1.reads C2.reads _ _ (leafRaw 12 []) (leaf_ordered ⟨12, by decide⟩)
+    598 646 140 152 92 92 (by decide) (by decide) (by decide) rfl
+    217 keys012 48 62 6 corr012 check012
+
+def keys013 : Nat := 0x5000000000002000000000000ffffc3db4800ffff59e5d7c0ff14db0f7d00fdfc1e43cd80f537e53043c0f35981324700efb8ec5dca00efb8ea53d5c0ee9e41178780ec9592945c80ec39b3afa0c0ec2a0ddba600ec2a0d7d1f40ec2a0d374540ec2a0bf6c540ebeadde60880ebbc67b68900ebbc678f3080ebbc631b2d80eb87df2cc280eaf69c6dac40eaf1432f2340eacfbab48f00eacdda4bd8c0e9fbdc69b240e9e6a2301fc0e9e69d1cb900e9e3984db040e9dc41a39f80e9d2d4f29900e9c6f038b340e9c6eb16ffc0e9c3e53a3a80e9b312001e40e96ffec743c0e83bbd4eb280e78697cef840e771099c1400e760b2c30880e760af33b800e5def1942740e5db69439c40e58784f05140e58782310880e5872e5b7480e5357e320580e53579e21800e5264dab62c0e520c2eb5ac0e4e31dc7ca00e4e31963b4c0e4dccde3dec0e4dcc65b8000e4dcc61c2780e3e6bd748e00e3e05342e800e3bb9b1ebec0e3bb8d119f00e3bb873d6440e3bb837e60c0e3bb82d71800e3bb80a66c40e31a9bc67900e31a98ec1a00e31a41db4b80e012eaafe040d7c28a1d9200d09f7ab18780cbe75a063240a9b624b9b840a383edde44c05c7c1221bb405649db4647c03418a5f9cdc02f60854e7880283d75e26e001fed15501fc01ce5be24b4801ce56713e6001ce5643987001c447f5993c01c447d28e8001c447c819f401c4478c29bc01c4472ee61001c4464e141401c1facbd18001c19428b72001b2339e3d8801b2339a480001b23321c21401b1ce69c4b401b1ce23836001adf3d14a5401ad9b2549d401aca861de8001aca81cdfa801a78d1a48b801a787dcef7801a787b0faec01a2496bc63c01a210e6bd8c0189f50cc4800189f4d3cf780188ef663ec001879683107c017c442b14d8016900138bc40164cedffe1c0163c1ac5c580163914e9004016390fc74cc0162d2b0d67001623be5c6080161c67b24fc0161962e3470016195dcfe040160423964dc0153225b427401530454b7100150ebcd0dcc01509639253c0147820d33d8014439ce4d28014439870cf8014439849770014152219f78013d5f4093ac013d5f2c8bac013d5f282e0c013d5f2245a0013c64c505f40136a6d6ba3801161bee87880104715ac2a40104713a236000ca67ecdb9000ac81acfbc400203e1bc328000eb24f083000000a61a284000003c24b80
+def corr013 : List Raw := [⟨0x200000000000, 0x7a6501b25fc1da7e4d67e3e9f937a6313e09ade074185eca28000, false⟩, ⟨0x500000000000, 0x7039c2a924c19f0e9295a9c609d7c917849cf8a67474db13462000, false⟩]
+theorem check013 : check2 218 keys013 48 144 8 (leafRaw 13 [])
+    (windowRaw C0.tree C0.KW C0.MW 646 60 (windowRaw C1.tree C1.KW C1.MW 152 34 (windowRaw C2.tree C2.KW C2.MW 92 48 corr013))) = true := by decide +kernel
+theorem boundary013 : rationalLogValue (orderedBlockExpression ⟨13, by decide⟩) =
+    rationalLogValue (SuppliedDimensionRates.certificateWindow ⟨13, by decide⟩) + rawValue 44 220 corr013 :=
+  boundary_of_check SuppliedDimensionRates.SuppliedDimensionCertificateTable0.table SuppliedDimensionRates.SuppliedDimensionCertificateTable1.table SuppliedDimensionRates.SuppliedDimensionCertificateTable2.table C0.tree C1.tree C2.tree C0.KW C0.MW C1.KW C1.MW C2.KW C2.MW
+    C0.reads C1.reads C2.reads _ _ (leafRaw 13 []) (leaf_ordered ⟨13, by decide⟩)
+    646 706 152 186 92 140 (by decide) (by decide) (by decide) rfl
+    218 keys013 48 144 8 corr013 check013
+
+def keys014 : Nat := 0x5000000000002000000000000ffffc5bfe640fffdb9afe480fffd1a7aa840fe2fb884a280f121995dd5c0efc066f2de80efc066cca240ef412065e680eecdc16c3a00ecdf12263400ec84490fbe40ec2f8b990f40eb7b5e33f900eb7b5e273340eb7b5cdcfe80eb7b5cdacd00eb7b5cda1fc0eb7b5cd9de80eaee6fa8b980eaee5e72ef80ead9fef0db80ead9e49d6c80e9f9d7c78fc0e9f9b8a53c80e9f9b0025c40e9f9afce8980e9f9af5b1800e9f9ae82bc00e7e897acb7c0e7e86e623580e7dcdfb7bdc0e7dca5ce7680e7c3d4a1a300e7c3c25c5680e7c3c2553100e7c39a8a1600e7c38844b2c0e7c3883d7900e7c262efcb80e7c228d32980e7a6772e4b40e74f87781480e6a56ce94d00e5d3ff86e740e5cddacd2800e573b6f287c0e573b44550c0e573b3dda180e54840554e00e548404b3a80e54840084280e5411b19fc40e53fc9233c80e52db4b52340e52db4642000e505079b3100e505074961c0e3d6dad0c080e3d680b4fe00e3d571d9b140e3d407a65700e3d37d50fc00e3d37ac1c500e3d36249de80e3d35d3d1840e368ce59eec0e368cb9b2d40e368cb30d5c0dfc5c1fe9c80d1c061af66002e3f9e509a00203a3e0163801c9734cf2a401c973464d2c01c9731a611401c2ca2c2e7c01c2c9db621801c2c853e3b001c2c82af04001c2bf859a9001c2a8e264ec01c297f4b02001c29252f3f801afaf8b69e401afaf864cf001ad24b9be0001ad24b4adcc01ac036dcc3801abee4e603c01ab7bff7bd801ab7bfb4c5801ab7bfaab2001a8c4c225e801a8c4bbaaf401a8c490d78401a322532d8001a2c007918c0195a9316b30018b07887eb80185988d1b4c0183dd72cd680183d9d103480183c77c28700183c77bb4d40183c6575ea00183c3daacf00183c3da3a980183c2b5e5d0018235a3189801823204842401817919dca801817685348401606517d4400160650a4e80016065031768016064ffda3c01606475ac38016062838704015261b6293801526010f24801511a18d10801511905746801484a32621801484a325e0401484a32533001484a32301801484a1d8ccc01484a1cc070013d07466f0c0137bb6f041c01320edd9cc0011323e93c60010bedf9a1980103f99335dc0103f990d21800ede66a22a4001d0477b5d800002e58557c0000246501b8000003a4019c
+def corr014 : List Raw := [⟨0x200000000000, 0x6d5056479d17ccad58ce65bee5d217288ba5b02c7641b81109000, false⟩, ⟨0x500000000000, 0x89c9411638e4a98c1a5b761edac4f74d14196a8e064cc6e2a81000, false⟩]
+theorem check014 : check2 218 keys014 48 142 8 (leafRaw 14 [])
+    (windowRaw C0.tree C0.KW C0.MW 706 60 (windowRaw C1.tree C1.KW C1.MW 186 44 (windowRaw C2.tree C2.KW C2.MW 140 36 corr014))) = true := by decide +kernel
+theorem boundary014 : rationalLogValue (orderedBlockExpression ⟨14, by decide⟩) =
+    rationalLogValue (SuppliedDimensionRates.certificateWindow ⟨14, by decide⟩) + rawValue 44 220 corr014 :=
+  boundary_of_check SuppliedDimensionRates.SuppliedDimensionCertificateTable0.table SuppliedDimensionRates.SuppliedDimensionCertificateTable1.table SuppliedDimensionRates.SuppliedDimensionCertificateTable2.table C0.tree C1.tree C2.tree C0.KW C0.MW C1.KW C1.MW C2.KW C2.MW
+    C0.reads C1.reads C2.reads _ _ (leafRaw 14 []) (leaf_ordered ⟨14, by decide⟩)
+    706 766 186 230 140 176 (by decide) (by decide) (by decide) rfl
+    218 keys014 48 142 8 corr014 check014
+
+def keys015 : Nat := 0x5000000000002000000000000eded388ba700eded0fbea240edecc93170c0ec195c0b55c0ec1940995300ec18858b2d00eb7bb3e69b80eb7bb3df2f00eb7bb3df0900eb7bb3ded1c0eb7bb062c940eb7bb0594f00e9b36430c4c0e9b3641f7100e9b3605705c0e9b35ef31380e9b35ef0bcc0e9b35eef76c0e94a477345c0e94a463ea800e94a44b95880e7d805b63ac0e7d8058e5d80e79ba8c0a800e400c30e6980e400ae838780e400abb8d200e400aadd2a80e400a7c6c780e400a658be801bff59a741801bff583938801bff5522d5801bff54472e001bff517c78801bff3cf196801864573f58001827fa71a2801827fa49c54016b5bb46a78016b5b9c1580016b5b88cba40164ca1108940164ca10f4340164ca10cec80164c9fa8fa40164c9be08f00164c9bcf3b4014844fa6b10014844f9d36c014844c212e4014844c20f70014844c20d10014844c19648013e77a74d30013e6bf66ad0013e6a3f4aa40121336ce8f401212f0415dc01212c774590
+def corr015 : List Raw := [⟨0x200000000000, 0x95c63e81ef4f58bd3da575692fba79ca4bd0b8fd1b58c65d70000, false⟩, ⟨0x500000000000, 0x5a21c67f12327a6c8560ca089a1fb785242fc3a72ebdc791e3c000, false⟩]
+theorem check015 : check2 217 keys015 48 62 6 (leafRaw 15 [])
+    (windowRaw C0.tree C0.KW C0.MW 766 48 (windowRaw C1.tree C1.KW C1.MW 230 0 (windowRaw C2.tree C2.KW C2.MW 176 12 corr015))) = true := by decide +kernel
+theorem boundary015 : rationalLogValue (orderedBlockExpression ⟨15, by decide⟩) =
+    rationalLogValue (SuppliedDimensionRates.certificateWindow ⟨15, by decide⟩) + rawValue 44 220 corr015 :=
+  boundary_of_check SuppliedDimensionRates.SuppliedDimensionCertificateTable0.table SuppliedDimensionRates.SuppliedDimensionCertificateTable1.table SuppliedDimensionRates.SuppliedDimensionCertificateTable2.table C0.tree C1.tree C2.tree C0.KW C0.MW C1.KW C1.MW C2.KW C2.MW
+    C0.reads C1.reads C2.reads _ _ (leafRaw 15 []) (leaf_ordered ⟨15, by decide⟩)
+    766 814 230 230 176 188 (by decide) (by decide) (by decide) rfl
+    217 keys015 48 62 6 corr015 check015
+
+def keys016 : Nat := 0x5000000000002000000000000fffaf2988600fffa0a606e40fff4b510c4c0fff035f923c0ff6f224dff00efbac34ff640efbac2f8a600ef6f45348e40ee3efbfc6140ed4cb6693000ed4cb594f1c0ed4cb23e72c0ed4c96fed6c0ecd043cc3080ecd0209b9040ecd00af46280ec8b7a0b9380ec657a1bfb00eaef7491d7c0eaef6a232c80eacb01078f00eacaf210eb80e9b4f6e0da80e9b4f6d6fac0e9b4f6d22a00e9b4f6d19080e9b4f6d0b480e9b4f6d07800e8cabc6af200e8cabbc610c0e8c8254e9a00e7b831ffff00e78ff55193c0e7547729b880e6948c5bc440e6947eff1d40e6946e259bc0e69460c924c0e640e01e3cc0e5f73367bbc0e5e35bd05d80e5e34396b300e5e31a8d0600e5cc17a6b3c0e5cc17906140e5cc173ea780e56394324d00e5621576a440e561d6c12e80e544ddac09c0e544db24b400e544da54fb80e52ff4e71c40e52ff42e9780e4ee0dfe1dc0e4ee0d42d780e4c64af6b380e40a1ca42bc0e40877d177c0e408462d4c40e3d3b6892540e3d3b3fdae80e3d3b32c2000e3d354f86f00e3d3467dac00e3ccc0ecb300e3c273c52bc0e38647644800d802a6e9d10027fd59162f001c79b89bb8001c3d8c3ad4401c333f134d001c2cb98254001c2cab0791001c2c4cd3e0001c2c4c0251801c2c4976dac01bf7b9d2b3c01bf7882e88401bf5e35bd4401b39b5094c801b11f2bd28801b11f201e2401ad00bd168801ad00b18e3c01abb25ab04801abb24db4c001abb2253f6401a9e293ed1801a9dea895bc01a9c6bcdb3001a33e8c158801a33e86f9ec01a33e8594c401a1ce572fa001a1cbc694d001a1ca42fa2801a08cc98444019bf1fe1c340196b9f36db40196b91da6440196b8100e2c0196b73a43bc018ab88d6478018700aae6c401847ce0001001737dab1660017354439ef40173543950e00164b092f8800164b092f4b80164b092e6f80164b092dd600164b09290540164b091f258015350def14801534fef87100151095dcd38015108b6e2840139a85e40500137485f46c80132ff50b9d80132fdf646fc0132fbc33cf8012b36901294012b34dc18d4012b34a6b0e4012b34996d00011c104039ec01090bacb71c010453d075a0010453cb009c00090ddb20100000fca06dc40000b4aef3b400005f59f91c000050d677a0
+def corr016 : List Raw := [⟨0x200000000000, 0x29256c8e930fb7b3b7e1364db1cadd0668ea8668a4b796c119800, false⟩, ⟨0x500000000000, 0x316fe8d627822ae4b2c00a7ff593209961c7c87765f8a05aaeb800, false⟩]
+theorem check016 : check2 216 keys016 48 140 8 (leafRaw 16 [])
+    (windowRaw C0.tree C0.KW C0.MW 814 48 (windowRaw C1.tree C1.KW C1.MW 230 44 (windowRaw C2.tree C2.KW C2.MW 188 46 corr016))) = true := by decide +kernel
+theorem boundary016 : rationalLogValue (orderedBlockExpression ⟨16, by decide⟩) =
+    rationalLogValue (SuppliedDimensionRates.certificateWindow ⟨16, by decide⟩) + rawValue 44 220 corr016 :=
+  boundary_of_check SuppliedDimensionRates.SuppliedDimensionCertificateTable0.table SuppliedDimensionRates.SuppliedDimensionCertificateTable1.table SuppliedDimensionRates.SuppliedDimensionCertificateTable2.table C0.tree C1.tree C2.tree C0.KW C0.MW C1.KW C1.MW C2.KW C2.MW
+    C0.reads C1.reads C2.reads _ _ (leafRaw 16 []) (leaf_ordered ⟨16, by decide⟩)
+    814 862 230 274 188 234 (by decide) (by decide) (by decide) rfl
+    216 keys016 48 140 8 corr016 check016
+
+def keys017 : Nat := 0x5000000000002000000000000fffb22652580fff9ee501e00ffee47b7a9c0f00c2c20f4c0efa3ef15a2c0efa3de021800ee7c8172b840ee7be91bc3c0ed6f969479c0ed6f365bd2c0ed6e49cfeb80ecae3b591a00ecae350196c0ecadb9384dc0eca80e2d63c0e8eb65b9b7c0e8eb612c9480e8eb5d62b980e890ab24f400e8902aee15c0e869e33f14c0e869e3362500e869e331c980e869e32d4f40e869e32cc200e869e32bd5c0e80915e326c0e60f4be1e400e60f4a755340e60f4894f900e60f47286dc0e5cc5f0b4900e5cc5ef04600e5cc5e8d3d00e5b257be3ec0e5a97d4ff040e5a824e58300e578117d40c0e56d0d6c7840e55fb67fec80e55c27f27080e5366dbcd2c0e53669fa80c0e53668f43dc0e520460216c0e3da2016fa00e3d9bfaaad40e3d361c0e880e3d35df6b140e3d35cee4ac0e3cd46e95140e281263fa9c01d7ed9c056401c32b916aec01c2ca311b5401c2ca2094ec01c2c9e3f17801c26405552c01c25dfe906001adfb9fde9401ac9970bc2401ac996057f401ac992432d401aa3d80d8f801aa0498013801a92f29387c01a87ee82bf401a57db1a7d001a5682b00fc01a4da841c1401a33a172c3001a33a10fba001a33a0f4b70019f0b8d7924019f0b76b070019f0b58aacc019f0b41e1c0017f6ea1cd94017961cd42a4017961cd33e0017961cd2b0c017961cce368017961cc9db0017961cc0eb40176fd511ea40176f54db0c001714a29d468017149ed36b8017149a4648401357f1d29c40135246c7b2401351cafe69401351c4a6e6001291b63014801290c9a42d401290696b8640118416e43c4011837e8d47c0105c21fde800105c10ea5d400ff3d3df0b400011b8485640000611afe2000004dd9ada8
+def corr017 : List Raw := [⟨0x200000000000, 0x5ea1735ef88df9be23c2521ffd7e5da89de2df01dc9170dd60000, false⟩, ⟨0x500000000000, 0x25009ca316c3b68d5457c06753a9ca6fe64b0bb2910107e2320000, false⟩]
+theorem check017 : check2 216 keys017 48 106 7 (leafRaw 17 [])
+    (windowRaw C0.tree C0.KW C0.MW 862 50 (windowRaw C1.tree C1.KW C1.MW 274 28 (windowRaw C2.tree C2.KW C2.MW 234 26 corr017))) = true := by decide +kernel
+theorem boundary017 : rationalLogValue (orderedBlockExpression ⟨17, by decide⟩) =
+    rationalLogValue (SuppliedDimensionRates.certificateWindow ⟨17, by decide⟩) + rawValue 44 220 corr017 :=
+  boundary_of_check SuppliedDimensionRates.SuppliedDimensionCertificateTable0.table SuppliedDimensionRates.SuppliedDimensionCertificateTable1.table SuppliedDimensionRates.SuppliedDimensionCertificateTable2.table C0.tree C1.tree C2.tree C0.KW C0.MW C1.KW C1.MW C2.KW C2.MW
+    C0.reads C1.reads C2.reads _ _ (leafRaw 17 []) (leaf_ordered ⟨17, by decide⟩)
+    862 912 274 302 234 260 (by decide) (by decide) (by decide) rfl
+    216 keys017 48 106 7 corr017 check017
+
+end MatrixBounds.Numeric.FKLDimData

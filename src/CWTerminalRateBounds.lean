@@ -1,4 +1,11 @@
-import CWTerminalExtraction
+module
+
+public import CWTerminalExtraction
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Quantitative lower bounds for the terminal retention exponent make its
 shared-prime and Behrend losses uniformly subexponential. -/

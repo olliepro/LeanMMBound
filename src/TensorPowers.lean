@@ -1,6 +1,13 @@
-import PolynomialDegeneration
-import CoppersmithWinograd
-import Mathlib.Algebra.BigOperators.Fin
+module
+
+public import PolynomialDegeneration
+public import CoppersmithWinograd
+public import Mathlib.Algebra.BigOperators.Fin
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Tensor powers in word bases, including explicit polynomial certificates for
 the eightfold CW source used by the numerical parameter file. -/

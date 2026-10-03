@@ -1,5 +1,12 @@
-import CWPrescribedGraph
-import PairingConcentration
+module
+
+public import CWPrescribedGraph
+public import PairingConcentration
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Every prescribed edge maps the same labelled child target into the common
 parent tensor. The maps preserve coefficients, child types, and coarse indices. -/

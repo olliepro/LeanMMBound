@@ -1,5 +1,12 @@
-import WeightedSectorAllocation
-import CoordinateRestriction
+module
+
+public import WeightedSectorAllocation
+public import CoordinateRestriction
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Exact strategy allocation also covers zero-population parents. This lets
 the full original source label set remain unchanged between stages. -/

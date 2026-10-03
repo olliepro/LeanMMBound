@@ -1,4 +1,11 @@
-import SuppliedRootFineParent4Integers
+module
+
+public import SuppliedRootFineParent4Integers
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Complete actual parent4 probability laws justify sparse independent integer-vector checks. -/
 namespace MatrixBounds.Numeric.SuppliedRootFineParent4Integers

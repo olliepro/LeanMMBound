@@ -1,6 +1,13 @@
-import SequentialExtraction
-import HashEdges
-import TypePartition
+module
+
+public import SequentialExtraction
+public import HashEdges
+public import TypePartition
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Actual independent-axis hash restrictions, followed by coarse-X ownership.
 Completeness refers to a finite list of actual support edges, rather than to a
@@ -32,7 +39,7 @@ def hashCertificate [Fintype X] [Fintype Y] [Fintype Z]
     (mask (fun x => decide (hashX seed.2.1 seed.1 (coarseX x) ∈ buckets)))
     (mask (fun y => decide (hashY seed.2.1 seed.2.2 seed.1 (coarseY y) ∈ buckets)))
     (mask (fun z => decide (hashZ seed.2.1 seed.2.2 seed.1 total (coarseZ z) ∈ buckets)))
-  simpa only [restrict_mask, decide_eq_true_eq, hashedTensor, Empirical.acceptedTensor] using restricted
+  simpa only [restrict_mask, decide_eq_true_eq, hashedTensor, Empirical.acceptedTensor] using! restricted
 
 omit [NeZero (2 : F)] in
 /-- A nonzero hashed coefficient comes from the original tensor and has three retained hashes. -/

@@ -1,7 +1,14 @@
-import CWAxisPermutations
-import CoordinateRestriction
-import PhysicalRoles
-import ShapePermutations
+module
+
+public import CWAxisPermutations
+public import CoordinateRestriction
+public import PhysicalRoles
+public import ShapePermutations
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! All six physical axis orders act on the actual CW windowed tensors with
 the correspondingly permuted shape and complete fine probability laws. -/

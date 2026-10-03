@@ -1,6 +1,13 @@
-import CWActualSelection
-import CWRepairedTargets
-import CWTargetConcentration
+module
+
+public import CWActualSelection
+public import CWRepairedTargets
+public import CWTargetConcentration
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Finite extraction of complete independent child tensors from one available
 CW parent interface. Seed selection, physical restrictions, concentration, and
@@ -39,7 +46,7 @@ theorem selected_holes_bound [Nonempty P] [Fact prime.Prime]
   apply data.targetHoles_windowed_bound symmetric seed edge axis axisClass profile _ scale
     (parentRepairConstant length multiplier tolerance)
     (data.parentHole_bound symmetric edge profile representative positive scale multiplier population)
-  simpa only [parentHole, not_not, windowCollision] using collisions.le
+  simpa only [parentHole, not_not, windowCollision] using! collisions.le
 
 /-- A nonempty prescribed graph yields complete independent child copies with explicit finite retention and repair costs.
 The source is the available parent-window tensor; the theorem does not assume

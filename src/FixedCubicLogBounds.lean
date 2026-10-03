@@ -1,5 +1,12 @@
-import FixedIntegerIntervals
-import CubicParameterWitness
+module
+
+public import FixedIntegerIntervals
+public import CubicParameterWitness
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The small logarithm polynomial is evaluated entirely with integers. These
 proofs connect the integer arithmetic to the previously proved analytic bounds. -/

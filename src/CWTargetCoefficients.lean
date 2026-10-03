@@ -1,4 +1,11 @@
-import CWTargetOwnership
+module
+
+public import CWTargetOwnership
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Actual mapped target coefficients pass the coarse, hash, pooled, and parent
 window restrictions whenever the selected edge and its three parts are retained. -/

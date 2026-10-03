@@ -1,5 +1,12 @@
-import LocalLogBounds
-import ScaledLogTrace
+module
+
+public import LocalLogBounds
+public import ScaledLogTrace
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! A proved logarithm table supplies a second range reduction. The remaining
 small rational ratio requires only a short, rigorously bounded local series. -/

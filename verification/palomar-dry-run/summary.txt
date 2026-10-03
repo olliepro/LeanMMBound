@@ -1,0 +1,13 @@
+cache rc=0 241 s; total 241 s
+Completed successfully in 36259 ms!
+cache: 240.79 s wall, 970968 KB peak RSS (largest process)
+build rc=0 1487 s; total 1728 s
+Build completed successfully (4762 jobs).
+build: 1486.36 s wall, 2465456 KB peak RSS (largest process)
+comparator rc=0 4558 s; total 6286 s
+Your solution is okay!
+comparator: 4558.08 s wall, 1591028 KB peak RSS (largest process)
+TOTAL 6286 s
+                      
+                      
+                      

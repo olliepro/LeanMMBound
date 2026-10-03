@@ -1,5 +1,12 @@
-import CWRootTargetOwnership
-import CWCompatibleCollisions
+module
+
+public import CWRootTargetOwnership
+public import CWCompatibleCollisions
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Conditional collision counts for actual root active edges, using the same
 shared hash throughout coarse and fine ownership. -/

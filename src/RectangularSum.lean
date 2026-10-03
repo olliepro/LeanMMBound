@@ -1,5 +1,12 @@
-import RectangularBatches
-import AsymptoticSum
+module
+
+public import RectangularBatches
+public import AsymptoticSum
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Rectangular asymptotic sum inequality for identical summands. Three cyclic
 orientations produce square products through explicit tensor coordinate maps. -/

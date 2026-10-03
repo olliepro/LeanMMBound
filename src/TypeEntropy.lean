@@ -1,6 +1,13 @@
-import TypeCounting
-import FactorialEntropy
-import TypeDenominators
+module
+
+public import TypeCounting
+public import FactorialEntropy
+public import TypeDenominators
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Explicit entropy estimates for actual exact-type cardinalities, including
 heterogeneous products. All error terms and profile feasibility are retained. -/

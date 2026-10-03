@@ -1,5 +1,12 @@
-import FiniteSelection
-import Mathlib.Logic.Equiv.Prod
+module
+
+public import FiniteSelection
+public import Mathlib.Logic.Equiv.Prod
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Integer hole bounds lift from individual coordinates to their entire
 heterogeneous product, without division or independence assumptions on holes. -/

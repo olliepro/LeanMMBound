@@ -1,7 +1,17 @@
-import SuppliedBatchWidths
-import SuppliedCanonicalStages
-import SuppliedInitialPhase
-import FiniteTensorFamily
+module
+
+public import SuppliedBatchWidths
+public import SuppliedCanonicalStages
+public import SuppliedInitialPhase
+public import FiniteTensorFamily
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
+
+-- v4.35 port: instance terms for the nested sixfold variable types exceed the default size 128.
+set_option synthInstance.maxSize 4096
 
 /-! Actual finite tensors for every intermediate state of one supplied batch.
 Each waiting factor retains the tolerance at which it was first extracted. -/

@@ -1,4 +1,11 @@
-import SuppliedDimensionSourceExpressions
+module
+
+public import SuppliedDimensionSourceExpressions
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Actual complete matrix volumes, retaining every original tensor factor,
 equal the exact finite source logarithm expression at the reserved root scale. -/

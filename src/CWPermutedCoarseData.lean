@@ -1,7 +1,14 @@
-import CWCoarseData
-import CWShapePermutations
-import CWTargetMaps
-import CWProfileLaws
+module
+
+public import CWCoarseData
+public import CWShapePermutations
+public import CWTargetMaps
+public import CWProfileLaws
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Actual symmetric split data and nominal parent laws transport through
 all physical coordinate orders at arbitrary recursion lengths. -/

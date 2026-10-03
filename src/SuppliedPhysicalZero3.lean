@@ -1,7 +1,14 @@
-import ZeroWindowOrientation
-import SuppliedZeroShapeBindings
-import SuppliedZeroExtractions
-import SuppliedHigherLaws
+module
+
+public import ZeroWindowOrientation
+public import SuppliedZeroShapeBindings
+public import SuppliedZeroExtractions
+public import SuppliedHigherLaws
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Actual source zero-row tensors in their physical orientation yield the
 specified matrix factors, preserving the original exact dimension rate. -/

@@ -1,4 +1,11 @@
-import CWActiveCollisions
+module
+
+public import CWActiveCollisions
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Actual fine-ownership collision probabilities, counted over prescribed
 graph edges and then bounded by the full exact-type compatibility degree. -/

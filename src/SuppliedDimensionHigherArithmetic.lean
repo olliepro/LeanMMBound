@@ -1,4 +1,11 @@
-import SuppliedDimensionRootLookup
+module
+
+public import SuppliedDimensionRootLookup
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Balanced original hierarchy metadata preserves the full zero3 source population. -/
 namespace MatrixBounds.Numeric.SuppliedDimensionRates

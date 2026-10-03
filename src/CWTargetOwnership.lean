@@ -1,5 +1,12 @@
-import CWTargetMaps
-import CWWindowedOwners
+module
+
+public import CWTargetMaps
+public import CWWindowedOwners
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Exact ownership predicates on the common child target. Parent acceptance
 depends only on fine parts, and competitor events are the actual active graph
@@ -89,7 +96,8 @@ theorem target_ownerX_iff (data : SplitRestrictionData length) (symmetric : data
     (data.targetAxis_mod symmetric edge q Shape.x (fun _ _ => rfl) data.fineX entries) active unique
   have full := data.targetAxis_full symmetric edge q Shape.x (fun _ _ => rfl) data.fineX entries
   rw [windowOwnerX, refineOwner_eq_iff, ownerX, refineOwner_eq_iff]
-  simp only [owner, edge.property, full, true_and, and_true, targetAxis_fine, parentHole, not_not]
+  simp only [owner, edge.property, full, true_and, and_true,
+    data.targetAxis_fine symmetric edge q Shape.x (fun _ _ => rfl) data.fineX entries, parentHole, not_not]
 
 omit [NeZero (2 : ZMod prime)] in
 /-- The final Y owner deletes precisely the parent holes and the actual compatible competitors. -/
@@ -107,7 +115,8 @@ theorem target_ownerY_iff (data : SplitRestrictionData length) (symmetric : data
   have result := windowed_unique_owner_iff (data.compatibleY q seed) (data.fullY q)
     (fun entries => accept (parentFine entries)) edge.val _ present
     (data.targetAxis_full symmetric edge q Shape.y (fun _ _ => rfl) data.fineY entries)
-  simpa only [windowOwnerY, compatibleY, targetHoles, parentHole, fineCollision, targetAxis_fine] using result
+  simpa only [windowOwnerY, compatibleY, targetHoles, parentHole, fineCollision,
+    data.targetAxis_fine symmetric edge q Shape.y (fun _ _ => rfl) data.fineY entries] using result
 
 omit [NeZero (2 : ZMod prime)] in
 /-- The final Z owner has the corresponding exact parent-or-collision hole predicate. -/
@@ -125,7 +134,8 @@ theorem target_ownerZ_iff (data : SplitRestrictionData length) (symmetric : data
   have result := windowed_unique_owner_iff (data.compatibleZ q seed) (data.fullZ q)
     (fun entries => accept (parentFine entries)) edge.val _ present
     (data.targetAxis_full symmetric edge q Shape.z (fun _ _ => rfl) data.fineZ entries)
-  simpa only [windowOwnerZ, compatibleZ, targetHoles, parentHole, fineCollision, targetAxis_fine] using result
+  simpa only [windowOwnerZ, compatibleZ, targetHoles, parentHole, fineCollision,
+    data.targetAxis_fine symmetric edge q Shape.z (fun _ _ => rfl) data.fineZ entries] using result
 
 end
 end MatrixBounds.Tensor.CW.SplitRestrictionData

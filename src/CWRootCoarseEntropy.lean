@@ -1,5 +1,12 @@
-import CWRootDegrees
-import FiniteMaximumRates
+module
+
+public import CWRootDegrees
+public import FiniteMaximumRates
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The complete marginal graph, including all nonprescribed competitors, has
 the required uniform coarse-degree entropy bound. Gibbs potentials supply the

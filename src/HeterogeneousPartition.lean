@@ -1,4 +1,11 @@
-import HeterogeneousRegrouping
+module
+
+public import HeterogeneousRegrouping
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Partition a labelled tensor product into active and waiting factors by
 explicit coordinate maps, then restore all original labels. -/

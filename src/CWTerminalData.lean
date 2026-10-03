@@ -1,5 +1,12 @@
-import CWTerminalCoarse
-import CWOneLetterData
+module
+
+public import CWTerminalCoarse
+public import CWOneLetterData
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Integer terminal profiles are instantiated as actual CW extraction data,
 with feasible graph edges and all three exact child interfaces constructed. -/

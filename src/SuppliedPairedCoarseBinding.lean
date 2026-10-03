@@ -1,4 +1,11 @@
-import SuppliedPairedCoarseExpressions
+module
+
+public import SuppliedPairedCoarseExpressions
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The complete supplied paired coarse expressions are the actual stage rates,
 including every positive source label and every original role allocation. -/

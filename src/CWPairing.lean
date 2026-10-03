@@ -1,5 +1,12 @@
-import CWRegroup
-import HeterogeneousProducts
+module
+
+public import CWRegroup
+public import HeterogeneousProducts
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Regroup all child factors into actual CW parents. A bijection of labelled
 positions records every slot, including slots from different recursion levels. -/

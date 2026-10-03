@@ -1,5 +1,12 @@
-import CWWindowedSource
-import RefinedOwnership
+module
+
+public import CWWindowedSource
+public import RefinedOwnership
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Include parent-interface membership in each final CW owner map, so its
 holes are exactly the union of parent-window failures and ownership collisions. -/

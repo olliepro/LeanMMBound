@@ -1,6 +1,13 @@
-import SuppliedPathStages
-import SuppliedHigherOrbitMass
-import OrbitLogExpressions
+module
+
+public import SuppliedPathStages
+public import SuppliedHigherOrbitMass
+public import OrbitLogExpressions
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Complete exact fine-axis source expressions for the original paired stages. -/
 namespace MatrixBounds.Numeric.SuppliedPairedFine

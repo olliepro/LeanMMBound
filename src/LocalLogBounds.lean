@@ -1,4 +1,11 @@
-import RoundedLogSeries
+module
+
+public import RoundedLogSeries
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! A smaller proved series-parameter radius permits a much shorter logarithm
 calculation after a second, tabulated range reduction. -/
@@ -55,6 +62,8 @@ theorem localLogBounds_sound (input radius : ℚ) (terms precision : ℕ)
     push_cast
     constructor <;> linarith [analytic.1, analytic.2]
   have result := Interval.add_sound series remainder
-  convert result using 1; ring
+  convert result using 1
+  · rfl
+  · ring
 
 end MatrixBounds.Numeric

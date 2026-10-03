@@ -1,4 +1,11 @@
-import DyadicData
+module
+
+public import DyadicData
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Exact support and complement-symmetry checks for the split distributions
 in the supplied numerical certificate. -/

@@ -1,5 +1,12 @@
-import SuppliedFinitePipeline
-import SuppliedSourceCertificate
+module
+
+public import SuppliedFinitePipeline
+public import SuppliedSourceCertificate
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! All fixed source batches feed the actual initial tensor of the finite
 pipeline, with their original CW polynomial certificate and exact root losses. -/
@@ -61,7 +68,7 @@ theorem eventual_extraction (batches : ℕ) {error : ℝ} (errorPositive : 0 < e
     convert bound using 1; congr 1; ring
   · have bound := exponential_power_upper (exponential_power_upper overhead 6) batches
     convert bound using 1; congr 1; ring
-  · simpa only [one_mul] using combined.trans
+  · simpa only [one_mul] using! combined.trans
       ((initialRestriction (K := K) (initial batches root positive) (RepairRates.scale k)).context.batch (I := Fin ((copies^6)^batches)))
 
 end

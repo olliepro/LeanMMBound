@@ -1,4 +1,11 @@
-import CWWindowEntropy
+module
+
+public import CWWindowEntropy
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The fine-degree entropy tolerance is chosen once, before the population,
 split profile, or child profiles. This quantifier order keeps repair constants

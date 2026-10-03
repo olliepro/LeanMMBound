@@ -1,6 +1,13 @@
-import FiniteOrbitData
-import Mathlib.Tactic.FieldSimp
-import Mathlib.Tactic.Linarith
+module
+
+public import FiniteOrbitData
+public import Mathlib.Tactic.FieldSimp
+public import Mathlib.Tactic.Linarith
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Exact rational orbit masses produce normalized integer full-word profiles
 at a common expanded denominator, as required by actual zero-leaf extraction. -/

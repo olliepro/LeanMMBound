@@ -1,5 +1,12 @@
-import CWMixedOwnershipData
-import CWMixedCollisionCounts
+module
+
+public import CWMixedOwnershipData
+public import CWMixedCollisionCounts
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Actual global ownership-collision events and their reference-bucket
 interpretation, using one seed for every parent type and recursion level. -/

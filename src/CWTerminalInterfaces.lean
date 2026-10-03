@@ -1,7 +1,14 @@
-import CWTerminalCenters
-import CWFiniteExtraction
-import WindowedInterface
-import CWContextualReprofile
+module
+
+public import CWTerminalCenters
+public import CWFiniteExtraction
+public import WindowedInterface
+public import CWContextualReprofile
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The terminal extractor consumes the same windowed constituent powers
 that earlier extraction and labelled sector allocation produce. -/

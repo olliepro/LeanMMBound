@@ -1,4 +1,11 @@
-import SuppliedWaitingZero4Extraction
+module
+
+public import SuppliedWaitingZero4Extraction
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The complete sixfold waiting zero4 family produces one actual matrix at
 the exact original weighted volume rate with arbitrarily small additive loss. -/

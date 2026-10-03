@@ -1,4 +1,11 @@
-import CWConstituents
+module
+
+public import CWConstituents
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Exact child-to-parent regrouping of CW coefficient tensors, with actual
 coarse variable maps. Concatenation preserves each separately prescribed child shape. -/

@@ -1,6 +1,13 @@
-import SuppliedPairedFineNodes
-import SuppliedPairedFineStageExpressions
-import RootFineKernelMergeNormalization
+module
+
+public import SuppliedPairedFineNodes
+public import SuppliedPairedFineStageExpressions
+public import RootFineKernelMergeNormalization
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Bounded paired fine source sums: every original source, strategy, and physical role is retained,
 omitting only exactly zero populations, and independently checked summaries compose exactly. -/

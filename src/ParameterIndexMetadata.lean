@@ -1,7 +1,14 @@
-import CheckedIndexTable
-import DyadicRowMetadata
-import SplitRowMetadata
-import GibbsRowMetadata
+module
+
+public import CheckedIndexTable
+public import DyadicRowMetadata
+public import SplitRowMetadata
+public import GibbsRowMetadata
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Transfer the verified row metadata along every original parameter-array lookup. -/
 namespace MatrixBounds.Numeric

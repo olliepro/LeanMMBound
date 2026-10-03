@@ -1,5 +1,12 @@
-import SuppliedTerminalRateNodeBlocks
-import RootFineColumnConvolution
+module
+
+public import SuppliedTerminalRateNodeBlocks
+public import RootFineColumnConvolution
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Direct finite source columns avoid reconstructing shape alphabets during
 exact terminal population arithmetic. -/

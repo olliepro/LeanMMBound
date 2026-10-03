@@ -1,6 +1,13 @@
-import MatrixBounds
-import Mathlib.Combinatorics.Additive.AP.Three.Behrend
-import Mathlib.Algebra.Field.ZMod
+module
+
+public import MatrixBounds
+public import Mathlib.Combinatorics.Additive.AP.Three.Behrend
+public import Mathlib.Algebra.Field.ZMod
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Large progression-free hash buckets in prime fields. The integer Behrend
 construction is imported from Mathlib; the no-wrap embedding into ZMod is proved here. -/

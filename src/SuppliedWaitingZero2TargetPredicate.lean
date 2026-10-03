@@ -1,4 +1,11 @@
-import SuppliedWaitingZero2TargetTables
+module
+
+public import SuppliedWaitingZero2TargetTables
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The balanced support predicate uses a separately proved exact twelve-shape
 coarse target table and is equivalent to the original source-index statement. -/

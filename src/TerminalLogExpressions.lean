@@ -1,7 +1,14 @@
-import RationalLogExpressions
-import CertifiedTerminalParameters
-import CWTerminalRetention
-import CWTerminalMatrixRates
+module
+
+public import RationalLogExpressions
+public import CertifiedTerminalParameters
+public import CWTerminalRetention
+public import CWTerminalMatrixRates
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Symbolic terminal entropy and matrix-volume expressions are connected to
 the supplied dyadic parameters and the actual integer terminal matrix factors. -/

@@ -1,5 +1,12 @@
-import CWRootFineRates
-import MassEntropyContinuity
+module
+
+public import CWRootFineRates
+public import MassEntropyContinuity
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Root fine laws are single weighted mixtures, not paired concatenations.
 Zero-weight pools contribute nothing to their global or compatibility masses. -/

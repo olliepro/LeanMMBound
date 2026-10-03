@@ -1,4 +1,11 @@
-import HashConditional
+module
+
+public import HashConditional
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Shared-vertex collisions for actual admissible coarse triples. The three
 axis cases reduce to nonconstant linear equations after fixing one reference bucket. -/

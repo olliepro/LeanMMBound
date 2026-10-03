@@ -1,7 +1,14 @@
-import GroupedConcentration
-import PairingSectorTypes
-import SplitPairing
-import ConcentrationRepair
+module
+
+public import GroupedConcentration
+public import PairingSectorTypes
+public import SplitPairing
+public import ConcentrationRepair
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The finite parent-interface hole bound for the actual complementary CW
 pairing. Its center is the independent-concatenation mixture of the child types. -/

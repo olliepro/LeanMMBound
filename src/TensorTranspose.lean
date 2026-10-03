@@ -1,5 +1,12 @@
-import TensorCyclic
-import ContextComposition
+module
+
+public import TensorCyclic
+public import ContextComposition
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Swapping two axes and cycling axes preserve actual tensor transformations,
 so extraction roles can be transported to all six physical orderings. -/

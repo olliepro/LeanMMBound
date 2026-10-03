@@ -1,4 +1,11 @@
-import TypeEntropy
+module
+
+public import TypeEntropy
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Exact counting of pooled and separately prescribed child-type sectors.
 The sectors remain labelled, and their position sets need not have equal sizes. -/

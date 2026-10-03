@@ -1,5 +1,12 @@
-import CWZeroOrbitDimensions
-import CWZeroRationalExtraction
+module
+
+public import CWZeroOrbitDimensions
+public import CWZeroRationalExtraction
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! A normalized supported orbit row gives an actual zero-coordinate matrix
 extraction, with the exact compressed entropy and symbol-count rate. -/

@@ -1,4 +1,11 @@
-import RootFineColumnConvolution
+module
+
+public import RootFineColumnConvolution
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! A finite-column implementation of the exact supplied level-three parent law. -/
 namespace MatrixBounds.Numeric.SuppliedRootFineParent3Columns
@@ -35,7 +42,7 @@ def leaf (node : Fin 945) (strategy : Fin 6) (column : Fin 15) (axis : Fin 3) (o
 theorem leaf_eq (node : Fin 945) (strategy : Fin 6) (column : Fin 15) (axis : Fin 3) (orbit : Fin 6) :
     leaf node strategy column axis orbit =
       SuppliedRootFineLeafIntegers.leaf node strategy (shapeColumnEquiv 4 column) axis orbit := by
-  simp only [leaf, SuppliedRootFineLeafIntegers.leaf, Equiv.symm_apply_apply]
+  simp only [leaf, SuppliedRootFineLeafIntegers.leaf, (shapeColumnEquiv 4).symm_apply_apply column]
   rfl
 
 /-- The actual totalized complementary permutation expressed on original columns. -/
@@ -61,9 +68,11 @@ theorem numerator_eq (node : Fin 945) (strategy : Fin 6) (axis : Fin 3) (orbit :
   have leaves : (fun column => leaf node strategy column axis) =
       (fun column => SuppliedRootFineLeafIntegers.leaf node strategy (shapeColumnEquiv 4 column) axis) :=
     funext (fun column => funext (leaf_eq node strategy column axis))
-  simpa only [numerator, SuppliedRootFineParent3Integers.numerator,
-    SuppliedRootFineParent3Integers.sparseIntegerParent_eq, weights, leaves, complement, split]
-    using identity.symm
+  unfold numerator complement
+  refine (SuppliedRootFineParent3Integers.sparseIntegerParent_eq ..).trans ?_
+  simpa only [SuppliedRootFineParent3Integers.numerator,
+    SuppliedRootFineParent3Integers.sparseIntegerParent_eq, weights, leaves, split]
+    using! identity.symm
 
 end
 end MatrixBounds.Numeric.SuppliedRootFineParent3Columns

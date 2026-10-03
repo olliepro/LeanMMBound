@@ -1,4 +1,11 @@
-import SuppliedRootFineChild3Integers
+module
+
+public import SuppliedRootFineChild3Integers
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The complete supplied eight-letter parent laws have exact integer numerators at denominator 2^406. -/
 namespace MatrixBounds.Numeric.SuppliedRootFineParent4Integers
@@ -39,7 +46,7 @@ theorem numerator_value (parent : Fin 105) (axis : Fin 3) (orbit : Fin 231) :
   simp_rw [SuppliedRootFineChild3Integers.numerator_value] at identity
   simpa only [numerator, SuppliedRootFineParent3Integers.sparseIntegerParent_eq,
     SuppliedRootFineFastArithmetic.parent4, SuppliedRootFineArithmetic.sparseParent_eq,
-    OrbitArithmetic.parentMass, split] using identity
+    OrbitArithmetic.parentMass, split] using! identity
 
 end
 end MatrixBounds.Numeric.SuppliedRootFineParent4Integers

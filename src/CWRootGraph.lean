@@ -1,5 +1,12 @@
-import CWRootData
-import CWCoarseOwnership
+module
+
+public import CWRootData
+public import CWCoarseOwnership
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The root's complete coarse graph contains every shape of its length.
 An enclosing box only encodes this finite alphabet; it is not a source tensor. -/

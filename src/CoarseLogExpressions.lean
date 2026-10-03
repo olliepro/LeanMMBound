@@ -1,5 +1,12 @@
-import RationalLogExpressions
-import CWRationalRates
+module
+
+public import RationalLogExpressions
+public import CWRationalRates
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Exact symbolic expansion of the actual coarse Gibbs retention formula,
 including all admissible splits and all three marginal expectations. -/

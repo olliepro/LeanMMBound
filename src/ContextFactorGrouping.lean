@@ -1,5 +1,12 @@
-import Level3TransitionRegrouping
-import ContextProductReductions
+module
+
+public import Level3TransitionRegrouping
+public import ContextProductReductions
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Explicit product grouping maps for the waiting and active factors of a
 batch. Both directions preserve the complete coordinate triples. -/

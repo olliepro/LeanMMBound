@@ -1,5 +1,12 @@
-import CWTypedInterfaces
-import HeterogeneousInterface
+module
+
+public import CWTypedInterfaces
+public import HeterogeneousInterface
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Explicit coordinate growth for the actual heterogeneous CW targets.
 This supplies the size bound used by repair, uniformly over exact profiles. -/

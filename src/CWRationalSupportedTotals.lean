@@ -1,4 +1,11 @@
-import CWRationalProbabilityTotals
+module
+
+public import CWRationalProbabilityTotals
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Unsupported child symbols have zero split weight. Actual source fine laws
 therefore need normalization only at admissible hierarchy children. -/

@@ -1,5 +1,12 @@
-import OrientedBatches
-import ContextHeterogeneousBatching
+module
+
+public import OrientedBatches
+public import ContextHeterogeneousBatching
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! One genuine shared extraction can be applied in all six physical regions.
 Every copy label survives, and counts and costs are raised to the sixth power. -/

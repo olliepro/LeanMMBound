@@ -1,4 +1,11 @@
-import SuppliedPairedFineSourceExpressions
+module
+
+public import SuppliedPairedFineSourceExpressions
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Exact finite-column and integer evaluation preserves every paired compatibility sector. -/
 namespace MatrixBounds.Numeric.SuppliedPairedFine

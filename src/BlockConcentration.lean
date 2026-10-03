@@ -1,6 +1,13 @@
-import TypeSamplingGeneral
-import IndicatorConcentration
-import Mathlib.Algebra.Order.BigOperators.Ring.Finset
+module
+
+public import TypeSamplingGeneral
+public import IndicatorConcentration
+public import Mathlib.Algebra.Order.BigOperators.Ring.Finset
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Concentration of disjoint fixed-size blocks in a uniformly sampled exact-type word. -/
 namespace MatrixBounds.Empirical
@@ -56,7 +63,7 @@ theorem blockCenter_bounds (profile : B → ℕ) (representative : TypedWord (P 
     exact_mod_cast natural
   constructor
   · exact Finset.prod_nonneg (fun _ _ => div_nonneg (Nat.cast_nonneg _) positive.le)
-  · exact Finset.prod_le_one (fun _ _ => div_nonneg (Nat.cast_nonneg _) positive.le)
+  · exact Finset.prod_le_one₀ (fun _ _ => div_nonneg (Nat.cast_nonneg _) positive.le)
       (fun slot _ => (div_le_one positive).mpr (bound (pattern slot)))
 
 omit [Fintype Parent] [Nonempty Parent] in

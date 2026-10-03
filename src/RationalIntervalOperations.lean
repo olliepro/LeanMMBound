@@ -1,6 +1,13 @@
-import RationalIntervals
-import Mathlib.Algebra.BigOperators.Field
-import Mathlib.Data.Rat.Cast.Lemmas
+module
+
+public import RationalIntervals
+public import Mathlib.Algebra.BigOperators.Field
+public import Mathlib.Data.Rat.Cast.Lemmas
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Finite rational interval computations, including checked outward rounding,
 are sound for the real arithmetic used by the numerical certificate. -/
@@ -14,7 +21,7 @@ def Interval.sub (left right : Interval) : Interval := left.add right.neg
 /-- Subtraction of enclosing intervals contains the actual real difference. -/
 theorem Interval.sub_sound {left right : Interval} {x y : ℝ}
     (hx : left.Contains x) (hy : right.Contains y) : (left.sub right).Contains (x-y) := by
-  simpa only [sub_eq_add_neg] using Interval.add_sound hx (Interval.neg_sound hy)
+  simpa only [sub_eq_add_neg] using! Interval.add_sound hx (Interval.neg_sound hy)
 
 /-- Multiply an interval by an exact rational coefficient of either sign. -/
 def Interval.scale (factor : ℚ) (bounds : Interval) : Interval := (point factor).mul bounds

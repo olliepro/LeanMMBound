@@ -1,4 +1,11 @@
-import CWDegreeControl
+module
+
+public import CWDegreeControl
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Degree control remains valid in every smaller positive parent window.
 This lets the exact extraction fit inside a previously available interface. -/

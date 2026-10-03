@@ -1,9 +1,16 @@
-import Mathlib.Data.Fintype.BigOperators
-import Mathlib.Data.Fintype.Pi
-import Mathlib.Algebra.BigOperators.Ring.Finset
-import Mathlib.Tactic.Push
-import Mathlib.SetTheory.Cardinal.Finite
-import Mathlib.Algebra.Order.BigOperators.Group.Finset
+module
+
+public import Mathlib.Data.Fintype.BigOperators
+public import Mathlib.Data.Fintype.Pi
+public import Mathlib.Algebra.BigOperators.Ring.Finset
+public import Mathlib.Tactic.Push
+public import Mathlib.SetTheory.Cardinal.Finite
+public import Mathlib.Algebra.Order.BigOperators.Group.Finset
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! A finite union-bound argument for repairing missing parts.
 The statement uses only integer counts, avoiding unformalized probability notation. -/

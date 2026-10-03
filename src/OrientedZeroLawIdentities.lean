@@ -1,7 +1,14 @@
-import SuppliedZeroLaws
-import PhysicalRoles
-import VerifiedZeroOrbitLaws
-import SuppliedLeafLaws
+module
+
+public import SuppliedZeroLaws
+public import PhysicalRoles
+public import VerifiedZeroOrbitLaws
+public import SuppliedLeafLaws
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Exact physical orientation of the supplied zero-coordinate laws. The
 canonical axis order keeps the selected nonzero row and its complementary row. -/

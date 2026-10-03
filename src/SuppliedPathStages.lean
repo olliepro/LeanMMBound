@@ -1,5 +1,12 @@
-import SuppliedFixedStages
-import SuppliedPathRateSums
+module
+
+public import SuppliedFixedStages
+public import SuppliedPathRateSums
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Shared extraction uses every actual source and preceding role label. The
 full-history stage rates equal the certificate's aggregated source rates. -/
@@ -70,8 +77,9 @@ theorem level3_rates : level3.rates = SuppliedFixedStages.level3.rates := by
 /-- Keeping both inherited sectors changes no terminal physical rate sum. -/
 theorem terminal_rates : terminal.rates = SuppliedFixedStages.terminal.rates := by
   funext axis
-  rw [terminal, SuppliedFixedStages.terminal, SuppliedTerminalRationalSplit.stage_rates,
-    SuppliedTerminalRationalSplit.stage_rates]
+  rw [terminal, SuppliedFixedStages.terminal]
+  refine (SuppliedTerminalRationalSplit.stage_rates _ _ _ _ _ axis).trans
+    (Eq.trans ?_ (SuppliedTerminalRationalSplit.stage_rates _ _ _ _ _ axis).symm)
   let rate := fun source selected => Terminal.axisEntropy (SuppliedTerminalScaling.extreme source)
     (SuppliedTerminalScaling.middle source)
     (SuppliedTerminalScaling.axes source (SuppliedTerminalRoles.role source selected) axis)

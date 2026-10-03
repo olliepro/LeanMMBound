@@ -1,70 +1,77 @@
-import CertificateData.TerminalPart000
-import CertificateData.TerminalPart001
-import CertificateData.TerminalPart002
-import CertificateData.TerminalPart003
-import CertificateData.TerminalPart004
-import CertificateData.TerminalPart005
-import CertificateData.TerminalPart006
-import CertificateData.TerminalPart007
-import CertificateData.TerminalPart008
-import CertificateData.TerminalPart009
-import CertificateData.TerminalPart010
-import CertificateData.TerminalPart011
-import CertificateData.TerminalPart012
-import CertificateData.TerminalPart013
-import CertificateData.TerminalPart014
-import CertificateData.TerminalPart015
-import CertificateData.TerminalPart016
-import CertificateData.TerminalPart017
-import CertificateData.TerminalPart018
-import CertificateData.TerminalPart019
-import CertificateData.TerminalPart020
-import CertificateData.TerminalPart021
-import CertificateData.TerminalPart022
-import CertificateData.TerminalPart023
-import CertificateData.TerminalPart024
-import CertificateData.TerminalPart025
-import CertificateData.TerminalPart026
-import CertificateData.TerminalPart027
-import CertificateData.TerminalPart028
-import CertificateData.TerminalPart029
-import CertificateData.TerminalPart030
-import CertificateData.TerminalPart031
-import CertificateData.TerminalPart032
-import CertificateData.TerminalPart033
-import CertificateData.TerminalPart034
-import CertificateData.TerminalPart035
-import CertificateData.TerminalPart036
-import CertificateData.TerminalPart037
-import CertificateData.TerminalPart038
-import CertificateData.TerminalPart039
-import CertificateData.TerminalPart040
-import CertificateData.TerminalPart041
-import CertificateData.TerminalPart042
-import CertificateData.TerminalPart043
-import CertificateData.TerminalPart044
-import CertificateData.TerminalPart045
-import CertificateData.TerminalPart046
-import CertificateData.TerminalPart047
-import CertificateData.TerminalPart048
-import CertificateData.TerminalPart049
-import CertificateData.TerminalPart050
-import CertificateData.TerminalPart051
-import CertificateData.TerminalPart052
-import CertificateData.TerminalPart053
-import CertificateData.TerminalPart054
-import CertificateData.TerminalPart055
-import CertificateData.TerminalPart056
-import CertificateData.TerminalPart057
-import CertificateData.TerminalPart058
-import CertificateData.TerminalPart059
-import CertificateData.TerminalPart060
-import CertificateData.TerminalPart061
-import CertificateData.TerminalPart062
-import CertificateData.TerminalPart063
-import CertificateData.TerminalPart064
-import CertificateData.TerminalPart065
-import CertificateData.TerminalPart066
+module
+
+public import CertificateData.TerminalPart000
+public import CertificateData.TerminalPart001
+public import CertificateData.TerminalPart002
+public import CertificateData.TerminalPart003
+public import CertificateData.TerminalPart004
+public import CertificateData.TerminalPart005
+public import CertificateData.TerminalPart006
+public import CertificateData.TerminalPart007
+public import CertificateData.TerminalPart008
+public import CertificateData.TerminalPart009
+public import CertificateData.TerminalPart010
+public import CertificateData.TerminalPart011
+public import CertificateData.TerminalPart012
+public import CertificateData.TerminalPart013
+public import CertificateData.TerminalPart014
+public import CertificateData.TerminalPart015
+public import CertificateData.TerminalPart016
+public import CertificateData.TerminalPart017
+public import CertificateData.TerminalPart018
+public import CertificateData.TerminalPart019
+public import CertificateData.TerminalPart020
+public import CertificateData.TerminalPart021
+public import CertificateData.TerminalPart022
+public import CertificateData.TerminalPart023
+public import CertificateData.TerminalPart024
+public import CertificateData.TerminalPart025
+public import CertificateData.TerminalPart026
+public import CertificateData.TerminalPart027
+public import CertificateData.TerminalPart028
+public import CertificateData.TerminalPart029
+public import CertificateData.TerminalPart030
+public import CertificateData.TerminalPart031
+public import CertificateData.TerminalPart032
+public import CertificateData.TerminalPart033
+public import CertificateData.TerminalPart034
+public import CertificateData.TerminalPart035
+public import CertificateData.TerminalPart036
+public import CertificateData.TerminalPart037
+public import CertificateData.TerminalPart038
+public import CertificateData.TerminalPart039
+public import CertificateData.TerminalPart040
+public import CertificateData.TerminalPart041
+public import CertificateData.TerminalPart042
+public import CertificateData.TerminalPart043
+public import CertificateData.TerminalPart044
+public import CertificateData.TerminalPart045
+public import CertificateData.TerminalPart046
+public import CertificateData.TerminalPart047
+public import CertificateData.TerminalPart048
+public import CertificateData.TerminalPart049
+public import CertificateData.TerminalPart050
+public import CertificateData.TerminalPart051
+public import CertificateData.TerminalPart052
+public import CertificateData.TerminalPart053
+public import CertificateData.TerminalPart054
+public import CertificateData.TerminalPart055
+public import CertificateData.TerminalPart056
+public import CertificateData.TerminalPart057
+public import CertificateData.TerminalPart058
+public import CertificateData.TerminalPart059
+public import CertificateData.TerminalPart060
+public import CertificateData.TerminalPart061
+public import CertificateData.TerminalPart062
+public import CertificateData.TerminalPart063
+public import CertificateData.TerminalPart064
+public import CertificateData.TerminalPart065
+public import CertificateData.TerminalPart066
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 namespace MatrixBounds.Numeric.TerminalParameterData
 set_option maxRecDepth 100000
@@ -79,7 +86,8 @@ def numerators : List ℕ := TerminalPart000.numerators ++ TerminalPart001.numer
 /-- Every supplied terminal parameter satisfies the strict interior inequalities in integer arithmetic. -/
 theorem numerators_checked :
     numerators.all (fun n => decide (0 < n ∧ 2*n < denominator)) = true := by
-  simp only [numerators, denominator, List.all_append, TerminalPart000.numerators_checked, TerminalPart001.numerators_checked, TerminalPart002.numerators_checked, TerminalPart003.numerators_checked, TerminalPart004.numerators_checked, TerminalPart005.numerators_checked, TerminalPart006.numerators_checked, TerminalPart007.numerators_checked, TerminalPart008.numerators_checked, TerminalPart009.numerators_checked, TerminalPart010.numerators_checked, TerminalPart011.numerators_checked, TerminalPart012.numerators_checked, TerminalPart013.numerators_checked, TerminalPart014.numerators_checked, TerminalPart015.numerators_checked, TerminalPart016.numerators_checked, TerminalPart017.numerators_checked, TerminalPart018.numerators_checked, TerminalPart019.numerators_checked, TerminalPart020.numerators_checked, TerminalPart021.numerators_checked, TerminalPart022.numerators_checked, TerminalPart023.numerators_checked, TerminalPart024.numerators_checked, TerminalPart025.numerators_checked, TerminalPart026.numerators_checked, TerminalPart027.numerators_checked, TerminalPart028.numerators_checked, TerminalPart029.numerators_checked, TerminalPart030.numerators_checked, TerminalPart031.numerators_checked, TerminalPart032.numerators_checked, TerminalPart033.numerators_checked, TerminalPart034.numerators_checked, TerminalPart035.numerators_checked, TerminalPart036.numerators_checked, TerminalPart037.numerators_checked, TerminalPart038.numerators_checked, TerminalPart039.numerators_checked, TerminalPart040.numerators_checked, TerminalPart041.numerators_checked, TerminalPart042.numerators_checked, TerminalPart043.numerators_checked, TerminalPart044.numerators_checked, TerminalPart045.numerators_checked, TerminalPart046.numerators_checked, TerminalPart047.numerators_checked, TerminalPart048.numerators_checked, TerminalPart049.numerators_checked, TerminalPart050.numerators_checked, TerminalPart051.numerators_checked, TerminalPart052.numerators_checked, TerminalPart053.numerators_checked, TerminalPart054.numerators_checked, TerminalPart055.numerators_checked, TerminalPart056.numerators_checked, TerminalPart057.numerators_checked, TerminalPart058.numerators_checked, TerminalPart059.numerators_checked, TerminalPart060.numerators_checked, TerminalPart061.numerators_checked, TerminalPart062.numerators_checked, TerminalPart063.numerators_checked, TerminalPart064.numerators_checked, TerminalPart065.numerators_checked, TerminalPart066.numerators_checked, Bool.and_true]
+  show numerators.all (fun n => decide (0 < n ∧ 2*n < 17592186044416)) = true
+  simp only [numerators, List.all_append, TerminalPart000.numerators_checked, TerminalPart001.numerators_checked, TerminalPart002.numerators_checked, TerminalPart003.numerators_checked, TerminalPart004.numerators_checked, TerminalPart005.numerators_checked, TerminalPart006.numerators_checked, TerminalPart007.numerators_checked, TerminalPart008.numerators_checked, TerminalPart009.numerators_checked, TerminalPart010.numerators_checked, TerminalPart011.numerators_checked, TerminalPart012.numerators_checked, TerminalPart013.numerators_checked, TerminalPart014.numerators_checked, TerminalPart015.numerators_checked, TerminalPart016.numerators_checked, TerminalPart017.numerators_checked, TerminalPart018.numerators_checked, TerminalPart019.numerators_checked, TerminalPart020.numerators_checked, TerminalPart021.numerators_checked, TerminalPart022.numerators_checked, TerminalPart023.numerators_checked, TerminalPart024.numerators_checked, TerminalPart025.numerators_checked, TerminalPart026.numerators_checked, TerminalPart027.numerators_checked, TerminalPart028.numerators_checked, TerminalPart029.numerators_checked, TerminalPart030.numerators_checked, TerminalPart031.numerators_checked, TerminalPart032.numerators_checked, TerminalPart033.numerators_checked, TerminalPart034.numerators_checked, TerminalPart035.numerators_checked, TerminalPart036.numerators_checked, TerminalPart037.numerators_checked, TerminalPart038.numerators_checked, TerminalPart039.numerators_checked, TerminalPart040.numerators_checked, TerminalPart041.numerators_checked, TerminalPart042.numerators_checked, TerminalPart043.numerators_checked, TerminalPart044.numerators_checked, TerminalPart045.numerators_checked, TerminalPart046.numerators_checked, TerminalPart047.numerators_checked, TerminalPart048.numerators_checked, TerminalPart049.numerators_checked, TerminalPart050.numerators_checked, TerminalPart051.numerators_checked, TerminalPart052.numerators_checked, TerminalPart053.numerators_checked, TerminalPart054.numerators_checked, TerminalPart055.numerators_checked, TerminalPart056.numerators_checked, TerminalPart057.numerators_checked, TerminalPart058.numerators_checked, TerminalPart059.numerators_checked, TerminalPart060.numerators_checked, TerminalPart061.numerators_checked, TerminalPart062.numerators_checked, TerminalPart063.numerators_checked, TerminalPart064.numerators_checked, TerminalPart065.numerators_checked, TerminalPart066.numerators_checked, Bool.and_true]
 
 /-- The flattened array has precisely the supplied 945 by 3 by 6 entries. -/
 theorem numerators_length : numerators.length = 17010 := by

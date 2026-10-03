@@ -3,7 +3,10 @@
 These notes document the mathematical form and module design of the paired-fine identification
 stream (`SuppliedPairedFine*`, `PairedFine3*`, `PairedFine4*`). The generator scripts mentioned
 below belong to the development tree and are not part of this package; every generated module is
-checked by Lean independently of them.
+checked by Lean independently of them. The per-node `PairedFine3*`/`PairedFine4*` cache and block modules
+described here belong to the Lean 4.24 release (commit `884a354`); the current release checks the same
+identities with the fast kernel checks in `src/FKLFine3*` and `src/FKLFine4*`
+(see [`fast-kernel-checks.md`](fast-kernel-checks.md)).
 
 ## 1. The exact fine expression (Lean vs Python) -- RESOLVED
 Lean `sourceExpression{3,4} source role axis` = splitFineRetentionExpression ... = parent orbit entropy

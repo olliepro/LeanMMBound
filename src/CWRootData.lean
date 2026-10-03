@@ -1,6 +1,13 @@
-import CWShapePermutations
-import TypePlacement
-import CoordinateRestriction
+module
+
+public import CWShapePermutations
+public import TypePlacement
+public import CoordinateRestriction
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The root acts on the unrestricted CW power, with one constituent per
 position. Its multiplicities are single split counts, without a paired parent. -/

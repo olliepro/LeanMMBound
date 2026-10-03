@@ -1,5 +1,12 @@
-import SuppliedPairedCoarseExpressions
-import RootFineColumnConvolution
+module
+
+public import SuppliedPairedCoarseExpressions
+public import RootFineColumnConvolution
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Replace dependent shape searches in the supplied coarse expressions with
 proved direct reads at their original finite parameter columns. -/

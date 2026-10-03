@@ -1,7 +1,14 @@
-import SuppliedRoundExtraction
-import EventualContextSequence
-import ExponentialPowerBounds
-import PipelineScheduleRates
+module
+
+public import SuppliedRoundExtraction
+public import EventualContextSequence
+public import ExponentialPowerBounds
+public import PipelineScheduleRates
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The full finite supplied pipeline chooses all shrinking windows before
 the growing scale and composes every actual shared round, including startup
@@ -43,7 +50,7 @@ theorem eventual_pipeline (large : 2 ≤ batches) (initial : Parameters batches)
     intro k above divisible
     obtain ⟨copies, cost, retained, overhead, reduction⟩ := extraction k above divisible
     refine ⟨copies^6, cost^6, ?_, ?_, reduction⟩
-    · simpa only [growth, stageRates, Nat.cast_ofNat, mul_assoc] using exponential_power_lower retained 6
+    · simpa only [growth, stageRates, Nat.cast_ofNat, mul_assoc] using! exponential_power_lower retained 6
     · simpa only [loss, Nat.cast_ofNat, mul_assoc] using exponential_power_upper overhead 6
   obtain ⟨final, threshold, extraction⟩ := eventual_parameterized_sequence
     (fun _ => Parameters batches)

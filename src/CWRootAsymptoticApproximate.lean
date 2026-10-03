@@ -1,6 +1,13 @@
-import CWRootApproximateExtraction
-import CWRootApproximateCosts
-import CWRootAsymptotic
+module
+
+public import CWRootApproximateExtraction
+public import CWRootApproximateCosts
+public import CWRootAsymptotic
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The unrestricted CW source produces complete approximate root interfaces
 at the nominal entropy rate, with every finite gluing and repair cost paid. -/

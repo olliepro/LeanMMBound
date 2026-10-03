@@ -1,4 +1,11 @@
-import GibbsCounting
+module
+
+public import GibbsCounting
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Cardinality bounds for admissible coarse words with three prescribed
 marginals. Positive coordinate potentials provide a finite counting certificate. -/

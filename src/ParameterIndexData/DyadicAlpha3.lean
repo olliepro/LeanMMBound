@@ -1,6 +1,13 @@
-import ParameterIndexData.DyadicAlpha3Part000
-import ParameterIndexData.DyadicAlpha3Part001
-import ParameterIndexData.DyadicAlpha3Part002
+module
+
+public import ParameterIndexData.DyadicAlpha3Part000
+public import ParameterIndexData.DyadicAlpha3Part001
+public import ParameterIndexData.DyadicAlpha3Part002
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 namespace MatrixBounds.Numeric.ParameterIndexData.DyadicAlpha3
 

@@ -1,5 +1,12 @@
-import TypeCounting
-import RepairRates
+module
+
+public import TypeCounting
+public import RepairRates
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Rational type integrality along the same unbounded scale used by sparse repair. -/
 namespace MatrixBounds.Empirical

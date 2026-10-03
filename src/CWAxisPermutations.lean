@@ -1,5 +1,12 @@
-import CWConstituents
-import WindowedPermutations
+module
+
+public import CWConstituents
+public import WindowedPermutations
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Physical axis permutations of the CW tensor are the corresponding actual
 permuted coarse constituents, not just a permutation of numerical rates. -/

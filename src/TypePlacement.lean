@@ -1,4 +1,11 @@
-import PairingSectorTypes
+module
+
+public import PairingSectorTypes
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! A single exact type partitions one position set into labelled pools.
 This is the unpaired placement required by the unrestricted root extraction. -/

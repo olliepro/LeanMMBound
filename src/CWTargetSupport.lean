@@ -1,5 +1,12 @@
-import CWTargetMaps
-import CWTypedInterfaces
+module
+
+public import CWTargetMaps
+public import CWTypedInterfaces
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Supported fine profiles ensure that every formal target part is realized
 by physical CW coordinates and has its prescribed coarse label. -/

@@ -1,6 +1,13 @@
-import WindowedInterface
-import CWMixedProfileGluing
-import CWMixedNearbySource
+module
+
+public import WindowedInterface
+public import CWMixedProfileGluing
+public import CWMixedNearbySource
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Actual input and output tensors share a common windowed-power form.
 Parent and child labels stay explicit for regrouping and strategy allocation. -/

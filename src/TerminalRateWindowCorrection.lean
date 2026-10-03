@@ -1,5 +1,12 @@
-import TerminalRateCertificateWindows
-import SuppliedTerminalRateBlocks
+module
+
+public import TerminalRateCertificateWindows
+public import SuppliedTerminalRateBlocks
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Small shared-logarithm corrections compose bounded source and certificate checks. -/
 namespace MatrixBounds.Numeric.SuppliedTerminalRates

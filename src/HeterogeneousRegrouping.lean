@@ -1,5 +1,12 @@
-import CoordinateRestriction
-import HeterogeneousFlatten
+module
+
+public import CoordinateRestriction
+public import HeterogeneousFlatten
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Explicit coordinate maps regroup labelled tensor factors without changing
 their coefficients, for active stages, waiting factors, and terminal outputs. -/

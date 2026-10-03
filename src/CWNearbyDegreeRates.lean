@@ -1,5 +1,12 @@
-import CWDegreeControlShrink
-import CWRetentionContinuity
+module
+
+public import CWDegreeControlShrink
+public import CWRetentionContinuity
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! A single nominal fine-axis rate controls every nearby exact child profile.
 This is the uniform estimate needed before choosing a common output count and

@@ -1,4 +1,11 @@
-import IntervalPowerTrace
+module
+
+public import IntervalPowerTrace
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Checked rounded power traces enclose natural logarithms on [1,2], with a
 proved uniform remainder for the finite rational-series computation. -/
@@ -79,6 +86,8 @@ theorem NormalizedLogTrace.sound {trace : NormalizedLogTrace} {input : ℚ} {ter
     push_cast
     constructor <;> linarith [analytic.1, analytic.2]
   have result := Interval.add_sound series remainder
-  convert result using 1; ring
+  convert result using 1
+  · rfl
+  · ring
 
 end MatrixBounds.Numeric

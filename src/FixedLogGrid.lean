@@ -1,5 +1,13 @@
-import FixedIntegerIntervals
-import CertifiedLogGrid
+module
+
+public import FixedIntegerIntervals
+public import CertifiedLogGrid
+public import FKLLog.GridTrace
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 namespace MatrixBounds.Numeric.FixedLogGrid
 set_option maxRecDepth 100000
@@ -74,9 +82,18 @@ def bounds (index : Fin 256) : FixedBounds :=
   | 15 => block15[index.val%16]?.getD ⟨0, 0⟩
   | _ => ⟨0, 0⟩
 
+/-- Nat-only kernel comparison of every stored integer pair with the certified rational endpoints. -/
+theorem interval_fast : FKLLog.allBelow (fun k => FKLLog.band
+    (FKLLog.intOK (bounds (FKLLog.finOf k)).lower (CertifiedLogGrid.entry (FKLLog.finOf k)).bounds.lower)
+    (FKLLog.intOK (bounds (FKLLog.finOf k)).upper (CertifiedLogGrid.entry (FKLLog.finOf k)).bounds.upper)) 256 = true := by
+  decide +kernel
 /-- Every stored integer pair is exactly the previously certified rational interval. -/
 theorem interval_correct : ∀ index : Fin 256,
-    (bounds index).interval (2^60) = (CertifiedLogGrid.entry index).bounds := by decide +kernel
+    (bounds index).interval (2^60) = (CertifiedLogGrid.entry index).bounds :=
+  FKLLog.forall_fin_of_allBelow _ _ interval_fast (fun i h => by
+    rw [FKLLog.finOf_val, FKLLog.band_eq, Bool.and_eq_true] at h
+    unfold FixedBounds.interval
+    rw [FKLLog.intOK_sound _ _ h.1, FKLLog.intOK_sound _ _ h.2])
 
 /-- The integer grid encloses each actual real grid logarithm. -/
 theorem sound (index : Fin 256) :

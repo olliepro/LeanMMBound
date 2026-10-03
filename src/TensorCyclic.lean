@@ -1,4 +1,11 @@
-import PolynomialDegeneration
+module
+
+public import PolynomialDegeneration
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Cyclic coordinate permutations preserve explicit rank and degeneration certificates. -/
 namespace MatrixBounds.Tensor

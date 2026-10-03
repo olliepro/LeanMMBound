@@ -1,6 +1,13 @@
-import CWRationalSplit
-import FineWordOrbits
-import FiniteOrbitReindexing
+module
+
+public import CWRationalSplit
+public import FineWordOrbits
+public import FiniteOrbitReindexing
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Complete rational CW parent laws inherit the checked recursive orbit
 symmetry. Their entropies are exactly computable from compressed orbit masses. -/

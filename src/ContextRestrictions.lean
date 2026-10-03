@@ -1,4 +1,11 @@
-import BatchRestrictions
+module
+
+public import BatchRestrictions
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Tensor reductions remain valid beside any untouched tensor factor.
 This supplies both persistent batch labels and waiting pipeline sectors. -/
@@ -46,7 +53,7 @@ theorem contextReduction_restrict [Fintype X] [Fintype Y] [Fintype Z]
 theorem contextReduction_pullback (source : Coeff K X Y Z) (mx : U → X) (my : V → Y) (mz : W → Z) :
     ContextReduction.{v} source (fun x y z => source (mx x) (my y) (mz z)) 1 := by
   intro A B C finiteA finiteB finiteC companion rank algorithm
-  simpa only [product, one_mul] using rankLE_pullback algorithm
+  simpa only [product, one_mul] using! rankLE_pullback algorithm
     (fun x : A × U => (x.1, mx x.2)) (fun y : B × V => (y.1, my y.2)) (fun z : C × W => (z.1, mz z.2))
 
 /-- The identity transformation is valid in every tensor context. -/

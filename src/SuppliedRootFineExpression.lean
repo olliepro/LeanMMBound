@@ -1,7 +1,14 @@
-import SuppliedRootFineArithmetic
-import SuppliedRootCoarseBinding
-import RootLogExpressions
-import Mathlib.Logic.Equiv.Fin.Basic
+module
+
+public import SuppliedRootFineArithmetic
+public import SuppliedRootCoarseBinding
+public import RootLogExpressions
+public import Mathlib.Logic.Equiv.Fin.Basic
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Complete finite-column expressions for the actual two root fine rates,
 including all individually forced and pooled compatibility classes. -/

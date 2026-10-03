@@ -1,5 +1,12 @@
-import BatchPowers
-import TensorCyclic
+module
+
+public import BatchPowers
+public import TensorCyclic
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Products and rotations of independent rectangular matrix multiplication
 batches, with explicit coordinate maps for each operation. -/
@@ -34,7 +41,8 @@ theorem rectangularBatch_product_identity {s t i j l i' j' l' : ℕ}
   have ei (a b : Fin (i*i')) : a = b ↔ rows a = rows b := rows.injective.eq_iff.symm
   have ej (a b : Fin (j*j')) : a = b ↔ inner a = inner b := inner.injective.eq_iff.symm
   have el (a b : Fin (l*l')) : a = b ↔ columns a = columns b := columns.injective.eq_iff.symm
-  simp only [product, rectangularBatch, directSum, tensor, rectangularProductMap, ec, ei, ej, el, Prod.ext_iff]
+  unfold product rectangularBatch directSum tensor rectangularProductMap
+  simp only [ec, ei, ej, el, Prod.ext_iff]
   split_ifs <;> simp_all
 
 /-- Rectangular matrix batch rank budgets multiply under the displayed coordinate regrouping. -/

@@ -1,5 +1,12 @@
-import CWReprofiledSource
-import UniformRetainedBatch
+module
+
+public import CWReprofiledSource
+public import UniformRetainedBatch
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Every accepted valid exact tuple receives the same retained-copy count and
 rank budget from the fixed nominal source. The selected hash prime may vary,
@@ -74,7 +81,7 @@ theorem finite_nearby_profile_batch (data : ∀ type, SplitRestrictionData (leng
   apply rankLE_uniform_retained_batch _ (by unfold modulusFactor; positivity)
   obtain ⟨prime, copies, primality, cap, retained, repaired⟩ := output
   refine ⟨prime, copies, primality.pos, cap, retained, ?_⟩
-  simpa only [target_reprofile] using repaired
+  simpa only [target_reprofile] using! repaired
 
 end
 end MatrixBounds.Tensor.CW.Mixed

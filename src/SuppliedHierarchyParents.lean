@@ -1,5 +1,12 @@
-import SuppliedHierarchyParentData
-import SuppliedTypedParameters
+module
+
+public import SuppliedHierarchyParentData
+public import SuppliedTypedParameters
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 namespace MatrixBounds.Numeric.SuppliedHierarchyParents
 

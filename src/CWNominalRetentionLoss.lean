@@ -1,4 +1,11 @@
-import CWMixedNearbyExtraction
+module
+
+public import CWMixedNearbyExtraction
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Separate the exact nominal mixed retention from its uniform per-parent
 entropy loss. The minimum is still taken only after the three global sums. -/

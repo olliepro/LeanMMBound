@@ -1,7 +1,14 @@
-import SuppliedStage3
-import SuppliedStage4
-import SuppliedTerminalRationalSplit
-import CWRationalStageAssembly
+module
+
+public import SuppliedStage3
+public import SuppliedStage4
+public import SuppliedTerminalRationalSplit
+public import CWRationalStageAssembly
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Original source parameters instantiate all three phases of a shared rational
 extraction. Every law, support, symmetry, and potential check is discharged. -/
@@ -46,7 +53,13 @@ inductive Phase where
   | level4
   | level3
   | terminal
-  deriving DecidableEq, Fintype
+  deriving DecidableEq
+
+-- v4.35 port: Mathlib's `deriving Fintype` handler for enumeration types produces an
+-- ill-typed `Finset.mk` at v4.35.0-rc2, so the instance is written out.
+instance : Fintype Phase where
+  elems := {.level4, .level3, .terminal}
+  complete := fun x => by cases x <;> decide
 
 /-- Original parameter-coordinate labels for one phase. -/
 def Source : Phase → Type

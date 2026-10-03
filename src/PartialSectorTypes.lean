@@ -1,4 +1,11 @@
-import CoarsenedCompatibility
+module
+
+public import CoarsenedCompatibility
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! A variable-only pooled type together with forced child types implies the
 finer asymmetric compatibility test. Unforced children remain pooled. -/

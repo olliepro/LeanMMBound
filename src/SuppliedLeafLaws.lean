@@ -1,9 +1,16 @@
-import SuppliedTypedParameters
-import SuppliedTerminalLaws
-import SuppliedChildKinds
-import VerifiedOrbitComplements
-import ShapeAlphabet
-import CWRationalProbabilityTotals
+module
+
+public import SuppliedTypedParameters
+public import SuppliedTerminalLaws
+public import SuppliedChildKinds
+public import VerifiedOrbitComplements
+public import ShapeAlphabet
+public import CWRationalProbabilityTotals
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Actual complete leaf and level-three parent laws built from the original
 indexed inputs. No distribution or coordinate-range premise remains in their definitions. -/

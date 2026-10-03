@@ -1,6 +1,13 @@
-import CWFiniteContextualExtraction
-import ContextCopies
-import BehrendRetention
+module
+
+public import CWFiniteContextualExtraction
+public import ContextCopies
+public import BehrendRetention
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! A chosen shared prime and Behrend set yield a complete context-preserving
 extraction with an explicit natural number of independent child copies. -/

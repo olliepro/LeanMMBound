@@ -1,5 +1,13 @@
-import ParameterIndexData
-import ParameterIndexMetadata
+module
+
+public import ParameterIndexData
+public import ParameterIndexMetadata
+public import FKLMeta.ParamMeta
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Every original source-array reference selects the intended finite alphabet. -/
 namespace MatrixBounds.Numeric.SuppliedParameterChecks
@@ -9,7 +17,10 @@ set_option maxHeartbeats 32000000
 /-- Exact alphabet check for one bounded source-array slice. -/
 theorem DyadicRootAPart000_metadata :
     ParameterIndexData.DyadicRootAPart000.table.entries.all
-      (fun index => decide (DyadicRowMetadata.expected index = 1)) = true := by decide +kernel
+      (fun index => decide (DyadicRowMetadata.expected index = 1)) = true := by
+  simp only [ParameterIndexData.DyadicRootAPart000.table, CheckedIndexTable.append, List.all_append, Bool.and_eq_true]
+  and_intros
+  all_goals exact FKLMeta.ParamMeta.dy_leaf _ 1 (by decide +kernel)
 
 /-- Every original reference has the intended alphabet metadata, by its independently checked slice. -/
 theorem DyadicRootA_metadata :
@@ -20,7 +31,10 @@ theorem DyadicRootA_metadata :
 /-- Exact alphabet check for one bounded source-array slice. -/
 theorem DyadicRootAlphaPart000_metadata :
     ParameterIndexData.DyadicRootAlphaPart000.table.entries.all
-      (fun index => decide (DyadicRowMetadata.expected index = 153)) = true := by decide +kernel
+      (fun index => decide (DyadicRowMetadata.expected index = 153)) = true := by
+  simp only [ParameterIndexData.DyadicRootAlphaPart000.table, CheckedIndexTable.append, List.all_append, Bool.and_eq_true]
+  and_intros
+  all_goals exact FKLMeta.ParamMeta.dy_leaf _ 153 (by decide +kernel)
 
 /-- Every original reference has the intended alphabet metadata, by its independently checked slice. -/
 theorem DyadicRootAlpha_metadata :
@@ -31,7 +45,10 @@ theorem DyadicRootAlpha_metadata :
 /-- Exact alphabet check for one bounded source-array slice. -/
 theorem DyadicA3Part000_metadata :
     ParameterIndexData.DyadicA3Part000.table.entries.all
-      (fun index => decide (DyadicRowMetadata.expected index = 6)) = true := by decide +kernel
+      (fun index => decide (DyadicRowMetadata.expected index = 6)) = true := by
+  simp only [ParameterIndexData.DyadicA3Part000.table, CheckedIndexTable.append, List.all_append, Bool.and_eq_true]
+  and_intros
+  all_goals exact FKLMeta.ParamMeta.dy_leaf _ 6 (by decide +kernel)
 
 /-- Every original reference has the intended alphabet metadata, by its independently checked slice. -/
 theorem DyadicA3_metadata :
@@ -42,17 +59,26 @@ theorem DyadicA3_metadata :
 /-- Exact alphabet check for one bounded source-array slice. -/
 theorem DyadicAlpha3Part000_metadata :
     ParameterIndexData.DyadicAlpha3Part000.table.entries.all
-      (fun index => decide (DyadicRowMetadata.expected index = 15)) = true := by decide +kernel
+      (fun index => decide (DyadicRowMetadata.expected index = 15)) = true := by
+  simp only [ParameterIndexData.DyadicAlpha3Part000.table, CheckedIndexTable.append, List.all_append, Bool.and_eq_true]
+  and_intros
+  all_goals exact FKLMeta.ParamMeta.dy_leaf _ 15 (by decide +kernel)
 
 /-- Exact alphabet check for one bounded source-array slice. -/
 theorem DyadicAlpha3Part001_metadata :
     ParameterIndexData.DyadicAlpha3Part001.table.entries.all
-      (fun index => decide (DyadicRowMetadata.expected index = 15)) = true := by decide +kernel
+      (fun index => decide (DyadicRowMetadata.expected index = 15)) = true := by
+  simp only [ParameterIndexData.DyadicAlpha3Part001.table, CheckedIndexTable.append, List.all_append, Bool.and_eq_true]
+  and_intros
+  all_goals exact FKLMeta.ParamMeta.dy_leaf _ 15 (by decide +kernel)
 
 /-- Exact alphabet check for one bounded source-array slice. -/
 theorem DyadicAlpha3Part002_metadata :
     ParameterIndexData.DyadicAlpha3Part002.table.entries.all
-      (fun index => decide (DyadicRowMetadata.expected index = 15)) = true := by decide +kernel
+      (fun index => decide (DyadicRowMetadata.expected index = 15)) = true := by
+  simp only [ParameterIndexData.DyadicAlpha3Part002.table, CheckedIndexTable.append, List.all_append, Bool.and_eq_true]
+  and_intros
+  all_goals exact FKLMeta.ParamMeta.dy_leaf _ 15 (by decide +kernel)
 
 /-- Every original reference has the intended alphabet metadata, by its independently checked slice. -/
 theorem DyadicAlpha3_metadata :
@@ -63,7 +89,10 @@ theorem DyadicAlpha3_metadata :
 /-- Exact alphabet check for one bounded source-array slice. -/
 theorem DyadicAlpha4Part000_metadata :
     ParameterIndexData.DyadicAlpha4Part000.table.entries.all
-      (fun index => decide (DyadicRowMetadata.expected index = 45)) = true := by decide +kernel
+      (fun index => decide (DyadicRowMetadata.expected index = 45)) = true := by
+  simp only [ParameterIndexData.DyadicAlpha4Part000.table, CheckedIndexTable.append, List.all_append, Bool.and_eq_true]
+  and_intros
+  all_goals exact FKLMeta.ParamMeta.dy_leaf _ 45 (by decide +kernel)
 
 /-- Every original reference has the intended alphabet metadata, by its independently checked slice. -/
 theorem DyadicAlpha4_metadata :
@@ -74,172 +103,274 @@ theorem DyadicAlpha4_metadata :
 /-- Exact alphabet check for one bounded source-array slice. -/
 theorem DyadicLeafzeroPart000_metadata :
     ParameterIndexData.DyadicLeafzeroPart000.table.entries.all
-      (fun index => decide (DyadicRowMetadata.expected index = 6)) = true := by decide +kernel
+      (fun index => decide (DyadicRowMetadata.expected index = 6)) = true := by
+  simp only [ParameterIndexData.DyadicLeafzeroPart000.table, CheckedIndexTable.append, List.all_append, Bool.and_eq_true]
+  and_intros
+  all_goals exact FKLMeta.ParamMeta.dy_leaf _ 6 (by decide +kernel)
 
 /-- Exact alphabet check for one bounded source-array slice. -/
 theorem DyadicLeafzeroPart001_metadata :
     ParameterIndexData.DyadicLeafzeroPart001.table.entries.all
-      (fun index => decide (DyadicRowMetadata.expected index = 6)) = true := by decide +kernel
+      (fun index => decide (DyadicRowMetadata.expected index = 6)) = true := by
+  simp only [ParameterIndexData.DyadicLeafzeroPart001.table, CheckedIndexTable.append, List.all_append, Bool.and_eq_true]
+  and_intros
+  all_goals exact FKLMeta.ParamMeta.dy_leaf _ 6 (by decide +kernel)
 
 /-- Exact alphabet check for one bounded source-array slice. -/
 theorem DyadicLeafzeroPart002_metadata :
     ParameterIndexData.DyadicLeafzeroPart002.table.entries.all
-      (fun index => decide (DyadicRowMetadata.expected index = 6)) = true := by decide +kernel
+      (fun index => decide (DyadicRowMetadata.expected index = 6)) = true := by
+  simp only [ParameterIndexData.DyadicLeafzeroPart002.table, CheckedIndexTable.append, List.all_append, Bool.and_eq_true]
+  and_intros
+  all_goals exact FKLMeta.ParamMeta.dy_leaf _ 6 (by decide +kernel)
 
 /-- Exact alphabet check for one bounded source-array slice. -/
 theorem DyadicLeafzeroPart003_metadata :
     ParameterIndexData.DyadicLeafzeroPart003.table.entries.all
-      (fun index => decide (DyadicRowMetadata.expected index = 6)) = true := by decide +kernel
+      (fun index => decide (DyadicRowMetadata.expected index = 6)) = true := by
+  simp only [ParameterIndexData.DyadicLeafzeroPart003.table, CheckedIndexTable.append, List.all_append, Bool.and_eq_true]
+  and_intros
+  all_goals exact FKLMeta.ParamMeta.dy_leaf _ 6 (by decide +kernel)
 
 /-- Exact alphabet check for one bounded source-array slice. -/
 theorem DyadicLeafzeroPart004_metadata :
     ParameterIndexData.DyadicLeafzeroPart004.table.entries.all
-      (fun index => decide (DyadicRowMetadata.expected index = 6)) = true := by decide +kernel
+      (fun index => decide (DyadicRowMetadata.expected index = 6)) = true := by
+  simp only [ParameterIndexData.DyadicLeafzeroPart004.table, CheckedIndexTable.append, List.all_append, Bool.and_eq_true]
+  and_intros
+  all_goals exact FKLMeta.ParamMeta.dy_leaf _ 6 (by decide +kernel)
 
 /-- Exact alphabet check for one bounded source-array slice. -/
 theorem DyadicLeafzeroPart005_metadata :
     ParameterIndexData.DyadicLeafzeroPart005.table.entries.all
-      (fun index => decide (DyadicRowMetadata.expected index = 6)) = true := by decide +kernel
+      (fun index => decide (DyadicRowMetadata.expected index = 6)) = true := by
+  simp only [ParameterIndexData.DyadicLeafzeroPart005.table, CheckedIndexTable.append, List.all_append, Bool.and_eq_true]
+  and_intros
+  all_goals exact FKLMeta.ParamMeta.dy_leaf _ 6 (by decide +kernel)
 
 /-- Exact alphabet check for one bounded source-array slice. -/
 theorem DyadicLeafzeroPart006_metadata :
     ParameterIndexData.DyadicLeafzeroPart006.table.entries.all
-      (fun index => decide (DyadicRowMetadata.expected index = 6)) = true := by decide +kernel
+      (fun index => decide (DyadicRowMetadata.expected index = 6)) = true := by
+  simp only [ParameterIndexData.DyadicLeafzeroPart006.table, CheckedIndexTable.append, List.all_append, Bool.and_eq_true]
+  and_intros
+  all_goals exact FKLMeta.ParamMeta.dy_leaf _ 6 (by decide +kernel)
 
 /-- Exact alphabet check for one bounded source-array slice. -/
 theorem DyadicLeafzeroPart007_metadata :
     ParameterIndexData.DyadicLeafzeroPart007.table.entries.all
-      (fun index => decide (DyadicRowMetadata.expected index = 6)) = true := by decide +kernel
+      (fun index => decide (DyadicRowMetadata.expected index = 6)) = true := by
+  simp only [ParameterIndexData.DyadicLeafzeroPart007.table, CheckedIndexTable.append, List.all_append, Bool.and_eq_true]
+  and_intros
+  all_goals exact FKLMeta.ParamMeta.dy_leaf _ 6 (by decide +kernel)
 
 /-- Exact alphabet check for one bounded source-array slice. -/
 theorem DyadicLeafzeroPart008_metadata :
     ParameterIndexData.DyadicLeafzeroPart008.table.entries.all
-      (fun index => decide (DyadicRowMetadata.expected index = 6)) = true := by decide +kernel
+      (fun index => decide (DyadicRowMetadata.expected index = 6)) = true := by
+  simp only [ParameterIndexData.DyadicLeafzeroPart008.table, CheckedIndexTable.append, List.all_append, Bool.and_eq_true]
+  and_intros
+  all_goals exact FKLMeta.ParamMeta.dy_leaf _ 6 (by decide +kernel)
 
 /-- Exact alphabet check for one bounded source-array slice. -/
 theorem DyadicLeafzeroPart009_metadata :
     ParameterIndexData.DyadicLeafzeroPart009.table.entries.all
-      (fun index => decide (DyadicRowMetadata.expected index = 6)) = true := by decide +kernel
+      (fun index => decide (DyadicRowMetadata.expected index = 6)) = true := by
+  simp only [ParameterIndexData.DyadicLeafzeroPart009.table, CheckedIndexTable.append, List.all_append, Bool.and_eq_true]
+  and_intros
+  all_goals exact FKLMeta.ParamMeta.dy_leaf _ 6 (by decide +kernel)
 
 /-- Exact alphabet check for one bounded source-array slice. -/
 theorem DyadicLeafzeroPart010_metadata :
     ParameterIndexData.DyadicLeafzeroPart010.table.entries.all
-      (fun index => decide (DyadicRowMetadata.expected index = 6)) = true := by decide +kernel
+      (fun index => decide (DyadicRowMetadata.expected index = 6)) = true := by
+  simp only [ParameterIndexData.DyadicLeafzeroPart010.table, CheckedIndexTable.append, List.all_append, Bool.and_eq_true]
+  and_intros
+  all_goals exact FKLMeta.ParamMeta.dy_leaf _ 6 (by decide +kernel)
 
 /-- Exact alphabet check for one bounded source-array slice. -/
 theorem DyadicLeafzeroPart011_metadata :
     ParameterIndexData.DyadicLeafzeroPart011.table.entries.all
-      (fun index => decide (DyadicRowMetadata.expected index = 6)) = true := by decide +kernel
+      (fun index => decide (DyadicRowMetadata.expected index = 6)) = true := by
+  simp only [ParameterIndexData.DyadicLeafzeroPart011.table, CheckedIndexTable.append, List.all_append, Bool.and_eq_true]
+  and_intros
+  all_goals exact FKLMeta.ParamMeta.dy_leaf _ 6 (by decide +kernel)
 
 /-- Exact alphabet check for one bounded source-array slice. -/
 theorem DyadicLeafzeroPart012_metadata :
     ParameterIndexData.DyadicLeafzeroPart012.table.entries.all
-      (fun index => decide (DyadicRowMetadata.expected index = 6)) = true := by decide +kernel
+      (fun index => decide (DyadicRowMetadata.expected index = 6)) = true := by
+  simp only [ParameterIndexData.DyadicLeafzeroPart012.table, CheckedIndexTable.append, List.all_append, Bool.and_eq_true]
+  and_intros
+  all_goals exact FKLMeta.ParamMeta.dy_leaf _ 6 (by decide +kernel)
 
 /-- Exact alphabet check for one bounded source-array slice. -/
 theorem DyadicLeafzeroPart013_metadata :
     ParameterIndexData.DyadicLeafzeroPart013.table.entries.all
-      (fun index => decide (DyadicRowMetadata.expected index = 6)) = true := by decide +kernel
+      (fun index => decide (DyadicRowMetadata.expected index = 6)) = true := by
+  simp only [ParameterIndexData.DyadicLeafzeroPart013.table, CheckedIndexTable.append, List.all_append, Bool.and_eq_true]
+  and_intros
+  all_goals exact FKLMeta.ParamMeta.dy_leaf _ 6 (by decide +kernel)
 
 /-- Exact alphabet check for one bounded source-array slice. -/
 theorem DyadicLeafzeroPart014_metadata :
     ParameterIndexData.DyadicLeafzeroPart014.table.entries.all
-      (fun index => decide (DyadicRowMetadata.expected index = 6)) = true := by decide +kernel
+      (fun index => decide (DyadicRowMetadata.expected index = 6)) = true := by
+  simp only [ParameterIndexData.DyadicLeafzeroPart014.table, CheckedIndexTable.append, List.all_append, Bool.and_eq_true]
+  and_intros
+  all_goals exact FKLMeta.ParamMeta.dy_leaf _ 6 (by decide +kernel)
 
 /-- Exact alphabet check for one bounded source-array slice. -/
 theorem DyadicLeafzeroPart015_metadata :
     ParameterIndexData.DyadicLeafzeroPart015.table.entries.all
-      (fun index => decide (DyadicRowMetadata.expected index = 6)) = true := by decide +kernel
+      (fun index => decide (DyadicRowMetadata.expected index = 6)) = true := by
+  simp only [ParameterIndexData.DyadicLeafzeroPart015.table, CheckedIndexTable.append, List.all_append, Bool.and_eq_true]
+  and_intros
+  all_goals exact FKLMeta.ParamMeta.dy_leaf _ 6 (by decide +kernel)
 
 /-- Exact alphabet check for one bounded source-array slice. -/
 theorem DyadicLeafzeroPart016_metadata :
     ParameterIndexData.DyadicLeafzeroPart016.table.entries.all
-      (fun index => decide (DyadicRowMetadata.expected index = 6)) = true := by decide +kernel
+      (fun index => decide (DyadicRowMetadata.expected index = 6)) = true := by
+  simp only [ParameterIndexData.DyadicLeafzeroPart016.table, CheckedIndexTable.append, List.all_append, Bool.and_eq_true]
+  and_intros
+  all_goals exact FKLMeta.ParamMeta.dy_leaf _ 6 (by decide +kernel)
 
 /-- Exact alphabet check for one bounded source-array slice. -/
 theorem DyadicLeafzeroPart017_metadata :
     ParameterIndexData.DyadicLeafzeroPart017.table.entries.all
-      (fun index => decide (DyadicRowMetadata.expected index = 6)) = true := by decide +kernel
+      (fun index => decide (DyadicRowMetadata.expected index = 6)) = true := by
+  simp only [ParameterIndexData.DyadicLeafzeroPart017.table, CheckedIndexTable.append, List.all_append, Bool.and_eq_true]
+  and_intros
+  all_goals exact FKLMeta.ParamMeta.dy_leaf _ 6 (by decide +kernel)
 
 /-- Exact alphabet check for one bounded source-array slice. -/
 theorem DyadicLeafzeroPart018_metadata :
     ParameterIndexData.DyadicLeafzeroPart018.table.entries.all
-      (fun index => decide (DyadicRowMetadata.expected index = 6)) = true := by decide +kernel
+      (fun index => decide (DyadicRowMetadata.expected index = 6)) = true := by
+  simp only [ParameterIndexData.DyadicLeafzeroPart018.table, CheckedIndexTable.append, List.all_append, Bool.and_eq_true]
+  and_intros
+  all_goals exact FKLMeta.ParamMeta.dy_leaf _ 6 (by decide +kernel)
 
 /-- Exact alphabet check for one bounded source-array slice. -/
 theorem DyadicLeafzeroPart019_metadata :
     ParameterIndexData.DyadicLeafzeroPart019.table.entries.all
-      (fun index => decide (DyadicRowMetadata.expected index = 6)) = true := by decide +kernel
+      (fun index => decide (DyadicRowMetadata.expected index = 6)) = true := by
+  simp only [ParameterIndexData.DyadicLeafzeroPart019.table, CheckedIndexTable.append, List.all_append, Bool.and_eq_true]
+  and_intros
+  all_goals exact FKLMeta.ParamMeta.dy_leaf _ 6 (by decide +kernel)
 
 /-- Exact alphabet check for one bounded source-array slice. -/
 theorem DyadicLeafzeroPart020_metadata :
     ParameterIndexData.DyadicLeafzeroPart020.table.entries.all
-      (fun index => decide (DyadicRowMetadata.expected index = 6)) = true := by decide +kernel
+      (fun index => decide (DyadicRowMetadata.expected index = 6)) = true := by
+  simp only [ParameterIndexData.DyadicLeafzeroPart020.table, CheckedIndexTable.append, List.all_append, Bool.and_eq_true]
+  and_intros
+  all_goals exact FKLMeta.ParamMeta.dy_leaf _ 6 (by decide +kernel)
 
 /-- Exact alphabet check for one bounded source-array slice. -/
 theorem DyadicLeafzeroPart021_metadata :
     ParameterIndexData.DyadicLeafzeroPart021.table.entries.all
-      (fun index => decide (DyadicRowMetadata.expected index = 6)) = true := by decide +kernel
+      (fun index => decide (DyadicRowMetadata.expected index = 6)) = true := by
+  simp only [ParameterIndexData.DyadicLeafzeroPart021.table, CheckedIndexTable.append, List.all_append, Bool.and_eq_true]
+  and_intros
+  all_goals exact FKLMeta.ParamMeta.dy_leaf _ 6 (by decide +kernel)
 
 /-- Exact alphabet check for one bounded source-array slice. -/
 theorem DyadicLeafzeroPart022_metadata :
     ParameterIndexData.DyadicLeafzeroPart022.table.entries.all
-      (fun index => decide (DyadicRowMetadata.expected index = 6)) = true := by decide +kernel
+      (fun index => decide (DyadicRowMetadata.expected index = 6)) = true := by
+  simp only [ParameterIndexData.DyadicLeafzeroPart022.table, CheckedIndexTable.append, List.all_append, Bool.and_eq_true]
+  and_intros
+  all_goals exact FKLMeta.ParamMeta.dy_leaf _ 6 (by decide +kernel)
 
 /-- Exact alphabet check for one bounded source-array slice. -/
 theorem DyadicLeafzeroPart023_metadata :
     ParameterIndexData.DyadicLeafzeroPart023.table.entries.all
-      (fun index => decide (DyadicRowMetadata.expected index = 6)) = true := by decide +kernel
+      (fun index => decide (DyadicRowMetadata.expected index = 6)) = true := by
+  simp only [ParameterIndexData.DyadicLeafzeroPart023.table, CheckedIndexTable.append, List.all_append, Bool.and_eq_true]
+  and_intros
+  all_goals exact FKLMeta.ParamMeta.dy_leaf _ 6 (by decide +kernel)
 
 /-- Exact alphabet check for one bounded source-array slice. -/
 theorem DyadicLeafzeroPart024_metadata :
     ParameterIndexData.DyadicLeafzeroPart024.table.entries.all
-      (fun index => decide (DyadicRowMetadata.expected index = 6)) = true := by decide +kernel
+      (fun index => decide (DyadicRowMetadata.expected index = 6)) = true := by
+  simp only [ParameterIndexData.DyadicLeafzeroPart024.table, CheckedIndexTable.append, List.all_append, Bool.and_eq_true]
+  and_intros
+  all_goals exact FKLMeta.ParamMeta.dy_leaf _ 6 (by decide +kernel)
 
 /-- Exact alphabet check for one bounded source-array slice. -/
 theorem DyadicLeafzeroPart025_metadata :
     ParameterIndexData.DyadicLeafzeroPart025.table.entries.all
-      (fun index => decide (DyadicRowMetadata.expected index = 6)) = true := by decide +kernel
+      (fun index => decide (DyadicRowMetadata.expected index = 6)) = true := by
+  simp only [ParameterIndexData.DyadicLeafzeroPart025.table, CheckedIndexTable.append, List.all_append, Bool.and_eq_true]
+  and_intros
+  all_goals exact FKLMeta.ParamMeta.dy_leaf _ 6 (by decide +kernel)
 
 /-- Exact alphabet check for one bounded source-array slice. -/
 theorem DyadicLeafzeroPart026_metadata :
     ParameterIndexData.DyadicLeafzeroPart026.table.entries.all
-      (fun index => decide (DyadicRowMetadata.expected index = 6)) = true := by decide +kernel
+      (fun index => decide (DyadicRowMetadata.expected index = 6)) = true := by
+  simp only [ParameterIndexData.DyadicLeafzeroPart026.table, CheckedIndexTable.append, List.all_append, Bool.and_eq_true]
+  and_intros
+  all_goals exact FKLMeta.ParamMeta.dy_leaf _ 6 (by decide +kernel)
 
 /-- Exact alphabet check for one bounded source-array slice. -/
 theorem DyadicLeafzeroPart027_metadata :
     ParameterIndexData.DyadicLeafzeroPart027.table.entries.all
-      (fun index => decide (DyadicRowMetadata.expected index = 6)) = true := by decide +kernel
+      (fun index => decide (DyadicRowMetadata.expected index = 6)) = true := by
+  simp only [ParameterIndexData.DyadicLeafzeroPart027.table, CheckedIndexTable.append, List.all_append, Bool.and_eq_true]
+  and_intros
+  all_goals exact FKLMeta.ParamMeta.dy_leaf _ 6 (by decide +kernel)
 
 /-- Exact alphabet check for one bounded source-array slice. -/
 theorem DyadicLeafzeroPart028_metadata :
     ParameterIndexData.DyadicLeafzeroPart028.table.entries.all
-      (fun index => decide (DyadicRowMetadata.expected index = 6)) = true := by decide +kernel
+      (fun index => decide (DyadicRowMetadata.expected index = 6)) = true := by
+  simp only [ParameterIndexData.DyadicLeafzeroPart028.table, CheckedIndexTable.append, List.all_append, Bool.and_eq_true]
+  and_intros
+  all_goals exact FKLMeta.ParamMeta.dy_leaf _ 6 (by decide +kernel)
 
 /-- Exact alphabet check for one bounded source-array slice. -/
 theorem DyadicLeafzeroPart029_metadata :
     ParameterIndexData.DyadicLeafzeroPart029.table.entries.all
-      (fun index => decide (DyadicRowMetadata.expected index = 6)) = true := by decide +kernel
+      (fun index => decide (DyadicRowMetadata.expected index = 6)) = true := by
+  simp only [ParameterIndexData.DyadicLeafzeroPart029.table, CheckedIndexTable.append, List.all_append, Bool.and_eq_true]
+  and_intros
+  all_goals exact FKLMeta.ParamMeta.dy_leaf _ 6 (by decide +kernel)
 
 /-- Exact alphabet check for one bounded source-array slice. -/
 theorem DyadicLeafzeroPart030_metadata :
     ParameterIndexData.DyadicLeafzeroPart030.table.entries.all
-      (fun index => decide (DyadicRowMetadata.expected index = 6)) = true := by decide +kernel
+      (fun index => decide (DyadicRowMetadata.expected index = 6)) = true := by
+  simp only [ParameterIndexData.DyadicLeafzeroPart030.table, CheckedIndexTable.append, List.all_append, Bool.and_eq_true]
+  and_intros
+  all_goals exact FKLMeta.ParamMeta.dy_leaf _ 6 (by decide +kernel)
 
 /-- Exact alphabet check for one bounded source-array slice. -/
 theorem DyadicLeafzeroPart031_metadata :
     ParameterIndexData.DyadicLeafzeroPart031.table.entries.all
-      (fun index => decide (DyadicRowMetadata.expected index = 6)) = true := by decide +kernel
+      (fun index => decide (DyadicRowMetadata.expected index = 6)) = true := by
+  simp only [ParameterIndexData.DyadicLeafzeroPart031.table, CheckedIndexTable.append, List.all_append, Bool.and_eq_true]
+  and_intros
+  all_goals exact FKLMeta.ParamMeta.dy_leaf _ 6 (by decide +kernel)
 
 /-- Exact alphabet check for one bounded source-array slice. -/
 theorem DyadicLeafzeroPart032_metadata :
     ParameterIndexData.DyadicLeafzeroPart032.table.entries.all
-      (fun index => decide (DyadicRowMetadata.expected index = 6)) = true := by decide +kernel
+      (fun index => decide (DyadicRowMetadata.expected index = 6)) = true := by
+  simp only [ParameterIndexData.DyadicLeafzeroPart032.table, CheckedIndexTable.append, List.all_append, Bool.and_eq_true]
+  and_intros
+  all_goals exact FKLMeta.ParamMeta.dy_leaf _ 6 (by decide +kernel)
 
 /-- Exact alphabet check for one bounded source-array slice. -/
 theorem DyadicLeafzeroPart033_metadata :
     ParameterIndexData.DyadicLeafzeroPart033.table.entries.all
-      (fun index => decide (DyadicRowMetadata.expected index = 6)) = true := by decide +kernel
+      (fun index => decide (DyadicRowMetadata.expected index = 6)) = true := by
+  simp only [ParameterIndexData.DyadicLeafzeroPart033.table, CheckedIndexTable.append, List.all_append, Bool.and_eq_true]
+  and_intros
+  all_goals exact FKLMeta.ParamMeta.dy_leaf _ 6 (by decide +kernel)
 
 /-- Every original reference has the intended alphabet metadata, by its independently checked slice. -/
 theorem DyadicLeafzero_metadata :
@@ -250,7 +381,10 @@ theorem DyadicLeafzero_metadata :
 /-- Exact alphabet check for one bounded source-array slice. -/
 theorem DyadicZero3Part000_metadata :
     ParameterIndexData.DyadicZero3Part000.table.entries.all
-      (fun index => decide (DyadicRowMetadata.expected index = 21)) = true := by decide +kernel
+      (fun index => decide (DyadicRowMetadata.expected index = 21)) = true := by
+  simp only [ParameterIndexData.DyadicZero3Part000.table, CheckedIndexTable.append, List.all_append, Bool.and_eq_true]
+  and_intros
+  all_goals exact FKLMeta.ParamMeta.dy_leaf _ 21 (by decide +kernel)
 
 /-- Every original reference has the intended alphabet metadata, by its independently checked slice. -/
 theorem DyadicZero3_metadata :
@@ -261,7 +395,10 @@ theorem DyadicZero3_metadata :
 /-- Exact alphabet check for one bounded source-array slice. -/
 theorem DyadicZero4Part000_metadata :
     ParameterIndexData.DyadicZero4Part000.table.entries.all
-      (fun index => decide (DyadicRowMetadata.expected index = 231)) = true := by decide +kernel
+      (fun index => decide (DyadicRowMetadata.expected index = 231)) = true := by
+  simp only [ParameterIndexData.DyadicZero4Part000.table, CheckedIndexTable.append, List.all_append, Bool.and_eq_true]
+  and_intros
+  all_goals exact FKLMeta.ParamMeta.dy_leaf _ 231 (by decide +kernel)
 
 /-- Every original reference has the intended alphabet metadata, by its independently checked slice. -/
 theorem DyadicZero4_metadata :
@@ -272,7 +409,10 @@ theorem DyadicZero4_metadata :
 /-- Exact alphabet check for one bounded source-array slice. -/
 theorem DyadicTerminalrolesPart000_metadata :
     ParameterIndexData.DyadicTerminalrolesPart000.table.entries.all
-      (fun index => decide (DyadicRowMetadata.expected index = 3)) = true := by decide +kernel
+      (fun index => decide (DyadicRowMetadata.expected index = 3)) = true := by
+  simp only [ParameterIndexData.DyadicTerminalrolesPart000.table, CheckedIndexTable.append, List.all_append, Bool.and_eq_true]
+  and_intros
+  all_goals exact FKLMeta.ParamMeta.dy_leaf _ 3 (by decide +kernel)
 
 /-- Every original reference has the intended alphabet metadata, by its independently checked slice. -/
 theorem DyadicTerminalroles_metadata :
@@ -283,7 +423,10 @@ theorem DyadicTerminalroles_metadata :
 /-- Exact alphabet check for one bounded source-array slice. -/
 theorem DyadicAlloc4Part000_metadata :
     ParameterIndexData.DyadicAlloc4Part000.table.entries.all
-      (fun index => decide (DyadicRowMetadata.expected index = 6)) = true := by decide +kernel
+      (fun index => decide (DyadicRowMetadata.expected index = 6)) = true := by
+  simp only [ParameterIndexData.DyadicAlloc4Part000.table, CheckedIndexTable.append, List.all_append, Bool.and_eq_true]
+  and_intros
+  all_goals exact FKLMeta.ParamMeta.dy_leaf _ 6 (by decide +kernel)
 
 /-- Every original reference has the intended alphabet metadata, by its independently checked slice. -/
 theorem DyadicAlloc4_metadata :
@@ -294,17 +437,26 @@ theorem DyadicAlloc4_metadata :
 /-- Exact alphabet check for one bounded source-array slice. -/
 theorem DyadicAlloc3Part000_metadata :
     ParameterIndexData.DyadicAlloc3Part000.table.entries.all
-      (fun index => decide (DyadicRowMetadata.expected index = 6)) = true := by decide +kernel
+      (fun index => decide (DyadicRowMetadata.expected index = 6)) = true := by
+  simp only [ParameterIndexData.DyadicAlloc3Part000.table, CheckedIndexTable.append, List.all_append, Bool.and_eq_true]
+  and_intros
+  all_goals exact FKLMeta.ParamMeta.dy_leaf _ 6 (by decide +kernel)
 
 /-- Exact alphabet check for one bounded source-array slice. -/
 theorem DyadicAlloc3Part001_metadata :
     ParameterIndexData.DyadicAlloc3Part001.table.entries.all
-      (fun index => decide (DyadicRowMetadata.expected index = 6)) = true := by decide +kernel
+      (fun index => decide (DyadicRowMetadata.expected index = 6)) = true := by
+  simp only [ParameterIndexData.DyadicAlloc3Part001.table, CheckedIndexTable.append, List.all_append, Bool.and_eq_true]
+  and_intros
+  all_goals exact FKLMeta.ParamMeta.dy_leaf _ 6 (by decide +kernel)
 
 /-- Exact alphabet check for one bounded source-array slice. -/
 theorem DyadicAlloc3Part002_metadata :
     ParameterIndexData.DyadicAlloc3Part002.table.entries.all
-      (fun index => decide (DyadicRowMetadata.expected index = 6)) = true := by decide +kernel
+      (fun index => decide (DyadicRowMetadata.expected index = 6)) = true := by
+  simp only [ParameterIndexData.DyadicAlloc3Part002.table, CheckedIndexTable.append, List.all_append, Bool.and_eq_true]
+  and_intros
+  all_goals exact FKLMeta.ParamMeta.dy_leaf _ 6 (by decide +kernel)
 
 /-- Every original reference has the intended alphabet metadata, by its independently checked slice. -/
 theorem DyadicAlloc3_metadata :
@@ -315,47 +467,74 @@ theorem DyadicAlloc3_metadata :
 /-- Exact alphabet check for one bounded source-array slice. -/
 theorem GibbsU3Part000_metadata :
     ParameterIndexData.GibbsU3Part000.table.entries.all
-      (fun index => decide (GibbsRowMetadata.expected index = 5)) = true := by decide +kernel
+      (fun index => decide (GibbsRowMetadata.expected index = 5)) = true := by
+  simp only [ParameterIndexData.GibbsU3Part000.table, CheckedIndexTable.append, List.all_append, Bool.and_eq_true]
+  and_intros
+  all_goals exact FKLMeta.ParamMeta.gi_leaf _ 5 (by decide +kernel)
 
 /-- Exact alphabet check for one bounded source-array slice. -/
 theorem GibbsU3Part001_metadata :
     ParameterIndexData.GibbsU3Part001.table.entries.all
-      (fun index => decide (GibbsRowMetadata.expected index = 5)) = true := by decide +kernel
+      (fun index => decide (GibbsRowMetadata.expected index = 5)) = true := by
+  simp only [ParameterIndexData.GibbsU3Part001.table, CheckedIndexTable.append, List.all_append, Bool.and_eq_true]
+  and_intros
+  all_goals exact FKLMeta.ParamMeta.gi_leaf _ 5 (by decide +kernel)
 
 /-- Exact alphabet check for one bounded source-array slice. -/
 theorem GibbsU3Part002_metadata :
     ParameterIndexData.GibbsU3Part002.table.entries.all
-      (fun index => decide (GibbsRowMetadata.expected index = 5)) = true := by decide +kernel
+      (fun index => decide (GibbsRowMetadata.expected index = 5)) = true := by
+  simp only [ParameterIndexData.GibbsU3Part002.table, CheckedIndexTable.append, List.all_append, Bool.and_eq_true]
+  and_intros
+  all_goals exact FKLMeta.ParamMeta.gi_leaf _ 5 (by decide +kernel)
 
 /-- Exact alphabet check for one bounded source-array slice. -/
 theorem GibbsU3Part003_metadata :
     ParameterIndexData.GibbsU3Part003.table.entries.all
-      (fun index => decide (GibbsRowMetadata.expected index = 5)) = true := by decide +kernel
+      (fun index => decide (GibbsRowMetadata.expected index = 5)) = true := by
+  simp only [ParameterIndexData.GibbsU3Part003.table, CheckedIndexTable.append, List.all_append, Bool.and_eq_true]
+  and_intros
+  all_goals exact FKLMeta.ParamMeta.gi_leaf _ 5 (by decide +kernel)
 
 /-- Exact alphabet check for one bounded source-array slice. -/
 theorem GibbsU3Part004_metadata :
     ParameterIndexData.GibbsU3Part004.table.entries.all
-      (fun index => decide (GibbsRowMetadata.expected index = 5)) = true := by decide +kernel
+      (fun index => decide (GibbsRowMetadata.expected index = 5)) = true := by
+  simp only [ParameterIndexData.GibbsU3Part004.table, CheckedIndexTable.append, List.all_append, Bool.and_eq_true]
+  and_intros
+  all_goals exact FKLMeta.ParamMeta.gi_leaf _ 5 (by decide +kernel)
 
 /-- Exact alphabet check for one bounded source-array slice. -/
 theorem GibbsU3Part005_metadata :
     ParameterIndexData.GibbsU3Part005.table.entries.all
-      (fun index => decide (GibbsRowMetadata.expected index = 5)) = true := by decide +kernel
+      (fun index => decide (GibbsRowMetadata.expected index = 5)) = true := by
+  simp only [ParameterIndexData.GibbsU3Part005.table, CheckedIndexTable.append, List.all_append, Bool.and_eq_true]
+  and_intros
+  all_goals exact FKLMeta.ParamMeta.gi_leaf _ 5 (by decide +kernel)
 
 /-- Exact alphabet check for one bounded source-array slice. -/
 theorem GibbsU3Part006_metadata :
     ParameterIndexData.GibbsU3Part006.table.entries.all
-      (fun index => decide (GibbsRowMetadata.expected index = 5)) = true := by decide +kernel
+      (fun index => decide (GibbsRowMetadata.expected index = 5)) = true := by
+  simp only [ParameterIndexData.GibbsU3Part006.table, CheckedIndexTable.append, List.all_append, Bool.and_eq_true]
+  and_intros
+  all_goals exact FKLMeta.ParamMeta.gi_leaf _ 5 (by decide +kernel)
 
 /-- Exact alphabet check for one bounded source-array slice. -/
 theorem GibbsU3Part007_metadata :
     ParameterIndexData.GibbsU3Part007.table.entries.all
-      (fun index => decide (GibbsRowMetadata.expected index = 5)) = true := by decide +kernel
+      (fun index => decide (GibbsRowMetadata.expected index = 5)) = true := by
+  simp only [ParameterIndexData.GibbsU3Part007.table, CheckedIndexTable.append, List.all_append, Bool.and_eq_true]
+  and_intros
+  all_goals exact FKLMeta.ParamMeta.gi_leaf _ 5 (by decide +kernel)
 
 /-- Exact alphabet check for one bounded source-array slice. -/
 theorem GibbsU3Part008_metadata :
     ParameterIndexData.GibbsU3Part008.table.entries.all
-      (fun index => decide (GibbsRowMetadata.expected index = 5)) = true := by decide +kernel
+      (fun index => decide (GibbsRowMetadata.expected index = 5)) = true := by
+  simp only [ParameterIndexData.GibbsU3Part008.table, CheckedIndexTable.append, List.all_append, Bool.and_eq_true]
+  and_intros
+  all_goals exact FKLMeta.ParamMeta.gi_leaf _ 5 (by decide +kernel)
 
 /-- Every original reference has the intended alphabet metadata, by its independently checked slice. -/
 theorem GibbsU3_metadata :
@@ -366,7 +545,10 @@ theorem GibbsU3_metadata :
 /-- Exact alphabet check for one bounded source-array slice. -/
 theorem GibbsU4Part000_metadata :
     ParameterIndexData.GibbsU4Part000.table.entries.all
-      (fun index => decide (GibbsRowMetadata.expected index = 9)) = true := by decide +kernel
+      (fun index => decide (GibbsRowMetadata.expected index = 9)) = true := by
+  simp only [ParameterIndexData.GibbsU4Part000.table, CheckedIndexTable.append, List.all_append, Bool.and_eq_true]
+  and_intros
+  all_goals exact FKLMeta.ParamMeta.gi_leaf _ 9 (by decide +kernel)
 
 /-- Every original reference has the intended alphabet metadata, by its independently checked slice. -/
 theorem GibbsU4_metadata :
@@ -377,7 +559,10 @@ theorem GibbsU4_metadata :
 /-- Exact alphabet check for one bounded source-array slice. -/
 theorem GibbsURPart000_metadata :
     ParameterIndexData.GibbsURPart000.table.entries.all
-      (fun index => decide (GibbsRowMetadata.expected index = 17)) = true := by decide +kernel
+      (fun index => decide (GibbsRowMetadata.expected index = 17)) = true := by
+  simp only [ParameterIndexData.GibbsURPart000.table, CheckedIndexTable.append, List.all_append, Bool.and_eq_true]
+  and_intros
+  all_goals exact FKLMeta.ParamMeta.gi_leaf _ 17 (by decide +kernel)
 
 /-- Every original reference has the intended alphabet metadata, by its independently checked slice. -/
 theorem GibbsUR_metadata :
@@ -388,17 +573,26 @@ theorem GibbsUR_metadata :
 /-- Exact alphabet check for one bounded source-array slice. -/
 theorem SplitAlpha3Part000_metadata :
     ParameterIndexData.SplitAlpha3Part000.table.entries.all
-      (fun index => decide (SplitRowMetadata.expected index = 4)) = true := by decide +kernel
+      (fun index => decide (SplitRowMetadata.expected index = 4)) = true := by
+  simp only [ParameterIndexData.SplitAlpha3Part000.table, CheckedIndexTable.append, List.all_append, Bool.and_eq_true]
+  and_intros
+  all_goals exact FKLMeta.ParamMeta.sp_leaf _ 4 (by decide +kernel)
 
 /-- Exact alphabet check for one bounded source-array slice. -/
 theorem SplitAlpha3Part001_metadata :
     ParameterIndexData.SplitAlpha3Part001.table.entries.all
-      (fun index => decide (SplitRowMetadata.expected index = 4)) = true := by decide +kernel
+      (fun index => decide (SplitRowMetadata.expected index = 4)) = true := by
+  simp only [ParameterIndexData.SplitAlpha3Part001.table, CheckedIndexTable.append, List.all_append, Bool.and_eq_true]
+  and_intros
+  all_goals exact FKLMeta.ParamMeta.sp_leaf _ 4 (by decide +kernel)
 
 /-- Exact alphabet check for one bounded source-array slice. -/
 theorem SplitAlpha3Part002_metadata :
     ParameterIndexData.SplitAlpha3Part002.table.entries.all
-      (fun index => decide (SplitRowMetadata.expected index = 4)) = true := by decide +kernel
+      (fun index => decide (SplitRowMetadata.expected index = 4)) = true := by
+  simp only [ParameterIndexData.SplitAlpha3Part002.table, CheckedIndexTable.append, List.all_append, Bool.and_eq_true]
+  and_intros
+  all_goals exact FKLMeta.ParamMeta.sp_leaf _ 4 (by decide +kernel)
 
 /-- Every original reference has the intended alphabet metadata, by its independently checked slice. -/
 theorem SplitAlpha3_metadata :
@@ -409,7 +603,10 @@ theorem SplitAlpha3_metadata :
 /-- Exact alphabet check for one bounded source-array slice. -/
 theorem SplitAlpha4Part000_metadata :
     ParameterIndexData.SplitAlpha4Part000.table.entries.all
-      (fun index => decide (SplitRowMetadata.expected index = 8)) = true := by decide +kernel
+      (fun index => decide (SplitRowMetadata.expected index = 8)) = true := by
+  simp only [ParameterIndexData.SplitAlpha4Part000.table, CheckedIndexTable.append, List.all_append, Bool.and_eq_true]
+  and_intros
+  all_goals exact FKLMeta.ParamMeta.sp_leaf _ 8 (by decide +kernel)
 
 /-- Every original reference has the intended alphabet metadata, by its independently checked slice. -/
 theorem SplitAlpha4_metadata :

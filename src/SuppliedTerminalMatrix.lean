@@ -1,6 +1,13 @@
-import SuppliedStagePresentations
-import CWRationalCanonicalInterfaces
-import SuppliedTerminalRationalDimensions
+module
+
+public import SuppliedStagePresentations
+public import CWRationalCanonicalInterfaces
+public import SuppliedTerminalRationalDimensions
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The actual canonical terminal stage output restricts to its full matrix
 tensor, whose exact volume is the supplied terminal source volume rate. -/
@@ -58,7 +65,7 @@ theorem log_volume {size : ℕ} (positive : 0 < size) :
     (divisible := fun label : SuppliedPathStages.TerminalLabels => terminal_divisible label.val)
     (sizePositive := positive) (qPositive := by decide)
   simp only [← Nat.card_eq_fintype_card] at volume ⊢
-  simpa only [Rows, Inner, Columns, sourceAxes, extremeCount, middleCount, volumeRate] using volume
+  simpa only [Rows, Inner, Columns, sourceAxes, extremeCount, middleCount, volumeRate] using! volume
 
 end
 end MatrixBounds.Numeric.SuppliedTerminalMatrix

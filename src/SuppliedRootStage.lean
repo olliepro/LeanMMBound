@@ -1,6 +1,13 @@
-import SuppliedHigherOrbitMass
-import CertifiedRootParameters
-import CWRootRationalExtraction
+module
+
+public import SuppliedHigherOrbitMass
+public import CertifiedRootParameters
+public import CWRootRationalExtraction
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Actual unrestricted-root extraction with all supplied distributions,
 physical axes, Gibbs positivity, and fine-law range conditions instantiated. -/

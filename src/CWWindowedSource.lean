@@ -1,4 +1,11 @@
-import CWSequentialExtraction
+module
+
+public import CWSequentialExtraction
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Start the actual extraction with an available approximate parent interface.
 The preparatory masks commute, so no certificate for an unrestricted parent

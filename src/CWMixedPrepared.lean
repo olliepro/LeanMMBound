@@ -1,5 +1,12 @@
-import CWMixedOwnership
-import HeterogeneousMasks
+module
+
+public import CWMixedOwnership
+public import HeterogeneousMasks
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The global heterogeneous extraction starts from the available product of
 parent interfaces. Reordering its independent masks preserves that certificate. -/
@@ -82,7 +89,7 @@ theorem prepared_eq_pooled (data : ∀ type, SplitRestrictionData (length type))
   funext x y z
   simp only [preparedSource, pooledSource, hashedSource, parentInterface_eq, coarseSource_eq,
     hashedTensor, acceptedTensor, windowTest, id_eq, true_and, forall_and]
-  split_ifs <;> simp_all
+  split_ifs <;> simp_all <;> grind
 
 /-- Every global preparatory restriction preserves the available interface's original rank and degree budget. -/
 def prepareInterfaceCertificate (data : ∀ type, SplitRestrictionData (length type)) (q : ℕ)

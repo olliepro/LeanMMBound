@@ -1,5 +1,12 @@
-import CWZeroRationalExtraction
-import ContextMatrixProducts
+module
+
+public import CWZeroRationalExtraction
+public import ContextMatrixProducts
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Supported normalized rational zero-coordinate laws have nonempty actual
 matrix index sets; their product-dimension logarithms therefore add exactly. -/
@@ -35,7 +42,7 @@ theorem product_log_volume {T : Type} [Fintype T] (I J L : T → Type)
       ∑ type, Real.log ((Fintype.card (I type)*Fintype.card (J type)*Fintype.card (L type) : ℕ) : ℝ) := by
   rw [Fintype.card_pi, Fintype.card_pi, Fintype.card_pi,
     ← Finset.prod_mul_distrib, ← Finset.prod_mul_distrib, Nat.cast_prod]
-  exact Real.log_prod Finset.univ _ (fun type _ => by exact_mod_cast (positive type).ne')
+  exact Real.log_prod (fun type _ => by exact_mod_cast (positive type).ne')
 
 end
 end MatrixBounds.Tensor.WaitingZeroMatrix

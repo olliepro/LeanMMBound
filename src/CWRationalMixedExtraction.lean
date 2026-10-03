@@ -1,5 +1,12 @@
-import CWRationalMixedRates
-import CWAsymptoticContextualExtraction
+module
+
+public import CWRationalMixedRates
+public import CWAsymptoticContextualExtraction
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Complete shared extraction directly on fixed rational stage parameters.
 The actual graph references, symmetric counts, and scale caps are constructed
@@ -67,7 +74,7 @@ theorem eventual_rational_extraction (splits : ∀ type, RationalSplit (length t
     (fun _ => by simp only [RationalPositions, Fintype.card_fin, le_refl]) actualLower
   refine ⟨copies, overhead, ?_, overheadBound, ?_⟩
   · simpa only [data, nominal, sub_mul] using retained
-  · simpa only [data, rationalData_parent splits weight weightPositive denominatorPositive scalePositive divisible] using reduction
+  · simpa only [data, rationalData_parent splits weight weightPositive denominatorPositive scalePositive divisible] using! reduction
 
 end
 end MatrixBounds.Tensor.CW.Mixed

@@ -1,6 +1,13 @@
-import EmpiricalTypes
-import Mathlib.GroupTheory.Perm.DomMulAct
-import Mathlib.Data.Nat.Choose.Multinomial
+module
+
+public import EmpiricalTypes
+public import Mathlib.GroupTheory.Perm.DomMulAct
+public import Mathlib.Data.Nat.Choose.Multinomial
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Exact multinomial counting of empirical-type words. The proof uses the
 transitive permutation action and computes its stabilizer, rather than assuming
@@ -22,7 +29,7 @@ theorem fixed_word_count (profile : B → ℕ) (word : TypedWord (P := P) profil
     toFun g := ⟨g.val.symm, congrArg Subtype.val g.property⟩
     invFun g := ⟨g.val.symm, by
       apply Subtype.ext
-      simpa [reorder] using g.property⟩
+      simpa [reorder] using! g.property⟩
     left_inv g := by apply Subtype.ext; exact Equiv.symm_symm g.val
     right_inv g := by apply Subtype.ext; exact Equiv.symm_symm g.val }
   rw [MatrixBounds.Symmetry.misses, Nat.card_congr equiv, Nat.card_eq_fintype_card,

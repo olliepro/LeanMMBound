@@ -1,6 +1,13 @@
-import CWRationalCanonicalInterfaces
-import CWRationalSixfoldAssembly
-import HeterogeneousExchange
+module
+
+public import CWRationalCanonicalInterfaces
+public import CWRationalSixfoldAssembly
+public import HeterogeneousExchange
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Shared sixfold extraction on the actual original source families, with
 independent outer batch labels restored after the mixed extraction. -/
@@ -49,7 +56,7 @@ theorem RationalStage.eventual_labelled_canonical_extraction
         (fun index => ((presentations sector).original index.1).childWeight ((stages sector).weight index.1) index.2*RepairRates.scale k)
         (fun index => index.2.val) (fun index axis => (presentations sector).law index.1 axis index.2)
         (fun index => delta sector index.1) order))).context.batch (I := Fin (copies^6))
-  simpa only [one_mul, mul_one] using (before.trans reduction).trans after
+  simpa only [one_mul, mul_one] using! (before.trans reduction).trans after
 
 end
 end MatrixBounds.Tensor.CW.Mixed

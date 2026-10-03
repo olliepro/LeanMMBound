@@ -1,5 +1,12 @@
-import SuppliedScaledRoot
-import SuppliedShapeInterfaceBindings
+module
+
+public import SuppliedScaledRoot
+public import SuppliedShapeInterfaceBindings
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Exact source-coordinate root populations, including all positive and
 zero-coordinate children, at the fixed common pipeline scale. -/
@@ -42,7 +49,8 @@ theorem population (child : ShapeAlphabet 16) (size : ℕ) :
 /-- Positive original root columns carry exactly the incoming weights of the next supplied level-four parents. -/
 theorem positive_weight (parent : Fin 105) :
     weight (shapeColumnEquiv 16 (rootColumn parent)) = parent4Weight parent := by
-  simp only [weight, numerator, Equiv.symm_apply_apply, parent4Weight, rootNumerator]
+  simp only [weight, numerator, (shapeColumnEquiv 16).symm_apply_apply (rootColumn parent), parent4Weight,
+    rootNumerator]
 
 /-- Each actual physical root child carries the original complete fine laws on the correct physical axes. -/
 theorem physical_law (child : ShapeAlphabet 16) (axis : Fin 3) :

@@ -1,4 +1,11 @@
-import SuppliedPopulationPaths
+module
+
+public import SuppliedPopulationPaths
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Allocation history remains part of each tensor label. Summing its rate
 contributions is exactly the original certificate's coarser population formula. -/

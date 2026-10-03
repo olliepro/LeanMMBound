@@ -1,5 +1,12 @@
-import SuppliedTerminalRateMassArithmetic
-import TerminalSourceNodeLookup
+module
+
+public import SuppliedTerminalRateMassArithmetic
+public import TerminalSourceNodeLookup
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Balanced metadata and finite columns give exact original terminal input arithmetic. -/
 namespace MatrixBounds.Numeric.SuppliedTerminalRates

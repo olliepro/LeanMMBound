@@ -1,4 +1,11 @@
-import AllWeightSectorAllocation
+module
+
+public import AllWeightSectorAllocation
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Rational allocations expose the named fixed child coefficients used by
 the next source interface, through explicit position bijections. -/

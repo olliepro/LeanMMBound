@@ -1,4 +1,11 @@
-import LogEnclosures
+module
+
+public import LogEnclosures
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Concrete logarithm constants certified by rational arithmetic and the proved
 finite-series remainder. These are independent of the Python interval report. -/

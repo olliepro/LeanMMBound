@@ -1,6 +1,13 @@
-import FiniteCover
-import MatrixBounds
-import Mathlib.Tactic.Linarith
+module
+
+public import FiniteCover
+public import MatrixBounds
+public import Mathlib.Tactic.Linarith
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Finite union, Markov, and averaging bounds for selecting many sparse-hole
 tensor copies. All quantities are integer counts; no independence is assumed. -/

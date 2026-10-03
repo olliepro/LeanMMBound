@@ -1,6 +1,13 @@
-import CWRationalOrbitParents
-import CWLawStability
-import TypedParameterRows
+module
+
+public import CWRationalOrbitParents
+public import CWLawStability
+public import TypedParameterRows
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Probability bounds for the recursively supplied fine laws follow from their
 checked inputs and exact parent formulas, independent of floating-point values. -/

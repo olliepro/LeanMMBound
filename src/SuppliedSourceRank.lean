@@ -1,7 +1,14 @@
-import SuppliedSourceCertificate
-import SuppliedSourcePipeline
-import ProfileCountRates
-import ContextRank
+module
+
+public import SuppliedSourceCertificate
+public import SuppliedSourcePipeline
+public import ProfileCountRates
+public import ContextRank
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Exact original source rank and the one polynomial coefficient-extraction
 cost are bounded before any final matrix relabeling. -/

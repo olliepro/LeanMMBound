@@ -1,5 +1,12 @@
-import CWMixedProfiles
-import CWActiveLaws
+module
+
+public import CWMixedProfiles
+public import CWActiveLaws
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Valid accepted profile tuples supply the exact representatives and uniform
 law-closeness premises consumed by finite mixed extraction. Reprofiling changes

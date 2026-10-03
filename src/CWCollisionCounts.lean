@@ -1,4 +1,11 @@
-import CWCoarseGraph
+module
+
+public import CWCoarseGraph
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Integer collision bounds for actual admissible CW coarse words. Different
 words sharing one vertex satisfy the nonconstant hash equation automatically. -/

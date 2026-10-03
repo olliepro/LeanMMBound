@@ -1,7 +1,14 @@
-import SuppliedRootPopulation
-import CWRoleWindowRouting
-import HeterogeneousFiniteRegrouping
-import WindowedReindexing
+module
+
+public import SuppliedRootPopulation
+public import CWRoleWindowRouting
+public import HeterogeneousFiniteRegrouping
+public import WindowedReindexing
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The actual root output is identified with complete original source windows,
 including every zero-coordinate child, at the pipeline's exact populations. -/
@@ -31,7 +38,7 @@ def restriction {K : Type} [CommRing K] (size : ℕ) (tolerance : ℝ) :
     (fun x => fineWord x.val) (fun y => fineWord y.val) (fun z => fineWord z.val)
     (SuppliedRootStage.law 0 (physicalChild child)) (SuppliedRootStage.law 1 (physicalChild child))
     (SuppliedRootStage.law 2 (physicalChild child)) tolerance
-  simpa only [physical_law] using positions
+  simpa only [physical_law] using! positions
 
 end
 end MatrixBounds.Numeric.SuppliedRootChildren

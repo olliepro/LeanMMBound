@@ -1,5 +1,12 @@
-import IndicatorConcentration
-import Mathlib.Algebra.Order.Chebyshev
+module
+
+public import IndicatorConcentration
+public import Mathlib.Algebra.Order.Chebyshev
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Combine finite groupwise count errors without an independence assumption. -/
 namespace MatrixBounds.Sampling
@@ -12,7 +19,7 @@ variable {Group Position Outcome : Type*} [Fintype Group] [Fintype Position] [Fi
 /-- Summing a function over all fibers of a group label recovers its total sum. -/
 theorem sum_over_groups (group : Position → Group) (value : Position → ℝ) :
     (∑ label, ∑ position : {position // group position = label}, value position.val) = ∑ position, value position := by
-  simpa only [Fintype.sum_sigma] using Equiv.sum_comp (Equiv.sigmaFiberEquiv group) value
+  simpa only [Fintype.sum_sigma] using! Equiv.sum_comp (Equiv.sigmaFiberEquiv group) value
 
 /-- Group cardinalities partition the total number of positions, with the identity cast to reals. -/
 theorem group_card_sum (group : Position → Group) :

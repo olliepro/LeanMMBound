@@ -1,5 +1,12 @@
-import CWTerminalMatrices
-import CWMixedTargets
+module
+
+public import CWTerminalMatrices
+public import CWMixedTargets
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The entire mixed terminal child target becomes one rectangular matrix
 factor, with exact dimensions multiplying across all labelled parent types. -/

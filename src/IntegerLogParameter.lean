@@ -1,4 +1,11 @@
-import FixedCubicLogBounds
+module
+
+public import FixedCubicLogBounds
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Cross-multiplied integer inequalities certify the complete logarithm
 parameter without computing reduced rational quotients in the kernel checker. -/

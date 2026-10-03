@@ -1,6 +1,13 @@
-import CWReprofile
-import CWMixedTargets
-import ApproximateProfiles
+module
+
+public import CWReprofile
+public import CWMixedTargets
+public import ApproximateProfiles
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Finite exact-profile tuples for the actual mixed child target. Valid tuples
 produce split data with the same coarse graph; invalid tuples are proved zero. -/

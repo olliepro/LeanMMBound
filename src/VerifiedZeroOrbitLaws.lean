@@ -1,6 +1,13 @@
-import OrbitDiracLaws
-import VerifiedOrbitLevel4
-import CWZeroRationalExtraction
+module
+
+public import OrbitDiracLaws
+public import VerifiedOrbitLevel4
+public import CWZeroRationalExtraction
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The all-zero fine law is represented by the first supplied orbit at all
 three recursive levels, as required for the zero coordinate of each leaf. -/

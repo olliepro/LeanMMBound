@@ -1,4 +1,11 @@
-import SuppliedZeroRegistryChecks
+module
+
+public import SuppliedZeroRegistryChecks
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Transfer the once-per-original-row support registry proof to its actual
 accepted sparse row, without repeating row checks at every source occurrence. -/

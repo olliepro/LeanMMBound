@@ -1,5 +1,12 @@
-import SuppliedPairedCoarseColumns
-import RootFineKernelMergeNormalization
+module
+
+public import SuppliedPairedCoarseColumns
+public import RootFineKernelMergeNormalization
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Bounded complete coarse source blocks, omitting only exactly zero population contributions. -/
 namespace MatrixBounds.Numeric.SuppliedPairedCoarse

@@ -1,6 +1,13 @@
-import SuppliedParameterRows
-import SuppliedParameterChecks
-import TypedParameterRows
+module
+
+public import SuppliedParameterRows
+public import SuppliedParameterChecks
+public import TypedParameterRows
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Concrete finite-alphabet parameters for the actual extraction theorems.
 All normalization, support, symmetry, positivity, and width premises are discharged. -/

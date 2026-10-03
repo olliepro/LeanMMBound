@@ -1,6 +1,13 @@
-import CWZeroContext
-import WindowExactRestriction
-import CWZeroCoordinateRestrictions
+module
+
+public import CWZeroContext
+public import WindowExactRestriction
+public import CWZeroCoordinateRestrictions
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Zero-coordinate leaves are consumed directly from the windowed interface
 of a preceding extraction. Their exact profiles give actual matrix coordinates. -/

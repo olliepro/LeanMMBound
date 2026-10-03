@@ -1,5 +1,12 @@
-import CWTypedInterfaces
-import TypedFiberCounting
+module
+
+public import CWTypedInterfaces
+public import TypedFiberCounting
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Exact sizes of CW fine blocks. The middle class has q coordinates and
 each extreme class has one, yielding q raised to the number of middle symbols. -/
@@ -54,7 +61,7 @@ theorem fine_fiber_card (q : ℕ) (symbol : Fin 3) :
     simpa only [fineLabel, Fin.ext_iff, Fintype.card_fin, Fin.val_one, ↓reduceIte] using same.symm
   · have same := Fintype.card_congr (Equiv.subtypeEquivRight (fun entry : Fin (q+2) => by
       change fineLabel entry = 2 ↔ entry = ⟨q+1, by omega⟩
-      simpa only [Fin.ext_iff, fineLabel] using coarse_eq_two entry))
+      simpa only [Fin.ext_iff, fineLabel] using! coarse_eq_two entry))
     simpa using same
 
 /-- Specifying a fine word amounts to independently selecting one coordinate from each of its fine classes. -/

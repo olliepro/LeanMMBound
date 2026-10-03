@@ -1,4 +1,11 @@
-import CWNearbyDegreeRates
+module
+
+public import CWNearbyDegreeRates
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Fixed population-independent choices of parent and child tolerances for an
 available nominal parent window. These choices are constructed for every

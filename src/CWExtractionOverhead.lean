@@ -1,4 +1,11 @@
-import CWApproximateCosts
+module
+
+public import CWApproximateCosts
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Combined uniform cost of actual three-axis gluing, hole repair, and
 polynomial coefficient extraction. This is the complete finite overhead in

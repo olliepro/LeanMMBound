@@ -1,5 +1,12 @@
-import CWPartition
-import MatrixTensor
+module
+
+public import CWPartition
+public import MatrixTensor
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! A zero-coordinate CW slice is a nondegenerate pairing. Its fine blocks
 therefore determine complementary words on the other two axes. -/

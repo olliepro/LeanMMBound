@@ -1,5 +1,14 @@
-import VerifiedOrbitLevel3
-import FiniteIndexBlocks
+module
+
+public import VerifiedOrbitLevel3
+public import FiniteIndexBlocks
+public import FKLMeta.FineWords
+public import FKL.Range
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Exact supplied recursive orbit metadata, checked against actual fine words. -/
 namespace MatrixBounds.Numeric.OrbitLevel4
@@ -62,6 +71,66 @@ def codes : Array (Fin 231) := (
 ]
 )
 
+/-- Packed columns of the level-four pair encoding (FKLMeta). -/
+def fkl_c1 : ℕ := 0x527394a518c630842107bdef7bdce739ce735ad6b5ad6b18c6318c6316b5ad6b5ad6b5294a5294a529494a5294a5294a52842108421084210839ce739ce739ce739cc6318c6318c6318c6314a5294a5294a5294a5290842108421084210842106318c6318c6318c6318c63108421084210842108421084108421084210842108421084200000000000000000000000000
+
+def fkl_c2 : ℕ := 0x5293a4e549ca349ca30a4e5183e939460f752728c1ee6d2728c1ee6b2939460f7358ba4e5183dcd62d549ca307b9ac5a9349ca307b9ac5a928a4e5183dcd62d4941e939460f7358b52507352728c1ee6b16a4a0e62d2728c1ee6b16a4a0e6292939460f7358b5250731483a4e5183dcd62d4941cc520c549ca307b9ac5a928398a4188349ca307b9ac5a928398a418820
+
+theorem fkl_cols_walk : FKLMeta.walk (fun i p => Bool.and (Nat.beq p.1.val (FKL.lane fkl_c1 5 i))
+    (Nat.beq p.2.val (FKL.lane fkl_c2 5 i))) columns.toList 0 = true := by
+  decide +kernel
+
+theorem fkl_col (o : ℕ) (h : o < columns.size) :
+    (columns[o]'h).1.val = FKL.lane fkl_c1 5 o ∧ (columns[o]'h).2.val = FKL.lane fkl_c2 5 o := by
+  have h' : o < columns.toList.length := by rw [Array.length_toList]; exact h
+  have e := FKLMeta.walk_sound _ _ 0 fkl_cols_walk o h'
+  simp only [Nat.zero_add, Bool.and_eq_true, Nat.beq_eq] at e
+  rw [← Array.getElem_toList h']; exact e
+
+theorem fkl_cc_checked : FKL.allRange (fun o => Nat.beq (FKLMeta.FineWords.rawCode 21 (FKL.lane fkl_c1 5 o)
+    (FKL.lane fkl_c2 5 o) 231) o) 8 0 231 = true := by
+  decide +kernel
+
+theorem fkl_cc (orbit : Fin 231) (h : orbit.val < columns.size) :
+    (min (columns[orbit.val]'h).1.val (columns[orbit.val]'h).2.val * 21 -
+      min (columns[orbit.val]'h).1.val (columns[orbit.val]'h).2.val *
+        (min (columns[orbit.val]'h).1.val (columns[orbit.val]'h).2.val + 1) / 2 +
+      max (columns[orbit.val]'h).1.val (columns[orbit.val]'h).2.val) % 231 = orbit.val := by
+  obtain ⟨e1, e2⟩ := fkl_col orbit.val h
+  rw [e1, e2, ← FKLMeta.FineWords.rawCode_eq]
+  have e := FKL.allRange_sound _ 8 0 231 fkl_cc_checked orbit.val orbit.isLt
+  rw [Nat.zero_add] at e
+  exact Nat.eq_of_beq_eq_true e
+
+theorem fkl_cc2_checked : FKL.allRange (fun ab => (fun a b => Bool.and
+    (Nat.beq (FKL.lane fkl_c1 5 (FKLMeta.FineWords.rawCode 21 a b 231)) (cond (Nat.ble a b) a b))
+    (Nat.beq (FKL.lane fkl_c2 5 (FKLMeta.FineWords.rawCode 21 a b 231)) (cond (Nat.ble a b) b a))) (Nat.div ab 21) (Nat.mod ab 21))
+    9 0 441 = true := by
+  decide +kernel
+
+theorem fkl_cc2 (a b : Fin 21)
+    (h : (min a.val b.val * 21 - min a.val b.val * (min a.val b.val + 1) / 2 + max a.val b.val) % 231 < columns.size) :
+    columns[(min a.val b.val * 21 - min a.val b.val * (min a.val b.val + 1) / 2 + max a.val b.val) % 231]'h =
+      (min a b, max a b) := by
+  have e := FKL.allRange_sound _ 9 0 441 fkl_cc2_checked (a.val * 21 + b.val) (by omega)
+  rw [Nat.zero_add] at e
+  have hd : Nat.div (a.val * 21 + b.val) 21 = a.val := by show (a.val * 21 + b.val) / 21 = a.val; omega
+  have hm : Nat.mod (a.val * 21 + b.val) 21 = b.val := by show (a.val * 21 + b.val) % 21 = b.val; omega
+  simp only [hd, hm, Bool.and_eq_true, Nat.beq_eq] at e
+  obtain ⟨e1, e2⟩ := fkl_col _ h
+  rw [FKLMeta.FineWords.rawCode_eq] at e
+  refine Prod.ext (Fin.ext ?_) (Fin.ext ?_)
+  · rw [e1, e.1, Fin.coe_min]
+    by_cases hab : a.val ≤ b.val
+    · rw [show Nat.ble a.val b.val = true from Nat.ble_eq.mpr hab, cond_true, Nat.min_eq_left hab]
+    · rw [show Nat.ble a.val b.val = false from Bool.eq_false_iff.mpr (fun q => hab (Nat.ble_eq.mp q)), cond_false,
+        Nat.min_eq_right (by omega)]
+  · rw [e2, e.2, Fin.coe_max]
+    by_cases hab : a.val ≤ b.val
+    · rw [show Nat.ble a.val b.val = true from Nat.ble_eq.mpr hab, cond_true, Nat.max_eq_right hab]
+    · rw [show Nat.ble a.val b.val = false from Bool.eq_false_iff.mpr (fun q => hab (Nat.ble_eq.mp q)), cond_false,
+        Nat.max_eq_left (by omega)]
+
 /-- The concrete encoding identifies precisely left/right exchange and retains every unordered pair. -/
 def encoding : PairEncoding 21 231 where
   columns orbit := columns[orbit.val]'(by change orbit.val < 231; exact orbit.isLt)
@@ -69,8 +138,8 @@ def encoding : PairEncoding 21 231 where
     let lower := min pair.1.val pair.2.val
     let upper := max pair.1.val pair.2.val
     ⟨(lower*21-lower*(lower+1)/2+upper)%231, Nat.mod_lt _ (by decide +kernel)⟩
-  code_columns := by decide +kernel
-  columns_code := by decide +kernel
+  code_columns := fun orbit => Fin.ext (fkl_cc orbit _)
+  columns_code := fun pair => fkl_cc2 pair.1 pair.2 _
 
 /-- Actual complete fine-word orbits obtained from the two recursive child halves. -/
 def orbits : OrbitMap (Fin 8 → Fin 3) (Fin 231) :=
@@ -421,164 +490,626 @@ def suppliedMap (index : Fin 6561) : ℕ :=
 /-- The exact finite assertion checked at one supplied index. -/
 def map_checked_predicate (index : Fin 6561) : Prop := (orbits.label (fineWordColumns 8 index)).val = suppliedMap index
 
+/-- Level-three supplied word map, 5-bit lanes (FKLMeta). -/
+def fkl_m3 : ℕ := 0x149ba71539459c9b2825a9239ab6b0eb38a726ca096a4918320f43103524e9418e60b9ab6b0eb389493a506398252088308820
+
+theorem fkl_m3_walk : FKLMeta.walk (fun i v => Nat.beq v (FKL.lane fkl_m3 5 i))
+    MatrixBounds.Numeric.OrbitLevel3.mapChunk000.toList 0 = true := by decide +kernel
+
+theorem fkl_m3_len : MatrixBounds.Numeric.OrbitLevel3.mapChunk000.toList.length = 81 := by decide +kernel
+
+theorem fkl_label3 (j : ℕ) (hj : j < 3 ^ 4) :
+    (MatrixBounds.Numeric.OrbitLevel3.orbits.label (fineWordColumns 4 ⟨j, hj⟩)).val = FKL.lane fkl_m3 5 j := by
+  have e := MatrixBounds.Numeric.OrbitLevel3.map_checked ⟨j, hj⟩
+  unfold MatrixBounds.Numeric.OrbitLevel3.map_checked_predicate at e
+  rw [e]
+  unfold MatrixBounds.Numeric.OrbitLevel3.suppliedMap
+  have h81 : j < 81 := hj
+  rw [show j / 256 = 0 by omega, show j % 256 = j by omega]
+  have := FKLMeta.FineWords.arr_get _ fkl_m3 5 0 81 fkl_m3_walk fkl_m3_len j h81
+  rw [Nat.zero_add] at this
+  exact this
+
+/-- Level-four supplied word map, 8-bit lanes (FKLMeta). -/
+def fkl_m4 : ℕ := 0xe6e5d1e5e0afd1af6ee5e3cae3dca4caa45ed1cab9cac28bb98b3be5e3cae3dca4caa45ee0dcc2dcd798c2984dafa48ba4987d8b7d28d1cab9cac28bb98b3bafa48ba4987d8b7d286e5e3b5e4d283b2814e5e4d0e4dfaed0ae6de4e2c9e2dba3c9a35dd0c9b8c9c18ab88a3ae4e2c9e2dba3c9a35ddfdbc1dbd697c1974caea38aa3977c8a7c27d0c9b8c9c18ab88a3aaea38aa3977c8a7c276d5d3a5d4c273a2713d1d0cbd0cea9cba968d0cfc4cfcd9ec49e58cbc4b3c4bc85b38535d0cfc4cfcd9ec49e58cecdbccdcc92bc9247a99e859e9277857722cbc4b3c4bc85b38535a99e859e927785772268583558472235220ee5e4d0e4dfaed0ae6de4e2c9e2dba3c9a35dd0c9b8c9c18ab88a3ae4e2c9e2dba3c9a35ddfdbc1dbd697c1974caea38aa3977c8a7c27d0c9b8c9c18ab88a3aaea38aa3977c8a7c276d5d3a5d4c273a2713e0dfcedfddacceac6bdfdec7ded9a1c7a15bcec7b6c7bf88b68838dfdec7ded9a1c7a15bddd9bfd9d495bf954aaca188a1957a887a25cec7b6c7bf88b68838aca188a1957a887a256b5b385b4a25382511afaea9aeaca5a9a564aeada8adab9aa89a54a9a8a6a8a781a68131aeada8adab9aa89a54acaba7abaa8ea78e43a59a819a8e7381731ea9a8a6a8a781a68131a59a819a8e7381731e64543154431e311e0ad1d0cbd0cea9cba968d0cfc4cfcd9ec49e58cbc4b3c4bc85b38535d0cfc4cfcd9ec49e58cecdbccdcc92bc9247a99e859e9277857722cbc4b3c4bc85b38535a99e859e927785772268583558472235220eafaea9aeaca5a9a564aeada8adab9aa89a54a9a8a6a8a781a68131aeada8adab9aa89a54acaba7abaa8ea78e43a59a819a8e7381731ea9a8a6a8a781a68131a59a819a8e7381731e64543154431e311e0a6e6d686d6b6468645f6d6c676c6a6367634f68676567666165612c6d6c676c6a6367634f6b6a666a696266623e64636163626061601968676567666165612c6463616362606160195f4f2c4f3e192c1905e5e4d0e4dfaed0ae6de4e2c9e2dba3c9a35dd0c9b8c9c18ab88a3ae4e2c9e2dba3c9a35ddfdbc1dbd697c1974caea38aa3977c8a7c27d0c9b8c9c18ab88a3aaea38aa3977c8a7c276d5d3a5d4c273a2713e3e2cfe2deadcfad6ce2e1c8e1daa2c8a25ccfc8b7c8c089b78939e2e1c8e1daa2c8a25cdedac0dad596c0964bada289a2967b897b26cfc8b7c8c089b78939ada289a2967b897b266c5c395c4b26392612cac9c4c9c7a8c4a867c9c8c3c8c69dc39d57c4c3b2c3bb84b28434c9c8c3c8c69dc39d57c7c6bbc6c591bb9146a89d849d9176847621c4c3b2c3bb84b28434a89d849d917684762167573457462134210de3e2cfe2deadcfad6ce2e1c8e1daa2c8a25ccfc8b7c8c089b78939e2e1c8e1daa2c8a25cdedac0dad596c0964bada289a2967b897b26cfc8b7c8c089b78939ada289a2967b897b266c5c395c4b26392612dcdbcddbd9abcdab6adbdac6dad8a0c6a05acdc6b5c6be87b58737dbdac6dad8a0c6a05ad9d8bed8d394be9449aba087a09479877924cdc6b5c6be87b58737aba087a094798779246a5a375a4924372410a4a39ea3a19a9e9a63a3a29da2a0999d99539e9d9b9d9c809b8030a3a29da2a0999d9953a1a09ca09f8d9c8d429a9980998d7280721d9e9d9b9d9c809b80309a9980998d7280721d63533053421d301d09cac9c4c9c7a8c4a867c9c8c3c8c69dc39d57c4c3b2c3bb84b28434c9c8c3c8c69dc39d57c7c6bbc6c591bb9146a89d849d9176847621c4c3b2c3bb84b28434a89d849d917684762167573457462134210da4a39ea3a19a9e9a63a3a29da2a0999d99539e9d9b9d9c809b8030a3a29da2a0999d9953a1a09ca09f8d9c8d429a9980998d7280721d9e9d9b9d9c809b80309a9980998d7280721d63533053421d301d095e5d585d5b5458544f5d5c575c5a5357534e58575557565155512b5d5c575c5a5357534e5b5a565a595256523d54535153525051501858575557565155512b5453515352505150184f4e2b4e3d182b1804d1d0cbd0cea9cba968d0cfc4cfcd9ec49e58cbc4b3c4bc85b38535d0cfc4cfcd9ec49e58cecdbccdcc92bc9247a99e859e9277857722cbc4b3c4bc85b38535a99e859e927785772268583558472235220ecac9c4c9c7a8c4a867c9c8c3c8c69dc39d57c4c3b2c3bb84b28434c9c8c3c8c69dc39d57c7c6bbc6c591bb9146a89d849d9176847621c4c3b2c3bb84b28434a89d849d917684762167573457462134210db9b8b3b8b6a6b3a665b8b7b2b7b59bb29b55b3b2b0b2b182b08232b8b7b2b7b59bb29b55b6b5b1b5b48fb18f44a69b829b8f7482741fb3b2b0b2b182b08232a69b829b8f7482741f65553255441f321f0bcac9c4c9c7a8c4a867c9c8c3c8c69dc39d57c4c3b2c3bb84b28434c9c8c3c8c69dc39d57c7c6bbc6c591bb9146a89d849d9176847621c4c3b2c3bb84b28434a89d849d917684762167573457462134210dc2c1bcc1bfa7bca766c1c0bbc0be9cbb9c56bcbbb1bbba83b18333c1c0bbc0be9cbb9c56bfbebabebd90ba9045a79c839c9075837520bcbbb1bbba83b18333a79c839c907583752066563356452033200c8b8a858a88818581618a898489878084805185848284837e827e2e8a898489878084805188878387867f837f4081807e807f707e701b85848284837e827e2e81807e807f707e701b61512e51401b2e1b07b9b8b3b8b6a6b3a665b8b7b2b7b59bb29b55b3b2b0b2b182b08232b8b7b2b7b59bb29b55b6b5b1b5b48fb18f44a69b829b8f7482741fb3b2b0b2b182b08232a69b829b8f7482741f65553255441f321f0b8b8a858a88818581618a898489878084805185848284837e827e2e8a898489878084805188878387867f837f4081807e807f707e701b85848284837e827e2e81807e807f707e701b61512e51401b2e1b073b3a353a383135312c3a393439373034302b35343234332e322e293a393439373034302b38373337362f332f2a31302e302f2d2e2d1635343234332e322e2931302e302f2d2e2d162c2b292b2a16291602e5e4d0e4dfaed0ae6de4e2c9e2dba3c9a35dd0c9b8c9c18ab88a3ae4e2c9e2dba3c9a35ddfdbc1dbd697c1974caea38aa3977c8a7c27d0c9b8c9c18ab88a3aaea38aa3977c8a7c276d5d3a5d4c273a2713e3e2cfe2deadcfad6ce2e1c8e1daa2c8a25ccfc8b7c8c089b78939e2e1c8e1daa2c8a25cdedac0dad596c0964bada289a2967b897b26cfc8b7c8c089b78939ada289a2967b897b266c5c395c4b26392612cac9c4c9c7a8c4a867c9c8c3c8c69dc39d57c4c3b2c3bb84b28434c9c8c3c8c69dc39d57c7c6bbc6c591bb9146a89d849d9176847621c4c3b2c3bb84b28434a89d849d917684762167573457462134210de3e2cfe2deadcfad6ce2e1c8e1daa2c8a25ccfc8b7c8c089b78939e2e1c8e1daa2c8a25cdedac0dad596c0964bada289a2967b897b26cfc8b7c8c089b78939ada289a2967b897b266c5c395c4b26392612dcdbcddbd9abcdab6adbdac6dad8a0c6a05acdc6b5c6be87b58737dbdac6dad8a0c6a05ad9d8bed8d394be9449aba087a09479877924cdc6b5c6be87b58737aba087a094798779246a5a375a4924372410a4a39ea3a19a9e9a63a3a29da2a0999d99539e9d9b9d9c809b8030a3a29da2a0999d9953a1a09ca09f8d9c8d429a9980998d7280721d9e9d9b9d9c809b80309a9980998d7280721d63533053421d301d09cac9c4c9c7a8c4a867c9c8c3c8c69dc39d57c4c3b2c3bb84b28434c9c8c3c8c69dc39d57c7c6bbc6c591bb9146a89d849d9176847621c4c3b2c3bb84b28434a89d849d917684762167573457462134210da4a39ea3a19a9e9a63a3a29da2a0999d99539e9d9b9d9c809b8030a3a29da2a0999d9953a1a09ca09f8d9c8d429a9980998d7280721d9e9d9b9d9c809b80309a9980998d7280721d63533053421d301d095e5d585d5b5458544f5d5c575c5a5357534e58575557565155512b5d5c575c5a5357534e5b5a565a595256523d54535153525051501858575557565155512b5453515352505150184f4e2b4e3d182b1804e0dfcedfddacceac6bdfdec7ded9a1c7a15bcec7b6c7bf88b68838dfdec7ded9a1c7a15bddd9bfd9d495bf954aaca188a1957a887a25cec7b6c7bf88b68838aca188a1957a887a256b5b385b4a25382511dcdbcddbd9abcdab6adbdac6dad8a0c6a05acdc6b5c6be87b58737dbdac6dad8a0c6a05ad9d8bed8d394be9449aba087a09479877924cdc6b5c6be87b58737aba087a094798779246a5a375a4924372410c2c1bcc1bfa7bca766c1c0bbc0be9cbb9c56bcbbb1bbba83b18333c1c0bbc0be9cbb9c56bfbebabebd90ba9045a79c839c9075837520bcbbb1bbba83b18333a79c839c907583752066563356452033200cdcdbcddbd9abcdab6adbdac6dad8a0c6a05acdc6b5c6be87b58737dbdac6dad8a0c6a05ad9d8bed8d394be9449aba087a09479877924cdc6b5c6be87b58737aba087a094798779246a5a375a4924372410d7d6ccd6d4aaccaa69d6d5c5d5d39fc59f59ccc5b4c5bd86b48636d6d5c5d5d39fc59f59d4d3bdd3d293bd9348aa9f869f9378867823ccc5b4c5bd86b48636aa9f869f937886782369593659482336230f98979297958e928e6297969196948d918d5292918f91907f8f7f2f97969196948d918d5295949094938c908c418e8d7f8d8c717f711c92918f91907f8f7f2f8e8d7f8d8c717f711c62522f52411c2f1c08c2c1bcc1bfa7bca766c1c0bbc0be9cbb9c56bcbbb1bbba83b18333c1c0bbc0be9cbb9c56bfbebabebd90ba9045a79c839c9075837520bcbbb1bbba83b18333a79c839c907583752066563356452033200c98979297958e928e6297969196948d918d5292918f91907f8f7f2f97969196948d918d5295949094938c908c418e8d7f8d8c717f711c92918f91907f8f7f2f8e8d7f8d8c717f711c62522f52411c2f1c084d4c474c4a4347433e4c4b464b494246423d47464446454044402a4c4b464b494246423d4a494549484145413c43424042413f403f1747464446454044402a43424042413f403f173e3d2a3d3c172a1703afaea9aeaca5a9a564aeada8adab9aa89a54a9a8a6a8a781a68131aeada8adab9aa89a54acaba7abaa8ea78e43a59a819a8e7381731ea9a8a6a8a781a68131a59a819a8e7381731e64543154431e311e0aa4a39ea3a19a9e9a63a3a29da2a0999d99539e9d9b9d9c809b8030a3a29da2a0999d9953a1a09ca09f8d9c8d429a9980998d7280721d9e9d9b9d9c809b80309a9980998d7280721d63533053421d301d098b8a858a88818581618a898489878084805185848284837e827e2e8a898489878084805188878387867f837f4081807e807f707e701b85848284837e827e2e81807e807f707e701b61512e51401b2e1b07a4a39ea3a19a9e9a63a3a29da2a0999d99539e9d9b9d9c809b8030a3a29da2a0999d9953a1a09ca09f8d9c8d429a9980998d7280721d9e9d9b9d9c809b80309a9980998d7280721d63533053421d301d0998979297958e928e6297969196948d918d5292918f91907f8f7f2f97969196948d918d5295949094938c908c418e8d7f8d8c717f711c92918f91907f8f7f2f8e8d7f8d8c717f711c62522f52411c2f1c087d7c777c7a737773607c7b767b797276725077767476757074702d7c7b767b79727672507a797579787175713f73727072716f706f1a77767476757074702d73727072716f706f1a60502d503f1a2d1a068b8a858a88818581618a898489878084805185848284837e827e2e8a898489878084805188878387867f837f4081807e807f707e701b85848284837e827e2e81807e807f707e701b61512e51401b2e1b077d7c777c7a737773607c7b767b797276725077767476757074702d7c7b767b79727672507a797579787175713f73727072716f706f1a77767476757074702d73727072716f706f1a60502d503f1a2d1a0628272227251e221e1927262126241d211d1822211f21201b1f1b1627262126241d211d1825242024231c201c171e1d1b1d1c1a1b1a1522211f21201b1f1b161e1d1b1d1c1a1b1a15191816181715161501d1d0cbd0cea9cba968d0cfc4cfcd9ec49e58cbc4b3c4bc85b38535d0cfc4cfcd9ec49e58cecdbccdcc92bc9247a99e859e9277857722cbc4b3c4bc85b38535a99e859e927785772268583558472235220ecac9c4c9c7a8c4a867c9c8c3c8c69dc39d57c4c3b2c3bb84b28434c9c8c3c8c69dc39d57c7c6bbc6c591bb9146a89d849d9176847621c4c3b2c3bb84b28434a89d849d917684762167573457462134210db9b8b3b8b6a6b3a665b8b7b2b7b59bb29b55b3b2b0b2b182b08232b8b7b2b7b59bb29b55b6b5b1b5b48fb18f44a69b829b8f7482741fb3b2b0b2b182b08232a69b829b8f7482741f65553255441f321f0bcac9c4c9c7a8c4a867c9c8c3c8c69dc39d57c4c3b2c3bb84b28434c9c8c3c8c69dc39d57c7c6bbc6c591bb9146a89d849d9176847621c4c3b2c3bb84b28434a89d849d917684762167573457462134210dc2c1bcc1bfa7bca766c1c0bbc0be9cbb9c56bcbbb1bbba83b18333c1c0bbc0be9cbb9c56bfbebabebd90ba9045a79c839c9075837520bcbbb1bbba83b18333a79c839c907583752066563356452033200c8b8a858a88818581618a898489878084805185848284837e827e2e8a898489878084805188878387867f837f4081807e807f707e701b85848284837e827e2e81807e807f707e701b61512e51401b2e1b07b9b8b3b8b6a6b3a665b8b7b2b7b59bb29b55b3b2b0b2b182b08232b8b7b2b7b59bb29b55b6b5b1b5b48fb18f44a69b829b8f7482741fb3b2b0b2b182b08232a69b829b8f7482741f65553255441f321f0b8b8a858a88818581618a898489878084805185848284837e827e2e8a898489878084805188878387867f837f4081807e807f707e701b85848284837e827e2e81807e807f707e701b61512e51401b2e1b073b3a353a383135312c3a393439373034302b35343234332e322e293a393439373034302b38373337362f332f2a31302e302f2d2e2d1635343234332e322e2931302e302f2d2e2d162c2b292b2a16291602afaea9aeaca5a9a564aeada8adab9aa89a54a9a8a6a8a781a68131aeada8adab9aa89a54acaba7abaa8ea78e43a59a819a8e7381731ea9a8a6a8a781a68131a59a819a8e7381731e64543154431e311e0aa4a39ea3a19a9e9a63a3a29da2a0999d99539e9d9b9d9c809b8030a3a29da2a0999d9953a1a09ca09f8d9c8d429a9980998d7280721d9e9d9b9d9c809b80309a9980998d7280721d63533053421d301d098b8a858a88818581618a898489878084805185848284837e827e2e8a898489878084805188878387867f837f4081807e807f707e701b85848284837e827e2e81807e807f707e701b61512e51401b2e1b07a4a39ea3a19a9e9a63a3a29da2a0999d99539e9d9b9d9c809b8030a3a29da2a0999d9953a1a09ca09f8d9c8d429a9980998d7280721d9e9d9b9d9c809b80309a9980998d7280721d63533053421d301d0998979297958e928e6297969196948d918d5292918f91907f8f7f2f97969196948d918d5295949094938c908c418e8d7f8d8c717f711c92918f91907f8f7f2f8e8d7f8d8c717f711c62522f52411c2f1c087d7c777c7a737773607c7b767b797276725077767476757074702d7c7b767b79727672507a797579787175713f73727072716f706f1a77767476757074702d73727072716f706f1a60502d503f1a2d1a068b8a858a88818581618a898489878084805185848284837e827e2e8a898489878084805188878387867f837f4081807e807f707e701b85848284837e827e2e81807e807f707e701b61512e51401b2e1b077d7c777c7a737773607c7b767b797276725077767476757074702d7c7b767b79727672507a797579787175713f73727072716f706f1a77767476757074702d73727072716f706f1a60502d503f1a2d1a0628272227251e221e1927262126241d211d1822211f21201b1f1b1627262126241d211d1825242024231c201c171e1d1b1d1c1a1b1a1522211f21201b1f1b161e1d1b1d1c1a1b1a151918161817151615016e6d686d6b6468645f6d6c676c6a6367634f68676567666165612c6d6c676c6a6367634f6b6a666a696266623e64636163626061601968676567666165612c6463616362606160195f4f2c4f3e192c19055e5d585d5b5458544f5d5c575c5a5357534e58575557565155512b5d5c575c5a5357534e5b5a565a595256523d54535153525051501858575557565155512b5453515352505150184f4e2b4e3d182b18043b3a353a383135312c3a393439373034302b35343234332e322e293a393439373034302b38373337362f332f2a31302e302f2d2e2d1635343234332e322e2931302e302f2d2e2d162c2b292b2a162916025e5d585d5b5458544f5d5c575c5a5357534e58575557565155512b5d5c575c5a5357534e5b5a565a595256523d54535153525051501858575557565155512b5453515352505150184f4e2b4e3d182b18044d4c474c4a4347433e4c4b464b494246423d47464446454044402a4c4b464b494246423d4a494549484145413c43424042413f403f1747464446454044402a43424042413f403f173e3d2a3d3c172a170328272227251e221e1927262126241d211d1822211f21201b1f1b1627262126241d211d1825242024231c201c171e1d1b1d1c1a1b1a1522211f21201b1f1b161e1d1b1d1c1a1b1a151918161817151615013b3a353a383135312c3a393439373034302b35343234332e322e293a393439373034302b38373337362f332f2a31302e302f2d2e2d1635343234332e322e2931302e302f2d2e2d162c2b292b2a1629160228272227251e221e1927262126241d211d1822211f21201b1f1b1627262126241d211d1825242024231c201c171e1d1b1d1c1a1b1a1522211f21201b1f1b161e1d1b1d1c1a1b1a1519181618171516150114130e13110a0e0a0513120d1210090d09040e0d0b0d0c070b070213120d1210090d090411100c100f080c08030a09070908060706010e0d0b0d0c070b07020a0907090806070601050402040301020100
+
+theorem fkl_walk000 : FKLMeta.walk (fun i v => Nat.beq v (FKL.lane fkl_m4 8 i)) mapChunk000.toList 0 = true := by
+  decide +kernel
+
+theorem fkl_len000 : mapChunk000.toList.length = 256 := by decide +kernel
+
+theorem fkl_sup000 (i : ℕ) (h1 : 0 ≤ i) (h2 : i < 256) (hi : i < 6561) :
+    suppliedMap ⟨i, hi⟩ = FKL.lane fkl_m4 8 i := by
+  have e := FKLMeta.FineWords.arr_get _ fkl_m4 8 0 256 fkl_walk000 fkl_len000 (i - 0)
+    (Nat.sub_lt_left_of_lt_add h1 h2)
+  rw [Nat.add_sub_cancel' h1] at e
+  unfold suppliedMap
+  rw [FKLMeta.FineWords.div_256 0 i h1 (Nat.lt_of_lt_of_le h2 (by norm_num)),
+    FKLMeta.FineWords.mod_256 0 i h1 (Nat.lt_of_lt_of_le h2 (by norm_num))]
+  exact e
+
+theorem fkl_walk001 : FKLMeta.walk (fun i v => Nat.beq v (FKL.lane fkl_m4 8 i)) mapChunk001.toList 256 = true := by
+  decide +kernel
+
+theorem fkl_len001 : mapChunk001.toList.length = 256 := by decide +kernel
+
+theorem fkl_sup001 (i : ℕ) (h1 : 256 ≤ i) (h2 : i < 512) (hi : i < 6561) :
+    suppliedMap ⟨i, hi⟩ = FKL.lane fkl_m4 8 i := by
+  have e := FKLMeta.FineWords.arr_get _ fkl_m4 8 256 256 fkl_walk001 fkl_len001 (i - 256)
+    (Nat.sub_lt_left_of_lt_add h1 h2)
+  rw [Nat.add_sub_cancel' h1] at e
+  unfold suppliedMap
+  rw [FKLMeta.FineWords.div_256 1 i h1 (Nat.lt_of_lt_of_le h2 (by norm_num)),
+    FKLMeta.FineWords.mod_256 1 i h1 (Nat.lt_of_lt_of_le h2 (by norm_num))]
+  exact e
+
+theorem fkl_walk002 : FKLMeta.walk (fun i v => Nat.beq v (FKL.lane fkl_m4 8 i)) mapChunk002.toList 512 = true := by
+  decide +kernel
+
+theorem fkl_len002 : mapChunk002.toList.length = 256 := by decide +kernel
+
+theorem fkl_sup002 (i : ℕ) (h1 : 512 ≤ i) (h2 : i < 768) (hi : i < 6561) :
+    suppliedMap ⟨i, hi⟩ = FKL.lane fkl_m4 8 i := by
+  have e := FKLMeta.FineWords.arr_get _ fkl_m4 8 512 256 fkl_walk002 fkl_len002 (i - 512)
+    (Nat.sub_lt_left_of_lt_add h1 h2)
+  rw [Nat.add_sub_cancel' h1] at e
+  unfold suppliedMap
+  rw [FKLMeta.FineWords.div_256 2 i h1 (Nat.lt_of_lt_of_le h2 (by norm_num)),
+    FKLMeta.FineWords.mod_256 2 i h1 (Nat.lt_of_lt_of_le h2 (by norm_num))]
+  exact e
+
+theorem fkl_walk003 : FKLMeta.walk (fun i v => Nat.beq v (FKL.lane fkl_m4 8 i)) mapChunk003.toList 768 = true := by
+  decide +kernel
+
+theorem fkl_len003 : mapChunk003.toList.length = 256 := by decide +kernel
+
+theorem fkl_sup003 (i : ℕ) (h1 : 768 ≤ i) (h2 : i < 1024) (hi : i < 6561) :
+    suppliedMap ⟨i, hi⟩ = FKL.lane fkl_m4 8 i := by
+  have e := FKLMeta.FineWords.arr_get _ fkl_m4 8 768 256 fkl_walk003 fkl_len003 (i - 768)
+    (Nat.sub_lt_left_of_lt_add h1 h2)
+  rw [Nat.add_sub_cancel' h1] at e
+  unfold suppliedMap
+  rw [FKLMeta.FineWords.div_256 3 i h1 (Nat.lt_of_lt_of_le h2 (by norm_num)),
+    FKLMeta.FineWords.mod_256 3 i h1 (Nat.lt_of_lt_of_le h2 (by norm_num))]
+  exact e
+
+theorem fkl_walk004 : FKLMeta.walk (fun i v => Nat.beq v (FKL.lane fkl_m4 8 i)) mapChunk004.toList 1024 = true := by
+  decide +kernel
+
+theorem fkl_len004 : mapChunk004.toList.length = 256 := by decide +kernel
+
+theorem fkl_sup004 (i : ℕ) (h1 : 1024 ≤ i) (h2 : i < 1280) (hi : i < 6561) :
+    suppliedMap ⟨i, hi⟩ = FKL.lane fkl_m4 8 i := by
+  have e := FKLMeta.FineWords.arr_get _ fkl_m4 8 1024 256 fkl_walk004 fkl_len004 (i - 1024)
+    (Nat.sub_lt_left_of_lt_add h1 h2)
+  rw [Nat.add_sub_cancel' h1] at e
+  unfold suppliedMap
+  rw [FKLMeta.FineWords.div_256 4 i h1 (Nat.lt_of_lt_of_le h2 (by norm_num)),
+    FKLMeta.FineWords.mod_256 4 i h1 (Nat.lt_of_lt_of_le h2 (by norm_num))]
+  exact e
+
+theorem fkl_walk005 : FKLMeta.walk (fun i v => Nat.beq v (FKL.lane fkl_m4 8 i)) mapChunk005.toList 1280 = true := by
+  decide +kernel
+
+theorem fkl_len005 : mapChunk005.toList.length = 256 := by decide +kernel
+
+theorem fkl_sup005 (i : ℕ) (h1 : 1280 ≤ i) (h2 : i < 1536) (hi : i < 6561) :
+    suppliedMap ⟨i, hi⟩ = FKL.lane fkl_m4 8 i := by
+  have e := FKLMeta.FineWords.arr_get _ fkl_m4 8 1280 256 fkl_walk005 fkl_len005 (i - 1280)
+    (Nat.sub_lt_left_of_lt_add h1 h2)
+  rw [Nat.add_sub_cancel' h1] at e
+  unfold suppliedMap
+  rw [FKLMeta.FineWords.div_256 5 i h1 (Nat.lt_of_lt_of_le h2 (by norm_num)),
+    FKLMeta.FineWords.mod_256 5 i h1 (Nat.lt_of_lt_of_le h2 (by norm_num))]
+  exact e
+
+theorem fkl_walk006 : FKLMeta.walk (fun i v => Nat.beq v (FKL.lane fkl_m4 8 i)) mapChunk006.toList 1536 = true := by
+  decide +kernel
+
+theorem fkl_len006 : mapChunk006.toList.length = 256 := by decide +kernel
+
+theorem fkl_sup006 (i : ℕ) (h1 : 1536 ≤ i) (h2 : i < 1792) (hi : i < 6561) :
+    suppliedMap ⟨i, hi⟩ = FKL.lane fkl_m4 8 i := by
+  have e := FKLMeta.FineWords.arr_get _ fkl_m4 8 1536 256 fkl_walk006 fkl_len006 (i - 1536)
+    (Nat.sub_lt_left_of_lt_add h1 h2)
+  rw [Nat.add_sub_cancel' h1] at e
+  unfold suppliedMap
+  rw [FKLMeta.FineWords.div_256 6 i h1 (Nat.lt_of_lt_of_le h2 (by norm_num)),
+    FKLMeta.FineWords.mod_256 6 i h1 (Nat.lt_of_lt_of_le h2 (by norm_num))]
+  exact e
+
+theorem fkl_walk007 : FKLMeta.walk (fun i v => Nat.beq v (FKL.lane fkl_m4 8 i)) mapChunk007.toList 1792 = true := by
+  decide +kernel
+
+theorem fkl_len007 : mapChunk007.toList.length = 256 := by decide +kernel
+
+theorem fkl_sup007 (i : ℕ) (h1 : 1792 ≤ i) (h2 : i < 2048) (hi : i < 6561) :
+    suppliedMap ⟨i, hi⟩ = FKL.lane fkl_m4 8 i := by
+  have e := FKLMeta.FineWords.arr_get _ fkl_m4 8 1792 256 fkl_walk007 fkl_len007 (i - 1792)
+    (Nat.sub_lt_left_of_lt_add h1 h2)
+  rw [Nat.add_sub_cancel' h1] at e
+  unfold suppliedMap
+  rw [FKLMeta.FineWords.div_256 7 i h1 (Nat.lt_of_lt_of_le h2 (by norm_num)),
+    FKLMeta.FineWords.mod_256 7 i h1 (Nat.lt_of_lt_of_le h2 (by norm_num))]
+  exact e
+
+theorem fkl_walk008 : FKLMeta.walk (fun i v => Nat.beq v (FKL.lane fkl_m4 8 i)) mapChunk008.toList 2048 = true := by
+  decide +kernel
+
+theorem fkl_len008 : mapChunk008.toList.length = 256 := by decide +kernel
+
+theorem fkl_sup008 (i : ℕ) (h1 : 2048 ≤ i) (h2 : i < 2304) (hi : i < 6561) :
+    suppliedMap ⟨i, hi⟩ = FKL.lane fkl_m4 8 i := by
+  have e := FKLMeta.FineWords.arr_get _ fkl_m4 8 2048 256 fkl_walk008 fkl_len008 (i - 2048)
+    (Nat.sub_lt_left_of_lt_add h1 h2)
+  rw [Nat.add_sub_cancel' h1] at e
+  unfold suppliedMap
+  rw [FKLMeta.FineWords.div_256 8 i h1 (Nat.lt_of_lt_of_le h2 (by norm_num)),
+    FKLMeta.FineWords.mod_256 8 i h1 (Nat.lt_of_lt_of_le h2 (by norm_num))]
+  exact e
+
+theorem fkl_walk009 : FKLMeta.walk (fun i v => Nat.beq v (FKL.lane fkl_m4 8 i)) mapChunk009.toList 2304 = true := by
+  decide +kernel
+
+theorem fkl_len009 : mapChunk009.toList.length = 256 := by decide +kernel
+
+theorem fkl_sup009 (i : ℕ) (h1 : 2304 ≤ i) (h2 : i < 2560) (hi : i < 6561) :
+    suppliedMap ⟨i, hi⟩ = FKL.lane fkl_m4 8 i := by
+  have e := FKLMeta.FineWords.arr_get _ fkl_m4 8 2304 256 fkl_walk009 fkl_len009 (i - 2304)
+    (Nat.sub_lt_left_of_lt_add h1 h2)
+  rw [Nat.add_sub_cancel' h1] at e
+  unfold suppliedMap
+  rw [FKLMeta.FineWords.div_256 9 i h1 (Nat.lt_of_lt_of_le h2 (by norm_num)),
+    FKLMeta.FineWords.mod_256 9 i h1 (Nat.lt_of_lt_of_le h2 (by norm_num))]
+  exact e
+
+theorem fkl_walk010 : FKLMeta.walk (fun i v => Nat.beq v (FKL.lane fkl_m4 8 i)) mapChunk010.toList 2560 = true := by
+  decide +kernel
+
+theorem fkl_len010 : mapChunk010.toList.length = 256 := by decide +kernel
+
+theorem fkl_sup010 (i : ℕ) (h1 : 2560 ≤ i) (h2 : i < 2816) (hi : i < 6561) :
+    suppliedMap ⟨i, hi⟩ = FKL.lane fkl_m4 8 i := by
+  have e := FKLMeta.FineWords.arr_get _ fkl_m4 8 2560 256 fkl_walk010 fkl_len010 (i - 2560)
+    (Nat.sub_lt_left_of_lt_add h1 h2)
+  rw [Nat.add_sub_cancel' h1] at e
+  unfold suppliedMap
+  rw [FKLMeta.FineWords.div_256 10 i h1 (Nat.lt_of_lt_of_le h2 (by norm_num)),
+    FKLMeta.FineWords.mod_256 10 i h1 (Nat.lt_of_lt_of_le h2 (by norm_num))]
+  exact e
+
+theorem fkl_walk011 : FKLMeta.walk (fun i v => Nat.beq v (FKL.lane fkl_m4 8 i)) mapChunk011.toList 2816 = true := by
+  decide +kernel
+
+theorem fkl_len011 : mapChunk011.toList.length = 256 := by decide +kernel
+
+theorem fkl_sup011 (i : ℕ) (h1 : 2816 ≤ i) (h2 : i < 3072) (hi : i < 6561) :
+    suppliedMap ⟨i, hi⟩ = FKL.lane fkl_m4 8 i := by
+  have e := FKLMeta.FineWords.arr_get _ fkl_m4 8 2816 256 fkl_walk011 fkl_len011 (i - 2816)
+    (Nat.sub_lt_left_of_lt_add h1 h2)
+  rw [Nat.add_sub_cancel' h1] at e
+  unfold suppliedMap
+  rw [FKLMeta.FineWords.div_256 11 i h1 (Nat.lt_of_lt_of_le h2 (by norm_num)),
+    FKLMeta.FineWords.mod_256 11 i h1 (Nat.lt_of_lt_of_le h2 (by norm_num))]
+  exact e
+
+theorem fkl_walk012 : FKLMeta.walk (fun i v => Nat.beq v (FKL.lane fkl_m4 8 i)) mapChunk012.toList 3072 = true := by
+  decide +kernel
+
+theorem fkl_len012 : mapChunk012.toList.length = 256 := by decide +kernel
+
+theorem fkl_sup012 (i : ℕ) (h1 : 3072 ≤ i) (h2 : i < 3328) (hi : i < 6561) :
+    suppliedMap ⟨i, hi⟩ = FKL.lane fkl_m4 8 i := by
+  have e := FKLMeta.FineWords.arr_get _ fkl_m4 8 3072 256 fkl_walk012 fkl_len012 (i - 3072)
+    (Nat.sub_lt_left_of_lt_add h1 h2)
+  rw [Nat.add_sub_cancel' h1] at e
+  unfold suppliedMap
+  rw [FKLMeta.FineWords.div_256 12 i h1 (Nat.lt_of_lt_of_le h2 (by norm_num)),
+    FKLMeta.FineWords.mod_256 12 i h1 (Nat.lt_of_lt_of_le h2 (by norm_num))]
+  exact e
+
+theorem fkl_walk013 : FKLMeta.walk (fun i v => Nat.beq v (FKL.lane fkl_m4 8 i)) mapChunk013.toList 3328 = true := by
+  decide +kernel
+
+theorem fkl_len013 : mapChunk013.toList.length = 256 := by decide +kernel
+
+theorem fkl_sup013 (i : ℕ) (h1 : 3328 ≤ i) (h2 : i < 3584) (hi : i < 6561) :
+    suppliedMap ⟨i, hi⟩ = FKL.lane fkl_m4 8 i := by
+  have e := FKLMeta.FineWords.arr_get _ fkl_m4 8 3328 256 fkl_walk013 fkl_len013 (i - 3328)
+    (Nat.sub_lt_left_of_lt_add h1 h2)
+  rw [Nat.add_sub_cancel' h1] at e
+  unfold suppliedMap
+  rw [FKLMeta.FineWords.div_256 13 i h1 (Nat.lt_of_lt_of_le h2 (by norm_num)),
+    FKLMeta.FineWords.mod_256 13 i h1 (Nat.lt_of_lt_of_le h2 (by norm_num))]
+  exact e
+
+theorem fkl_walk014 : FKLMeta.walk (fun i v => Nat.beq v (FKL.lane fkl_m4 8 i)) mapChunk014.toList 3584 = true := by
+  decide +kernel
+
+theorem fkl_len014 : mapChunk014.toList.length = 256 := by decide +kernel
+
+theorem fkl_sup014 (i : ℕ) (h1 : 3584 ≤ i) (h2 : i < 3840) (hi : i < 6561) :
+    suppliedMap ⟨i, hi⟩ = FKL.lane fkl_m4 8 i := by
+  have e := FKLMeta.FineWords.arr_get _ fkl_m4 8 3584 256 fkl_walk014 fkl_len014 (i - 3584)
+    (Nat.sub_lt_left_of_lt_add h1 h2)
+  rw [Nat.add_sub_cancel' h1] at e
+  unfold suppliedMap
+  rw [FKLMeta.FineWords.div_256 14 i h1 (Nat.lt_of_lt_of_le h2 (by norm_num)),
+    FKLMeta.FineWords.mod_256 14 i h1 (Nat.lt_of_lt_of_le h2 (by norm_num))]
+  exact e
+
+theorem fkl_walk015 : FKLMeta.walk (fun i v => Nat.beq v (FKL.lane fkl_m4 8 i)) mapChunk015.toList 3840 = true := by
+  decide +kernel
+
+theorem fkl_len015 : mapChunk015.toList.length = 256 := by decide +kernel
+
+theorem fkl_sup015 (i : ℕ) (h1 : 3840 ≤ i) (h2 : i < 4096) (hi : i < 6561) :
+    suppliedMap ⟨i, hi⟩ = FKL.lane fkl_m4 8 i := by
+  have e := FKLMeta.FineWords.arr_get _ fkl_m4 8 3840 256 fkl_walk015 fkl_len015 (i - 3840)
+    (Nat.sub_lt_left_of_lt_add h1 h2)
+  rw [Nat.add_sub_cancel' h1] at e
+  unfold suppliedMap
+  rw [FKLMeta.FineWords.div_256 15 i h1 (Nat.lt_of_lt_of_le h2 (by norm_num)),
+    FKLMeta.FineWords.mod_256 15 i h1 (Nat.lt_of_lt_of_le h2 (by norm_num))]
+  exact e
+
+theorem fkl_walk016 : FKLMeta.walk (fun i v => Nat.beq v (FKL.lane fkl_m4 8 i)) mapChunk016.toList 4096 = true := by
+  decide +kernel
+
+theorem fkl_len016 : mapChunk016.toList.length = 256 := by decide +kernel
+
+theorem fkl_sup016 (i : ℕ) (h1 : 4096 ≤ i) (h2 : i < 4352) (hi : i < 6561) :
+    suppliedMap ⟨i, hi⟩ = FKL.lane fkl_m4 8 i := by
+  have e := FKLMeta.FineWords.arr_get _ fkl_m4 8 4096 256 fkl_walk016 fkl_len016 (i - 4096)
+    (Nat.sub_lt_left_of_lt_add h1 h2)
+  rw [Nat.add_sub_cancel' h1] at e
+  unfold suppliedMap
+  rw [FKLMeta.FineWords.div_256 16 i h1 (Nat.lt_of_lt_of_le h2 (by norm_num)),
+    FKLMeta.FineWords.mod_256 16 i h1 (Nat.lt_of_lt_of_le h2 (by norm_num))]
+  exact e
+
+theorem fkl_walk017 : FKLMeta.walk (fun i v => Nat.beq v (FKL.lane fkl_m4 8 i)) mapChunk017.toList 4352 = true := by
+  decide +kernel
+
+theorem fkl_len017 : mapChunk017.toList.length = 256 := by decide +kernel
+
+theorem fkl_sup017 (i : ℕ) (h1 : 4352 ≤ i) (h2 : i < 4608) (hi : i < 6561) :
+    suppliedMap ⟨i, hi⟩ = FKL.lane fkl_m4 8 i := by
+  have e := FKLMeta.FineWords.arr_get _ fkl_m4 8 4352 256 fkl_walk017 fkl_len017 (i - 4352)
+    (Nat.sub_lt_left_of_lt_add h1 h2)
+  rw [Nat.add_sub_cancel' h1] at e
+  unfold suppliedMap
+  rw [FKLMeta.FineWords.div_256 17 i h1 (Nat.lt_of_lt_of_le h2 (by norm_num)),
+    FKLMeta.FineWords.mod_256 17 i h1 (Nat.lt_of_lt_of_le h2 (by norm_num))]
+  exact e
+
+theorem fkl_walk018 : FKLMeta.walk (fun i v => Nat.beq v (FKL.lane fkl_m4 8 i)) mapChunk018.toList 4608 = true := by
+  decide +kernel
+
+theorem fkl_len018 : mapChunk018.toList.length = 256 := by decide +kernel
+
+theorem fkl_sup018 (i : ℕ) (h1 : 4608 ≤ i) (h2 : i < 4864) (hi : i < 6561) :
+    suppliedMap ⟨i, hi⟩ = FKL.lane fkl_m4 8 i := by
+  have e := FKLMeta.FineWords.arr_get _ fkl_m4 8 4608 256 fkl_walk018 fkl_len018 (i - 4608)
+    (Nat.sub_lt_left_of_lt_add h1 h2)
+  rw [Nat.add_sub_cancel' h1] at e
+  unfold suppliedMap
+  rw [FKLMeta.FineWords.div_256 18 i h1 (Nat.lt_of_lt_of_le h2 (by norm_num)),
+    FKLMeta.FineWords.mod_256 18 i h1 (Nat.lt_of_lt_of_le h2 (by norm_num))]
+  exact e
+
+theorem fkl_walk019 : FKLMeta.walk (fun i v => Nat.beq v (FKL.lane fkl_m4 8 i)) mapChunk019.toList 4864 = true := by
+  decide +kernel
+
+theorem fkl_len019 : mapChunk019.toList.length = 256 := by decide +kernel
+
+theorem fkl_sup019 (i : ℕ) (h1 : 4864 ≤ i) (h2 : i < 5120) (hi : i < 6561) :
+    suppliedMap ⟨i, hi⟩ = FKL.lane fkl_m4 8 i := by
+  have e := FKLMeta.FineWords.arr_get _ fkl_m4 8 4864 256 fkl_walk019 fkl_len019 (i - 4864)
+    (Nat.sub_lt_left_of_lt_add h1 h2)
+  rw [Nat.add_sub_cancel' h1] at e
+  unfold suppliedMap
+  rw [FKLMeta.FineWords.div_256 19 i h1 (Nat.lt_of_lt_of_le h2 (by norm_num)),
+    FKLMeta.FineWords.mod_256 19 i h1 (Nat.lt_of_lt_of_le h2 (by norm_num))]
+  exact e
+
+theorem fkl_walk020 : FKLMeta.walk (fun i v => Nat.beq v (FKL.lane fkl_m4 8 i)) mapChunk020.toList 5120 = true := by
+  decide +kernel
+
+theorem fkl_len020 : mapChunk020.toList.length = 256 := by decide +kernel
+
+theorem fkl_sup020 (i : ℕ) (h1 : 5120 ≤ i) (h2 : i < 5376) (hi : i < 6561) :
+    suppliedMap ⟨i, hi⟩ = FKL.lane fkl_m4 8 i := by
+  have e := FKLMeta.FineWords.arr_get _ fkl_m4 8 5120 256 fkl_walk020 fkl_len020 (i - 5120)
+    (Nat.sub_lt_left_of_lt_add h1 h2)
+  rw [Nat.add_sub_cancel' h1] at e
+  unfold suppliedMap
+  rw [FKLMeta.FineWords.div_256 20 i h1 (Nat.lt_of_lt_of_le h2 (by norm_num)),
+    FKLMeta.FineWords.mod_256 20 i h1 (Nat.lt_of_lt_of_le h2 (by norm_num))]
+  exact e
+
+theorem fkl_walk021 : FKLMeta.walk (fun i v => Nat.beq v (FKL.lane fkl_m4 8 i)) mapChunk021.toList 5376 = true := by
+  decide +kernel
+
+theorem fkl_len021 : mapChunk021.toList.length = 256 := by decide +kernel
+
+theorem fkl_sup021 (i : ℕ) (h1 : 5376 ≤ i) (h2 : i < 5632) (hi : i < 6561) :
+    suppliedMap ⟨i, hi⟩ = FKL.lane fkl_m4 8 i := by
+  have e := FKLMeta.FineWords.arr_get _ fkl_m4 8 5376 256 fkl_walk021 fkl_len021 (i - 5376)
+    (Nat.sub_lt_left_of_lt_add h1 h2)
+  rw [Nat.add_sub_cancel' h1] at e
+  unfold suppliedMap
+  rw [FKLMeta.FineWords.div_256 21 i h1 (Nat.lt_of_lt_of_le h2 (by norm_num)),
+    FKLMeta.FineWords.mod_256 21 i h1 (Nat.lt_of_lt_of_le h2 (by norm_num))]
+  exact e
+
+theorem fkl_walk022 : FKLMeta.walk (fun i v => Nat.beq v (FKL.lane fkl_m4 8 i)) mapChunk022.toList 5632 = true := by
+  decide +kernel
+
+theorem fkl_len022 : mapChunk022.toList.length = 256 := by decide +kernel
+
+theorem fkl_sup022 (i : ℕ) (h1 : 5632 ≤ i) (h2 : i < 5888) (hi : i < 6561) :
+    suppliedMap ⟨i, hi⟩ = FKL.lane fkl_m4 8 i := by
+  have e := FKLMeta.FineWords.arr_get _ fkl_m4 8 5632 256 fkl_walk022 fkl_len022 (i - 5632)
+    (Nat.sub_lt_left_of_lt_add h1 h2)
+  rw [Nat.add_sub_cancel' h1] at e
+  unfold suppliedMap
+  rw [FKLMeta.FineWords.div_256 22 i h1 (Nat.lt_of_lt_of_le h2 (by norm_num)),
+    FKLMeta.FineWords.mod_256 22 i h1 (Nat.lt_of_lt_of_le h2 (by norm_num))]
+  exact e
+
+theorem fkl_walk023 : FKLMeta.walk (fun i v => Nat.beq v (FKL.lane fkl_m4 8 i)) mapChunk023.toList 5888 = true := by
+  decide +kernel
+
+theorem fkl_len023 : mapChunk023.toList.length = 256 := by decide +kernel
+
+theorem fkl_sup023 (i : ℕ) (h1 : 5888 ≤ i) (h2 : i < 6144) (hi : i < 6561) :
+    suppliedMap ⟨i, hi⟩ = FKL.lane fkl_m4 8 i := by
+  have e := FKLMeta.FineWords.arr_get _ fkl_m4 8 5888 256 fkl_walk023 fkl_len023 (i - 5888)
+    (Nat.sub_lt_left_of_lt_add h1 h2)
+  rw [Nat.add_sub_cancel' h1] at e
+  unfold suppliedMap
+  rw [FKLMeta.FineWords.div_256 23 i h1 (Nat.lt_of_lt_of_le h2 (by norm_num)),
+    FKLMeta.FineWords.mod_256 23 i h1 (Nat.lt_of_lt_of_le h2 (by norm_num))]
+  exact e
+
+theorem fkl_walk024 : FKLMeta.walk (fun i v => Nat.beq v (FKL.lane fkl_m4 8 i)) mapChunk024.toList 6144 = true := by
+  decide +kernel
+
+theorem fkl_len024 : mapChunk024.toList.length = 256 := by decide +kernel
+
+theorem fkl_sup024 (i : ℕ) (h1 : 6144 ≤ i) (h2 : i < 6400) (hi : i < 6561) :
+    suppliedMap ⟨i, hi⟩ = FKL.lane fkl_m4 8 i := by
+  have e := FKLMeta.FineWords.arr_get _ fkl_m4 8 6144 256 fkl_walk024 fkl_len024 (i - 6144)
+    (Nat.sub_lt_left_of_lt_add h1 h2)
+  rw [Nat.add_sub_cancel' h1] at e
+  unfold suppliedMap
+  rw [FKLMeta.FineWords.div_256 24 i h1 (Nat.lt_of_lt_of_le h2 (by norm_num)),
+    FKLMeta.FineWords.mod_256 24 i h1 (Nat.lt_of_lt_of_le h2 (by norm_num))]
+  exact e
+
+theorem fkl_walk025 : FKLMeta.walk (fun i v => Nat.beq v (FKL.lane fkl_m4 8 i)) mapChunk025.toList 6400 = true := by
+  decide +kernel
+
+theorem fkl_len025 : mapChunk025.toList.length = 161 := by decide +kernel
+
+theorem fkl_sup025 (i : ℕ) (h1 : 6400 ≤ i) (h2 : i < 6561) (hi : i < 6561) :
+    suppliedMap ⟨i, hi⟩ = FKL.lane fkl_m4 8 i := by
+  have e := FKLMeta.FineWords.arr_get _ fkl_m4 8 6400 161 fkl_walk025 fkl_len025 (i - 6400)
+    (Nat.sub_lt_left_of_lt_add h1 h2)
+  rw [Nat.add_sub_cancel' h1] at e
+  unfold suppliedMap
+  rw [FKLMeta.FineWords.div_256 25 i h1 (Nat.lt_of_lt_of_le h2 (by norm_num)),
+    FKLMeta.FineWords.mod_256 25 i h1 (Nat.lt_of_lt_of_le h2 (by norm_num))]
+  exact e
+
+theorem fkl_supplied (index : Fin 6561) : suppliedMap index = FKL.lane fkl_m4 8 index.val := by
+  obtain ⟨i, hi⟩ := index
+  by_cases b000 : i < 256
+  · exact fkl_sup000 i (Nat.zero_le i) b000 hi
+  by_cases b001 : i < 512
+  · exact fkl_sup001 i (Nat.le_of_not_lt b000) b001 hi
+  by_cases b002 : i < 768
+  · exact fkl_sup002 i (Nat.le_of_not_lt b001) b002 hi
+  by_cases b003 : i < 1024
+  · exact fkl_sup003 i (Nat.le_of_not_lt b002) b003 hi
+  by_cases b004 : i < 1280
+  · exact fkl_sup004 i (Nat.le_of_not_lt b003) b004 hi
+  by_cases b005 : i < 1536
+  · exact fkl_sup005 i (Nat.le_of_not_lt b004) b005 hi
+  by_cases b006 : i < 1792
+  · exact fkl_sup006 i (Nat.le_of_not_lt b005) b006 hi
+  by_cases b007 : i < 2048
+  · exact fkl_sup007 i (Nat.le_of_not_lt b006) b007 hi
+  by_cases b008 : i < 2304
+  · exact fkl_sup008 i (Nat.le_of_not_lt b007) b008 hi
+  by_cases b009 : i < 2560
+  · exact fkl_sup009 i (Nat.le_of_not_lt b008) b009 hi
+  by_cases b010 : i < 2816
+  · exact fkl_sup010 i (Nat.le_of_not_lt b009) b010 hi
+  by_cases b011 : i < 3072
+  · exact fkl_sup011 i (Nat.le_of_not_lt b010) b011 hi
+  by_cases b012 : i < 3328
+  · exact fkl_sup012 i (Nat.le_of_not_lt b011) b012 hi
+  by_cases b013 : i < 3584
+  · exact fkl_sup013 i (Nat.le_of_not_lt b012) b013 hi
+  by_cases b014 : i < 3840
+  · exact fkl_sup014 i (Nat.le_of_not_lt b013) b014 hi
+  by_cases b015 : i < 4096
+  · exact fkl_sup015 i (Nat.le_of_not_lt b014) b015 hi
+  by_cases b016 : i < 4352
+  · exact fkl_sup016 i (Nat.le_of_not_lt b015) b016 hi
+  by_cases b017 : i < 4608
+  · exact fkl_sup017 i (Nat.le_of_not_lt b016) b017 hi
+  by_cases b018 : i < 4864
+  · exact fkl_sup018 i (Nat.le_of_not_lt b017) b018 hi
+  by_cases b019 : i < 5120
+  · exact fkl_sup019 i (Nat.le_of_not_lt b018) b019 hi
+  by_cases b020 : i < 5376
+  · exact fkl_sup020 i (Nat.le_of_not_lt b019) b020 hi
+  by_cases b021 : i < 5632
+  · exact fkl_sup021 i (Nat.le_of_not_lt b020) b021 hi
+  by_cases b022 : i < 5888
+  · exact fkl_sup022 i (Nat.le_of_not_lt b021) b022 hi
+  by_cases b023 : i < 6144
+  · exact fkl_sup023 i (Nat.le_of_not_lt b022) b023 hi
+  by_cases b024 : i < 6400
+  · exact fkl_sup024 i (Nat.le_of_not_lt b023) b024 hi
+  exact fkl_sup025 i (Nat.le_of_not_lt b024) hi hi
+
+/-- Fast check of the complete level-four word map (FKLMeta). -/
+theorem fkl_checked : FKL.allRange (fun i => Nat.beq (FKLMeta.FineWords.rawCode 21 (FKL.lane fkl_m3 5 (Nat.div i 81))
+    (FKL.lane fkl_m3 5 (Nat.mod i 81)) 231) (FKL.lane fkl_m4 8 i)) 13 0 6561 = true := by
+  decide +kernel
+
+theorem fkl_all (index : Fin 6561) : map_checked_predicate index := by
+  have hc := Nat.eq_of_beq_eq_true (FKL.allRange_sound _ 13 0 6561 fkl_checked index.val index.isLt)
+  rw [Nat.zero_add] at hc
+  unfold map_checked_predicate orbits
+  rw [fkl_supplied]
+  show (encoding.code (MatrixBounds.Numeric.OrbitLevel3.orbits.label (MatrixBounds.Tensor.CW.leftHalf (fineWordColumns (4 + 4) index)),
+    MatrixBounds.Numeric.OrbitLevel3.orbits.label (MatrixBounds.Tensor.CW.rightHalf (fineWordColumns (4 + 4) index)))).val = _
+  rw [FKLMeta.FineWords.fwc_left 4 index, FKLMeta.FineWords.fwc_right 4 index]
+  have hL := fkl_label3 (index.val / 3 ^ 4) (Nat.div_lt_of_lt_mul (by rw [← pow_add]; exact index.isLt))
+  have hR := fkl_label3 (index.val % 3 ^ 4) (Nat.mod_lt _ (by norm_num))
+  unfold encoding
+  dsimp only
+  rw [hL, hR, ← FKLMeta.FineWords.rawCode_eq]
+  exact hc
+
 /-- One bounded block of the complete exact finite check. -/
 theorem map_checked_block000 : ∀ index : Fin 256,
-    map_checked_predicate (blockIndex 0 256 (by decide +kernel) index) := by unfold map_checked_predicate; decide +kernel
+    map_checked_predicate (blockIndex 0 256 (by decide +kernel) index) :=
+  fun _ => fkl_all _
 
 /-- One bounded block of the complete exact finite check. -/
 theorem map_checked_block001 : ∀ index : Fin 256,
-    map_checked_predicate (blockIndex 256 256 (by decide +kernel) index) := by unfold map_checked_predicate; decide +kernel
+    map_checked_predicate (blockIndex 256 256 (by decide +kernel) index) :=
+  fun _ => fkl_all _
 
 /-- One bounded block of the complete exact finite check. -/
 theorem map_checked_block002 : ∀ index : Fin 256,
-    map_checked_predicate (blockIndex 512 256 (by decide +kernel) index) := by unfold map_checked_predicate; decide +kernel
+    map_checked_predicate (blockIndex 512 256 (by decide +kernel) index) :=
+  fun _ => fkl_all _
 
 /-- One bounded block of the complete exact finite check. -/
 theorem map_checked_block003 : ∀ index : Fin 256,
-    map_checked_predicate (blockIndex 768 256 (by decide +kernel) index) := by unfold map_checked_predicate; decide +kernel
+    map_checked_predicate (blockIndex 768 256 (by decide +kernel) index) :=
+  fun _ => fkl_all _
 
 /-- One bounded block of the complete exact finite check. -/
 theorem map_checked_block004 : ∀ index : Fin 256,
-    map_checked_predicate (blockIndex 1024 256 (by decide +kernel) index) := by unfold map_checked_predicate; decide +kernel
+    map_checked_predicate (blockIndex 1024 256 (by decide +kernel) index) :=
+  fun _ => fkl_all _
 
 /-- One bounded block of the complete exact finite check. -/
 theorem map_checked_block005 : ∀ index : Fin 256,
-    map_checked_predicate (blockIndex 1280 256 (by decide +kernel) index) := by unfold map_checked_predicate; decide +kernel
+    map_checked_predicate (blockIndex 1280 256 (by decide +kernel) index) :=
+  fun _ => fkl_all _
 
 /-- One bounded block of the complete exact finite check. -/
 theorem map_checked_block006 : ∀ index : Fin 256,
-    map_checked_predicate (blockIndex 1536 256 (by decide +kernel) index) := by unfold map_checked_predicate; decide +kernel
+    map_checked_predicate (blockIndex 1536 256 (by decide +kernel) index) :=
+  fun _ => fkl_all _
 
 /-- One bounded block of the complete exact finite check. -/
 theorem map_checked_block007 : ∀ index : Fin 256,
-    map_checked_predicate (blockIndex 1792 256 (by decide +kernel) index) := by unfold map_checked_predicate; decide +kernel
+    map_checked_predicate (blockIndex 1792 256 (by decide +kernel) index) :=
+  fun _ => fkl_all _
 
 /-- One bounded block of the complete exact finite check. -/
 theorem map_checked_block008 : ∀ index : Fin 256,
-    map_checked_predicate (blockIndex 2048 256 (by decide +kernel) index) := by unfold map_checked_predicate; decide +kernel
+    map_checked_predicate (blockIndex 2048 256 (by decide +kernel) index) :=
+  fun _ => fkl_all _
 
 /-- One bounded block of the complete exact finite check. -/
 theorem map_checked_block009 : ∀ index : Fin 256,
-    map_checked_predicate (blockIndex 2304 256 (by decide +kernel) index) := by unfold map_checked_predicate; decide +kernel
+    map_checked_predicate (blockIndex 2304 256 (by decide +kernel) index) :=
+  fun _ => fkl_all _
 
 /-- One bounded block of the complete exact finite check. -/
 theorem map_checked_block010 : ∀ index : Fin 256,
-    map_checked_predicate (blockIndex 2560 256 (by decide +kernel) index) := by unfold map_checked_predicate; decide +kernel
+    map_checked_predicate (blockIndex 2560 256 (by decide +kernel) index) :=
+  fun _ => fkl_all _
 
 /-- One bounded block of the complete exact finite check. -/
 theorem map_checked_block011 : ∀ index : Fin 256,
-    map_checked_predicate (blockIndex 2816 256 (by decide +kernel) index) := by unfold map_checked_predicate; decide +kernel
+    map_checked_predicate (blockIndex 2816 256 (by decide +kernel) index) :=
+  fun _ => fkl_all _
 
 /-- One bounded block of the complete exact finite check. -/
 theorem map_checked_block012 : ∀ index : Fin 256,
-    map_checked_predicate (blockIndex 3072 256 (by decide +kernel) index) := by unfold map_checked_predicate; decide +kernel
+    map_checked_predicate (blockIndex 3072 256 (by decide +kernel) index) :=
+  fun _ => fkl_all _
 
 /-- One bounded block of the complete exact finite check. -/
 theorem map_checked_block013 : ∀ index : Fin 256,
-    map_checked_predicate (blockIndex 3328 256 (by decide +kernel) index) := by unfold map_checked_predicate; decide +kernel
+    map_checked_predicate (blockIndex 3328 256 (by decide +kernel) index) :=
+  fun _ => fkl_all _
 
 /-- One bounded block of the complete exact finite check. -/
 theorem map_checked_block014 : ∀ index : Fin 256,
-    map_checked_predicate (blockIndex 3584 256 (by decide +kernel) index) := by unfold map_checked_predicate; decide +kernel
+    map_checked_predicate (blockIndex 3584 256 (by decide +kernel) index) :=
+  fun _ => fkl_all _
 
 /-- One bounded block of the complete exact finite check. -/
 theorem map_checked_block015 : ∀ index : Fin 256,
-    map_checked_predicate (blockIndex 3840 256 (by decide +kernel) index) := by unfold map_checked_predicate; decide +kernel
+    map_checked_predicate (blockIndex 3840 256 (by decide +kernel) index) :=
+  fun _ => fkl_all _
 
 /-- One bounded block of the complete exact finite check. -/
 theorem map_checked_block016 : ∀ index : Fin 256,
-    map_checked_predicate (blockIndex 4096 256 (by decide +kernel) index) := by unfold map_checked_predicate; decide +kernel
+    map_checked_predicate (blockIndex 4096 256 (by decide +kernel) index) :=
+  fun _ => fkl_all _
 
 /-- One bounded block of the complete exact finite check. -/
 theorem map_checked_block017 : ∀ index : Fin 256,
-    map_checked_predicate (blockIndex 4352 256 (by decide +kernel) index) := by unfold map_checked_predicate; decide +kernel
+    map_checked_predicate (blockIndex 4352 256 (by decide +kernel) index) :=
+  fun _ => fkl_all _
 
 /-- One bounded block of the complete exact finite check. -/
 theorem map_checked_block018 : ∀ index : Fin 256,
-    map_checked_predicate (blockIndex 4608 256 (by decide +kernel) index) := by unfold map_checked_predicate; decide +kernel
+    map_checked_predicate (blockIndex 4608 256 (by decide +kernel) index) :=
+  fun _ => fkl_all _
 
 /-- One bounded block of the complete exact finite check. -/
 theorem map_checked_block019 : ∀ index : Fin 256,
-    map_checked_predicate (blockIndex 4864 256 (by decide +kernel) index) := by unfold map_checked_predicate; decide +kernel
+    map_checked_predicate (blockIndex 4864 256 (by decide +kernel) index) :=
+  fun _ => fkl_all _
 
 /-- One bounded block of the complete exact finite check. -/
 theorem map_checked_block020 : ∀ index : Fin 256,
-    map_checked_predicate (blockIndex 5120 256 (by decide +kernel) index) := by unfold map_checked_predicate; decide +kernel
+    map_checked_predicate (blockIndex 5120 256 (by decide +kernel) index) :=
+  fun _ => fkl_all _
 
 /-- One bounded block of the complete exact finite check. -/
 theorem map_checked_block021 : ∀ index : Fin 256,
-    map_checked_predicate (blockIndex 5376 256 (by decide +kernel) index) := by unfold map_checked_predicate; decide +kernel
+    map_checked_predicate (blockIndex 5376 256 (by decide +kernel) index) :=
+  fun _ => fkl_all _
 
 /-- One bounded block of the complete exact finite check. -/
 theorem map_checked_block022 : ∀ index : Fin 256,
-    map_checked_predicate (blockIndex 5632 256 (by decide +kernel) index) := by unfold map_checked_predicate; decide +kernel
+    map_checked_predicate (blockIndex 5632 256 (by decide +kernel) index) :=
+  fun _ => fkl_all _
 
 /-- One bounded block of the complete exact finite check. -/
 theorem map_checked_block023 : ∀ index : Fin 256,
-    map_checked_predicate (blockIndex 5888 256 (by decide +kernel) index) := by unfold map_checked_predicate; decide +kernel
+    map_checked_predicate (blockIndex 5888 256 (by decide +kernel) index) :=
+  fun _ => fkl_all _
 
 /-- One bounded block of the complete exact finite check. -/
 theorem map_checked_block024 : ∀ index : Fin 256,
-    map_checked_predicate (blockIndex 6144 256 (by decide +kernel) index) := by unfold map_checked_predicate; decide +kernel
+    map_checked_predicate (blockIndex 6144 256 (by decide +kernel) index) :=
+  fun _ => fkl_all _
 
 /-- One bounded block of the complete exact finite check. -/
 theorem map_checked_block025 : ∀ index : Fin 161,
-    map_checked_predicate (blockIndex 6400 161 (by decide +kernel) index) := by unfold map_checked_predicate; decide +kernel
+    map_checked_predicate (blockIndex 6400 161 (by decide +kernel) index) :=
+  fun _ => fkl_all _
 
 /-- The bounded checks cover every supplied index without an unchecked remainder. -/
-theorem map_checked (index : Fin 6561) : map_checked_predicate index := by
-  have := index.isLt
-  by_cases before_000 : index.val < 256
-  · exact of_block_check (by decide +kernel) map_checked_block000 index (by omega) (by omega)
-  by_cases before_001 : index.val < 512
-  · exact of_block_check (by decide +kernel) map_checked_block001 index (by omega) (by omega)
-  by_cases before_002 : index.val < 768
-  · exact of_block_check (by decide +kernel) map_checked_block002 index (by omega) (by omega)
-  by_cases before_003 : index.val < 1024
-  · exact of_block_check (by decide +kernel) map_checked_block003 index (by omega) (by omega)
-  by_cases before_004 : index.val < 1280
-  · exact of_block_check (by decide +kernel) map_checked_block004 index (by omega) (by omega)
-  by_cases before_005 : index.val < 1536
-  · exact of_block_check (by decide +kernel) map_checked_block005 index (by omega) (by omega)
-  by_cases before_006 : index.val < 1792
-  · exact of_block_check (by decide +kernel) map_checked_block006 index (by omega) (by omega)
-  by_cases before_007 : index.val < 2048
-  · exact of_block_check (by decide +kernel) map_checked_block007 index (by omega) (by omega)
-  by_cases before_008 : index.val < 2304
-  · exact of_block_check (by decide +kernel) map_checked_block008 index (by omega) (by omega)
-  by_cases before_009 : index.val < 2560
-  · exact of_block_check (by decide +kernel) map_checked_block009 index (by omega) (by omega)
-  by_cases before_010 : index.val < 2816
-  · exact of_block_check (by decide +kernel) map_checked_block010 index (by omega) (by omega)
-  by_cases before_011 : index.val < 3072
-  · exact of_block_check (by decide +kernel) map_checked_block011 index (by omega) (by omega)
-  by_cases before_012 : index.val < 3328
-  · exact of_block_check (by decide +kernel) map_checked_block012 index (by omega) (by omega)
-  by_cases before_013 : index.val < 3584
-  · exact of_block_check (by decide +kernel) map_checked_block013 index (by omega) (by omega)
-  by_cases before_014 : index.val < 3840
-  · exact of_block_check (by decide +kernel) map_checked_block014 index (by omega) (by omega)
-  by_cases before_015 : index.val < 4096
-  · exact of_block_check (by decide +kernel) map_checked_block015 index (by omega) (by omega)
-  by_cases before_016 : index.val < 4352
-  · exact of_block_check (by decide +kernel) map_checked_block016 index (by omega) (by omega)
-  by_cases before_017 : index.val < 4608
-  · exact of_block_check (by decide +kernel) map_checked_block017 index (by omega) (by omega)
-  by_cases before_018 : index.val < 4864
-  · exact of_block_check (by decide +kernel) map_checked_block018 index (by omega) (by omega)
-  by_cases before_019 : index.val < 5120
-  · exact of_block_check (by decide +kernel) map_checked_block019 index (by omega) (by omega)
-  by_cases before_020 : index.val < 5376
-  · exact of_block_check (by decide +kernel) map_checked_block020 index (by omega) (by omega)
-  by_cases before_021 : index.val < 5632
-  · exact of_block_check (by decide +kernel) map_checked_block021 index (by omega) (by omega)
-  by_cases before_022 : index.val < 5888
-  · exact of_block_check (by decide +kernel) map_checked_block022 index (by omega) (by omega)
-  by_cases before_023 : index.val < 6144
-  · exact of_block_check (by decide +kernel) map_checked_block023 index (by omega) (by omega)
-  by_cases before_024 : index.val < 6400
-  · exact of_block_check (by decide +kernel) map_checked_block024 index (by omega) (by omega)
-  exact of_block_check (by decide +kernel) map_checked_block025 index (by omega) (by omega)
+theorem map_checked (index : Fin 6561) : map_checked_predicate index :=
+  fkl_all index
 
 
 /-- The original supplied orbit-size metadata. -/
@@ -607,56 +1138,101 @@ def sizes (orbit : Fin 231) : ℕ :=
 /-- The exact finite assertion checked at one supplied index. -/
 def recursive_sizes_checked_predicate (index : Fin 231) : Prop := encoding.parentSize MatrixBounds.Numeric.OrbitLevel3.sizes index = sizes index
 
+/-- Level-three orbit sizes, 8-bit lanes, and level-four sizes, 13-bit lanes (FKLMeta). -/
+def fkl_s3 : ℕ := 0x10404020401040804040408040804020402040401
+
+def fkl_s4 : ℕ := 0x4010010004008002000400800400080080100080020010001002001000400400040100200100040040008008004008004001001000200400200020040020008008001002002000400100200100040040008010010004001000400800400100100020040040010008002001002001000400400080100100040020010008000801000800200200040080080020010008008001000801000800200200040080080020010008008002001000100200100040040008010010004002001001000400400080010020010004004000801001000400200100100040040010002002004002000800800100200200080040020020008008002000800400080100080020020004008008002001000800800200200080020020004004008004001001000200400400100080040040010010004001001000400200080100080020020004008008002001000800800200200080020020008008002000200400200080080010020020008004002002000800800200080080020020010001
+
+theorem fkl_s3_walk : FKLMeta.walk (fun i v => Nat.beq v (FKL.lane fkl_s3 8 i))
+    MatrixBounds.Numeric.OrbitLevel3.suppliedSizes.toList 0 = true := by decide +kernel
+
+theorem fkl_s4_walk : FKLMeta.walk (fun i v => Nat.beq v (FKL.lane fkl_s4 13 i)) suppliedSizes.toList 0 = true := by
+  decide +kernel
+
+/-- Fast check of all recursive orbit sizes: one packed accumulation over all ordered pairs (FKLMeta). -/
+theorem fkl_checked_sizes : Bool.and (Nat.beq (FKLMeta.FineWords.sumN 21 (fun a => FKLMeta.FineWords.sumN 21 (fun b =>
+    Nat.shiftLeft (Nat.mul (FKL.lane fkl_s3 8 a) (FKL.lane fkl_s3 8 b)) (Nat.mul 13 (FKLMeta.FineWords.rawCode 21 a b 231)))))
+    fkl_s4) (Nat.blt (FKLMeta.FineWords.sumN 21 (fun a => FKLMeta.FineWords.sumN 21 (fun b =>
+    Nat.mul (FKL.lane fkl_s3 8 a) (FKL.lane fkl_s3 8 b)))) 8192) = true := by
+  decide +kernel
+
+theorem fkl_sizes (index : Fin 231) : recursive_sizes_checked_predicate index := by
+  have hc := fkl_checked_sizes
+  simp only [Bool.and_eq_true, Nat.beq_eq, Nat.blt_eq] at hc
+  obtain ⟨hacc, hbound⟩ := hc
+  have h3 : ∀ a : Fin 21, MatrixBounds.Numeric.OrbitLevel3.sizes a = FKL.lane fkl_s3 8 a.val := fun a =>
+    FKLMeta.FineWords.arr_get' _ fkl_s3 8 fkl_s3_walk a.val _
+  have h4 : sizes index = FKL.lane fkl_s4 13 index.val :=
+    FKLMeta.FineWords.arr_get' _ fkl_s4 13 fkl_s4_walk index.val _
+  have hcode : ∀ a b : Fin 21, (encoding.code (a, b)).val = FKLMeta.FineWords.rawCode 21 a.val b.val 231 := by
+    intro a b; rw [FKLMeta.FineWords.rawCode_eq]; rfl
+  have hsum : ∀ g : ℕ → ℕ → ℕ, ∑ p : Fin 21 × Fin 21, g p.1.val p.2.val =
+      FKLMeta.FineWords.sumN 21 (fun a => FKLMeta.FineWords.sumN 21 (fun b => g a b)) := by
+    intro g
+    rw [Fintype.sum_prod_type, FKLMeta.FineWords.sumN_eq,
+      ← Fin.sum_univ_eq_sum_range (fun a => FKLMeta.FineWords.sumN 21 (fun b => g a b)) 21]
+    apply Finset.sum_congr rfl
+    intro a _
+    rw [FKLMeta.FineWords.sumN_eq, ← Fin.sum_univ_eq_sum_range (fun b => g a.val b) 21]
+  let v : Fin 21 × Fin 21 → ℕ := fun p => MatrixBounds.Numeric.OrbitLevel3.sizes p.1 * MatrixBounds.Numeric.OrbitLevel3.sizes p.2
+  have hv : ∀ p, v p = Nat.mul (FKL.lane fkl_s3 8 p.1.val) (FKL.lane fkl_s3 8 p.2.val) := fun p => by
+    simp only [v, h3]; rfl
+  have hb : ∑ p, v p < 2 ^ 13 := by
+    simp only [hv]; rw [hsum (fun a b => Nat.mul (FKL.lane fkl_s3 8 a) (FKL.lane fkl_s3 8 b))]; exact hbound
+  have hl := FKLMeta.FineWords.lane_fibers encoding.code v 13 hb index
+  have hacc' : ∑ p, v p * 2 ^ (13 * (encoding.code p).val) = fkl_s4 := by
+    rw [← hacc, ← hsum (fun a b => Nat.shiftLeft (Nat.mul (FKL.lane fkl_s3 8 a) (FKL.lane fkl_s3 8 b))
+      (Nat.mul 13 (FKLMeta.FineWords.rawCode 21 a b 231)))]
+    apply Finset.sum_congr rfl
+    intro p _
+    rw [hv, FKL.raw_shiftLeft, Nat.shiftLeft_eq, FKL.raw_mul 13, ← hcode p.1 p.2]
+  rw [hacc'] at hl
+  unfold recursive_sizes_checked_predicate PairEncoding.parentSize
+  rw [h4, hl]
+
 /-- One bounded block of the complete exact finite check. -/
 theorem recursive_sizes_checked_block000 : ∀ index : Fin 32,
-    recursive_sizes_checked_predicate (blockIndex 0 32 (by decide +kernel) index) := by unfold recursive_sizes_checked_predicate; decide +kernel
+    recursive_sizes_checked_predicate (blockIndex 0 32 (by decide +kernel) index) :=
+  fun _ => fkl_sizes _
 
 /-- One bounded block of the complete exact finite check. -/
 theorem recursive_sizes_checked_block001 : ∀ index : Fin 32,
-    recursive_sizes_checked_predicate (blockIndex 32 32 (by decide +kernel) index) := by unfold recursive_sizes_checked_predicate; decide +kernel
+    recursive_sizes_checked_predicate (blockIndex 32 32 (by decide +kernel) index) :=
+  fun _ => fkl_sizes _
 
 /-- One bounded block of the complete exact finite check. -/
 theorem recursive_sizes_checked_block002 : ∀ index : Fin 32,
-    recursive_sizes_checked_predicate (blockIndex 64 32 (by decide +kernel) index) := by unfold recursive_sizes_checked_predicate; decide +kernel
+    recursive_sizes_checked_predicate (blockIndex 64 32 (by decide +kernel) index) :=
+  fun _ => fkl_sizes _
 
 /-- One bounded block of the complete exact finite check. -/
 theorem recursive_sizes_checked_block003 : ∀ index : Fin 32,
-    recursive_sizes_checked_predicate (blockIndex 96 32 (by decide +kernel) index) := by unfold recursive_sizes_checked_predicate; decide +kernel
+    recursive_sizes_checked_predicate (blockIndex 96 32 (by decide +kernel) index) :=
+  fun _ => fkl_sizes _
 
 /-- One bounded block of the complete exact finite check. -/
 theorem recursive_sizes_checked_block004 : ∀ index : Fin 32,
-    recursive_sizes_checked_predicate (blockIndex 128 32 (by decide +kernel) index) := by unfold recursive_sizes_checked_predicate; decide +kernel
+    recursive_sizes_checked_predicate (blockIndex 128 32 (by decide +kernel) index) :=
+  fun _ => fkl_sizes _
 
 /-- One bounded block of the complete exact finite check. -/
 theorem recursive_sizes_checked_block005 : ∀ index : Fin 32,
-    recursive_sizes_checked_predicate (blockIndex 160 32 (by decide +kernel) index) := by unfold recursive_sizes_checked_predicate; decide +kernel
+    recursive_sizes_checked_predicate (blockIndex 160 32 (by decide +kernel) index) :=
+  fun _ => fkl_sizes _
 
 /-- One bounded block of the complete exact finite check. -/
 theorem recursive_sizes_checked_block006 : ∀ index : Fin 32,
-    recursive_sizes_checked_predicate (blockIndex 192 32 (by decide +kernel) index) := by unfold recursive_sizes_checked_predicate; decide +kernel
+    recursive_sizes_checked_predicate (blockIndex 192 32 (by decide +kernel) index) :=
+  fun _ => fkl_sizes _
 
 /-- One bounded block of the complete exact finite check. -/
 theorem recursive_sizes_checked_block007 : ∀ index : Fin 7,
-    recursive_sizes_checked_predicate (blockIndex 224 7 (by decide +kernel) index) := by unfold recursive_sizes_checked_predicate; decide +kernel
+    recursive_sizes_checked_predicate (blockIndex 224 7 (by decide +kernel) index) :=
+  fun _ => fkl_sizes _
 
 /-- The bounded checks cover every supplied index without an unchecked remainder. -/
-theorem recursive_sizes_checked (index : Fin 231) : recursive_sizes_checked_predicate index := by
-  have := index.isLt
-  by_cases before_000 : index.val < 32
-  · exact of_block_check (by decide +kernel) recursive_sizes_checked_block000 index (by omega) (by omega)
-  by_cases before_001 : index.val < 64
-  · exact of_block_check (by decide +kernel) recursive_sizes_checked_block001 index (by omega) (by omega)
-  by_cases before_002 : index.val < 96
-  · exact of_block_check (by decide +kernel) recursive_sizes_checked_block002 index (by omega) (by omega)
-  by_cases before_003 : index.val < 128
-  · exact of_block_check (by decide +kernel) recursive_sizes_checked_block003 index (by omega) (by omega)
-  by_cases before_004 : index.val < 160
-  · exact of_block_check (by decide +kernel) recursive_sizes_checked_block004 index (by omega) (by omega)
-  by_cases before_005 : index.val < 192
-  · exact of_block_check (by decide +kernel) recursive_sizes_checked_block005 index (by omega) (by omega)
-  by_cases before_006 : index.val < 224
-  · exact of_block_check (by decide +kernel) recursive_sizes_checked_block006 index (by omega) (by omega)
-  exact of_block_check (by decide +kernel) recursive_sizes_checked_block007 index (by omega) (by omega)
+theorem recursive_sizes_checked (index : Fin 231) : recursive_sizes_checked_predicate index :=
+  fkl_sizes index
 
 
 /-- Every supplied size is the actual number of complete fine words in its verified orbit. -/

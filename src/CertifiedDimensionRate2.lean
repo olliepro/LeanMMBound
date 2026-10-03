@@ -1,15 +1,22 @@
-import RateCertificateData.Dimension2Block000
-import RateCertificateData.Dimension2Block001
-import RateCertificateData.Dimension2Block002
-import RateCertificateData.Dimension2Block003
-import RateCertificateData.Dimension2Block004
-import RateCertificateData.Dimension2Block005
-import RateCertificateData.Dimension2Block006
-import RateCertificateData.Dimension2Block007
-import RateCertificateData.Dimension2Block008
-import RateCertificateData.Dimension2Block009
-import RateCertificateData.Dimension2Block010
-import RateCertificateData.Dimension2Block011
+module
+
+public import RateCertificateData.Dimension2Block000
+public import RateCertificateData.Dimension2Block001
+public import RateCertificateData.Dimension2Block002
+public import RateCertificateData.Dimension2Block003
+public import RateCertificateData.Dimension2Block004
+public import RateCertificateData.Dimension2Block005
+public import RateCertificateData.Dimension2Block006
+public import RateCertificateData.Dimension2Block007
+public import RateCertificateData.Dimension2Block008
+public import RateCertificateData.Dimension2Block009
+public import RateCertificateData.Dimension2Block010
+public import RateCertificateData.Dimension2Block011
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 namespace MatrixBounds.Numeric.CertifiedDimensionRate2
 set_option maxRecDepth 100000

@@ -1,6 +1,13 @@
-import CWRootNearbyRates
-import CWRootRateExtraction
-import ContextUniformCopies
+module
+
+public import CWRootNearbyRates
+public import CWRootRateExtraction
+public import ContextUniformCopies
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Every nearby exact root profile is extracted from the same unrestricted
 source. A common copy count permits their full contextual gluing. -/

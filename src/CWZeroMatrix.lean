@@ -1,5 +1,12 @@
-import CWZeroSlice
-import TensorBatching
+module
+
+public import CWZeroSlice
+public import TensorBatching
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Explicit matrix multiplication constituents obtained from zero-coordinate
 CW sectors. Arbitrary admissible word subsets are retained by coordinate maps. -/

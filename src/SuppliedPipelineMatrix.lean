@@ -1,6 +1,13 @@
-import SuppliedCompletedMatrix
-import MatrixFamilyVolume
-import SuppliedRoundWidths
+module
+
+public import SuppliedCompletedMatrix
+public import MatrixFamilyVolume
+public import SuppliedRoundWidths
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! All complete final batches combine into one concrete finite matrix,
 with a uniform threshold for their separately chosen windows. -/

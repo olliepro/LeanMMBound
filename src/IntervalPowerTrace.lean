@@ -1,4 +1,11 @@
-import RationalIntervalOperations
+module
+
+public import RationalIntervalOperations
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! A finite certificate of outward-rounded power intervals is checked by
 exact rational arithmetic and proves the associated logarithm-series sum. -/

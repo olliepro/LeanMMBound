@@ -1,4 +1,11 @@
-import ContextMatrix
+module
+
+public import ContextMatrix
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Finite heterogeneous products of actual matrix tensors yield the matrix
 product whose three index sets are the products of the corresponding indices. -/
@@ -22,7 +29,8 @@ theorem heterogeneous_matrix_identity :
       (familyPairs x) (familyPairs y) (familyPairs z)) =
       tensor (K := K) (I := ∀ t, I t) (J := ∀ t, J t) (L := ∀ t, L t) := by
   funext x y z
-  simp only [Interface.heterogeneous, tensor, familyPairs, Fintype.prod_boole]
+  unfold Interface.heterogeneous tensor familyPairs
+  simp only [Fintype.prod_boole]
   congr 1
   apply propext
   simp only [forall_and, funext_iff]

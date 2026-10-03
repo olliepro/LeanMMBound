@@ -1,4 +1,11 @@
-import HeterogeneousConcentration
+module
+
+public import HeterogeneousConcentration
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Concentration for disjoint blocks whose slots carry pool labels. A pool can
 contribute no slots, one slot, or several slots; repeated labels are sampled

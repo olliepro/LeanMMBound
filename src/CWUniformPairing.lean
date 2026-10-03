@@ -1,4 +1,11 @@
-import CWPairing
+module
+
+public import CWPairing
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Regrouping into the fixed parent tensor used by every prescribed edge.
 The dependent child-pool shapes are checked against one common parent shape. -/

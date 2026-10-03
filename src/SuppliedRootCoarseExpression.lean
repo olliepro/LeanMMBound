@@ -1,7 +1,14 @@
-import SuppliedRootPopulation
-import RationalLogNormalization
-import CoarseLogExpressions
-import CertifiedRootRate0
+module
+
+public import SuppliedRootPopulation
+public import RationalLogNormalization
+public import CoarseLogExpressions
+public import CertifiedRootRate0
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! A finite-column expression for the actual supplied root coarse rate.
 The column sums are executable exact rational calculations. -/

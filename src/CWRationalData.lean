@@ -1,8 +1,15 @@
-import CWCoarseData
-import CWCoarseRates
-import CWProfileLaws
-import CWTerminalProbabilities
-import TypeDenominators
+module
+
+public import CWCoarseData
+public import CWCoarseRates
+public import CWProfileLaws
+public import CWTerminalProbabilities
+public import TypeDenominators
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Exact rational split laws at every divisible population. The normalized
 coarse profiles and parent centers are independent of the integer population. -/

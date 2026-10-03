@@ -1,4 +1,11 @@
-import FiniteOrbitData
+module
+
+public import FiniteOrbitData
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Orbit compression preserves averages of every statistic constant on each
 verified word fiber, including fine totals and middle-symbol multiplicities. -/

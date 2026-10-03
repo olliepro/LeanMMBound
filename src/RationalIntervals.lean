@@ -1,5 +1,12 @@
-import LogEnclosures
-import Mathlib.Data.Rat.Cast.Order
+module
+
+public import LogEnclosures
+public import Mathlib.Data.Rat.Cast.Order
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Exact rational interval arithmetic. Soundness is proved over real numbers;
 no floating-point rounding behavior is assumed. -/

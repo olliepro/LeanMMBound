@@ -1,5 +1,12 @@
-import ContextTypeGluing
-import HeterogeneousTypeGluing
+module
+
+public import ContextTypeGluing
+public import HeterogeneousTypeGluing
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Products of exact interfaces yield complete accepted products inside
 arbitrary companion tensors, including independent earlier batches. -/

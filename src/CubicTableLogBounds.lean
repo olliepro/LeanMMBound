@@ -1,5 +1,12 @@
-import CubicLogBounds
-import TabulatedLogBounds
+module
+
+public import CubicLogBounds
+public import TabulatedLogBounds
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The final per-mass logarithm calculation uses a proved table value and an
 exact rational cubic, retaining the complete analytic remainder bound. -/

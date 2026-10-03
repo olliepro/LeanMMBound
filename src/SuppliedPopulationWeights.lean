@@ -1,8 +1,15 @@
-import SuppliedRationalStages
-import SuppliedTerminalRoles
-import SuppliedRoleIndex
-import SuppliedNodeLookup
-import DyadicPopulationArithmetic
+module
+
+public import SuppliedRationalStages
+public import SuppliedTerminalRoles
+public import SuppliedRoleIndex
+public import SuppliedNodeLookup
+public import DyadicPopulationArithmetic
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Fixed integer populations from the original source hierarchy. Eight reserve
 denominator powers clear every split, strategy allocation, and physical role. -/

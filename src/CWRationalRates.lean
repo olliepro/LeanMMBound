@@ -1,5 +1,12 @@
-import CWRationalData
-import CWRetentionContinuity
+module
+
+public import CWRationalData
+public import CWRetentionContinuity
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The three mixed extraction rates on rational data are exact fixed real
 expressions, independent of the choice of divisible integer population. -/

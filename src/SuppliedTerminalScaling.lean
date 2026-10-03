@@ -1,6 +1,13 @@
-import SuppliedTerminalLaws
-import CWTerminalRateScaling
-import PhysicalRoles
+module
+
+public import SuppliedTerminalLaws
+public import CWTerminalRateScaling
+public import PhysicalRoles
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Original terminal labels and integer counts at every common scale retain
 the supplied complete parent laws, physical roles, and exact population weights. -/

@@ -1,5 +1,12 @@
-import HeterogeneousInterface
-import TensorBatching
+module
+
+public import HeterogeneousInterface
+public import TensorBatching
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Nested and flattened labelled factor lists describe the same tensor.
 The explicit coordinate regrouping preserves every independent batch index. -/
@@ -30,7 +37,7 @@ theorem rankLE_flatten_batch (family : ∀ type pool, Coeff K (X type pool) (Y t
     (fun x : Fin copies × (∀ index : (type : T) × S type, X index.1 index.2) => (x.1, fun type pool => x.2 ⟨type, pool⟩))
     (fun y : Fin copies × (∀ index : (type : T) × S type, Y index.1 index.2) => (y.1, fun type pool => y.2 ⟨type, pool⟩))
     (fun z : Fin copies × (∀ index : (type : T) × S type, Z index.1 index.2) => (z.1, fun type pool => z.2 ⟨type, pool⟩))
-  simpa only [directSum, heterogeneous_flatten] using pulled
+  simpa only [directSum, heterogeneous_flatten] using! pulled
 
 /-- Regrouping a flat labelled factor list restores the nested product without changing the batch budget. -/
 theorem rankLE_unflatten_batch (family : ∀ type pool, Coeff K (X type pool) (Y type pool) (Z type pool))
@@ -41,7 +48,7 @@ theorem rankLE_unflatten_batch (family : ∀ type pool, Coeff K (X type pool) (Y
     (fun x : Fin copies × (∀ type pool, X type pool) => (x.1, fun index => x.2 index.1 index.2))
     (fun y : Fin copies × (∀ type pool, Y type pool) => (y.1, fun index => y.2 index.1 index.2))
     (fun z : Fin copies × (∀ type pool, Z type pool) => (z.1, fun index => z.2 index.1 index.2))
-  simpa only [directSum, heterogeneous, Fintype.prod_sigma] using pulled
+  simpa only [directSum, heterogeneous, Fintype.prod_sigma] using! pulled
 
 end
 end MatrixBounds.Interface

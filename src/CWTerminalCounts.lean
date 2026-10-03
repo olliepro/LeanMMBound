@@ -1,5 +1,12 @@
-import CWTerminalData
-import TypeDenominators
+module
+
+public import CWTerminalData
+public import TypeDenominators
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Symmetric terminal split counts and their feasible reference words.
 Both endpoint profiles are included in the same exact integer construction. -/

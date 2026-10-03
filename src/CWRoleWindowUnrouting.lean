@@ -1,5 +1,12 @@
-import CWRoleWindowRouting
-import HeterogeneousProductRegrouping
+module
+
+public import CWRoleWindowRouting
+public import HeterogeneousProductRegrouping
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! After extraction the six oriented regions can be restored to separately
 labelled source copies. No complete-window constraints are merged or relaxed. -/

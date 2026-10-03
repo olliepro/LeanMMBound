@@ -1,5 +1,12 @@
-import TypeBatchGluing
-import HeterogeneousInterface
+module
+
+public import TypeBatchGluing
+public import HeterogeneousInterface
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Products of exact interfaces use dependent tuples of subtype coordinates.
 They glue into the corresponding ambient approximate interface while preserving

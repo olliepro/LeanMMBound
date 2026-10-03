@@ -1,0 +1,3073 @@
+Current branch: HEAD
+Using cache from origin: (some leanprover-community/mathlib4)
+No files to download
+Already decompressed 8915 file(s)
+Resolving dependencies
+Building Challenge
+⚠ [2039/2040] Replayed Challenge
+warning: Challenge.lean:134:8: declaration uses `sorry`
+Build completed successfully (2040 jobs).
+Exporting #[Quot, Quot.mk, Quot.lift, Quot.ind, MatrixBounds.Numeric.SuppliedCertifiedPipeline.exponent_lt, propext, Quot.sound, Classical.choice, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce, Nat, String, String.mk, Char, optParam, autoParam, semiOutParam, outParam] from Challenge
+Building Solution
+ℹ [2183/2262] Replayed MatrixBounds
+info: src/MatrixBounds.lean:301:0: 'MatrixBounds.shared_hash_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: src/MatrixBounds.lean:302:0: 'MatrixBounds.unique_bucket_offsets' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: src/MatrixBounds.lean:303:0: 'MatrixBounds.bucket_offset_count' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: src/MatrixBounds.lean:304:0: 'MatrixBounds.surviving_hashes_equal' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: src/MatrixBounds.lean:305:0: 'MatrixBounds.compatible_degree_constant' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: src/MatrixBounds.lean:306:0: 'MatrixBounds.compatibility_double_count' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: src/MatrixBounds.lean:307:0: 'MatrixBounds.eight_boxes_reconstruct' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: src/MatrixBounds.lean:308:0: 'MatrixBounds.schedule_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: src/MatrixBounds.lean:309:0: 'MatrixBounds.boundaryLoss_nonnegative' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: src/MatrixBounds.lean:310:0: 'MatrixBounds.bottleneck_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: src/MatrixBounds.lean:311:0: 'MatrixBounds.le_bottleneck' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: src/MatrixBounds.lean:312:0: 'MatrixBounds.bottleneck_superadditive' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: src/MatrixBounds.lean:313:0: 'MatrixBounds.strict_joint_advantage' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: src/MatrixBounds.lean:314:0: 'MatrixBounds.residual_positive_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: src/MatrixBounds.lean:315:0: 'MatrixBounds.exponent_lt_of_verified_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: src/MatrixBounds.lean:316:0: 'MatrixBounds.quoted_endpoint_below_threshold' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: src/MatrixBounds.lean:317:0: 'MatrixBounds.quoted_residual_lower_positive' depends on axioms: [propext, Classical.choice, Quot.sound]
+⚠ [2187/2262] Replayed CheckedIndexTable
+warning: src/CheckedIndexTable.lean:75:30: `Fin.coe_castAdd` has been deprecated: Use `Fin.val_castAdd` instead
+
+Hint: Replace the deprecated name:
+  F̵i̵n̵.̵c̵o̵e̵_̵c̵a̵s̵t̵A̵d̵d̵F̲i̲n̲.̲v̲a̲l̲_̲c̲a̲s̲t̲A̲d̲d̲
+warning: src/CheckedIndexTable.lean:83:30: `Fin.coe_natAdd` has been deprecated: Use `Fin.val_natAdd` instead
+
+Hint: Replace the deprecated name:
+  F̵i̵n̵.̵c̵o̵e̵_̵n̵a̵t̵A̵d̵d̵F̲i̲n̲.̲v̲a̲l̲_̲n̲a̲t̲A̲d̲d̲
+⚠ [2252/2343] Replayed FKL.Kron
+warning: src/FKL/Kron.lean:248:41: This simp argument is unused:
+  Nat.beq_eq_true_eq
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [accepted, Bool.and_eq_true, Nat.blt_eq] at h
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [2256/2343] Replayed FKLBridge.Rows
+warning: src/FKLBridge/Rows.lean:471:6: `dif_pos` has been deprecated: Use `dite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  d̵i̵f̵_̵p̵o̵s̵d̲i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+⚠ [2257/2343] Replayed FKLMeta.Shapes
+warning: src/FKLMeta/Shapes.lean:164:8: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: src/FKLMeta/Shapes.lean:164:59: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: src/FKLMeta/Shapes.lean:165:8: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+warning: src/FKLMeta/Shapes.lean:165:19: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+warning: src/FKLMeta/Shapes.lean:177:6: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+⚠ [2258/2343] Replayed FKLMeta.SplitFast
+warning: src/FKLMeta/SplitFast.lean:118:17: `cond_true` has been deprecated: Use `Bool.cond_true` instead
+
+Hint: Replace the deprecated name:
+  B̲o̲o̲l̲.̲cond_true
+warning: src/FKLMeta/SplitFast.lean:131:17: `cond_false` has been deprecated: Use `Bool.cond_false` instead
+
+Hint: Replace the deprecated name:
+  B̲o̲o̲l̲.̲cond_false
+⚠ [2699/2770] Replayed PolynomialDegeneration
+warning: src/PolynomialDegeneration.lean:81:43: `Polynomial.finset_sum_coeff` has been deprecated: Use `Polynomial.finsetSum_coeff` instead
+
+Hint: Replace the deprecated name:
+  Polynomial.finset_̵s̵S̲um_coeff
+warning: src/PolynomialDegeneration.lean:195:54: `Polynomial.finset_sum_coeff` has been deprecated: Use `Polynomial.finsetSum_coeff` instead
+
+Hint: Replace the deprecated name:
+  Polynomial.finset_̵s̵S̲um_coeff
+warning: src/PolynomialDegeneration.lean:209:50: `Polynomial.finset_sum_coeff` has been deprecated: Use `Polynomial.finsetSum_coeff` instead
+
+Hint: Replace the deprecated name:
+  Polynomial.finset_̵s̵S̲um_coeff
+⚠ [2701/2770] Replayed FiniteRepair
+warning: src/FiniteRepair.lean:72:6: `dif_pos` has been deprecated: Use `dite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  d̵i̵f̵_̵p̵o̵s̵d̲i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: src/FiniteRepair.lean:92:8: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: src/FiniteRepair.lean:92:19: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: src/FiniteRepair.lean:105:12: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: src/FiniteRepair.lean:106:8: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+warning: src/FiniteRepair.lean:106:19: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+info: src/FiniteRepair.lean:166:0: 'MatrixBounds.Tensor.Repair.finite_repair' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: src/FiniteRepair.lean:167:0: 'MatrixBounds.Tensor.Repair.finite_repair_restriction' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: src/FiniteRepair.lean:168:0: 'MatrixBounds.Tensor.Repair.piece_from_source' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: src/FiniteRepair.lean:169:0: 'MatrixBounds.Tensor.Repair.pattern_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+⚠ [2702/2770] Replayed FiniteCover
+warning: src/FiniteCover.lean:55:2: `push_neg` has been deprecated. Prefer using `push Not` instead.
+If you'd rather continue using `push_neg` in your project, you can implement it as follows:
+```
+open Lean.Parser.Tactic in
+macro "push_neg" cfg:optConfig loc:(location)? : tactic =>
+  `(tactic| push $cfg:optConfig Not $[$loc]?)
+```
+info: src/FiniteCover.lean:85:0: 'MatrixBounds.Cover.exists_cover' depends on axioms: [propext, Classical.choice, Quot.sound]
+⚠ [2703/2770] Replayed SparseRepair
+warning: src/SparseRepair.lean:50:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: src/SparseRepair.lean:79:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+info: src/SparseRepair.lean:128:0: 'MatrixBounds.Tensor.Repair.repair_from_counts' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: src/SparseRepair.lean:129:0: 'MatrixBounds.Tensor.Repair.sparse_hole_repair' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: src/SparseRepair.lean:130:0: 'MatrixBounds.Tensor.Repair.repair_certificate_from_counts' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [2704/2770] Replayed RepairRates
+info: src/RepairRates.lean:155:0: 'MatrixBounds.RepairRates.cover_count_small' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: src/RepairRates.lean:156:0: 'MatrixBounds.RepairRates.repair_cost_subexponential' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: src/RepairRates.lean:157:0: 'MatrixBounds.RepairRates.inverse_square_repair' depends on axioms: [propext, Classical.choice, Quot.sound]
+⚠ [2706/2770] Replayed ShapeAlphabet
+warning: src/ShapeAlphabet.lean:44:33: `dif_pos` has been deprecated: Use `dite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  d̵i̵f̵_̵p̵o̵s̵d̲i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: src/ShapeAlphabet.lean:44:47: `dif_pos` has been deprecated: Use `dite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  d̵i̵f̵_̵p̵o̵s̵d̲i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: src/ShapeAlphabet.lean:45:33: `dif_neg` has been deprecated: Use `dite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  d̵i̵f̵_̵n̵e̵g̵d̲i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+warning: src/ShapeAlphabet.lean:57:31: `dif_pos` has been deprecated: Use `dite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  d̵i̵f̵_̵p̵o̵s̵d̲i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: src/ShapeAlphabet.lean:69:26: `dif_neg` has been deprecated: Use `dite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  d̵i̵f̵_̵n̵e̵g̵d̲i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+⚠ [2724/2770] Replayed FiniteSelection
+warning: src/FiniteSelection.lean:40:18: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: src/FiniteSelection.lean:97:2: `push_neg` has been deprecated. Prefer using `push Not` instead.
+If you'd rather continue using `push_neg` in your project, you can implement it as follows:
+```
+open Lean.Parser.Tactic in
+macro "push_neg" cfg:optConfig loc:(location)? : tactic =>
+  `(tactic| push $cfg:optConfig Not $[$loc]?)
+```
+⚠ [2725/2770] Replayed HashCounting
+warning: src/HashCounting.lean:108:2: `push_neg` has been deprecated. Prefer using `push Not` instead.
+If you'd rather continue using `push_neg` in your project, you can implement it as follows:
+```
+open Lean.Parser.Tactic in
+macro "push_neg" cfg:optConfig loc:(location)? : tactic =>
+  `(tactic| push $cfg:optConfig Not $[$loc]?)
+```
+info: src/HashCounting.lean:125:0: 'MatrixBounds.HashCounting.fiberEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: src/HashCounting.lean:126:0: 'MatrixBounds.HashCounting.fiber_count_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: src/HashCounting.lean:127:0: 'MatrixBounds.HashCounting.fiber_probability' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: src/HashCounting.lean:128:0: 'MatrixBounds.HashCounting.hashY_collision_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [2726/2770] Replayed HashConditional
+info: src/HashConditional.lean:65:0: 'MatrixBounds.HashCounting.bucketEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: src/HashConditional.lean:66:0: 'MatrixBounds.HashCounting.conditional_collision_probability' depends on axioms: [propext, Classical.choice, Quot.sound]
+⚠ [2748/2875] Replayed CWPartition
+warning: src/CWPartition.lean:29:21: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+warning: src/CWPartition.lean:29:37: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+warning: src/CWPartition.lean:40:23: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+⚠ [2751/2875] Replayed MatrixTensor
+warning: src/MatrixTensor.lean:52:41: `if_true` has been deprecated: Use `ite_true` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵t̵r̵u̵e̵i̲t̲e̲_̲t̲r̲u̲e̲
+warning: src/MatrixTensor.lean:54:29: Unused tactic linter: `grind` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: src/MatrixTensor.lean:54:29: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: src/MatrixTensor.lean:78:41: `if_true` has been deprecated: Use `ite_true` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵t̵r̵u̵e̵i̲t̲e̲_̲t̲r̲u̲e̲
+warning: src/MatrixTensor.lean:132:41: `if_true` has been deprecated: Use `ite_true` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵t̵r̵u̵e̵i̲t̲e̲_̲t̲r̲u̲e̲
+⚠ [2752/2875] Replayed CWZeroSlice
+warning: src/CWZeroSlice.lean:56:63: `if_false` has been deprecated: Use `ite_false` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵f̵a̵l̵s̵e̵i̲t̲e̲_̲f̲a̲l̲s̲e̲
+warning: src/CWZeroSlice.lean:74:16: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+warning: src/CWZeroSlice.lean:74:57: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+warning: src/CWZeroSlice.lean:75:6: `if_true` has been deprecated: Use `ite_true` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵t̵r̵u̵e̵i̲t̲e̲_̲t̲r̲u̲e̲
+warning: src/CWZeroSlice.lean:112:23: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+⚠ [2762/2875] Replayed TypeEntropy
+warning: src/TypeEntropy.lean:67:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+⚠ [2763/2875] Replayed GibbsCounting
+warning: src/GibbsCounting.lean:50:10: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: src/GibbsCounting.lean:52:10: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+⚠ [3025/3066] Replayed InterfaceContinuity
+warning: src/InterfaceContinuity.lean:24:8: `continuous_finset_sum` has been deprecated: Use `continuous_finsetSum` instead
+
+Hint: Replace the deprecated name:
+  continuous_finset_̵s̵S̲um
+⚠ [3027/3066] Replayed TensorBatching
+warning: src/TensorBatching.lean:74:40: `if_true` has been deprecated: Use `ite_true` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵t̵r̵u̵e̵i̲t̲e̲_̲t̲r̲u̲e̲
+warning: src/TensorBatching.lean:101:41: `if_true` has been deprecated: Use `ite_true` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵t̵r̵u̵e̵i̲t̲e̲_̲t̲r̲u̲e̲
+warning: src/TensorBatching.lean:127:35: `if_true` has been deprecated: Use `ite_true` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵t̵r̵u̵e̵i̲t̲e̲_̲t̲r̲u̲e̲
+⚠ [3028/3066] Replayed SubtypeExtension
+warning: src/SubtypeExtension.lean:35:73: `if_true` has been deprecated: Use `ite_true` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵t̵r̵u̵e̵i̲t̲e̲_̲t̲r̲u̲e̲
+⚠ [3029/3066] Replayed TypeBatchGluing
+warning: src/TypeBatchGluing.lean:66:28: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: src/TypeBatchGluing.lean:69:28: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+⚠ [3032/3066] Replayed HeterogeneousMasks
+warning: src/HeterogeneousMasks.lean:31:8: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: src/HeterogeneousMasks.lean:34:10: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: src/HeterogeneousMasks.lean:35:8: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+warning: src/HeterogeneousMasks.lean:41:54: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+⚠ [3034/3066] Replayed ContextRestrictions
+warning: src/ContextRestrictions.lean:29:40: `if_true` has been deprecated: Use `ite_true` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵t̵r̵u̵e̵i̲t̲e̲_̲t̲r̲u̲e̲
+⚠ [3047/3165] Replayed WindowedInterface
+warning: src/WindowedInterface.lean:48:2: Try this: 
+  haveI̵
+
+The goal is a proposition, so `have` is preferred over `haveI`.
+The difference between `have` and `haveI` is that `haveI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: src/WindowedInterface.lean:49:84: `if_true` has been deprecated: Use `ite_true` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵t̵r̵u̵e̵i̲t̲e̲_̲t̲r̲u̲e̲
+⚠ [3048/3165] Replayed CWOneLetterInterfaces
+warning: src/CWOneLetterInterfaces.lean:82:8: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+⚠ [3052/3165] Replayed PartialSectorTypes
+warning: src/PartialSectorTypes.lean:58:10: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: src/PartialSectorTypes.lean:58:26: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: src/PartialSectorTypes.lean:59:10: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+warning: src/PartialSectorTypes.lean:59:26: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+warning: src/PartialSectorTypes.lean:67:12: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: src/PartialSectorTypes.lean:67:30: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: src/PartialSectorTypes.lean:68:12: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+warning: src/PartialSectorTypes.lean:68:30: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+⚠ [3057/3165] Replayed VariableExtraction
+warning: src/VariableExtraction.lean:42:26: `dif_pos` has been deprecated: Use `dite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  d̵i̵f̵_̵p̵o̵s̵d̲i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: src/VariableExtraction.lean:83:86: `if_true` has been deprecated: Use `ite_true` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵t̵r̵u̵e̵i̲t̲e̲_̲t̲r̲u̲e̲
+⚠ [3063/3165] Replayed CWTypedInterfaces
+warning: src/CWTypedInterfaces.lean:24:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+⚠ [3064/3165] Replayed SupportedTypes
+warning: src/SupportedTypes.lean:32:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+⚠ [3066/3165] Replayed TypeSampling
+warning: src/TypeSampling.lean:74:58: `if_true` has been deprecated: Use `ite_true` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵t̵r̵u̵e̵i̲t̲e̲_̲t̲r̲u̲e̲
+warning: src/TypeSampling.lean:77:8: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: src/TypeSampling.lean:83:48: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+warning: src/TypeSampling.lean:156:45: `if_true` has been deprecated: Use `ite_true` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵t̵r̵u̵e̵i̲t̲e̲_̲t̲r̲u̲e̲
+warning: src/TypeSampling.lean:156:54: `if_false` has been deprecated: Use `ite_false` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵f̵a̵l̵s̵e̵i̲t̲e̲_̲f̲a̲l̲s̲e̲
+warning: src/TypeSampling.lean:156:45: `if_true` has been deprecated: Use `ite_true` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵t̵r̵u̵e̵i̲t̲e̲_̲t̲r̲u̲e̲
+warning: src/TypeSampling.lean:156:54: `if_false` has been deprecated: Use `ite_false` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵f̵a̵l̵s̵e̵i̲t̲e̲_̲f̲a̲l̲s̲e̲
+⚠ [3067/3165] Replayed SamplingBounds
+warning: src/SamplingBounds.lean:110:20: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+warning: src/SamplingBounds.lean:112:77: `if_true` has been deprecated: Use `ite_true` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵t̵r̵u̵e̵i̲t̲e̲_̲t̲r̲u̲e̲
+⚠ [3068/3165] Replayed FiniteSampling
+warning: src/FiniteSampling.lean:90:15: `dif_neg` has been deprecated: Use `dite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  d̵i̵f̵_̵n̵e̵g̵d̲i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+⚠ [3089/3165] Replayed TypeSamplingGeneral
+warning: src/TypeSamplingGeneral.lean:42:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: src/TypeSamplingGeneral.lean:74:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: src/TypeSamplingGeneral.lean:75:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: src/TypeSamplingGeneral.lean:135:4: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: src/TypeSamplingGeneral.lean:139:2: Try this: 
+  haveI̵
+
+The goal is a proposition, so `have` is preferred over `haveI`.
+The difference between `have` and `haveI` is that `haveI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+⚠ [3091/3165] Replayed BlockConcentration
+warning: src/BlockConcentration.lean:53:4: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: src/BlockConcentration.lean:55:2: Try this: 
+  haveI̵
+
+The goal is a proposition, so `have` is preferred over `haveI`.
+The difference between `have` and `haveI` is that `haveI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: src/BlockConcentration.lean:56:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: src/BlockConcentration.lean:116:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+⚠ [3093/3165] Replayed HeterogeneousConcentration
+warning: src/HeterogeneousConcentration.lean:54:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: src/HeterogeneousConcentration.lean:69:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: src/HeterogeneousConcentration.lean:102:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: src/HeterogeneousConcentration.lean:123:4: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: src/HeterogeneousConcentration.lean:125:2: Try this: 
+  haveI̵
+
+The goal is a proposition, so `have` is preferred over `haveI`.
+The difference between `have` and `haveI` is that `haveI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: src/HeterogeneousConcentration.lean:126:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: src/HeterogeneousConcentration.lean:160:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+⚠ [3094/3165] Replayed LabelledConcentration
+warning: src/LabelledConcentration.lean:133:4: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: src/LabelledConcentration.lean:135:2: Try this: 
+  haveI̵
+
+The goal is a proposition, so `have` is preferred over `haveI`.
+The difference between `have` and `haveI` is that `haveI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+⚠ [3101/3165] Replayed GroupedConcentration
+warning: src/GroupedConcentration.lean:56:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+⚠ [3105/3165] Replayed ConcentrationRepair
+warning: src/ConcentrationRepair.lean:63:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+⚠ [3108/3165] Replayed ShapePermutations
+warning: src/ShapePermutations.lean:108:33: `dif_pos` has been deprecated: Use `dite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  d̵i̵f̵_̵p̵o̵s̵d̲i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: src/ShapePermutations.lean:113:33: `dif_neg` has been deprecated: Use `dite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  d̵i̵f̵_̵n̵e̵g̵d̲i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+⚠ [3109/3165] Replayed TypeRelabeling
+warning: src/TypeRelabeling.lean:22:72: `Equiv.apply_eq_iff_eq_symm_apply` has been deprecated: Use `Equiv.eq_symm_apply` instead
+
+Note: The updated constant has a different type:
+  ∀ {α : Sort u_1} {β : Sort u_2} (e : α ≃ β) {x : β} {y : α}, y = e.symm x ↔ e y = x
+instead of
+  ∀ {α : Sort u} {β : Sort v} {x : α} {y : β} (f : α ≃ β), f x = y ↔ x = f.symm y
+⚠ [3122/3165] Replayed OwnedTargets
+warning: src/OwnedTargets.lean:38:36: `if_true` has been deprecated: Use `ite_true` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵t̵r̵u̵e̵i̲t̲e̲_̲t̲r̲u̲e̲
+warning: src/OwnedTargets.lean:43:26: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+⚠ [3126/3165] Replayed PooledEntropy
+warning: src/PooledEntropy.lean:31:4: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+⚠ [3127/3165] Replayed IncidenceRates
+warning: src/IncidenceRates.lean:65:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: src/IncidenceRates.lean:66:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: src/IncidenceRates.lean:69:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+⚠ [3128/3165] Replayed CoarseRetentionRates
+warning: src/CoarseRetentionRates.lean:65:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: src/CoarseRetentionRates.lean:66:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+⚠ [3132/3239] Replayed PairingConcentration
+warning: src/PairingConcentration.lean:155:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+⚠ [3135/3239] Replayed CWTerminalData
+warning: src/CWTerminalData.lean:28:26: `dif_pos` has been deprecated: Use `dite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  d̵i̵f̵_̵p̵o̵s̵d̲i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: src/CWTerminalData.lean:32:64: `dif_neg` has been deprecated: Use `dite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  d̵i̵f̵_̵n̵e̵g̵d̲i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+⚠ [3136/3239] Replayed CWTerminalCounts
+warning: src/CWTerminalCounts.lean:46:26: `dif_pos` has been deprecated: Use `dite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  d̵i̵f̵_̵p̵o̵s̵d̲i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: src/CWTerminalCounts.lean:48:37: `if_true` has been deprecated: Use `ite_true` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵t̵r̵u̵e̵i̲t̲e̲_̲t̲r̲u̲e̲
+warning: src/CWTerminalCounts.lean:53:33: `dif_neg` has been deprecated: Use `dite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  d̵i̵f̵_̵n̵e̵g̵d̲i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+⚠ [3146/3239] Replayed CWWindowCollisionRates
+warning: src/CWWindowCollisionRates.lean:51:14: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+⚠ [3149/3239] Replayed CWWindowEntropy
+warning: src/CWWindowEntropy.lean:71:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+⚠ [3151/3239] Replayed CWCoarseEntropy
+warning: src/CWCoarseEntropy.lean:45:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: src/CWCoarseEntropy.lean:46:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: src/CWCoarseEntropy.lean:47:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: src/CWCoarseEntropy.lean:64:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+⚠ [3170/3239] Replayed HashModulus
+warning: src/HashModulus.lean:39:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: src/HashModulus.lean:40:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+⚠ [3172/3239] Replayed HashSurvivors
+warning: src/HashSurvivors.lean:26:2: `push_neg` has been deprecated. Prefer using `push Not` instead.
+If you'd rather continue using `push_neg` in your project, you can implement it as follows:
+```
+open Lean.Parser.Tactic in
+macro "push_neg" cfg:optConfig loc:(location)? : tactic =>
+  `(tactic| push $cfg:optConfig Not $[$loc]?)
+```
+⚠ [3183/3239] Replayed MassEntropyContinuity
+warning: src/MassEntropyContinuity.lean:23:5: `continuous_finset_sum` has been deprecated: Use `continuous_finsetSum` instead
+
+Hint: Replace the deprecated name:
+  continuous_finset_̵s̵S̲um
+⚠ [3196/3239] Replayed CWRootCoarseEntropy
+warning: src/CWRootCoarseEntropy.lean:45:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: src/CWRootCoarseEntropy.lean:46:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: src/CWRootCoarseEntropy.lean:47:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: src/CWRootCoarseEntropy.lean:64:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+⚠ [3198/3239] Replayed CWRootFineRates
+warning: src/CWRootFineRates.lean:73:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: src/CWRootFineRates.lean:74:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: src/CWRootFineRates.lean:75:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: src/CWRootFineRates.lean:101:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+⚠ [3200/3239] Replayed CWRootProfileLaws
+warning: src/CWRootProfileLaws.lean:77:24: `if_true` has been deprecated: Use `ite_true` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵t̵r̵u̵e̵i̲t̲e̲_̲t̲r̲u̲e̲
+⚠ [3202/3239] Replayed CWExactProfileValidity
+warning: src/CWExactProfileValidity.lean:28:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+⚠ [3206/3239] Replayed ContextTypeGluing
+warning: src/ContextTypeGluing.lean:56:28: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: src/ContextTypeGluing.lean:59:28: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+⚠ [3212/3239] Replayed FKLMeta.MetaExp
+warning: src/FKLMeta/MetaExp.lean:15:8: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: src/FKLMeta/MetaExp.lean:15:65: `cond_true` has been deprecated: Use `Bool.cond_true` instead
+
+Hint: Replace the deprecated name:
+  B̲o̲o̲l̲.̲cond_true
+warning: src/FKLMeta/MetaExp.lean:16:8: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+warning: src/FKLMeta/MetaExp.lean:16:102: `cond_false` has been deprecated: Use `Bool.cond_false` instead
+
+Hint: Replace the deprecated name:
+  B̲o̲o̲l̲.̲cond_false
+warning: src/FKLMeta/MetaExp.lean:20:8: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: src/FKLMeta/MetaExp.lean:20:65: `cond_true` has been deprecated: Use `Bool.cond_true` instead
+
+Hint: Replace the deprecated name:
+  B̲o̲o̲l̲.̲cond_true
+warning: src/FKLMeta/MetaExp.lean:21:8: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+warning: src/FKLMeta/MetaExp.lean:21:102: `cond_false` has been deprecated: Use `Bool.cond_false` instead
+
+Hint: Replace the deprecated name:
+  B̲o̲o̲l̲.̲cond_false
+⚠ [3302/3404] Replayed SuppliedParameterChecks
+warning: src/SuppliedParameterChecks.lean:21:58: This simp argument is unused:
+  CheckedIndexTable.append
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [ParameterIndexData.DyadicRootAPart000.table, List.all_append, Bool.and_eq_true]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: src/SuppliedParameterChecks.lean:21:84: This simp argument is unused:
+  List.all_append
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [ParameterIndexData.DyadicRootAPart000.table, CheckedIndexTable.append, Bool.and_eq_true]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: src/SuppliedParameterChecks.lean:21:101: This simp argument is unused:
+  Bool.and_eq_true
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [ParameterIndexData.DyadicRootAPart000.table, CheckedIndexTable.append, List.all_append]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: src/SuppliedParameterChecks.lean:22:2: Unused tactic linter: `and_intros` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: src/SuppliedParameterChecks.lean:35:62: This simp argument is unused:
+  CheckedIndexTable.append
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [ParameterIndexData.DyadicRootAlphaPart000.table, List.all_append, Bool.and_eq_true]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: src/SuppliedParameterChecks.lean:35:88: This simp argument is unused:
+  List.all_append
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [ParameterIndexData.DyadicRootAlphaPart000.table, CheckedIndexTable.append, Bool.and_eq_true]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: src/SuppliedParameterChecks.lean:35:105: This simp argument is unused:
+  Bool.and_eq_true
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [ParameterIndexData.DyadicRootAlphaPart000.table, CheckedIndexTable.append, List.all_append]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: src/SuppliedParameterChecks.lean:36:2: Unused tactic linter: `and_intros` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: src/SuppliedParameterChecks.lean:93:59: This simp argument is unused:
+  CheckedIndexTable.append
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [ParameterIndexData.DyadicAlpha4Part000.table, List.all_append, Bool.and_eq_true]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: src/SuppliedParameterChecks.lean:93:85: This simp argument is unused:
+  List.all_append
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [ParameterIndexData.DyadicAlpha4Part000.table, CheckedIndexTable.append, Bool.and_eq_true]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: src/SuppliedParameterChecks.lean:93:102: This simp argument is unused:
+  Bool.and_eq_true
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [ParameterIndexData.DyadicAlpha4Part000.table, CheckedIndexTable.append, List.all_append]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: src/SuppliedParameterChecks.lean:94:2: Unused tactic linter: `and_intros` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: src/SuppliedParameterChecks.lean:399:58: This simp argument is unused:
+  CheckedIndexTable.append
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [ParameterIndexData.DyadicZero4Part000.table, List.all_append, Bool.and_eq_true]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: src/SuppliedParameterChecks.lean:399:84: This simp argument is unused:
+  List.all_append
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [ParameterIndexData.DyadicZero4Part000.table, CheckedIndexTable.append, Bool.and_eq_true]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: src/SuppliedParameterChecks.lean:399:101: This simp argument is unused:
+  Bool.and_eq_true
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [ParameterIndexData.DyadicZero4Part000.table, CheckedIndexTable.append, List.all_append]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: src/SuppliedParameterChecks.lean:400:2: Unused tactic linter: `and_intros` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: src/SuppliedParameterChecks.lean:413:66: This simp argument is unused:
+  CheckedIndexTable.append
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [ParameterIndexData.DyadicTerminalrolesPart000.table, List.all_append, Bool.and_eq_true]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: src/SuppliedParameterChecks.lean:413:92: This simp argument is unused:
+  List.all_append
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [ParameterIndexData.DyadicTerminalrolesPart000.table, CheckedIndexTable.append, Bool.and_eq_true]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: src/SuppliedParameterChecks.lean:413:109: This simp argument is unused:
+  Bool.and_eq_true
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [ParameterIndexData.DyadicTerminalrolesPart000.table, CheckedIndexTable.append, List.all_append]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: src/SuppliedParameterChecks.lean:414:2: Unused tactic linter: `and_intros` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: src/SuppliedParameterChecks.lean:427:59: This simp argument is unused:
+  CheckedIndexTable.append
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [ParameterIndexData.DyadicAlloc4Part000.table, List.all_append, Bool.and_eq_true]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: src/SuppliedParameterChecks.lean:427:85: This simp argument is unused:
+  List.all_append
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [ParameterIndexData.DyadicAlloc4Part000.table, CheckedIndexTable.append, Bool.and_eq_true]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: src/SuppliedParameterChecks.lean:427:102: This simp argument is unused:
+  Bool.and_eq_true
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [ParameterIndexData.DyadicAlloc4Part000.table, CheckedIndexTable.append, List.all_append]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: src/SuppliedParameterChecks.lean:428:2: Unused tactic linter: `and_intros` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: src/SuppliedParameterChecks.lean:563:54: This simp argument is unused:
+  CheckedIndexTable.append
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [ParameterIndexData.GibbsURPart000.table, List.all_append, Bool.and_eq_true]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: src/SuppliedParameterChecks.lean:563:80: This simp argument is unused:
+  List.all_append
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [ParameterIndexData.GibbsURPart000.table, CheckedIndexTable.append, Bool.and_eq_true]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: src/SuppliedParameterChecks.lean:563:97: This simp argument is unused:
+  Bool.and_eq_true
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [ParameterIndexData.GibbsURPart000.table, CheckedIndexTable.append, List.all_append]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: src/SuppliedParameterChecks.lean:564:2: Unused tactic linter: `and_intros` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: src/SuppliedParameterChecks.lean:607:58: This simp argument is unused:
+  CheckedIndexTable.append
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [ParameterIndexData.SplitAlpha4Part000.table, List.all_append, Bool.and_eq_true]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: src/SuppliedParameterChecks.lean:607:84: This simp argument is unused:
+  List.all_append
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [ParameterIndexData.SplitAlpha4Part000.table, CheckedIndexTable.append, Bool.and_eq_true]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: src/SuppliedParameterChecks.lean:607:101: This simp argument is unused:
+  Bool.and_eq_true
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [ParameterIndexData.SplitAlpha4Part000.table, CheckedIndexTable.append, List.all_append]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: src/SuppliedParameterChecks.lean:608:2: Unused tactic linter: `and_intros` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+⚠ [3316/3404] Replayed CWTerminalParentLaws
+warning: src/CWTerminalParentLaws.lean:89:2: Unused tactic linter: `all_goals
+  norm_num only [Fin.ext_iff, show (0 : Fin 3).val = 0 from rfl, show (1 : Fin 3).val = 1 from rfl,
+    show (2 : Fin 3).val = 2 from rfl, ite_false, ite_true]` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: src/CWTerminalParentLaws.lean:101:2: Unused tactic linter: `norm_num only [Fin.ext_iff, show (0 : Fin 3).val = 0 from rfl, show (1 : Fin 3).val = 1 from rfl,
+  show (2 : Fin 3).val = 2 from rfl, ite_false, ite_true]` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: src/CWTerminalParentLaws.lean:112:2: Unused tactic linter: `all_goals
+  norm_num only [Fin.ext_iff, show (0 : Fin 3).val = 0 from rfl, show (1 : Fin 3).val = 1 from rfl,
+    show (2 : Fin 3).val = 2 from rfl, ite_false, ite_true]` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: src/CWTerminalParentLaws.lean:114:2: Unused tactic linter: `all_goals ring` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: src/CWTerminalParentLaws.lean:112:12: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: src/CWTerminalParentLaws.lean:114:12: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+⚠ [3317/3404] Replayed CWPermutedTerminalLaws
+warning: src/CWPermutedTerminalLaws.lean:50:53: `if_false` has been deprecated: Use `ite_false` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵f̵a̵l̵s̵e̵i̲t̲e̲_̲f̲a̲l̲s̲e̲
+warning: src/CWPermutedTerminalLaws.lean:52:53: `if_false` has been deprecated: Use `ite_false` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵f̵a̵l̵s̵e̵i̲t̲e̲_̲f̲a̲l̲s̲e̲
+warning: src/CWPermutedTerminalLaws.lean:54:16: `if_true` has been deprecated: Use `ite_true` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵t̵r̵u̵e̵i̲t̲e̲_̲t̲r̲u̲e̲
+⚠ [3321/3404] Replayed CWRationalLawValidity
+warning: src/CWRationalLawValidity.lean:80:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+⚠ [3322/3404] Replayed SuppliedTerminalLaws
+warning: src/SuppliedTerminalLaws.lean:70:21: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: src/SuppliedTerminalLaws.lean:73:21: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+⚠ [3325/3404] Replayed FKLMeta.FineWords
+warning: src/FKLMeta/FineWords.lean:58:55: `cond_true` has been deprecated: Use `Bool.cond_true` instead
+
+Hint: Replace the deprecated name:
+  B̲o̲o̲l̲.̲cond_true
+warning: src/FKLMeta/FineWords.lean:58:66: `cond_true` has been deprecated: Use `Bool.cond_true` instead
+
+Hint: Replace the deprecated name:
+  B̲o̲o̲l̲.̲cond_true
+warning: src/FKLMeta/FineWords.lean:59:92: `cond_false` has been deprecated: Use `Bool.cond_false` instead
+
+Hint: Replace the deprecated name:
+  B̲o̲o̲l̲.̲cond_false
+warning: src/FKLMeta/FineWords.lean:59:104: `cond_false` has been deprecated: Use `Bool.cond_false` instead
+
+Hint: Replace the deprecated name:
+  B̲o̲o̲l̲.̲cond_false
+⚠ [3327/3404] Replayed VerifiedOrbitLevel4
+warning: src/VerifiedOrbitLevel4.lean:123:17: `Fin.coe_min` has been deprecated: Use `Fin.val_min` instead
+
+Hint: Replace the deprecated name:
+  F̵i̵n̵.̵c̵o̵e̵_̵m̵i̵n̵F̲i̲n̲.̲v̲a̲l̲_̲m̲i̲n̲
+warning: src/VerifiedOrbitLevel4.lean:125:67: `cond_true` has been deprecated: Use `Bool.cond_true` instead
+
+Hint: Replace the deprecated name:
+  B̲o̲o̲l̲.̲cond_true
+warning: src/VerifiedOrbitLevel4.lean:126:104: `cond_false` has been deprecated: Use `Bool.cond_false` instead
+
+Hint: Replace the deprecated name:
+  B̲o̲o̲l̲.̲cond_false
+warning: src/VerifiedOrbitLevel4.lean:128:17: `Fin.coe_max` has been deprecated: Use `Fin.val_max` instead
+
+Hint: Replace the deprecated name:
+  F̵i̵n̵.̵c̵o̵e̵_̵m̵a̵x̵F̲i̲n̲.̲v̲a̲l̲_̲m̲a̲x̲
+warning: src/VerifiedOrbitLevel4.lean:130:67: `cond_true` has been deprecated: Use `Bool.cond_true` instead
+
+Hint: Replace the deprecated name:
+  B̲o̲o̲l̲.̲cond_true
+warning: src/VerifiedOrbitLevel4.lean:131:104: `cond_false` has been deprecated: Use `Bool.cond_false` instead
+
+Hint: Replace the deprecated name:
+  B̲o̲o̲l̲.̲cond_false
+⚠ [3346/3404] Replayed SuppliedNodeLookupData
+warning: src/SuppliedNodeLookupData.lean:425:8: `dif_pos` has been deprecated: Use `dite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  d̵i̵f̵_̵p̵o̵s̵d̲i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: src/SuppliedNodeLookupData.lean:432:12: `cond_false` has been deprecated: Use `Bool.cond_false` instead
+
+Hint: Replace the deprecated name:
+  B̲o̲o̲l̲.̲cond_false
+warning: src/SuppliedNodeLookupData.lean:433:8: `dif_neg` has been deprecated: Use `dite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  d̵i̵f̵_̵n̵e̵g̵d̲i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+warning: src/SuppliedNodeLookupData.lean:436:14: `cond_true` has been deprecated: Use `Bool.cond_true` instead
+
+Hint: Replace the deprecated name:
+  B̲o̲o̲l̲.̲cond_true
+warning: src/SuppliedNodeLookupData.lean:438:10: `dif_pos` has been deprecated: Use `dite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  d̵i̵f̵_̵p̵o̵s̵d̲i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: src/SuppliedNodeLookupData.lean:443:14: `cond_false` has been deprecated: Use `Bool.cond_false` instead
+
+Hint: Replace the deprecated name:
+  B̲o̲o̲l̲.̲cond_false
+warning: src/SuppliedNodeLookupData.lean:445:10: `dif_neg` has been deprecated: Use `dite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  d̵i̵f̵_̵n̵e̵g̵d̲i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+warning: src/SuppliedNodeLookupData.lean:477:6: `dif_neg` has been deprecated: Use `dite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  d̵i̵f̵_̵n̵e̵g̵d̲i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+warning: src/SuppliedNodeLookupData.lean:477:35: `dif_pos` has been deprecated: Use `dite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  d̵i̵f̵_̵p̵o̵s̵d̲i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: src/SuppliedNodeLookupData.lean:498:6: `dif_neg` has been deprecated: Use `dite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  d̵i̵f̵_̵n̵e̵g̵d̲i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+warning: src/SuppliedNodeLookupData.lean:498:35: `dif_neg` has been deprecated: Use `dite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  d̵i̵f̵_̵n̵e̵g̵d̲i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+⚠ [3366/3404] Replayed FKLLog.GridTrace
+warning: src/FKLLog/GridTrace.lean:225:24: `if_true` has been deprecated: Use `ite_true` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵t̵r̵u̵e̵i̲t̲e̲_̲t̲r̲u̲e̲
+warning: src/FKLLog/GridTrace.lean:225:68: `if_false` has been deprecated: Use `ite_false` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵f̵a̵l̵s̵e̵i̲t̲e̲_̲f̲a̲l̲s̲e̲
+warning: src/FKLLog/GridTrace.lean:227:24: `if_true` has been deprecated: Use `ite_true` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵t̵r̵u̵e̵i̲t̲e̲_̲t̲r̲u̲e̲
+warning: src/FKLLog/GridTrace.lean:227:68: `if_false` has been deprecated: Use `ite_false` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵f̵a̵l̵s̵e̵i̲t̲e̲_̲f̲a̲l̲s̲e̲
+warning: src/FKLLog/GridTrace.lean:335:58: `if_true` has been deprecated: Use `ite_true` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵t̵r̵u̵e̵i̲t̲e̲_̲t̲r̲u̲e̲
+warning: src/FKLLog/GridTrace.lean:337:92: `if_false` has been deprecated: Use `ite_false` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵f̵a̵l̵s̵e̵i̲t̲e̲_̲f̲a̲l̲s̲e̲
+warning: src/FKLLog/GridTrace.lean:345:58: `if_true` has been deprecated: Use `ite_true` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵t̵r̵u̵e̵i̲t̲e̲_̲t̲r̲u̲e̲
+warning: src/FKLLog/GridTrace.lean:347:92: `if_false` has been deprecated: Use `ite_false` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵f̵a̵l̵s̵e̵i̲t̲e̲_̲f̲a̲l̲s̲e̲
+⚠ [3404/3522] Replayed TypedFiberCounting
+warning: src/TypedFiberCounting.lean:49:6: Unused tactic linter: `change part entry = part (entries p).val ↔ part entry = word.val p` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+⚠ [3405/3522] Replayed CWFiberCounts
+warning: src/CWFiberCounts.lean:57:6: Unused tactic linter: `change fineLabel entry = 0 ↔ entry = 0` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: src/CWFiberCounts.lean:63:6: Unused tactic linter: `change fineLabel entry = 2 ↔ entry = ⟨q + 1, by omega⟩` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+⚠ [3406/3522] Replayed CWTypedDimensions
+warning: src/CWTypedDimensions.lean:51:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+⚠ [3419/3522] Replayed CWRootSelection
+warning: src/CWRootSelection.lean:43:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: src/CWRootSelection.lean:44:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+⚠ [3420/3522] Replayed CWRootTargetCoefficients
+warning: src/CWRootTargetCoefficients.lean:55:76: `if_true` has been deprecated: Use `ite_true` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵t̵r̵u̵e̵i̲t̲e̲_̲t̲r̲u̲e̲
+⚠ [3421/3522] Replayed SelectedTargets
+warning: src/SelectedTargets.lean:40:25: `if_true` has been deprecated: Use `ite_true` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵t̵r̵u̵e̵i̲t̲e̲_̲t̲r̲u̲e̲
+warning: src/SelectedTargets.lean:44:15: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+⚠ [3424/3522] Replayed CWInterfaceSize
+warning: src/CWInterfaceSize.lean:33:8: `Finset.prod_le_prod'` has been deprecated: Use `Finset.prod_le_prod` instead
+
+Hint: Replace the deprecated name:
+  Finset.prod_le_prod'̵
+⚠ [3428/3522] Replayed CWRootRepair
+warning: src/CWRootRepair.lean:44:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: src/CWRootRepair.lean:45:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: src/CWRootRepair.lean:46:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: src/CWRootRepair.lean:47:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: src/CWRootRepair.lean:48:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: src/CWRootRepair.lean:49:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+⚠ [3429/3522] Replayed CWFiniteRootExtraction
+warning: src/CWFiniteRootExtraction.lean:44:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: src/CWFiniteRootExtraction.lean:52:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: src/CWFiniteRootExtraction.lean:53:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+⚠ [3430/3522] Replayed CWRootPrimeExtraction
+warning: src/CWRootPrimeExtraction.lean:43:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: src/CWRootPrimeExtraction.lean:44:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: src/CWRootPrimeExtraction.lean:54:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+⚠ [3434/3522] Replayed CWRootRateExtraction
+warning: src/CWRootRateExtraction.lean:28:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: src/CWRootRateExtraction.lean:55:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+⚠ [3438/3522] Replayed ProfileCountRates
+warning: src/ProfileCountRates.lean:32:8: `Finset.prod_le_prod'` has been deprecated: Use `Finset.prod_le_prod` instead
+
+Hint: Replace the deprecated name:
+  Finset.prod_le_prod'̵
+⚠ [3444/3522] Replayed CWMixedPrepared
+warning: src/CWMixedPrepared.lean:92:29: Unused tactic linter: `grind` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: src/CWMixedPrepared.lean:92:29: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+⚠ [3450/3522] Replayed CWMixedSelection
+warning: src/CWMixedSelection.lean:92:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: src/CWMixedSelection.lean:93:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+⚠ [3453/3522] Replayed CWActualSelection
+warning: src/CWActualSelection.lean:61:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: src/CWActualSelection.lean:62:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+⚠ [3454/3522] Replayed CWTargetCoefficients
+warning: src/CWTargetCoefficients.lean:79:14: `if_true` has been deprecated: Use `ite_true` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵t̵r̵u̵e̵i̲t̲e̲_̲t̲r̲u̲e̲
+⚠ [3457/3522] Replayed CWRepairedTargets
+warning: src/CWRepairedTargets.lean:48:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: src/CWRepairedTargets.lean:49:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: src/CWRepairedTargets.lean:50:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: src/CWRepairedTargets.lean:51:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: src/CWRepairedTargets.lean:52:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: src/CWRepairedTargets.lean:53:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+⚠ [3458/3522] Replayed CWFiniteExtraction
+warning: src/CWFiniteExtraction.lean:84:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: src/CWFiniteExtraction.lean:93:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: src/CWFiniteExtraction.lean:94:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+⚠ [3463/3522] Replayed CWActiveLaws
+warning: src/CWActiveLaws.lean:56:68: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+warning: src/CWActiveLaws.lean:69:26: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+warning: src/CWActiveLaws.lean:88:34: `if_true` has been deprecated: Use `ite_true` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵t̵r̵u̵e̵i̲t̲e̲_̲t̲r̲u̲e̲
+warning: src/CWActiveLaws.lean:89:27: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+⚠ [3469/3522] Replayed CWMixedTargetCoefficients
+warning: src/CWMixedTargetCoefficients.lean:82:81: `if_true` has been deprecated: Use `ite_true` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵t̵r̵u̵e̵i̲t̲e̲_̲t̲r̲u̲e̲
+warning: src/CWMixedTargetCoefficients.lean:85:27: `if_true` has been deprecated: Use `ite_true` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵t̵r̵u̵e̵i̲t̲e̲_̲t̲r̲u̲e̲
+⚠ [3471/3522] Replayed CWMixedDegreeRates
+warning: src/CWMixedDegreeRates.lean:24:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: src/CWMixedDegreeRates.lean:32:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+⚠ [3482/3648] Replayed CWMixedTargetSymmetry
+warning: src/CWMixedTargetSymmetry.lean:38:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: src/CWMixedTargetSymmetry.lean:56:43: `Finset.prod_le_prod'` has been deprecated: Use `Finset.prod_le_prod` instead
+
+Hint: Replace the deprecated name:
+  Finset.prod_le_prod'̵
+⚠ [3483/3648] Replayed CWMixedRepairedTargets
+warning: src/CWMixedRepairedTargets.lean:51:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: src/CWMixedRepairedTargets.lean:52:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: src/CWMixedRepairedTargets.lean:53:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: src/CWMixedRepairedTargets.lean:54:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: src/CWMixedRepairedTargets.lean:55:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: src/CWMixedRepairedTargets.lean:56:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+⚠ [3484/3648] Replayed CWFiniteMixedExtraction
+warning: src/CWFiniteMixedExtraction.lean:63:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: src/CWFiniteMixedExtraction.lean:72:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: src/CWFiniteMixedExtraction.lean:73:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+⚠ [3485/3648] Replayed CWMixedPrimeExtraction
+warning: src/CWMixedPrimeExtraction.lean:53:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: src/CWMixedPrimeExtraction.lean:54:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: src/CWMixedPrimeExtraction.lean:66:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+⚠ [3494/3648] Replayed CWRootAsymptotic
+warning: src/CWRootAsymptotic.lean:88:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+⚠ [3495/3648] Replayed CWRootAsymptoticApproximate
+warning: src/CWRootAsymptoticApproximate.lean:63:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+⚠ [3496/3648] Replayed CWRootRationalExtraction
+warning: src/CWRootRationalExtraction.lean:51:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+⚠ [3505/3648] Replayed CWMixedContextualRepair
+warning: src/CWMixedContextualRepair.lean:50:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: src/CWMixedContextualRepair.lean:51:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: src/CWMixedContextualRepair.lean:52:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: src/CWMixedContextualRepair.lean:53:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: src/CWMixedContextualRepair.lean:54:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: src/CWMixedContextualRepair.lean:55:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+⚠ [3506/3648] Replayed CWFiniteContextualExtraction
+warning: src/CWFiniteContextualExtraction.lean:62:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: src/CWFiniteContextualExtraction.lean:71:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: src/CWFiniteContextualExtraction.lean:72:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+⚠ [3507/3648] Replayed CWMixedContextualPrime
+warning: src/CWMixedContextualPrime.lean:55:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: src/CWMixedContextualPrime.lean:56:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: src/CWMixedContextualPrime.lean:68:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+⚠ [3512/3648] Replayed CWRationalMixedExtraction
+warning: src/CWRationalMixedExtraction.lean:54:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+⚠ [3515/3648] Replayed CWTerminalDegreeRate
+warning: src/CWTerminalDegreeRate.lean:39:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: src/CWTerminalDegreeRate.lean:40:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: src/CWTerminalDegreeRate.lean:56:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: src/CWTerminalDegreeRate.lean:63:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+⚠ [3517/3648] Replayed CWExactCoarseRates
+warning: src/CWExactCoarseRates.lean:41:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: src/CWExactCoarseRates.lean:42:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: src/CWExactCoarseRates.lean:61:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: src/CWExactCoarseRates.lean:67:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+⚠ [3518/3648] Replayed CWOneLetterProfileLaws
+warning: src/CWOneLetterProfileLaws.lean:37:8: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+⚠ [3521/3648] Replayed CWPermutedTerminalDegreeControl
+warning: src/CWPermutedTerminalDegreeControl.lean:50:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+⚠ [3522/3648] Replayed CWZeroMatrix
+warning: src/CWZeroMatrix.lean:34:8: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+warning: src/CWZeroMatrix.lean:43:22: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+⚠ [3523/3648] Replayed CWZeroExact
+warning: src/CWZeroExact.lean:103:8: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+warning: src/CWZeroExact.lean:106:6: `push_neg` has been deprecated. Prefer using `push Not` instead.
+If you'd rather continue using `push_neg` in your project, you can implement it as follows:
+```
+open Lean.Parser.Tactic in
+macro "push_neg" cfg:optConfig loc:(location)? : tactic =>
+  `(tactic| push $cfg:optConfig Not $[$loc]?)
+```
+warning: src/CWZeroExact.lean:111:38: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+⚠ [3539/3648] Replayed CWTerminalDegreeControl
+warning: src/CWTerminalDegreeControl.lean:47:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+⚠ [3541/3648] Replayed CWTerminalExtraction
+warning: src/CWTerminalExtraction.lean:77:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+⚠ [3542/3648] Replayed CWPermutedTerminalExtraction
+warning: src/CWPermutedTerminalExtraction.lean:63:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+⚠ [3546/3648] Replayed CWTerminalInterfaces
+warning: src/CWTerminalInterfaces.lean:36:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+⚠ [3547/3648] Replayed CWPermutedTerminalAsymptotic
+warning: src/CWPermutedTerminalAsymptotic.lean:83:4: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+⚠ [3557/3648] Replayed CWPermutedTerminalGibbs
+warning: src/CWPermutedTerminalGibbs.lean:87:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+⚠ [3560/3648] Replayed CWRationalStageAssembly
+warning: src/CWRationalStageAssembly.lean:72:101: Unused tactic linter: `rfl` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: src/CWRationalStageAssembly.lean:72:101: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+⚠ [3562/3648] Replayed SectorAllocation
+warning: src/SectorAllocation.lean:87:8: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: src/SectorAllocation.lean:87:25: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: src/SectorAllocation.lean:89:24: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: src/SectorAllocation.lean:91:8: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+warning: src/SectorAllocation.lean:91:25: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+⚠ [3568/3648] Replayed CWRootWeightedExtraction
+warning: src/CWRootWeightedExtraction.lean:57:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+⚠ [3582/3648] Replayed ContextHeterogeneousBatching
+warning: src/ContextHeterogeneousBatching.lean:33:10: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: src/ContextHeterogeneousBatching.lean:36:12: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: src/ContextHeterogeneousBatching.lean:37:10: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+warning: src/ContextHeterogeneousBatching.lean:40:8: `push_neg` has been deprecated. Prefer using `push Not` instead.
+If you'd rather continue using `push_neg` in your project, you can implement it as follows:
+```
+open Lean.Parser.Tactic in
+macro "push_neg" cfg:optConfig loc:(location)? : tactic =>
+  `(tactic| push $cfg:optConfig Not $[$loc]?)
+```
+warning: src/ContextHeterogeneousBatching.lean:43:56: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+⚠ [3586/3648] Replayed ActivePools
+warning: src/ActivePools.lean:50:4: Try this: 
+  haveI̵
+
+The goal is a proposition, so `have` is preferred over `haveI`.
+The difference between `have` and `haveI` is that `haveI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+⚠ [3594/3648] Replayed OrbitDiracLaws
+warning: src/OrbitDiracLaws.lean:22:2: Try this: 
+  haveI̵
+
+The goal is a proposition, so `have` is preferred over `haveI`.
+The difference between `have` and `haveI` is that `haveI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: src/OrbitDiracLaws.lean:40:8: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: src/OrbitDiracLaws.lean:40:65: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: src/OrbitDiracLaws.lean:41:8: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+warning: src/OrbitDiracLaws.lean:41:33: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+⚠ [3595/3648] Replayed WindowExactRestriction
+warning: src/WindowExactRestriction.lean:43:10: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+⚠ [3597/3648] Replayed CWZeroRationalExtraction
+warning: src/CWZeroRationalExtraction.lean:32:85: `if_true` has been deprecated: Use `ite_true` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵t̵r̵u̵e̵i̲t̲e̲_̲t̲r̲u̲e̲
+warning: src/CWZeroRationalExtraction.lean:32:94: `if_false` has been deprecated: Use `ite_false` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵f̵a̵l̵s̵e̵i̲t̲e̲_̲f̲a̲l̲s̲e̲
+warning: src/CWZeroRationalExtraction.lean:32:85: `if_true` has been deprecated: Use `ite_true` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵t̵r̵u̵e̵i̲t̲e̲_̲t̲r̲u̲e̲
+warning: src/CWZeroRationalExtraction.lean:32:94: `if_false` has been deprecated: Use `ite_false` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵f̵a̵l̵s̵e̵i̲t̲e̲_̲f̲a̲l̲s̲e̲
+⚠ [3599/3648] Replayed OrientedZeroLawIdentities
+warning: src/OrientedZeroLawIdentities.lean:60:32: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+warning: src/OrientedZeroLawIdentities.lean:60:48: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+⚠ [3601/3648] Replayed DyadicOrbitSupport
+warning: src/DyadicOrbitSupport.lean:34:24: `if_false` has been deprecated: Use `ite_false` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵f̵a̵l̵s̵e̵i̲t̲e̲_̲f̲a̲l̲s̲e̲
+⚠ [3606/3648] Replayed FKLMeta.Support
+warning: src/FKLMeta/Support.lean:101:12: `cond_false` has been deprecated: Use `Bool.cond_false` instead
+
+Hint: Replace the deprecated name:
+  B̲o̲o̲l̲.̲cond_false
+warning: src/FKLMeta/Support.lean:102:8: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+warning: src/FKLMeta/Support.lean:104:14: `cond_false` has been deprecated: Use `Bool.cond_false` instead
+
+Hint: Replace the deprecated name:
+  B̲o̲o̲l̲.̲cond_false
+warning: src/FKLMeta/Support.lean:105:10: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+warning: src/FKLMeta/Support.lean:107:17: `cond_false` has been deprecated: Use `Bool.cond_false` instead
+
+Hint: Replace the deprecated name:
+  B̲o̲o̲l̲.̲cond_false
+warning: src/FKLMeta/Support.lean:108:12: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+warning: src/FKLMeta/Support.lean:110:20: `cond_false` has been deprecated: Use `Bool.cond_false` instead
+
+Hint: Replace the deprecated name:
+  B̲o̲o̲l̲.̲cond_false
+warning: src/FKLMeta/Support.lean:111:20: `cond_true` has been deprecated: Use `Bool.cond_true` instead
+
+Hint: Replace the deprecated name:
+  B̲o̲o̲l̲.̲cond_true
+warning: src/FKLMeta/Support.lean:112:14: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: src/FKLMeta/Support.lean:114:17: `cond_true` has been deprecated: Use `Bool.cond_true` instead
+
+Hint: Replace the deprecated name:
+  B̲o̲o̲l̲.̲cond_true
+warning: src/FKLMeta/Support.lean:115:12: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: src/FKLMeta/Support.lean:117:14: `cond_true` has been deprecated: Use `Bool.cond_true` instead
+
+Hint: Replace the deprecated name:
+  B̲o̲o̲l̲.̲cond_true
+warning: src/FKLMeta/Support.lean:118:10: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: src/FKLMeta/Support.lean:120:8: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+⚠ [3616/3761] Replayed SuppliedTerminalRoles
+warning: src/SuppliedTerminalRoles.lean:69:50: `if_true` has been deprecated: Use `ite_true` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵t̵r̵u̵e̵i̲t̲e̲_̲t̲r̲u̲e̲
+⚠ [3631/3761] Replayed SuppliedZeroSupportData
+warning: src/SuppliedZeroSupportData.lean:50:58: `cond_true` has been deprecated: Use `Bool.cond_true` instead
+
+Hint: Replace the deprecated name:
+  B̲o̲o̲l̲.̲cond_true
+warning: src/SuppliedZeroSupportData.lean:51:95: `cond_false` has been deprecated: Use `Bool.cond_false` instead
+
+Hint: Replace the deprecated name:
+  B̲o̲o̲l̲.̲cond_false
+warning: src/SuppliedZeroSupportData.lean:53:60: `cond_true` has been deprecated: Use `Bool.cond_true` instead
+
+Hint: Replace the deprecated name:
+  B̲o̲o̲l̲.̲cond_true
+warning: src/SuppliedZeroSupportData.lean:54:97: `cond_false` has been deprecated: Use `Bool.cond_false` instead
+
+Hint: Replace the deprecated name:
+  B̲o̲o̲l̲.̲cond_false
+⚠ [3651/3761] Replayed SuppliedLevel4TransitionRestoration
+warning: src/SuppliedLevel4TransitionRestoration.lean:78:30: `dif_pos` has been deprecated: Use `dite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  d̵i̵f̵_̵p̵o̵s̵d̲i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+⚠ [3657/3761] Replayed SuppliedLevel3Transition
+warning: src/SuppliedLevel3Transition.lean:149:30: `dif_pos` has been deprecated: Use `dite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  d̵i̵f̵_̵p̵o̵s̵d̲i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+⚠ [3665/3761] Replayed SuppliedInitialPhase
+warning: src/SuppliedInitialPhase.lean:35:2: Unused tactic linter: `change
+  CoordinateRestriction
+    (window (K := K) 8 (SuppliedHierarchyParents.parent4 label.val.1) (role4Weight label.val * size)
+      (SuppliedHigherLaws.parent4 label.val.1) tolerance)
+    (window (K := K) 8 (SuppliedTypedParameters.level4Split label.val.1).parent (role4Weight label.val * size)
+      (SuppliedHigherLaws.parent4 label.val.1) tolerance)` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+⚠ [3672/3761] Replayed HeterogeneousPartition
+warning: src/HeterogeneousPartition.lean:32:17: `dif_pos` has been deprecated: Use `dite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  d̵i̵f̵_̵p̵o̵s̵d̲i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: src/HeterogeneousPartition.lean:33:17: `dif_neg` has been deprecated: Use `dite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  d̵i̵f̵_̵n̵e̵g̵d̲i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+⚠ [3674/3761] Replayed ContextSequence
+warning: src/ContextSequence.lean:27:88: `if_true` has been deprecated: Use `ite_true` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵t̵r̵u̵e̵i̲t̲e̲_̲t̲r̲u̲e̲
+⚠ [3678/3761] Replayed SuppliedRoundWidths
+warning: src/SuppliedRoundWidths.lean:43:22: `dif_pos` has been deprecated: Use `dite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  d̵i̵f̵_̵p̵o̵s̵d̲i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: src/SuppliedRoundWidths.lean:49:22: `dif_neg` has been deprecated: Use `dite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  d̵i̵f̵_̵n̵e̵g̵d̲i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+⚠ [3688/3761] Replayed WaitingZeroMatrixCardinality
+warning: src/WaitingZeroMatrixCardinality.lean:27:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+⚠ [3696/3761] Replayed MatrixProductVolume
+warning: src/MatrixProductVolume.lean:31:31: Unused tactic linter: `grind` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: src/MatrixProductVolume.lean:31:31: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+⚠ [3714/3761] Replayed CWOneLetterWindowedMatrix
+warning: src/CWOneLetterWindowedMatrix.lean:30:35: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+⚠ [3724/3761] Replayed MatrixDegeneration
+warning: src/MatrixDegeneration.lean:35:31: Unused tactic linter: `grind` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: src/MatrixDegeneration.lean:35:31: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+⚠ [3729/3761] Replayed FKLLog.Block
+warning: src/FKLLog/Block.lean:69:25: Variable name `m` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _m
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: src/FKLLog/Block.lean:194:6: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+warning: src/FKLLog/Block.lean:192:43: This simp argument is unused:
+  Int.negSucc_lt_zero
+
+Hint: Omit it from the simp argument list.
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: src/FKLLog/Block.lean:197:14: Unused tactic linter: `ring` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: src/FKLLog/Block.lean:197:14: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: src/FKLLog/Block.lean:209:39: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: src/FKLLog/Block.lean:216:39: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+warning: src/FKLLog/Block.lean:246:61: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: src/FKLLog/Block.lean:256:110: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+warning: src/FKLLog/Block.lean:255:52: This simp argument is unused:
+  Int.negSucc_lt_zero
+
+Hint: Omit it from the simp argument list.
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: src/FKLLog/Block.lean:280:30: This simp argument is unused:
+  brec_eq
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [checkN, band_eq, Bool.not_false, iNeg_ofNat, iVal_ofNat, Bool.cond_false, Bool.and_eq_true,
+    Nat.blt_eq, Nat.ble_eq, raw_add, raw_mul, raw_sub, Bool.true_and] at h
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: src/FKLLog/Block.lean:280:39: This simp argument is unused:
+  Bool.not_false
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [checkN, band_eq, brec_eq, iNeg_ofNat, iVal_ofNat, Bool.cond_false, Bool.and_eq_true, Nat.blt_eq,
+    Nat.ble_eq, raw_add, raw_mul, raw_sub, Bool.true_and] at h
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: src/FKLLog/Block.lean:280:79: This simp argument is unused:
+  Bool.cond_false
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [checkN, band_eq, brec_eq, Bool.not_false, iNeg_ofNat, iVal_ofNat, Bool.and_eq_true, Nat.blt_eq,
+    Nat.ble_eq, raw_add, raw_mul, raw_sub, Bool.true_and] at h
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: src/FKLLog/Block.lean:280:114: This simp argument is unused:
+  Nat.blt_eq
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [checkN, band_eq, brec_eq, Bool.not_false, iNeg_ofNat, iVal_ofNat, Bool.cond_false,
+    Bool.and_eq_true, Nat.ble_eq, raw_add, raw_mul, raw_sub, Bool.true_and] at h
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: src/FKLLog/Block.lean:292:4: Unused tactic linter: `norm_num` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: src/FKLLog/Block.lean:293:4: Unused tactic linter: `norm_num` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: src/FKLLog/Block.lean:294:4: Unused tactic linter: `norm_num` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+⚠ [4214/4227] Replayed SuppliedRootFineExpression
+warning: src/SuppliedRootFineExpression.lean:80:40: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: src/SuppliedRootFineExpression.lean:88:17: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: src/SuppliedRootFineExpression.lean:88:30: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: src/SuppliedRootFineExpression.lean:89:17: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+warning: src/SuppliedRootFineExpression.lean:89:30: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+warning: src/SuppliedRootFineExpression.lean:91:40: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+warning: src/SuppliedRootFineExpression.lean:108:17: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: src/SuppliedRootFineExpression.lean:108:30: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: src/SuppliedRootFineExpression.lean:109:17: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+warning: src/SuppliedRootFineExpression.lean:109:30: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+⚠ [4215/4227] Replayed SuppliedRootFineBinding
+warning: src/SuppliedRootFineBinding.lean:42:25: `Equiv.apply_eq_iff_eq_symm_apply` has been deprecated: Use `Equiv.eq_symm_apply` instead
+
+Note: The updated constant has a different type:
+  ∀ {α : Sort u_1} {β : Sort u_2} (e : α ≃ β) {x : β} {y : α}, y = e.symm x ↔ e y = x
+instead of
+  ∀ {α : Sort u} {β : Sort v} {x : α} {y : β} (f : α ≃ β), f x = y ↔ x = f.symm y
+warning: src/SuppliedRootFineBinding.lean:44:15: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: src/SuppliedRootFineBinding.lean:44:28: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: src/SuppliedRootFineBinding.lean:46:15: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+warning: src/SuppliedRootFineBinding.lean:46:28: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+⚠ [4235/4261] Replayed SuppliedPairedFineSingletonLabels
+warning: src/SuppliedPairedFineSingletonLabels.lean:47:42: `if_true` has been deprecated: Use `ite_true` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵t̵r̵u̵e̵i̲t̲e̲_̲t̲r̲u̲e̲
+warning: src/SuppliedPairedFineSingletonLabels.lean:50:40: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+⚠ [4236/4261] Replayed SuppliedPairedFineSplitPools
+warning: src/SuppliedPairedFineSplitPools.lean:92:36: `if_true` has been deprecated: Use `ite_true` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵t̵r̵u̵e̵i̲t̲e̲_̲t̲r̲u̲e̲
+warning: src/SuppliedPairedFineSplitPools.lean:95:36: `if_true` has been deprecated: Use `ite_true` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵t̵r̵u̵e̵i̲t̲e̲_̲t̲r̲u̲e̲
+warning: src/SuppliedPairedFineSplitPools.lean:95:75: `if_false` has been deprecated: Use `ite_false` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵f̵a̵l̵s̵e̵i̲t̲e̲_̲f̲a̲l̲s̲e̲
+warning: src/SuppliedPairedFineSplitPools.lean:99:40: `if_true` has been deprecated: Use `ite_true` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵t̵r̵u̵e̵i̲t̲e̲_̲t̲r̲u̲e̲
+warning: src/SuppliedPairedFineSplitPools.lean:99:69: `if_false` has been deprecated: Use `ite_false` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵f̵a̵l̵s̵e̵i̲t̲e̲_̲f̲a̲l̲s̲e̲
+warning: src/SuppliedPairedFineSplitPools.lean:117:30: `if_true` has been deprecated: Use `ite_true` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵t̵r̵u̵e̵i̲t̲e̲_̲t̲r̲u̲e̲
+warning: src/SuppliedPairedFineSplitPools.lean:121:58: `if_false` has been deprecated: Use `ite_false` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵f̵a̵l̵s̵e̵i̲t̲e̲_̲f̲a̲l̲s̲e̲
+⚠ [4244/4261] Replayed RootFineSparseVectorCheck
+warning: src/RootFineSparseVectorCheck.lean:36:17: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+⚠ [4247/4261] Replayed SuppliedPairedFineStageExpressions
+warning: src/SuppliedPairedFineStageExpressions.lean:71:18: This simp argument is unused:
+  Equiv.trans_apply
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [expression4, finiteLogSum_value, scaleLogExpression_value, Fintype.sum_prod_type, sourceEquiv4,
+    Equiv.prodAssoc_symm_apply, Equiv.prodCongr_apply, Equiv.refl_apply, Prod.map_apply]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: src/SuppliedPairedFineStageExpressions.lean:71:37: This simp argument is unused:
+  Equiv.prodAssoc_symm_apply
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [expression4, finiteLogSum_value, scaleLogExpression_value, Fintype.sum_prod_type, sourceEquiv4,
+    Equiv.trans_apply, Equiv.prodCongr_apply, Equiv.refl_apply, Prod.map_apply]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [4255/4306] Replayed FKLFine3.Static
+warning: src/FKLFine3/Static.lean:94:10: This simp argument is unused:
+  this
+
+Hint: Omit it from the simp argument list.
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [4256/4306] Replayed FKLFine3.Leaf
+warning: src/FKLFine3/Leaf.lean:67:67: `if_true` has been deprecated: Use `ite_true` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵t̵r̵u̵e̵i̲t̲e̲_̲t̲r̲u̲e̲
+warning: src/FKLFine3/Leaf.lean:72:23: `if_true` has been deprecated: Use `ite_true` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵t̵r̵u̵e̵i̲t̲e̲_̲t̲r̲u̲e̲
+warning: src/FKLFine3/Leaf.lean:78:23: `if_false` has been deprecated: Use `ite_false` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵f̵a̵l̵s̵e̵i̲t̲e̲_̲f̲a̲l̲s̲e̲
+warning: src/FKLFine3/Leaf.lean:81:25: `if_true` has been deprecated: Use `ite_true` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵t̵r̵u̵e̵i̲t̲e̲_̲t̲r̲u̲e̲
+warning: src/FKLFine3/Leaf.lean:84:25: `if_false` has been deprecated: Use `ite_false` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵f̵a̵l̵s̵e̵i̲t̲e̲_̲f̲a̲l̲s̲e̲
+warning: src/FKLFine3/Leaf.lean:89:43: `if_false` has been deprecated: Use `ite_false` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵f̵a̵l̵s̵e̵i̲t̲e̲_̲f̲a̲l̲s̲e̲
+warning: src/FKLFine3/Leaf.lean:96:23: `if_true` has been deprecated: Use `ite_true` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵t̵r̵u̵e̵i̲t̲e̲_̲t̲r̲u̲e̲
+warning: src/FKLFine3/Leaf.lean:100:25: `if_false` has been deprecated: Use `ite_false` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵f̵a̵l̵s̵e̵i̲t̲e̲_̲f̲a̲l̲s̲e̲
+warning: src/FKLFine3/Leaf.lean:102:24: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: src/FKLFine3/Leaf.lean:102:44: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: src/FKLFine3/Leaf.lean:106:23: `if_false` has been deprecated: Use `ite_false` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵f̵a̵l̵s̵e̵i̲t̲e̲_̲f̲a̲l̲s̲e̲
+warning: src/FKLFine3/Leaf.lean:72:17: This simp argument is unused:
+  this
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [if_true, h1]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: src/FKLFine3/Leaf.lean:81:19: This simp argument is unused:
+  this
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [if_true, h2]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: src/FKLFine3/Leaf.lean:96:17: This simp argument is unused:
+  this
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [if_true, h1]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [4257/4306] Replayed FKLFine3.Split3
+warning: src/FKLFine3/Split3.lean:96:8: `dif_pos` has been deprecated: Use `dite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  d̵i̵f̵_̵p̵o̵s̵d̲i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: src/FKLFine3/Split3.lean:105:8: `dif_neg` has been deprecated: Use `dite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  d̵i̵f̵_̵n̵e̵g̵d̲i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+⚠ [4258/4306] Replayed FKLFine3.Bounds3
+warning: src/FKLFine3/Bounds3.lean:33:67: `if_true` has been deprecated: Use `ite_true` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵t̵r̵u̵e̵i̲t̲e̲_̲t̲r̲u̲e̲
+warning: src/FKLFine3/Bounds3.lean:43:43: `if_false` has been deprecated: Use `ite_false` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵f̵a̵l̵s̵e̵i̲t̲e̲_̲f̲a̲l̲s̲e̲
+⚠ [4268/4306] Replayed FKLFine3.Par3
+warning: src/FKLFine3/Par3.lean:38:40: `if_false` has been deprecated: Use `ite_false` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵f̵a̵l̵s̵e̵i̲t̲e̲_̲f̲a̲l̲s̲e̲
+⚠ [4269/4306] Replayed FKL.FineRole
+warning: src/FKL/FineRole.lean:127:19: `cond_true` has been deprecated: Use `Bool.cond_true` instead
+
+Hint: Replace the deprecated name:
+  B̲o̲o̲l̲.̲cond_true
+warning: src/FKL/FineRole.lean:127:30: `if_true` has been deprecated: Use `ite_true` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵t̵r̵u̵e̵i̲t̲e̲_̲t̲r̲u̲e̲
+⚠ [4270/4306] Replayed FKLFine3.Pack3
+warning: src/FKLFine3/Pack3.lean:49:36: This simp argument is unused:
+  raw_mul
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Nat.mul_assoc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: src/FKLFine3/Pack3.lean:58:41: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: src/FKLFine3/Pack3.lean:86:40: This simp argument is unused:
+  raw_mul
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [this, Bool.cond_false]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [4300/4306] Replayed FKLHier4.Child
+warning: src/FKLHier4/Child.lean:132:15: This simp argument is unused:
+  this
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [ite_true, h1]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: src/FKLHier4/Child.lean:141:17: This simp argument is unused:
+  this
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [ite_true, h2]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: src/FKLHier4/Child.lean:155:8: `dif_pos` has been deprecated: Use `dite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  d̵i̵f̵_̵p̵o̵s̵d̲i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: src/FKLHier4/Child.lean:158:10: `dif_neg` has been deprecated: Use `dite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  d̵i̵f̵_̵n̵e̵g̵d̲i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+warning: src/FKLHier4/Child.lean:158:22: `dif_pos` has been deprecated: Use `dite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  d̵i̵f̵_̵p̵o̵s̵d̲i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: src/FKLHier4/Child.lean:164:10: `dif_neg` has been deprecated: Use `dite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  d̵i̵f̵_̵n̵e̵g̵d̲i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+warning: src/FKLHier4/Child.lean:164:22: `dif_neg` has been deprecated: Use `dite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  d̵i̵f̵_̵n̵e̵g̵d̲i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+⚠ [4301/4306] Replayed FKLHier4.Split4
+warning: src/FKLHier4/Split4.lean:72:8: `dif_pos` has been deprecated: Use `dite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  d̵i̵f̵_̵p̵o̵s̵d̲i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: src/FKLHier4/Split4.lean:81:8: `dif_neg` has been deprecated: Use `dite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  d̵i̵f̵_̵n̵e̵g̵d̲i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+⚠ [4355/4424] Replayed FKLRoot.Law
+warning: src/FKLRoot/Law.lean:78:15: This simp argument is unused:
+  this
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [ite_true, h1]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: src/FKLRoot/Law.lean:87:17: This simp argument is unused:
+  this
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [ite_true, h2]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: src/FKLRoot/Law.lean:200:50: This simp argument is unused:
+  hb
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Bool.not_false, Bool.true_and, Bool.cond_true, hc, ite_true, Bool.false_eq_true, ite_false]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: src/FKLRoot/Law.lean:200:54: This simp argument is unused:
+  Bool.cond_true
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Bool.not_false, Bool.true_and, hb, hc, ite_true, Bool.false_eq_true, ite_false]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [4360/4424] Replayed FKLFine3.Orbit
+warning: src/FKLFine3/Orbit.lean:35:53: This simp argument is unused:
+  h3
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [orbitEntropyExpression, rationalLogValue_append, entropyLogExpression_value,
+    orbitCorrectionExpression_value, entropy, hcast]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [4361/4424] Replayed FKLRoot.Expr
+warning: src/FKLRoot/Expr.lean:41:50: This simp argument is unused:
+  h4
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [orbitEntropyExpression, rationalLogValue_append, entropyLogExpression_value,
+    orbitCorrectionExpression_value, entropy, hx]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [4368/4424] Replayed FKLCoarse.Build
+warning: src/FKLCoarse/Build.lean:84:10: This simp argument is unused:
+  this
+
+Hint: Omit it from the simp argument list.
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: src/FKLCoarse/Build.lean:133:8: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: src/FKLCoarse/Build.lean:133:19: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: src/FKLCoarse/Build.lean:142:8: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+warning: src/FKLCoarse/Build.lean:142:19: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+warning: src/FKLCoarse/Build.lean:162:78: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+⚠ [4369/4424] Replayed FKLCoarse.Corr
+warning: src/FKLCoarse/Corr.lean:55:10: This simp argument is unused:
+  List.getD_eq_getElem _ _ (by simpa using h1)
+
+Hint: Omit it from the simp argument list.
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [4371/4424] Replayed FKLCoarse.RootCoarse
+warning: src/FKLCoarse/RootCoarse.lean:91:10: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: src/FKLCoarse/RootCoarse.lean:91:20: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: src/FKLCoarse/RootCoarse.lean:92:10: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+warning: src/FKLCoarse/RootCoarse.lean:92:20: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+warning: src/FKLCoarse/RootCoarse.lean:119:15: `if_true` has been deprecated: Use `ite_true` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵t̵r̵u̵e̵i̲t̲e̲_̲t̲r̲u̲e̲
+⚠ [4380/4424] Replayed FKLCoarse.Semantic
+warning: src/FKLCoarse/Semantic.lean:43:10: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: src/FKLCoarse/Semantic.lean:43:20: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: src/FKLCoarse/Semantic.lean:44:10: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+warning: src/FKLCoarse/Semantic.lean:44:20: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+warning: src/FKLCoarse/Semantic.lean:78:10: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: src/FKLCoarse/Semantic.lean:78:33: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: src/FKLCoarse/Semantic.lean:84:10: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+warning: src/FKLCoarse/Semantic.lean:84:45: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+⚠ [4393/4424] Replayed FKLCert.Window
+warning: src/FKLCert/Window.lean:152:37: `dif_pos` has been deprecated: Use `dite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  d̵i̵f̵_̵p̵o̵s̵d̲i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: src/FKLCert/Window.lean:157:37: `dif_neg` has been deprecated: Use `dite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  d̵i̵f̵_̵n̵e̵g̵d̲i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+⚠ [4395/4424] Replayed TerminalRateCertificateWindows
+warning: src/TerminalRateCertificateWindows.lean:54:32: `dif_pos` has been deprecated: Use `dite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  d̵i̵f̵_̵p̵o̵s̵d̲i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+⚠ [4396/4424] Replayed FKLCert.WindowValue
+warning: src/FKLCert/WindowValue.lean:32:70: `dif_pos` has been deprecated: Use `dite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  d̵i̵f̵_̵p̵o̵s̵d̲i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+⚠ [4398/4424] Replayed FKLCoarse.Data4
+warning: src/FKLCoarse/Data4.lean:115:8: `dif_pos` has been deprecated: Use `dite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  d̵i̵f̵_̵p̵o̵s̵d̲i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+⚠ [4409/4424] Replayed FKLCoarse.Data3
+warning: src/FKLCoarse/Data3.lean:127:8: `dif_pos` has been deprecated: Use `dite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  d̵i̵f̵_̵p̵o̵s̵d̲i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: src/FKLCoarse/Data3.lean:139:10: `dif_pos` has been deprecated: Use `dite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  d̵i̵f̵_̵p̵o̵s̵d̲i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: src/FKLCoarse/Data3.lean:131:34: This simp argument is unused:
+  raw_add
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [finProdFinEquiv, raw_mul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: src/FKLCoarse/Data3.lean:131:43: This simp argument is unused:
+  raw_mul
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [finProdFinEquiv, raw_add]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [4484/4516] Replayed FKLFine3.Role
+warning: src/FKLFine3/Role.lean:31:29: `if_true` has been deprecated: Use `ite_true` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵t̵r̵u̵e̵i̲t̲e̲_̲t̲r̲u̲e̲
+warning: src/FKLFine3/Role.lean:35:52: `if_false` has been deprecated: Use `ite_false` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵f̵a̵l̵s̵e̵i̲t̲e̲_̲f̲a̲l̲s̲e̲
+warning: src/FKLFine3/Role.lean:35:62: `if_true` has been deprecated: Use `ite_true` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵t̵r̵u̵e̵i̲t̲e̲_̲t̲r̲u̲e̲
+warning: src/FKLFine3/Role.lean:63:63: This simp argument is unused:
+  raw_mul
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [hz, this]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [4485/4516] Replayed FKLFine4.Role4
+warning: src/FKLFine4/Role4.lean:27:26: exponent 406 exceeds the threshold 256, exponentiation operation was not evaluated, use `set_option exponentiation.threshold <num>` to set a new threshold
+warning: src/FKLFine4/Role4.lean:29:53: This simp argument is unused:
+  h4
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [orbitEntropyExpression, rationalLogValue_append, entropyLogExpression_value,
+    orbitCorrectionExpression_value, entropy, hcast]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: src/FKLFine4/Role4.lean:82:63: This simp argument is unused:
+  raw_mul
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [hz, this]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [4486/4516] Replayed FKLFine4.Node4
+warning: src/FKLFine4/Node4.lean:92:8: `dif_pos` has been deprecated: Use `dite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  d̵i̵f̵_̵p̵o̵s̵d̲i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: src/FKLFine4/Node4.lean:103:8: `dif_pos` has been deprecated: Use `dite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  d̵i̵f̵_̵p̵o̵s̵d̲i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: src/FKLFine4/Node4.lean:107:34: This simp argument is unused:
+  raw_add
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [finProdFinEquiv, raw_mul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: src/FKLFine4/Node4.lean:107:43: This simp argument is unused:
+  raw_mul
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [finProdFinEquiv, raw_add]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [4487/4516] Replayed FKLFine3.Node
+warning: src/FKLFine3/Node.lean:97:10: `dif_pos` has been deprecated: Use `dite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  d̵i̵f̵_̵p̵o̵s̵d̲i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: src/FKLFine3/Node.lean:100:10: `dif_pos` has been deprecated: Use `dite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  d̵i̵f̵_̵p̵o̵s̵d̲i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: src/FKLFine3/Node.lean:111:8: `dif_pos` has been deprecated: Use `dite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  d̵i̵f̵_̵p̵o̵s̵d̲i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: src/FKLFine3/Node.lean:115:34: This simp argument is unused:
+  raw_add
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [finProdFinEquiv, raw_mul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: src/FKLFine3/Node.lean:115:43: This simp argument is unused:
+  raw_mul
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [finProdFinEquiv, raw_add]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [4488/4516] Replayed FKLFine3.Boundary
+warning: src/FKLFine3/Boundary.lean:50:10: This simp argument is unused:
+  List.getD_eq_getElem _ _ (by simpa using h1)
+
+Hint: Omit it from the simp argument list.
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [4492/4516] Replayed FKLFine4.Data4
+warning: src/FKLFine4/Data4.lean:35:37: This simp argument is unused:
+  raw_mul
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Nat.mul_assoc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: src/FKLFine4/Data4.lean:44:42: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+⚠ [4614/4715] Replayed FKLTerm.Builder
+warning: src/FKLTerm/Builder.lean:160:6: exponent 264 exceeds the threshold 256, exponentiation operation was not evaluated, use `set_option exponentiation.threshold <num>` to set a new threshold
+⚠ [4693/4715] Replayed FKLDim.ZeroDim
+warning: src/FKLDim/ZeroDim.lean:99:53: Variable name `hS` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hS
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: src/FKLDim/ZeroDim.lean:128:8: `dif_pos` has been deprecated: Use `dite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  d̵i̵f̵_̵p̵o̵s̵d̲i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+⚠ [4704/4760] Replayed FKLDim.Leaf
+warning: src/FKLDim/Leaf.lean:89:8: `dif_pos` has been deprecated: Use `dite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  d̵i̵f̵_̵p̵o̵s̵d̲i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: src/FKLDim/Leaf.lean:94:10: `dif_pos` has been deprecated: Use `dite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  d̵i̵f̵_̵p̵o̵s̵d̲i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: src/FKLDim/Leaf.lean:110:8: `dif_pos` has been deprecated: Use `dite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  d̵i̵f̵_̵p̵o̵s̵d̲i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: src/FKLDim/Leaf.lean:115:10: `dif_pos` has been deprecated: Use `dite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  d̵i̵f̵_̵p̵o̵s̵d̲i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+⚠ [4707/4760] Replayed FKLDim.Higher
+warning: src/FKLDim/Higher.lean:92:8: `dif_pos` has been deprecated: Use `dite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  d̵i̵f̵_̵p̵o̵s̵d̲i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: src/FKLDim/Higher.lean:95:34: This simp argument is unused:
+  raw_add
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [finProdFinEquiv, raw_mul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: src/FKLDim/Higher.lean:95:43: This simp argument is unused:
+  raw_mul
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [finProdFinEquiv, raw_add]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: src/FKLDim/Higher.lean:137:8: `dif_pos` has been deprecated: Use `dite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  d̵i̵f̵_̵p̵o̵s̵d̲i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: src/FKLDim/Higher.lean:140:34: This simp argument is unused:
+  raw_add
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [finProdFinEquiv, raw_mul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: src/FKLDim/Higher.lean:140:43: This simp argument is unused:
+  raw_mul
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [finProdFinEquiv, raw_add]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [4715/4760] Replayed FKLDim.Block
+warning: src/FKLDim/Block.lean:75:10: This simp argument is unused:
+  List.getD_eq_getElem _ _ (by simpa using h1)
+
+Hint: Omit it from the simp argument list.
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Build completed successfully (4760 jobs).
+Exporting #[Quot, Quot.mk, Quot.lift, Quot.ind, MatrixBounds.Numeric.SuppliedCertifiedPipeline.exponent_lt, propext, Quot.sound, Classical.choice, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce, Nat, String, String.mk, Char, optParam, autoParam, semiOutParam, outParam] from Solution
+Running con-ron kernel on solution
+con-ron: 1 inductive blocks modelled in-process: Lean.Syntax (30 generated records, checked by the fold as declarations and not counted as records of the file)
+con-ron: accepted 136476 declarations (--verified)
+con-ron kernel accepts the solution
+Running nanoda kernel on solution
+nanoda kernel accepts the solution
+Running Lean default kernel on solution
+Lean default kernel accepts the solution
+Your solution is okay!
+comparator: 4558.08 s wall, 1591028 KB peak RSS (largest process)

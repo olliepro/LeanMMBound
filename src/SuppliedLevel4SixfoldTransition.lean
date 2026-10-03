@@ -1,5 +1,12 @@
-import SuppliedLevel4Transition
-import ContextFactorGrouping
+module
+
+public import SuppliedLevel4Transition
+public import ContextFactorGrouping
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Separate the waiting and active parts of the exact sixfold level-four
 output for use by the complete batch schedule. -/

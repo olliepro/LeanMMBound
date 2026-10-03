@@ -1,7 +1,14 @@
-import PooledCompatibility
-import CWUniformPairing
-import CWPooledCompatibility
-import CoarsenedCompatibility
+module
+
+public import PooledCompatibility
+public import CWUniformPairing
+public import CWPooledCompatibility
+public import CoarsenedCompatibility
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Typed child pools really satisfy the sector predicates after their labelled
 slots are regrouped into parents. This connects coordinate maps to compatibility. -/

@@ -1,6 +1,13 @@
-import CWFineCompatibility
-import SplitData
-import ExactInterface
+module
+
+public import CWFineCompatibility
+public import SplitData
+public import ExactInterface
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Actual coarse CW constituents and their finite fine-block partitions.
 Numerical shape data now names explicit coefficient tensors and variable sets. -/
@@ -52,7 +59,7 @@ def liftFineWord {q length total : ℕ} (positive : 0 < q) (word : Fin length �
     (supported : fineTotal word = total) : AxisVariable q length total :=
   ⟨fun position => liftFine q (word position), by
     change (∑ position, (fineLabel (liftFine q (word position))).val) = total
-    simpa only [fineLabel_lift positive] using supported⟩
+    simpa only [fineLabel_lift positive] using! supported⟩
 
 /-- The lifted variable has precisely the requested complete fine-block label. -/
 theorem fineWord_lift {q length total : ℕ} (positive : 0 < q) (word : Fin length → Fin 3)

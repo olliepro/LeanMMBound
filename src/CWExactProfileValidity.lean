@@ -1,5 +1,12 @@
-import CWTypedInterfaces
-import TypeBatchGluing
+module
+
+public import CWTypedInterfaces
+public import TypeBatchGluing
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Every nonzero exact CW interface automatically has feasible supported
 profiles and the forced complementary profiles in zero-coordinate sectors.

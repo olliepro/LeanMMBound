@@ -1,8 +1,15 @@
-import CWRootData
-import CWReprofile
-import ApproximateProfiles
-import ContextHeterogeneousGluing
-import WindowedInterface
+module
+
+public import CWRootData
+public import CWReprofile
+public import ApproximateProfiles
+public import ContextHeterogeneousGluing
+public import WindowedInterface
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The full root output is glued from all bounded exact child-profile tuples.
 Invalid tuples vanish coefficientwise; the source remains the original CW power. -/

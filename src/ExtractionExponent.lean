@@ -1,4 +1,11 @@
-import AsymptoticSum
+module
+
+public import AsymptoticSum
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Convert quantitative output counts of a tensor extraction into a bound on
 the defined matrix multiplication exponent. Logarithms are natural here. -/

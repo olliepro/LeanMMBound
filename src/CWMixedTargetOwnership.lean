@@ -1,5 +1,12 @@
-import CWMixedSelection
-import CWMixedWindowedOwners
+module
+
+public import CWMixedSelection
+public import CWMixedWindowedOwners
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The precise parent-window and global-competitor holes on the common
 heterogeneous target agree with the actual variable owner maps. -/
@@ -93,7 +100,9 @@ theorem target_ownerY_iff (data : ∀ type, SplitRestrictionData (length type)) 
     (windowTest data accept) (forget data edge) _ compatible
     (targetAxis_full data symmetric edge q Shape.y (fun _ _ => rfl) (fun type => (data type).fineY) entries)
   simpa only [windowOwnerY, compatibleY, targetHoles, parentHole, fineCollision, targetAxis_fine,
-    windowTest, targetAxis, SplitRestrictionData.targetAxis_fine, targetFine, targetParts] using result
+    windowTest, targetAxis,
+    SplitRestrictionData.targetAxis_fine (axis := Shape.y) (additive := fun _ _ => rfl),
+    targetFine, targetParts] using! result
 
 omit [NeZero (2 : ZMod prime)] in
 /-- Global Z ownership has the same exact parent-or-collision hole description after full Y typing. -/
@@ -114,7 +123,9 @@ theorem target_ownerZ_iff (data : ∀ type, SplitRestrictionData (length type)) 
     (windowTest data accept) (forget data edge) _ compatible
     (targetAxis_full data symmetric edge q Shape.z (fun _ _ => rfl) (fun type => (data type).fineZ) entries)
   simpa only [windowOwnerZ, compatibleZ, targetHoles, parentHole, fineCollision, targetAxis_fine,
-    windowTest, targetAxis, SplitRestrictionData.targetAxis_fine, targetFine, targetParts] using result
+    windowTest, targetAxis,
+    SplitRestrictionData.targetAxis_fine (axis := Shape.z) (additive := fun _ _ => rfl),
+    targetFine, targetParts] using! result
 
 end
 end MatrixBounds.Tensor.CW.Mixed

@@ -1,5 +1,12 @@
-import CWCoarseRates
-import CWCompatibilityRates
+module
+
+public import CWCoarseRates
+public import CWCompatibilityRates
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Uniform thresholds absorb all finite degree-counting errors. The threshold
 and window tolerance are chosen before the population and exact profiles. -/

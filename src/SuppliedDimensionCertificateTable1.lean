@@ -1,5 +1,12 @@
-import SuppliedDimensionCertificateCuts1
-import CertifiedDimensionRate1
+module
+
+public import SuppliedDimensionCertificateCuts1
+public import CertifiedDimensionRate1
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 namespace MatrixBounds.Numeric.SuppliedDimensionRates.SuppliedDimensionCertificateTable1
 open TerminalSourceNodeLookup SuppliedTerminalRates

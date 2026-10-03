@@ -1,5 +1,12 @@
-import HeterogeneousInterface
-import ConstrainedCounting
+module
+
+public import HeterogeneousInterface
+public import ConstrainedCounting
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Equivariant maps onto transitive finite sets have equal fibers. Applied to
 coarse marginal words, this proves the exact competitor degrees used by hashing. -/

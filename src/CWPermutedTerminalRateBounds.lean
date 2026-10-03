@@ -1,5 +1,12 @@
-import CWPermutedTerminalExtraction
-import CWTerminalRateBounds
+module
+
+public import CWPermutedTerminalExtraction
+public import CWTerminalRateBounds
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The actual mixed physical terminal retention has uniform loss and lower
 bounds, without comparing axes before their global sums have been formed. -/

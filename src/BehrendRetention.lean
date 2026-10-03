@@ -1,5 +1,12 @@
-import HashModulus
-import HashSurvivors
+module
+
+public import HashModulus
+public import HashSurvivors
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Explicit logarithmic loss of the progression-free hash buckets. These
 finite estimates expose the square-root-log overhead in the output count. -/

@@ -1,4 +1,11 @@
-import SuppliedRoundTensors
+module
+
+public import SuppliedRoundTensors
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! A shared round of the full supplied pipeline advances all original active
 batches and carries every inactive and accumulated waiting factor unchanged. -/

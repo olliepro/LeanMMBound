@@ -1,4 +1,11 @@
-import CubicTableLogBounds
+module
+
+public import CubicTableLogBounds
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! A short dyadic parameter enclosure avoids cubing the large exact original
 mass denominator. Every parameter enclosure is itself checked exactly. -/

@@ -1,5 +1,12 @@
-import CWTargetCoefficients
-import SelectedTargets
+module
+
+public import CWTargetCoefficients
+public import SelectedTargets
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! A selected family of actual CW coarse edges supplies independent copies of
 one common exact child target, with precisely the proved parent/collision holes. -/
@@ -51,11 +58,11 @@ def damagedTargetCertificate (data : SplitRestrictionData length) (symmetric : d
   · intro copy x y z keptX keptY keptZ
     apply data.mapped_target_coefficient symmetric (selected copy) q seed buckets (active copy) (member copy)
       acceptX acceptY acceptZ x y z
-    · rw [data.targetAxis_fine]
+    · rw [data.targetAxis_fine (additive := fun _ _ => rfl)]
       exact not_not.mp keptX
-    · rw [data.targetAxis_fine]
+    · rw [data.targetAxis_fine (additive := fun _ _ => rfl)]
       exact not_not.mp (not_or.mp keptY).1
-    · rw [data.targetAxis_fine]
+    · rw [data.targetAxis_fine (additive := fun _ _ => rfl)]
       exact not_not.mp (not_or.mp keptZ).1
   · intro copy x
     exact data.target_ownerX_iff symmetric (selected copy) q seed (active copy) (unique copy) acceptX x

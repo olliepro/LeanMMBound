@@ -1,4 +1,11 @@
-import TensorOrientations
+module
+
+public import TensorOrientations
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Axis permutations preserve the entire newly extracted direct sum. Copy
 indices stay aligned on all three physical axes. -/

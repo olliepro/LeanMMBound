@@ -1,5 +1,12 @@
-import OrbitLogExpressions
-import CWRootOrbitRates
+module
+
+public import OrbitLogExpressions
+public import CWRootOrbitRates
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The unrestricted root has a symbolic full-law entropy expansion with one
 copy of each child, retaining every compatibility sector and zero pool. -/

@@ -1,6 +1,13 @@
-import PairedCoarseColumns
-import SuppliedDimensionMasses
-import SuppliedPathStages
+module
+
+public import PairedCoarseColumns
+public import SuppliedDimensionMasses
+public import SuppliedPathStages
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Every actual paired coarse rate has a complete exact rational logarithmic
 expression at the original root-normalized source weights and role allocations. -/

@@ -1,5 +1,12 @@
-import CWMixedProfiles
-import HeterogeneousFlatten
+module
+
+public import CWMixedProfiles
+public import HeterogeneousFlatten
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Glue all accepted valid mixed exact targets into a genuine approximate
 child interface. Invalid tuples contribute zero, and empty child pools remain
@@ -59,8 +66,9 @@ theorem glue_mixed_profile_batches (data : ∀ type, SplitRestrictionData (lengt
         (constituent (K := K) q (length type) child.val) (fun x => fineWord x.val) (fun y => fineWord y.val) (fun z => fineWord z.val)
         (profileCounts data px type child) (profileCounts data py type child) (profileCounts data pz type child)) exactBudget)
   convert budget using 1
-  simp only [Fintype.card_prod, ChildProfileTuple, Fintype.card_pi, ChildIndex, Fintype.prod_sigma, ChildSlots]
-  ring
+  · rfl
+  · simp only [Fintype.card_prod, ChildProfileTuple, Fintype.card_pi, ChildIndex, Fintype.prod_sigma, ChildSlots]
+    ring
 
 end
 end MatrixBounds.Tensor.CW.Mixed

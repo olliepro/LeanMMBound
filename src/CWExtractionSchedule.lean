@@ -1,5 +1,12 @@
-import CWExtractionOverhead
-import CWNominalCopyRates
+module
+
+public import CWExtractionOverhead
+public import CWNominalCopyRates
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! One common schedule simultaneously satisfies the population, repair,
 copy-retention, and total rank-overhead requirements. -/

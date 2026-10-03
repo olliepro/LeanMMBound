@@ -1,5 +1,12 @@
-import HeterogeneousInterface
-import PolynomialDegeneration
+module
+
+public import HeterogeneousInterface
+public import PolynomialDegeneration
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Explicit rank and polynomial certificates for products of differently typed
 interfaces. Products multiply rank budgets and add leading degrees. -/

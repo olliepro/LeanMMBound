@@ -1,5 +1,12 @@
-import CWFiniteMixedExtraction
-import BehrendRetention
+module
+
+public import CWFiniteMixedExtraction
+public import BehrendRetention
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Choose the shared prime and progression-free buckets automatically, and
 state the finite extraction using a natural number of genuine target copies. -/

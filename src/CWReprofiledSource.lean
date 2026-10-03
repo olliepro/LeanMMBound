@@ -1,5 +1,12 @@
-import CWMixedNearbySource
-import CWMixedNominalRates
+module
+
+public import CWMixedNearbySource
+public import CWMixedNominalRates
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The source certificate is fixed while all accepted valid exact output
 profiles vary. Empty-pool laws are normalized to zero only where their weights

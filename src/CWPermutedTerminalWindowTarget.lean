@@ -1,7 +1,14 @@
-import CWOneLetterWindowedMatrix
-import CWPermutedTerminalMixedTarget
-import CWWindowedInterfaces
-import HeterogeneousRegrouping
+module
+
+public import CWOneLetterWindowedMatrix
+public import CWPermutedTerminalMixedTarget
+public import CWWindowedInterfaces
+public import HeterogeneousRegrouping
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! A complete approximate terminal output has its full matrix dimensions.
 This conversion acts after the shared mixed round, so no separate terminal

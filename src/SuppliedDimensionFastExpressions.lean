@@ -1,6 +1,13 @@
-import SuppliedDimensionSourceExpressions
-import SuppliedWaitingZero2TargetTables
-import SuppliedRootFineTerminalLookup
+module
+
+public import SuppliedDimensionSourceExpressions
+public import SuppliedWaitingZero2TargetTables
+public import SuppliedRootFineTerminalLookup
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Proved lookup substitutions make the original complete dimension expression
 kernel-executable without unfolding fiber cardinalities or deep source tables. -/

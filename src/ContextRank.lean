@@ -1,4 +1,11 @@
-import ContextComposition
+module
+
+public import ContextComposition
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Turn context-preserving transformations into actual rank certificates.
 Polynomial coefficient extraction is needed only once, at the original input. -/

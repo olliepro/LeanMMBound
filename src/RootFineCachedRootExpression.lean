@@ -1,5 +1,12 @@
-import SuppliedRootFineRoot4Integers
-import SuppliedRootFineBinding
+module
+
+public import SuppliedRootFineRoot4Integers
+public import SuppliedRootFineBinding
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Checked complete parent4 integers substitute into both actual root fine-rate expressions. -/
 namespace MatrixBounds.Numeric.RootFineCachedRootExpression
@@ -28,7 +35,7 @@ theorem rootNumerator_eq (parent4 : Parent4Values)
     rootNumerator parent4 column axis orbit =
       SuppliedRootFineRoot4Integers.numerator (shapeColumnEquiv 16 column) axis orbit := by
   simp only [rootNumerator, SuppliedRootFineRoot4Integers.numerator,
-    Equiv.symm_apply_apply, sourceEq]
+    (shapeColumnEquiv 16).symm_apply_apply column, sourceEq]
   rfl
 
 /-- Exact complete root masses on the two physical fine axes, using denominator2^406. -/

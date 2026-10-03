@@ -1,5 +1,12 @@
-import CWRationalSplit
-import CWPermutedCoarseData
+module
+
+public import CWRationalSplit
+public import CWPermutedCoarseData
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Fixed rational extraction parameters transport to every physical role
 ordering, preserving support, normalization, symmetry, and parent centers. -/

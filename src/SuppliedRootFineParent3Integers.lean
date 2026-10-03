@@ -1,5 +1,12 @@
-import RootFineIntegerParent
-import SuppliedRootFineLeafIntegers
+module
+
+public import RootFineIntegerParent
+public import SuppliedRootFineLeafIntegers
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Complete level-three parent orbit masses are exact integer convolutions
 at denominator 2^134, ready for independent bounded kernel checks. -/
@@ -61,7 +68,7 @@ theorem numerator_value (node : Fin 945) (strategy : Fin 6) (axis : Fin 3) (orbi
   simp only [OrbitArithmetic.parentMass] at identity
   simp_rw [SuppliedRootFineLeafIntegers.leaf_value] at identity
   simpa only [numerator, sparseIntegerParent_eq, SuppliedRootFineFastArithmetic.parent3,
-    SuppliedRootFineArithmetic.sparseParent_eq, OrbitArithmetic.parentMass, split] using identity
+    SuppliedRootFineArithmetic.sparseParent_eq, OrbitArithmetic.parentMass, split] using! identity
 
 end
 end MatrixBounds.Numeric.SuppliedRootFineParent3Integers

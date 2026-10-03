@@ -1,5 +1,12 @@
-import TensorOrientations
-import HeterogeneousRegrouping
+module
+
+public import TensorOrientations
+public import HeterogeneousRegrouping
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Physical permutations commute with separately labelled tensor products
 through explicit coordinate maps; no factor labels or laws are merged. -/

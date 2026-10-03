@@ -1,6 +1,13 @@
-import PairOrbitSymmetries
-import OrbitSymmetryTransport
-import FineWordOrbits
+module
+
+public import PairOrbitSymmetries
+public import OrbitSymmetryTransport
+public import FineWordOrbits
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Complementing all fine symbols acts by an exact recursively computable
 permutation of the word-orbit labels. -/

@@ -1,5 +1,12 @@
-import SuppliedPairedFinePhysicalPools
-import RootFineSingletonPools
+module
+
+public import SuppliedPairedFinePhysicalPools
+public import RootFineSingletonPools
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Original paired compatibility labels retain forced singleton children and the exact physical coordinate pools. -/
 namespace MatrixBounds.Numeric.SuppliedPairedFine

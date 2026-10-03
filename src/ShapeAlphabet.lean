@@ -1,5 +1,12 @@
-import SplitSemantics
-import Mathlib.Data.List.NodupEquivFin
+module
+
+public import SplitSemantics
+public import Mathlib.Data.List.NodupEquivFin
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Finite coarse-shape alphabets and an actual complementary permutation.
 Unsupported symbols are fixed by the permutation and carry zero checked mass. -/

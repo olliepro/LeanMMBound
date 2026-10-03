@@ -1,7 +1,14 @@
-import PolynomialDegeneration
-import Mathlib.Tactic.FinCases
-import Mathlib.Tactic.NormNum
-import Mathlib.Tactic.IntervalCases
+module
+
+public import PolynomialDegeneration
+public import Mathlib.Tactic.FinCases
+public import Mathlib.Tactic.NormNum
+public import Mathlib.Tactic.IntervalCases
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! A polynomial degeneration of the Coppersmith-Winograd tensor with q+2 terms.
 The certificate records the leading degree and all polynomial rank-one factors. -/

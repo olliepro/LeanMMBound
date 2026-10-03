@@ -1,5 +1,12 @@
-import CWTypedDimensions
-import CWZeroMatrix
+module
+
+public import CWTypedDimensions
+public import CWZeroMatrix
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Exact zero-coordinate CW interfaces contain matrix multiplication tensors
 whose nontrivial dimension is the actual typed coordinate count. -/

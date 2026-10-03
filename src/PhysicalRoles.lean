@@ -1,5 +1,12 @@
-import TensorOrientations
-import Mathlib.Data.Fintype.Perm
+module
+
+public import TensorOrientations
+public import Mathlib.Data.Fintype.Perm
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The sixfold role bookkeeping is an exact permutation bijection. Every
 original strategy appears once in each fixed physical region. -/

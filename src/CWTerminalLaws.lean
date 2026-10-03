@@ -1,5 +1,12 @@
-import CWTerminalAlphabet
-import EntropyBounds
+module
+
+public import CWTerminalAlphabet
+public import EntropyBounds
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Exact terminal split probabilities and their coarse marginal entropy.
 The formulas include endpoint parameters without logarithm singularities. -/

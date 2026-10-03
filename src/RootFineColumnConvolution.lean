@@ -1,4 +1,11 @@
-import SuppliedRootFineParent3Integers
+module
+
+public import SuppliedRootFineParent3Integers
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Complete integer convolutions can be evaluated on finite source columns.
 The reindexing theorem avoids reducing the dependent shape alphabet in checks. -/

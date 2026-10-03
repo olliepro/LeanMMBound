@@ -1,7 +1,14 @@
-import EntropyBounds
-import Mathlib.Data.Nat.Factorial.Basic
-import Mathlib.Data.Nat.Choose.Multinomial
-import Mathlib.Tactic.NormNum
+module
+
+public import EntropyBounds
+public import Mathlib.Data.Nat.Factorial.Basic
+public import Mathlib.Data.Nat.Choose.Multinomial
+public import Mathlib.Tactic.NormNum
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Elementary logarithmic factorial estimates, sufficient for multinomial
 entropy asymptotics with an explicit logarithmic error. -/
@@ -72,7 +79,7 @@ theorem log_multinomial (counts : A → ℕ) :
     (Nat.multinomial_spec Finset.univ counts)
   push_cast at identity
   rw [Real.log_mul (by positivity) (by exact_mod_cast (Nat.multinomial_pos (s := Finset.univ)
-    (f := counts)).ne'), Real.log_prod _ _ (fun a _ => by positivity)] at identity
+    (f := counts)).ne'), Real.log_prod (fun a _ => by positivity)] at identity
   linarith
 
 /-- Multinomial logarithms differ from sample-size times entropy by explicit logarithmic errors. -/

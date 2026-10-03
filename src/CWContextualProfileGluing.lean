@@ -1,6 +1,13 @@
-import ContextHeterogeneousGluing
-import ContextHeterogeneousFlatten
-import CWMixedProfileGluing
+module
+
+public import ContextHeterogeneousGluing
+public import ContextHeterogeneousFlatten
+public import CWMixedProfileGluing
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Complete mixed profile gluing retains every waiting factor and prior batch.
 Invalid profile tuples vanish as actual coefficient tensors. -/
@@ -46,10 +53,11 @@ theorem contextReduction_glue_mixed_profiles (source : Coeff K U V W) (data : �
       have flattened := (Interface.contextReduction_flatten.{v} (fun type child => Interface.exact (P := (data type).ChildPositions child)
         (constituent (K := K) q (length type) child.val) (fun x => fineWord x.val) (fun y => fineWord y.val) (fun z => fineWord z.val)
         (profileCounts data px type child) (profileCounts data py type child) (profileCounts data pz type child))).batch (I := Fin copies)
-      simpa only [one_mul] using exactBudget.trans flattened)
+      simpa only [one_mul] using! exactBudget.trans flattened)
   convert budget using 1
-  simp only [Fintype.card_prod, ChildProfileTuple, Fintype.card_pi, ChildIndex, Fintype.prod_sigma, ChildSlots]
-  ring
+  · rfl
+  · simp only [Fintype.card_prod, ChildProfileTuple, Fintype.card_pi, ChildIndex, Fintype.prod_sigma, ChildSlots]
+    ring
 
 end
 end MatrixBounds.Tensor.CW.Mixed

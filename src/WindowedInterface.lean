@@ -1,5 +1,12 @@
-import ApproximateProfiles
-import HeterogeneousMasks
+module
+
+public import ApproximateProfiles
+public import HeterogeneousMasks
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! A common physical form for approximate tensor powers, with neutral empty
 position pools. This exposes the interface used by successive extractions. -/

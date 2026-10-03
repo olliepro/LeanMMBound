@@ -1,4 +1,12 @@
-import GibbsData
+module
+
+public import GibbsData
+public import FKLMeta.RowFast
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Exact Gibbs potentials from the supplied certificate, checked by Lean. -/
 namespace MatrixBounds.Numeric.GibbsCertificateData.Part052
@@ -137,7 +145,10 @@ def rows : List GibbsRow := [
   ⟨[⟨1325839616939427,54⟩,⟨1125899906842619,50⟩,⟨1,0⟩,⟨5303358467757633,56⟩,⟨5857716141015585,54⟩]⟩
 ]
 
+theorem fkl_st_checked : FKLMeta.RowFast.giAll rows = true := by decide +kernel
+
 /-- Every exported potential has a strictly positive exact numerator. -/
-theorem rows_checked : rows.all GibbsRow.check = true := by decide
+theorem rows_checked : rows.all GibbsRow.check = true :=
+  FKLMeta.RowFast.giAll_sound rows fkl_st_checked
 
 end MatrixBounds.Numeric.GibbsCertificateData.Part052

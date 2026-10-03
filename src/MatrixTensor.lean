@@ -1,6 +1,13 @@
-import TensorProduct
-import TensorSymmetry
-import Mathlib.Data.Matrix.Mul
+module
+
+public import TensorProduct
+public import TensorSymmetry
+public import Mathlib.Data.Matrix.Mul
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The matrix multiplication tensor, its evaluation as actual matrix multiplication,
 and its elementary decomposition. The output coordinates are (row, column). -/
@@ -12,11 +19,6 @@ variable {K I J L : Type*} [CommSemiring K]
 variable [Fintype I] [Fintype J] [Fintype L]
 variable [DecidableEq I] [DecidableEq J] [DecidableEq L]
 
-/-- Coefficient of A(i,j) B(j,l) in output entry (i,l).
-For I = J = L = Fin n this is the n by n matrix multiplication tensor. -/
-def tensor : Coeff K (I × J) (J × L) (I × L) :=
-  fun x y z => if x.1 = z.1 ∧ x.2 = y.1 ∧ y.2 = z.2 then 1 else 0
-
 /-- Evaluate a coefficient tensor on two input vectors to obtain its output vector. -/
 def evaluate {X Y Z : Type*} [Fintype X] [Fintype Y]
     (t : Coeff K X Y Z) (a : X → K) (b : Y → K) (z : Z) : K :=
@@ -26,24 +28,6 @@ def evaluate {X Y Z : Type*} [Fintype X] [Fintype Y]
 theorem evaluate_eq_mul (a : Matrix I J K) (b : Matrix J L K) (i : I) (l : L) :
     evaluate tensor (fun x => a x.1 x.2) (fun y => b y.1 y.2) (i, l) = (a * b) i l := by
   simp [evaluate, tensor, Fintype.sum_prod_type, ite_and, Matrix.mul_apply, eq_comm]
-
-/-- The schoolbook algorithm as an explicit decomposition with one term per (i,j,l). -/
-def schoolbook : Decomposition (tensor (K := K) (I := I) (J := J) (L := L)) (I × J × L) where
-  left term x := if x = (term.1, term.2.1) then 1 else 0
-  middle term y := if y = (term.2.1, term.2.2) then 1 else 0
-  right term z := if z = (term.1, term.2.2) then 1 else 0
-  reconstruct x y z := by
-    by_cases hx : x.1 = z.1 <;> by_cases hy : x.2 = y.1 <;>
-      by_cases hz : y.2 = z.2 <;>
-      simp_all [tensor, Fintype.sum_prod_type, Prod.ext_iff, ite_and, eq_comm]
-
-/-- Multiplying I by J and J by L matrices uses at most |I|*|J|*|L| scalar products. -/
-theorem schoolbook_rank : RankLE (tensor (K := K) (I := I) (J := J) (L := L))
-    (Fintype.card I * Fintype.card J * Fintype.card L) := by
-  have result : RankLE (tensor (K := K) (I := I) (J := J) (L := L))
-      (Fintype.card (I × J × L)) :=
-    ⟨schoolbook.reindex (Fintype.equivFin (I × J × L)).symm⟩
-  simpa only [Fintype.card_prod, Nat.mul_assoc] using result
 
 /-- Regroup pairs of matrix coordinates into coordinates of the two factors. -/
 def regroup {A B C D : Type*} : ((A × B) × (C × D)) ≃ ((A × C) × (B × D)) where
@@ -67,7 +51,7 @@ theorem product_restriction {I' J' L' : Type*}
   simp only [restrict, mapX, mapY, mapZ, ite_mul, one_mul, zero_mul,
     Finset.sum_ite_eq', Finset.mem_univ, if_true]
   simp only [product, tensor, regroup, Equiv.coe_fn_mk, Prod.ext_iff]
-  split_ifs <;> simp_all
+  split_ifs <;> simp_all <;> grind
 
 /-- Rank budgets for two rectangular matrix products combine multiplicatively. -/
 theorem product_rank {I' J' L' : Type*}

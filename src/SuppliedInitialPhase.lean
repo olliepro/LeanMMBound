@@ -1,5 +1,12 @@
-import SuppliedInitialSixfold
-import CWRationalCanonicalInterfaces
+module
+
+public import SuppliedInitialSixfold
+public import CWRationalCanonicalInterfaces
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The first allocated source interface is exactly the original parent tensor
 of the checked supplied level-four extraction stage. -/
@@ -44,7 +51,7 @@ theorem batch_reduction {K : Type} [CommRing K] (size : ℕ) (tolerance : ℝ) :
       (batch (K := K) size tolerance) 1 := by
   have individual := ((CoordinateRestriction.refl (waiting (K := K) size tolerance)).product
     (activeRestriction (K := K) size tolerance)).context
-  simpa only [one_pow] using individual.sixfold
+  simpa only [one_pow] using! individual.sixfold
 
 end
 end MatrixBounds.Numeric.SuppliedInitialPhase

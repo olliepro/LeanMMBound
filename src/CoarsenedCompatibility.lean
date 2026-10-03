@@ -1,4 +1,11 @@
-import PooledCompatibility
+module
+
+public import PooledCompatibility
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Exact labelled child profiles imply their pooled compatibility profiles.
 The pooled profile is the sum over the child labels in its sector. -/

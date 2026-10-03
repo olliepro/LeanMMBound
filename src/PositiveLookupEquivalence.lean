@@ -1,4 +1,11 @@
-import WeightedPools
+module
+
+public import WeightedPools
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! A partial source lookup becomes an actual bijection after exactly the
 zero-weight absent entries are removed. No positive child can be discarded. -/

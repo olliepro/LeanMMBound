@@ -1,5 +1,12 @@
-import SuppliedInitialAllocation
-import SuppliedSixfoldRoot
+module
+
+public import SuppliedInitialAllocation
+public import SuppliedSixfoldRoot
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Actual root extraction and all initial allocations are composed before
 the scheduled level-four, level-three, and terminal rounds begin. -/
@@ -36,7 +43,7 @@ theorem eventual_extraction {K : Type} [CommRing K] {error : ℝ} (errorPositive
       SuppliedHigherLaws.root4 (fun _ => delta) order)).context
   have allocation := (allocate_all (K := K) sizePositive positive.le).sixfold
   have combined := reduction.trans ((canonical.trans allocation).batch (I := Fin (copies^6)))
-  simpa only [one_pow, one_mul, mul_one] using combined
+  simpa only [one_pow, one_mul, mul_one] using! combined
 
 end
 end MatrixBounds.Numeric.SuppliedInitialSixfold

@@ -1,4 +1,11 @@
-import HeterogeneousRegrouping
+module
+
+public import HeterogeneousRegrouping
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Flat ordinary product labels and nested labelled tensor products carry
 exactly the same complete coordinate variables and coefficient product. -/

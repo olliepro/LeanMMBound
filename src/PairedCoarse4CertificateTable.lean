@@ -1,5 +1,12 @@
-import TerminalRateCertificateWindows
-import CertifiedLevel4Rate0
+module
+
+public import TerminalRateCertificateWindows
+public import CertifiedLevel4Rate0
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 namespace MatrixBounds.Numeric.SuppliedPairedCoarse.PairedCoarse4CertificateTable
 open TerminalSourceNodeLookup SuppliedTerminalRates

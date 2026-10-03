@@ -1,5 +1,12 @@
-import SuppliedDimensionBlocks
-import TerminalRateBalancedInputs
+module
+
+public import SuppliedDimensionBlocks
+public import TerminalRateBalancedInputs
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Direct source columns retain the exact original zero2 population arithmetic. -/
 namespace MatrixBounds.Numeric.SuppliedDimensionRates

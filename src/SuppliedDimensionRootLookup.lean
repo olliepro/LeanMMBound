@@ -1,4 +1,11 @@
-import SuppliedDimensionLeafArithmetic
+module
+
+public import SuppliedDimensionLeafArithmetic
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Exact positive root source columns avoid rebuilding the complete shape enumeration. -/
 namespace MatrixBounds.Numeric.SuppliedDimensionRates

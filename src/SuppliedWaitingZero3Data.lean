@@ -1,6 +1,13 @@
-import SuppliedLevel4Transition
-import WaitingZeroMatrixOrientation
-import WaitingZeroMatrixCardinality
+module
+
+public import SuppliedLevel4Transition
+public import WaitingZeroMatrixOrientation
+public import WaitingZeroMatrixCardinality
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Actual zero3 waiting populations, physical matrix factors, and their
 complete source dimension rates retain every inherited allocation sector. -/
@@ -40,7 +47,7 @@ def toleranceAt (tolerance : Fin 105 × AxisOrder → ℝ) (label : Label) : ℝ
 /-- All supplied waiting coefficients already clear the full rational word expansion denominator. -/
 theorem weight_divisible (label : Label) : 17592186044416*8 ∣ weight label := by
   unfold weight zeroWeight SuppliedNodePartialIndexing.childWeight role4Weight
-  rw [child_scaled]
+  erw [child_scaled]
   unfold scaled
   exact dvd_mul_of_dvd_left (by norm_num [denominator] : 17592186044416*8 ∣ denominator^5) _
 

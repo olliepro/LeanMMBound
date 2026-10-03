@@ -1,6 +1,13 @@
-import SuppliedTerminalMatrix
-import WaitingZeroMatrixOrientation
-import SuppliedBatchTensors
+module
+
+public import SuppliedTerminalMatrix
+public import WaitingZeroMatrixOrientation
+public import SuppliedBatchTensors
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Complete terminal child matrices in all six original physical orientations
 combine into one actual matrix with exactly six times the original volume. -/

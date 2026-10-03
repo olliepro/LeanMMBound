@@ -1,10 +1,17 @@
-import SuppliedCertifiedAssembly
-import SuppliedRootFineCertifiedRates
-import PairedCoarse4Certified
-import PairedCoarse3Certified
-import SuppliedPairedFineCertified
-import SuppliedTerminalRateBinding
-import SuppliedDimensionRateBinding
+module
+
+public import SuppliedCertifiedAssembly
+public import SuppliedRootFineCertifiedRates
+public import PairedCoarse4Certified
+public import PairedCoarse3Certified
+public import SuppliedPairedFineCertified
+public import SuppliedTerminalRateBinding
+public import SuppliedDimensionRateBinding
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The supplied pipeline's actual rectangular algorithms, with every rate identified with
 its kernel-checked numerical certificate, bound the algebraic matrix multiplication exponent

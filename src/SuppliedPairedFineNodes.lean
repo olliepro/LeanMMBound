@@ -1,7 +1,14 @@
-import SuppliedPairedFineSplitPools
-import SuppliedPairedFineIntegerParents
-import RootFineCachedParent4
-import RootFineParent4CacheTable
+module
+
+public import SuppliedPairedFineSplitPools
+public import SuppliedPairedFineIntegerParents
+public import RootFineCachedParent4
+public import RootFineParent4CacheTable
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Complete paired fine source expressions evaluated from exact integer parent, child, and split
 inputs, retaining every original compatibility sector at both paired levels. -/

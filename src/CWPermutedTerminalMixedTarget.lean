@@ -1,5 +1,12 @@
-import CWPermutedTerminalMatrices
-import CWMixedTargets
+module
+
+public import CWPermutedTerminalMatrices
+public import CWMixedTargets
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Differently oriented terminal child targets combine into one actual
 rectangular matrix factor. Their complete logarithmic volumes add exactly. -/
@@ -56,7 +63,7 @@ theorem permuted_mixed_matrix_log_volume (axes : T → Equiv.Perm (Fin 3)) (q : 
       ∑ type, (2*((extreme type : ℝ)+middle type))*
         ((2-2*parameter (extreme type) (middle type))*Real.log q) := by
   rw [permuted_mixed_matrix_volume, Nat.cast_prod]
-  rw [Real.log_prod Finset.univ _ (fun type _ => by
+  rw [Real.log_prod (fun type _ => by
     have positiveVolume : 0 < q^(2*middle type)*q^(2*extreme type)*q^(2*middle type) := by positivity
     exact_mod_cast positiveVolume.ne')]
   apply Finset.sum_congr rfl

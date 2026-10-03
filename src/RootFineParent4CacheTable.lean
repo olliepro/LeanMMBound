@@ -1,5 +1,12 @@
-import SuppliedRootFineParent4IntegerValidity
-import RootFineCacheAssembly
+module
+
+public import SuppliedRootFineParent4IntegerValidity
+public import RootFineCacheAssembly
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Independently checked complete parent4 laws compose into an exact source-indexed lookup. -/
 namespace MatrixBounds.Numeric

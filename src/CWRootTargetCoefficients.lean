@@ -1,4 +1,11 @@
-import CWRootTargetOwnership
+module
+
+public import CWRootTargetOwnership
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Mapped root coefficients pass every coarse, hash, and pooled restriction
 of their selected edge, and equal the complete common child target. -/

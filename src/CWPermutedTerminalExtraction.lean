@@ -1,6 +1,13 @@
-import CWPermutedTerminalDegreeControl
-import CWPermutedTerminalMixedTarget
-import CWTerminalExtraction
+module
+
+public import CWPermutedTerminalDegreeControl
+public import CWPermutedTerminalMixedTarget
+public import CWTerminalExtraction
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! One shared extraction for differently oriented terminal parents. The
 physical rates are summed across all types before selecting the limiting axis. -/
@@ -78,7 +85,7 @@ theorem exists_permuted_terminal_extraction_window {error maximum : ℝ}
       (fun type => by simpa only [← Nat.card_eq_fintype_card] using (rates type).2.1)
       (fun type => by simpa only [← Nat.card_eq_fintype_card] using (rates type).2.2)
   refine ⟨prime, copies, primality, ?_, copiesBound, ?_⟩
-  · simpa only [← Nat.card_eq_fintype_card] using primeBound
+  · simpa only [← Nat.card_eq_fintype_card] using! primeBound
   · simpa only [one_mul] using extracted.trans
       ((contextReduction_permuted_mixed_matrix (K := K) axes q extreme middle).batch (I := Fin copies))
 

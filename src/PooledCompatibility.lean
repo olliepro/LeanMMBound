@@ -1,5 +1,12 @@
-import SectorTypes
-import CompatibilitySymmetry
+module
+
+public import SectorTypes
+public import CompatibilitySymmetry
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Pooled and separately labelled compatibility constraints as actual finite
 word predicates. Their counts and permutation invariance are derived directly. -/

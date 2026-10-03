@@ -1,7 +1,14 @@
-import CWContextualReprofile
-import ContextUniformCopies
-import CWMixedContextualRates
-import CWMixedNearbyExtraction
+module
+
+public import CWContextualReprofile
+public import ContextUniformCopies
+public import CWMixedContextualRates
+public import CWMixedNearbyExtraction
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Uniform retained batches for nearby exact types preserve arbitrary waiting
 factors and earlier output copies. -/
@@ -62,7 +69,7 @@ theorem finite_contextual_nearby_profile_batch (data : ∀ type, SplitRestrictio
   apply contextReduction_uniform_retained_batch _ _ (by unfold modulusFactor; positivity)
   obtain ⟨prime, copies, primality, cap, retained, repaired⟩ := output
   refine ⟨prime, copies, primality.pos, cap, retained, ?_⟩
-  simpa only [target_reprofile, mul_one] using source.trans repaired
+  simpa only [target_reprofile, mul_one] using! source.trans repaired
 
 end
 end MatrixBounds.Tensor.CW.Mixed

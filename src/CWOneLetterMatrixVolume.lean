@@ -1,5 +1,12 @@
-import CWOneLetterMatrices
-import ShapePermutations
+module
+
+public import CWOneLetterMatrices
+public import ShapePermutations
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Permuting the physical axes of one-letter CW constituents preserves
 their actual matrix volume, including the three scalar constituents. -/

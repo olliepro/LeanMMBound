@@ -1,5 +1,12 @@
-import PooledEntropy
-import CWPooledDegrees
+module
+
+public import PooledEntropy
+public import CWPooledDegrees
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Entropy rates derived from actual finite incidence counts. The coarse edge
 count cancels, leaving compatibility entropy minus the parent fine-type entropy. -/

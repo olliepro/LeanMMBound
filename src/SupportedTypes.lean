@@ -1,5 +1,12 @@
-import ConstrainedCounting
-import CWTypedInterfaces
+module
+
+public import ConstrainedCounting
+public import CWTypedInterfaces
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Removing zero-mass alphabet symbols preserves exact type words and their
 coarse marginals. This identifies checked full shape tables with admissible support. -/

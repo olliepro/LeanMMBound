@@ -1,7 +1,14 @@
-import CWPermutedTerminalLaws
-import CWPermutedTerminalCoarse
-import CWExactCoarseRates
-import CWTerminalRetention
+module
+
+public import CWPermutedTerminalLaws
+public import CWPermutedTerminalCoarse
+public import CWExactCoarseRates
+public import CWTerminalRetention
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Actual coarse and fine retention rates for every physical terminal
 orientation. The total-two coordinate determines the ternary entropy entry. -/

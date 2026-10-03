@@ -1,5 +1,12 @@
-import CWMixedExtractedTargets
-import CWTargetSymmetry
+module
+
+public import CWMixedExtractedTargets
+public import CWTargetSymmetry
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The heterogeneous target has an actual transitive fine-part symmetry and
 uniform exponential coordinate growth for simultaneous sparse repair. -/

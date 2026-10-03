@@ -1,6 +1,13 @@
-import SuppliedRootChildren
-import CWRoleWindowRegions
-import SixfoldComposition
+module
+
+public import SuppliedRootChildren
+public import CWRoleWindowRegions
+public import SixfoldComposition
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The supplied root extraction actually yields the six symmetric complete
 source-window families required by the subsequent mixed-level pipeline. -/
@@ -38,7 +45,7 @@ theorem eventual_extraction {K : Type} [CommRing K] {error : ℝ} (errorPositive
     (Positions := fun child : ShapeAlphabet 16 => Fin (SuppliedRootPopulation.weight child*RepairRates.scale k))
     5 (fun _ => 8) Subtype.val SuppliedHigherLaws.root4 (fun _ => delta) (fun _ => .xzy)).context
   have combined := reduction.sixfold_extraction.trans ((restoreChildren.trans restoreSources).batch)
-  simpa only [one_pow, mul_one, one_mul] using combined
+  simpa only [one_pow, mul_one, one_mul] using! combined
 
 end
 end MatrixBounds.Numeric.SuppliedSixfoldRoot

@@ -1,5 +1,12 @@
-import TypeEntropy
-import FiniteSelection
+module
+
+public import TypeEntropy
+public import FiniteSelection
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Positive Gibbs weights bound actual word counts directly. This avoids
 assuming an optimizer or maximizing over unenumerated empirical profiles. -/

@@ -1,6 +1,13 @@
-import CWFiniteRootExtraction
-import ContextCopies
-import BehrendRetention
+module
+
+public import CWFiniteRootExtraction
+public import ContextCopies
+public import BehrendRetention
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! An actual prime and progression-free bucket set implement root extraction
 with an explicit finite copy count and context-preserving repair. -/

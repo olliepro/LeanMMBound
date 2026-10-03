@@ -1,7 +1,14 @@
-import SuppliedInitialAllocation
-import SuppliedPhysicalZero4
-import WaitingZeroMatrixOrientation
-import WaitingZeroMatrixCardinality
+module
+
+public import SuppliedInitialAllocation
+public import SuppliedPhysicalZero4
+public import WaitingZeroMatrixOrientation
+public import WaitingZeroMatrixCardinality
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Original root zero-coordinate children have exactly their actual zero4
 source shapes, laws, populations, and compressed matrix dimension rates. -/
@@ -21,7 +28,7 @@ def child (node : Fin 48) : ShapeAlphabet 16 := SuppliedChildKinds.child4Equiv.s
 /-- The original root classification recovers the exact zero-node source label. -/
 theorem child_kind (node : Fin 48) : SuppliedChildKinds.kind4 ((shapeColumnEquiv 16).symm (child node)) = .inl node := by
   have selected := SuppliedChildKinds.child4Equiv.apply_symm_apply (.inl node)
-  simpa only [SuppliedChildKinds.child4Equiv, Equiv.trans_apply, Equiv.ofBijective_apply] using selected
+  simpa only [SuppliedChildKinds.child4Equiv, Equiv.trans_apply, Equiv.ofBijective_apply] using! selected
 
 /-- The root waiting child has precisely the source shape of its original supplied zero4 row. -/
 theorem child_shape (node : Fin 48) : (child node).val = shape4 node := by
@@ -29,7 +36,6 @@ theorem child_shape (node : Fin 48) : (child node).val = shape4 node := by
   have correct := SuppliedChildKinds.kind4_correct ((shapeColumnEquiv 16).symm (child node))
   rw [child_kind] at correct
   have column := congrArg (fun entry : Option ℕ => entry.getD 0) correct
-  dsimp only at column
   unfold shape4
   rw [column]
   exact selected.symm

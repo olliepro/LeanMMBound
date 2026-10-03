@@ -1,6 +1,13 @@
-import CWMixedActualCounts
-import CWMixedTargets
-import MixedSelection
+module
+
+public import CWMixedActualCounts
+public import CWMixedTargets
+public import MixedSelection
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Quantitative selection with one seed across all parent types. The modulus
 is compared with products of the local degrees, before selecting an axis. -/

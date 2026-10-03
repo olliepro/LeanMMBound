@@ -1,8 +1,15 @@
-import CWZeroRationalDimensions
-import OrbitRationalProfiles
-import OrbitExpectations
-import FineOrbitStatistics
-import TypeSampling
+module
+
+public import CWZeroRationalDimensions
+public import OrbitRationalProfiles
+public import OrbitExpectations
+public import FineOrbitStatistics
+public import TypeSampling
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The matrix-dimension rate of a zero-coordinate leaf equals the exact
 compressed entropy and middle-symbol average of its verified fine-word orbits. -/
@@ -35,7 +42,6 @@ theorem expanded_middle_average (partition : OrbitMap (Fin length → Fin 3) (Fi
   have probability := partition.expanded_probability numerator denominatorPositive expansionPositive divisible
   have expectation := partition.decode_expectation (fun orbit => (numerator orbit : ℝ)/denominator)
     (fun word => (count word 1 : ℝ)) (fun word => by
-      dsimp only
       rw [middleIdentity, middleIdentity, partition.representative_label])
   calc
     _ = ∑ word, ((partition.expandedNumerator numerator expansion word : ℝ)/(denominator*expansion : ℕ))*(count word 1 : ℝ) := by

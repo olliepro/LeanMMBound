@@ -1,5 +1,12 @@
-import SuppliedPathStages
-import TerminalLogExpressions
+module
+
+public import SuppliedPathStages
+public import TerminalLogExpressions
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Exact original-source terminal logarithmic expressions, with the full
 allocation-history stage rate and its root normalization proved symbolically. -/
@@ -76,8 +83,8 @@ theorem expression_value (axis : Fin 3) :
 /-- The full-history terminal extraction rate is exactly its original role-weighted source expression, at the common root scale. -/
 theorem stage_rate_expression (axis : Fin 3) :
     SuppliedPathStages.terminal.rates axis = (rootWeight : ℝ)*rationalLogValue (expression axis) := by
-  rw [SuppliedPathStages.terminal_rates, SuppliedFixedStages.terminal,
-    SuppliedTerminalRationalSplit.stage_rates]
+  rw [SuppliedPathStages.terminal_rates, SuppliedFixedStages.terminal]
+  refine (SuppliedTerminalRationalSplit.stage_rates _ _ _ _ _ axis).trans ?_
   rw [sum_positive_weights terminalRoleWeight (fun label =>
     axisEntropy (extreme label.1) (middle label.1) (axes label.1 (SuppliedTerminalRoles.role label.1 label.2) axis))]
   rw [expression_value, Finset.mul_sum]

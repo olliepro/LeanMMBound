@@ -1,13 +1,20 @@
-import Mathlib.Algebra.BigOperators.Field
-import Mathlib.Data.Real.Basic
-import Mathlib.Data.Fintype.Prod
-import Mathlib.Tactic.Linarith
-import Mathlib.Tactic.Ring
-import Mathlib.Tactic.NormNum
-import Mathlib.Tactic.FieldSimp
-import Mathlib.Tactic.Positivity
-import Mathlib.Tactic.IntervalCases
-import Mathlib.Tactic.LinearCombination
+module
+
+public import Mathlib.Algebra.BigOperators.Field
+public import Mathlib.Basic.Real.Basic
+public import Mathlib.Data.Fintype.Prod
+public import Mathlib.Tactic.Linarith
+public import Mathlib.Tactic.Ring
+public import Mathlib.Tactic.NormNum
+public import Mathlib.Tactic.FieldSimp
+public import Mathlib.Tactic.Positivity
+public import Mathlib.Tactic.IntervalCases
+public import Mathlib.Tactic.LinearCombination
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-!
 # Checked components of the proposed mixed-level argument
@@ -238,7 +245,6 @@ theorem strict_joint_advantage :
     let second : Rates := fun i => if i.val = 1 then 0 else 1
     bottleneck first + bottleneck second < bottleneck (first + second) := by
   norm_num [bottleneck, Pi.add_apply]
-  split_ifs <;> norm_num
 
 end Pipeline
 

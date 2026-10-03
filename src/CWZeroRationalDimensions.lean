@@ -1,5 +1,12 @@
-import CWTypedDimensions
-import LogarithmicLoss
+module
+
+public import CWTypedDimensions
+public import LogarithmicLoss
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Zero-coordinate matrix dimensions at a fixed rational complete fine law.
 All entropy estimates refer to the actual typed coordinate set. -/

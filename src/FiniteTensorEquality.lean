@@ -1,4 +1,11 @@
-import FiniteTensorFamily
+module
+
+public import FiniteTensorFamily
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Equality of packaged finite tensors yields explicit coordinate maps,
 including the dependent coordinate casts needed by a changing schedule. -/

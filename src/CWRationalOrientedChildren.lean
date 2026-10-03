@@ -1,6 +1,13 @@
-import CWRationalChildren
-import CWRationalPermutations
-import CWRoleWindowRouting
+module
+
+public import CWRationalChildren
+public import CWRationalPermutations
+public import CWRoleWindowRouting
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Shared extraction children retain their original shape and population labels
 when a parent used a physical role. Only the actual axes are permuted. -/
@@ -68,8 +75,9 @@ def roleChildrenRestriction (splits : ∀ type, RationalSplit (length type) deno
   refine (reindexRestriction (roleChildEquiv role) _).trans ?_
   apply CoordinateRestriction.heterogeneous
   intro index
-  simpa only [roleChildEquiv, Equiv.sigmaCongrRight_apply, Equiv.symm_apply_apply] using
-    roleChildWindowRestriction splits role weight size q law tolerance index
+  rw [roleChildEquiv, Equiv.sigmaCongrRight_apply]
+  simpa only [Equiv.symm_apply_apply] using!
+    roleChildWindowRestriction (K := K) splits role weight size q law tolerance index
 
 end
 end MatrixBounds.Tensor.CW.Mixed

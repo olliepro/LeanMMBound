@@ -1,4 +1,11 @@
-import SuppliedPairedFineSingletonLabels
+module
+
+public import SuppliedPairedFineSingletonLabels
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Separately labelled child columns and physical coordinate pools evaluate every paired fine
 compatibility sector from exact integer inputs, in the symbolic form of the numerical certificates. -/

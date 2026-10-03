@@ -1,5 +1,12 @@
-import EmpiricalTypes
-import TypePartition
+module
+
+public import EmpiricalTypes
+public import TypePartition
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Exact empirical types are invariant under bijective alphabet relabeling.
 The maps act on the actual words and preserve every multiplicity. -/

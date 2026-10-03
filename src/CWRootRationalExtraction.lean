@@ -1,5 +1,12 @@
-import CWRootRationalData
-import CWRootAsymptoticApproximate
+module
+
+public import CWRootRationalData
+public import CWRootAsymptoticApproximate
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The unrestricted root extraction instantiated with a fixed rational law.
 References, scale comparisons, and the lower rate cap are proved internally. -/

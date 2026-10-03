@@ -1,4 +1,11 @@
-import CWAxisPooling
+module
+
+public import CWAxisPooling
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Data and actual variable restrictions for one CW split extraction. All
 profiles are integer counts. Complement conditions record the necessary exact

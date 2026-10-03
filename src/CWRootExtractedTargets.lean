@@ -1,5 +1,12 @@
-import CWRootTargetCoefficients
-import ContextExtraction
+module
+
+public import CWRootTargetCoefficients
+public import ContextExtraction
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The unrestricted root supplies its whole selected damaged target batch
 in every tensor context, preserving all original rank-budget factors. -/

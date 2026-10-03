@@ -1,5 +1,12 @@
-import TensorBatching
-import PolynomialDegeneration
+module
+
+public import TensorBatching
+public import PolynomialDegeneration
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Independent linear restrictions lift through arbitrary existing batches.
 This keeps the already earned copy index in every later extraction stage. -/
@@ -44,7 +51,7 @@ theorem batchReduction_restrict [Fintype X] [Fintype Y] [Fintype Z]
 theorem batchReduction_pullback (source : Coeff K X Y Z) (mx : U → X) (my : V → Y) (mz : W → Z) :
     BatchReduction.{v} source (fun x y z => source (mx x) (my y) (mz z)) 1 := by
   intro E finite rank algorithm
-  simpa only [directSum, one_mul] using rankLE_pullback algorithm
+  simpa only [directSum, one_mul] using! rankLE_pullback algorithm
     (fun x : E × U => (x.1, mx x.2)) (fun y : E × V => (y.1, my y.2)) (fun z : E × W => (z.1, mz z.2))
 
 /-- Doing nothing preserves a batch at unit cost. -/

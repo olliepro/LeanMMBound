@@ -1,5 +1,12 @@
-import CWRootTargetSymmetry
-import ContextBatchRepair
+module
+
+public import CWRootTargetSymmetry
+public import ContextBatchRepair
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Sparse fine collision holes in the selected unrestricted-root targets
 can be repaired simultaneously, with the original source and all contexts kept. -/

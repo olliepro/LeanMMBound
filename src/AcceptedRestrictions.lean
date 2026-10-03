@@ -1,5 +1,12 @@
-import TypePartition
-import PolynomialDegeneration
+module
+
+public import TypePartition
+public import PolynomialDegeneration
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Nested accepted variable sets are connected by explicit diagonal axis maps.
 This supplies actual tensor restrictions for shrinking interface tolerances. -/
@@ -34,7 +41,7 @@ def acceptedCertificate (tensor : Coeff K X Y Z)
   have restricted := certificate.restrict
     (mask (fun x => decide (acceptX (typeX x)))) (mask (fun y => decide (acceptY (typeY y))))
     (mask (fun z => decide (acceptZ (typeZ z))))
-  simpa only [restrict_mask, decide_eq_true_eq, acceptedTensor] using restricted
+  simpa only [restrict_mask, decide_eq_true_eq, acceptedTensor] using! restricted
 
 /-- Strengthening three acceptance predicates is a legitimate independent-axis tensor restriction. -/
 theorem restrict_narrower_accepted (tensor : Coeff K X Y Z)

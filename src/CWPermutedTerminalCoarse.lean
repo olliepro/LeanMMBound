@@ -1,5 +1,12 @@
-import CWPermutedTerminalData
-import CWTerminalDegreeRate
+module
+
+public import CWPermutedTerminalData
+public import CWTerminalDegreeRate
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The complete coarse graph of every terminal physical orientation still
 has no extra joint types. This supplies its actual coarse degree count. -/

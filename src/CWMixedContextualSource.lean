@@ -1,5 +1,12 @@
-import ContextExtraction
-import CWMixedWindowedOwners
+module
+
+public import ContextExtraction
+public import CWMixedWindowedOwners
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The actual CW preparatory masks and owner extraction preserve arbitrary
 untouched factors and preexisting batches. -/

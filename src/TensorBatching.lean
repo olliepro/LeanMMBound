@@ -1,5 +1,12 @@
-import TensorProduct
-import TensorSymmetry
+module
+
+public import TensorProduct
+public import TensorSymmetry
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Bilinear algorithms acting on batches. Substitution into a rank decomposition
 is expressed by concrete tensor restrictions of independent source copies. -/
@@ -26,7 +33,7 @@ theorem rankLE_relabel_copies {I J : Type*} [Fintype I] [Fintype J]
     (fun x : J × X => (equiv x.1, x.2))
     (fun y : J × Y => (equiv y.1, y.2))
     (fun z : J × Z => (equiv z.1, z.2))
-  simpa only [directSum, Equiv.apply_eq_iff_eq] using result
+  simpa only [directSum, Equiv.apply_eq_iff_eq] using! result
 
 /-- Repeating an algorithm for a batch gives an algorithm for any integral number of batches. -/
 theorem rankLE_grouped_copies (tensor : Coeff K X Y Z) {copies budget : ℕ}

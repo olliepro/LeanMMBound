@@ -1,5 +1,12 @@
-import UniformRetainedBatch
-import LogarithmicLoss
+module
+
+public import UniformRetainedBatch
+public import LogarithmicLoss
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Quantified removal of the common-prime and Behrend losses. Thresholds
 are independent of the exact profile, retained rate, and number of graph edges. -/

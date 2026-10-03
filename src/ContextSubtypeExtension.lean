@@ -1,5 +1,12 @@
-import ContextComposition
-import SubtypeExtension
+module
+
+public import ContextComposition
+public import SubtypeExtension
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Extending exact subtype axes by zero is a context-preserving operation. -/
 namespace MatrixBounds.Tensor

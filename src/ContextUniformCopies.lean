@@ -1,5 +1,12 @@
-import ContextCopies
-import UniformRetainedBatch
+module
+
+public import ContextCopies
+public import UniformRetainedBatch
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Remove variation in chosen primes and copy indices before gluing types,
 while preserving every companion tensor. -/

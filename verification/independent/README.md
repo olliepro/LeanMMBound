@@ -1,5 +1,11 @@
 # Independent verification (A. Perrault, 20–22 September 2026)
 
+These runs concern the Lean 4.24 release (commit `884a354`). The audited challenge file is kept as
+`Challenge.lean.orig`; it was renamed because the registry requires every `.lean` file to use the
+module system. The repository's root `Challenge.lean` is this file ported to Lean 4.35 (module header,
+`public` imports, four `backward.*` options and a porting note in the opening comment were
+added; every declaration is unchanged).
+
 Everything here was run on the Ohio Supercomputer Center (Cardinal, 96-core CPU nodes) from a
 fresh checkout of the sources at Lean tree `bb7aadd4c1d08f949ddfd20aec1f5a11ccacd884`
 (`git rev-parse HEAD:src`; this is the tree of the current `main`, and of the earlier commit
@@ -11,7 +17,7 @@ fresh Mathlib cache. Nothing prebuilt from the author's machines was reused.
 | From-scratch `lake build` | `build.sbatch` | 8,899 jobs, 0 errors, 0 `sorry` warnings; 1 h 31 min wall, ≤ 21 GB per process | `build_summary_14730125.txt`, `lake_build_14730125.log.gz` (sha256 in summary) |
 | Axiom audit (from that log) | — | 88,168 audit lines; only `propext`, `Classical.choice`, `Quot.sound` occur; `exponent_lt` depends on exactly these three | same |
 | `lean4checker` (tag v4.24.0) | `l4c.sbatch`, `l4c2.sbatch` | every one of the 6,534 modules replayed through the kernel, 0 failures | `lean4checker_results.txt` (`rc\|seconds\|module\|last line`) |
-| Statement audit | `Challenge.lean` | 121-line standalone file: the definitions of rank, the matrix multiplication tensor and `exponent`, copied from `src/` (see the note in the file), importing only Mathlib, ending in the theorem with `sorry` | read by A.P. |
+| Statement audit | `Challenge.lean.orig` | 121-line standalone file: the definitions of rank, the matrix multiplication tensor and `exponent`, copied from `src/` (see the note in the file), importing only Mathlib, ending in the theorem with `sorry` | read by A.P. |
 | Comparator: statement identity + axioms | `cmp_ab.sbatch` (part A) | every constant in the dependency closure of the statement of `exponent_lt` is identical in `Challenge` and in the project; proof uses only the three permitted axioms | `comparator_summary.txt` |
 | Comparator: full second-kernel replay | `cmp_run2.sbatch` | exported proof (19.3 M lines, sha256 in summary) replayed through the Lean 4.25 kernel: `Solution valid.` — 20 h 35 min single-threaded, 16.7 GB | `comparator_out_14743425.log.gz` |
 | Standalone Python interval verifier | `../../numerical-certificate/` | finite-pipeline bound enclosed in [2.37104473, 2.37104474] < 2.3710449 | `../../numerical-certificate/report.json` |

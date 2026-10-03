@@ -1,6 +1,13 @@
-import SuppliedParameterRows
-import CWTerminalOrbitLaws
-import CWRationalLawValidity
+module
+
+public import SuppliedParameterRows
+public import CWTerminalOrbitLaws
+public import CWRationalLawValidity
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Every original indexed terminal parameter is realized by positive integer
 split counts, with the exact original compressed parent laws in physical coordinates. -/

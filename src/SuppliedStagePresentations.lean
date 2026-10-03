@@ -1,6 +1,13 @@
-import SuppliedPathStages
-import SuppliedTerminalPhysicalSplit
-import CWRationalStagePresentation
+module
+
+public import SuppliedPathStages
+public import SuppliedTerminalPhysicalSplit
+public import CWRationalStagePresentation
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Every supplied phase and every shared collection of phases has its exact
 original source-window presentation, including all preceding role histories. -/

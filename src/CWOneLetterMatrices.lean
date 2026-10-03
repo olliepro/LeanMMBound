@@ -1,5 +1,12 @@
-import CWZeroCoordinateRestrictions
-import CWOneLetterData
+module
+
+public import CWZeroCoordinateRestrictions
+public import CWOneLetterData
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Every one-letter CW shape has an explicit rectangular matrix restriction.
 The dimensions are powers of q on exactly the two-middle-coordinate shapes. -/

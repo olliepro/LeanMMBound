@@ -1,8 +1,15 @@
-import SuppliedNodePartialIndexing
-import SuppliedAllocationWindows
-import PartialWindowReindexing
-import SuppliedPhysicalZero3
-import SuppliedShapeInterfaceBindings
+module
+
+public import SuppliedNodePartialIndexing
+public import SuppliedAllocationWindows
+public import PartialWindowReindexing
+public import SuppliedPhysicalZero3
+public import SuppliedShapeInterfaceBindings
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Complete original level-four children retain the previous physical role
 when reindexed into their exact original positive or zero-coordinate nodes. -/
@@ -74,10 +81,10 @@ theorem zero_node (node : Fin 840) (previous : AxisOrder) (size : ℕ) (toleranc
   have lookup : SuppliedNodeLookup.lookup (SuppliedNodePartialIndexing.decode (.inr node)).1
       (SuppliedNodePartialIndexing.decode (.inr node)).2 = some (.inr node) :=
     SuppliedNodePartialIndexing.indexing.encode_decode (.inr node)
-  simp only [Equiv.symm_apply_apply, lookup]
+  simp only [(shapeColumnEquiv 8).symm_apply_apply (SuppliedNodePartialIndexing.decode (.inr node)).2, lookup]
   have shape := SuppliedNodeLookup.shapeAt_column 8
     (shapeColumnEquiv 8 (SuppliedNodePartialIndexing.decode (.inr node)).2)
-  rw [Equiv.symm_apply_apply] at shape
+  rw [(shapeColumnEquiv 8).symm_apply_apply (SuppliedNodePartialIndexing.decode (.inr node)).2] at shape
   change _ = _ at shape
   change ContextReduction
     (windowedPower (P := Fin (zeroWeight node previous*size))

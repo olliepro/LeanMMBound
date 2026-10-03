@@ -1,8 +1,15 @@
-import CWRootRateExtraction
-import CWRootDegreeControl
-import ContextUniformCopies
-import CWExtractionOverhead
-import RetentionLossRates
+module
+
+public import CWRootRateExtraction
+public import CWRootDegreeControl
+public import ContextUniformCopies
+public import CWExtractionOverhead
+public import RetentionLossRates
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Root extraction from the original CW power has arbitrarily small losses
 in both retained copies and repair cost, uniformly over feasible exact data. -/

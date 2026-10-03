@@ -1,5 +1,12 @@
-import CWTargetOwnership
-import RepairedTargets
+module
+
+public import CWTargetOwnership
+public import RepairedTargets
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The actual common target's parent holes satisfy the same explicit integer
 bound for every prescribed edge. The mixture center is independent of which
@@ -44,7 +51,7 @@ theorem parentHole_bound [Nonempty P] (data : SplitRestrictionData length) (symm
     profile representative positive scale multiplier population
   simp only [prescribedWord] at bound
   rw [data.parentCenter_eq edge profile] at bound
-  simpa only [← Nat.card_eq_fintype_card] using bound
+  simpa only [← Nat.card_eq_fintype_card] using! bound
 
 /-- Enlarging the accepted parent window can only decrease its actual target-hole count. -/
 theorem parentHole_mono (data : SplitRestrictionData length) (symmetric : data.Symmetric)

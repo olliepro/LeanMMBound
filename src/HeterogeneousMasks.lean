@@ -1,5 +1,12 @@
-import HeterogeneousInterface
-import AcceptedRestrictions
+module
+
+public import HeterogeneousInterface
+public import AcceptedRestrictions
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Independent variable masks commute with finite heterogeneous products. -/
 namespace MatrixBounds.Interface

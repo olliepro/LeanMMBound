@@ -1,5 +1,12 @@
-import TensorBatching
-import AcceptedRestrictions
+module
+
+public import TensorBatching
+public import AcceptedRestrictions
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Exact interfaces use subtype axes, whereas type partitions share ambient
 axes. Explicit zero extensions connect their rank algorithms without changing

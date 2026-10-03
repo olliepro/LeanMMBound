@@ -1,5 +1,12 @@
-import ScaledSectorAllocation
-import WindowedReindexing
+module
+
+public import ScaledSectorAllocation
+public import WindowedReindexing
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Allocate a fixed integer population coefficient among rationally weighted
 strategies and roles, preserving every sector and the common growing scale. -/

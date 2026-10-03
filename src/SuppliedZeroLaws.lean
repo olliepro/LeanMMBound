@@ -1,5 +1,12 @@
-import TypedParameterRows
-import CWRationalLawValidity
+module
+
+public import TypedParameterRows
+public import CWRationalLawValidity
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! One reusable physical-axis construction for all supplied zero-coordinate
 orbit laws, retaining their exact rational masses and complement permutations. -/

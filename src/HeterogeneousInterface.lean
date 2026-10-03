@@ -1,5 +1,12 @@
-import ExactInterface
-import Mathlib.Algebra.Group.Action.Pi
+module
+
+public import ExactInterface
+public import Mathlib.Algebra.Group.Action.Pi
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Products of interfaces with different alphabets and position sets. This is
 where factors of different recursion levels can be represented without identifying

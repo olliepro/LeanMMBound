@@ -1,4 +1,11 @@
-import CWSequentialData
+module
+
+public import CWSequentialData
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The complete three-stage ownership extraction for an actual CW parent
 product. Necessary compatibility and disjointness are proved from the physical

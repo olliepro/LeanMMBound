@@ -1,4 +1,11 @@
-import OrbitLogExpressions
+module
+
+public import OrbitLogExpressions
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Singleton entropy expressions may factor out their original source coefficient exactly. -/
 namespace MatrixBounds.Numeric

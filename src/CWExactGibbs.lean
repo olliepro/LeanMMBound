@@ -1,6 +1,13 @@
-import CWCoarseRates
-import CWTerminalProbabilities
-import EntropyRelabeling
+module
+
+public import CWCoarseRates
+public import CWTerminalProbabilities
+public import EntropyRelabeling
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! A split distribution represented exactly by positive coordinate potentials
 has zero Gibbs penalty in the actual extraction rate. -/

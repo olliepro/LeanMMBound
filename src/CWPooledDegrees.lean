@@ -1,5 +1,12 @@
-import CWPooledCompatibility
-import CWConstituents
+module
+
+public import CWPooledCompatibility
+public import CWConstituents
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Pointwise competitor bounds for actual CW split words and typed fine blocks.
 Symmetry and double counting are instantiated, rather than left as hypotheses. -/

@@ -1,6 +1,13 @@
-import CWMixedProfileFacts
-import CWNearbyParameters
-import CWMixedRateExtraction
+module
+
+public import CWMixedProfileFacts
+public import CWNearbyParameters
+public import CWMixedRateExtraction
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Every accepted valid exact tuple has the same nominal degree-rate bounds.
 The entropy rates depend on the fixed nominal child laws and coarse data,
@@ -68,7 +75,7 @@ theorem reprofile_fine_rate (data : ∀ type, SplitRestrictionData (length type)
     axis additive (axisClass type) (profileCounts data profiles type) (support type) (representative type)
     ((data type).activeLaw (law type)) ((data type).activeLaw_range (law type) (range type)) close
   rw [(data type).lawRetention_active (symmetric type) (axisClass type) (law type)] at bound
-  simpa only [nominalFineRate, neg_mul] using bound
+  simpa only [nominalFineRate, neg_mul] using! bound
 
 end
 end MatrixBounds.Tensor.CW.Mixed

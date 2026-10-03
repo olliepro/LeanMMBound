@@ -1,5 +1,12 @@
-import CWZeroWindowedMatrix
-import CWZeroRationalDimensions
+module
+
+public import CWZeroWindowedMatrix
+public import CWZeroRationalDimensions
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Fixed rational zero-coordinate laws supply actual matrix factors of their
 claimed asymptotic size from every nonnegative empirical window. -/

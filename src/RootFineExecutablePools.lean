@@ -1,4 +1,11 @@
-import RootFineSingletonPools
+module
+
+public import RootFineSingletonPools
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The original170 root sectors are evaluated with153 direct singleton entries and17 complete coordinate sums. -/
 namespace MatrixBounds.Numeric.RootFineExecutablePools

@@ -1,6 +1,13 @@
-import CWWindowCollisionRates
-import CWParentCenterBounds
-import IncidenceRates
+module
+
+public import CWWindowCollisionRates
+public import CWParentCenterBounds
+public import IncidenceRates
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Uniform entropy control for the actual maximum compatibility degree inside
 an accepted parent window, rather than a bound for a single chosen fine word. -/
@@ -44,7 +51,7 @@ theorem fine_degree_entropy (data : SplitRestrictionData length) (symmetric : da
   have bound := compatibleFine_entropy_rate length data.parent data.balanced axisClass (pooledProfile profile axisClass)
     (fun child => axis child.val) data.split (count fine) (data.prescribedWord reference) ⟨fine, fun _ => rfl⟩
     ⟨_, compatible.2⟩
-  simp only [← Nat.card_eq_fintype_card, prescribedWord] at bound ⊢
+  simp +instances only [← Nat.card_eq_fintype_card, prescribedWord] at bound ⊢
   unfold compatibilityCost parentTypeError
   simp only [← Nat.card_eq_fintype_card]
   convert bound using 1

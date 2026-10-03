@@ -1,5 +1,12 @@
-import MatrixDegeneration
-import Mathlib.Analysis.SpecificLimits.Normed
+module
+
+public import MatrixDegeneration
+public import Mathlib.Analysis.SpecificLimits.Normed
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Polynomial degeneration overhead vanishes in the algebraic exponent.
 Every step uses explicit finite decompositions and the previously defined rank exponent. -/

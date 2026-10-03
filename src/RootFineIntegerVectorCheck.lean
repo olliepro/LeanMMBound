@@ -1,4 +1,11 @@
-import RootFineParent3CacheTable
+module
+
+public import RootFineParent3CacheTable
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! A compact Boolean vector certificate checks every orbit without expanding a dependent universal proof. -/
 namespace MatrixBounds.Numeric

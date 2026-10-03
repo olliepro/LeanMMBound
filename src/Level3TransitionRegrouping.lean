@@ -1,6 +1,13 @@
-import HeterogeneousProductRegrouping
-import HeterogeneousFiniteRegrouping
-import TensorOrientations
+module
+
+public import HeterogeneousProductRegrouping
+public import HeterogeneousFiniteRegrouping
+public import TensorOrientations
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Finite factor regroupings used by the complete level-three transition. -/
 namespace MatrixBounds.Interface

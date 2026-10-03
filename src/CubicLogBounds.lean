@@ -1,4 +1,11 @@
-import LocalLogBounds
+module
+
+public import LocalLogBounds
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! After tabulated range reduction the four-term logarithm series is an exact
 rational cubic. This avoids rounded power traces for the many individual masses. -/

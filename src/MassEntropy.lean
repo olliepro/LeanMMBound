@@ -1,4 +1,11 @@
-import FactorialEntropy
+module
+
+public import FactorialEntropy
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Entropy of an unnormalized pooled mass vector. This is the PH quantity in
 the supplied verifier, including zero-mass sectors and exact scaling identities. -/

@@ -1,5 +1,12 @@
-import CWApproximateMixedExtraction
-import ProfileCountRates
+module
+
+public import CWApproximateMixedExtraction
+public import ProfileCountRates
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Actual CW profile counts and repair costs are subexponential on the
 chosen common population schedule. All constants are fixed before populations. -/
@@ -37,8 +44,8 @@ theorem child_profile_count_bound (data : ∀ type, SplitRestrictionData (length
     nlinarith
   have bound := profile_tuple_bound (Positions := ChildSlots data)
     (Alphabet := fun index : ChildIndex length => Fin (length index.1) → Fin 3) (2*∑ type, multiplier type) size pools
-  simpa only [ChildProfileTuple, Fintype.card_pi, ChildIndex, ChildSlots, Fintype.prod_sigma,
-    Fintype.sum_sigma, Finset.sum_const, Finset.card_univ, nsmul_eq_mul, profileDimension] using bound
+  simpa +instances only [ChildProfileTuple, Fintype.card_pi, ChildIndex, ChildSlots, Fintype.prod_sigma,
+    Fintype.sum_sigma, Finset.sum_const, Finset.card_univ, nsmul_eq_mul, profileDimension] using! bound
 
 /-- The full three-axis type-gluing cost is eventually smaller than any prescribed exponential rate. -/
 theorem child_profile_cost_eventually (length : T → ℕ) (multiplier : T → ℕ) {error : ℝ} (positive : 0 < error) :

@@ -1,4 +1,11 @@
-import CoarseRetentionRates
+module
+
+public import CoarseRetentionRates
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Real exponential estimates pass to maxima of finite natural counts without
 rounding losses. This is used for the actual coarse and fine graph degrees. -/

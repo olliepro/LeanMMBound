@@ -1,5 +1,12 @@
-import ExtractionExponent
-import RectangularSum
+module
+
+public import ExtractionExponent
+public import RectangularSum
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Convert the complete rectangular output of a pipeline directly into the
 algebraic exponent bound, including arbitrarily small extraction losses. -/

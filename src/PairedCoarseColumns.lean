@@ -1,5 +1,12 @@
-import RootCoarseEnumeration
-import CWShapePermutations
+module
+
+public import RootCoarseEnumeration
+public import CWShapePermutations
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Exact finite-column expansion of a paired coarse Gibbs rate, with an
 explicit admissibility filter on the original complete shape enumeration. -/

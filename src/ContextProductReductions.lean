@@ -1,5 +1,12 @@
-import ContextProducts
-import CoordinateRestriction
+module
+
+public import ContextProducts
+public import CoordinateRestriction
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Independent contextual transformations combine multiplicatively while
 preserving arbitrary further companion factors. -/

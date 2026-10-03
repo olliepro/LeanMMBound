@@ -1,5 +1,12 @@
-import HeterogeneousRegrouping
-import SixfoldExtraction
+module
+
+public import HeterogeneousRegrouping
+public import SixfoldExtraction
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Finite coordinate tensors packaged for dependent finite schedules. The
 package only records existing axes and coefficients; it adds no assumptions. -/

@@ -1,5 +1,12 @@
-import EntropyBounds
-import MassEntropy
+module
+
+public import EntropyBounds
+public import MassEntropy
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Exact entropy of distributions uniform inside finite orbits. This permits
 the numerical certificate to use orbit masses rather than expanded word arrays. -/
@@ -21,7 +28,7 @@ theorem uniform_orbit_total (mass : Orbit → ℝ) :
   apply Finset.sum_congr rfl
   intro orbit _
   have positive : (0 : ℝ) < Fintype.card (Fiber orbit) := by exact_mod_cast Fintype.card_pos
-  simp only [uniformOrbit, Finset.sum_const, Finset.card_univ, nsmul_eq_mul]
+  simp +instances only [uniformOrbit, Finset.sum_const, Finset.card_univ, nsmul_eq_mul]
   field_simp
 
 omit [Fintype Orbit] [∀ orbit, Fintype (Fiber orbit)] [∀ orbit, Nonempty (Fiber orbit)] in
@@ -40,7 +47,7 @@ theorem uniform_orbit_entropy (mass : Orbit → ℝ) :
       entropy mass + ∑ orbit, mass orbit*Real.log (Fintype.card (Fiber orbit)) := by
   unfold entropy
   rw [Fintype.sum_sigma]
-  simp only [uniformOrbit, Finset.sum_const, Finset.card_univ, nsmul_eq_mul]
+  simp +instances only [uniformOrbit, Finset.sum_const, Finset.card_univ, nsmul_eq_mul]
   rw [← Finset.sum_neg_distrib]
   have term (orbit : Orbit) := uniform_fiber_entropy (mass orbit) (Fintype.card (Fiber orbit))
     (by exact_mod_cast Fintype.card_pos : (0 : ℝ) < Fintype.card (Fiber orbit))

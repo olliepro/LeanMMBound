@@ -1,5 +1,12 @@
-import CWZeroContext
-import CWOneLetterDimensions
+module
+
+public import CWZeroContext
+public import CWOneLetterDimensions
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Full zero-coordinate constituent powers contain a matrix factor with the
 complete coordinate-family dimension. These maps include the terminal leaves. -/

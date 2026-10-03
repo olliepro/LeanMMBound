@@ -1,5 +1,12 @@
-import CWMixedNearbyExtraction
-import CWMixedProfileGluing
+module
+
+public import CWMixedNearbyExtraction
+public import CWMixedProfileGluing
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Complete finite approximate mixed extraction. One available nominal parent
 certificate supplies a common batch of the full accepted child interface.

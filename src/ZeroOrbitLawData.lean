@@ -1,4 +1,11 @@
-import DyadicOrbitSupport
+module
+
+public import DyadicOrbitSupport
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! A supplied zero-coordinate orbit row records its exact probability masses
 and its required coarse total. Its complete validity is decidably checked. -/

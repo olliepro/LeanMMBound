@@ -1,5 +1,12 @@
-import SuppliedDimensionFastExpressions
-import RootFineKernelMergeNormalization
+module
+
+public import SuppliedDimensionFastExpressions
+public import RootFineKernelMergeNormalization
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Small disjoint original-source blocks support bounded exact kernel checks
 of the complete matrix dimension expression. -/

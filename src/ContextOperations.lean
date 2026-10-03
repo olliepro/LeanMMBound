@@ -1,5 +1,12 @@
-import ContextRestrictions
-import TypeBatchGluing
+module
+
+public import ContextRestrictions
+public import TypeBatchGluing
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Finite addition and independent-copy assembly preserve arbitrary untouched
 tensor factors. Their rank multipliers count only new supplied copies. -/

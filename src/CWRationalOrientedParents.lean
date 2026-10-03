@@ -1,5 +1,12 @@
-import CWRationalOrientedChildren
-import CWRationalStage
+module
+
+public import CWRationalOrientedChildren
+public import CWRationalStage
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Parent interfaces of the physical rational extraction are exactly the
 complete original parent windows in their selected physical roles. -/

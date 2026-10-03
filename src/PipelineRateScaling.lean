@@ -1,4 +1,11 @@
-import PipelineNumericIntervals
+module
+
+public import PipelineNumericIntervals
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Positive changes of the population unit scale every finite pipeline term,
 including startup and drain corrections. -/

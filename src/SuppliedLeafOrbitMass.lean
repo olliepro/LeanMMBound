@@ -1,5 +1,12 @@
-import SuppliedLeafLaws
-import OrbitLogExpressions
+module
+
+public import SuppliedLeafLaws
+public import OrbitLogExpressions
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Exact rational compressed masses of the actual supplied level-three laws,
 with proved decoding and entropy identities. -/

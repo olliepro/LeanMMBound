@@ -1,5 +1,12 @@
-import CWSequentialData
-import SupportedTypes
+module
+
+public import CWSequentialData
+public import SupportedTypes
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Prescribed edges in the complete marginal graph have exactly the usual
 multinomial type count. One feasible reference fixes all support and marginal

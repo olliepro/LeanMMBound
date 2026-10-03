@@ -1,5 +1,12 @@
-import CWTerminalCounts
-import CWOneLetterMatrices
+module
+
+public import CWTerminalCounts
+public import CWOneLetterMatrices
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The common target of the terminal extraction is an actual rectangular
 matrix tensor, with all three dimensions derived from its integer split counts. -/

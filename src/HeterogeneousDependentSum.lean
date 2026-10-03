@@ -1,4 +1,11 @@
-import HeterogeneousRegrouping
+module
+
+public import HeterogeneousRegrouping
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Split a dependent tensor family on a sum of labels without requiring its
 coordinate types to be syntactically expressed through Sum.elim. -/

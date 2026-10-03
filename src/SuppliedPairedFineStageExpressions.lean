@@ -1,4 +1,11 @@
-import SuppliedPairedFineSourceExpressions
+module
+
+public import SuppliedPairedFineSourceExpressions
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Original paired fine rates with every source, strategy, and physical-role allocation. -/
 namespace MatrixBounds.Numeric.SuppliedPairedFine
@@ -50,7 +57,8 @@ theorem expression3_value (axis : Fin 2) : rationalLogValue (expression3 axis) =
       (sourceMass3 label : ℝ)*rationalLogValue (sourceExpression3 label.1 label.2 axis) := by
   conv_rhs => rw [← Equiv.sum_comp sourceEquiv3 (fun label =>
     (sourceMass3 label : ℝ)*rationalLogValue (sourceExpression3 label.1 label.2 axis))]
-  simp only [expression3, finiteLogSum_value, scaleLogExpression_value, Fintype.sum_prod_type]
+  simp only [expression3, finiteLogSum_value, scaleLogExpression_value, Fintype.sum_prod_type,
+    sourceEquiv3, Equiv.trans_apply, Equiv.prodAssoc_symm_apply, Equiv.prodCongr_apply, Equiv.refl_apply, Prod.map_apply]
   rfl
 
 /-- The level-four rational source expression is exactly its original physical-label sum. -/
@@ -59,7 +67,8 @@ theorem expression4_value (axis : Fin 2) : rationalLogValue (expression4 axis) =
       (sourceMass4 label : ℝ)*rationalLogValue (sourceExpression4 label.1 label.2 axis) := by
   conv_rhs => rw [← Equiv.sum_comp sourceEquiv4 (fun label =>
     (sourceMass4 label : ℝ)*rationalLogValue (sourceExpression4 label.1 label.2 axis))]
-  simp only [expression4, finiteLogSum_value, scaleLogExpression_value, Fintype.sum_prod_type]
+  simp only [expression4, finiteLogSum_value, scaleLogExpression_value, Fintype.sum_prod_type,
+    sourceEquiv4, Equiv.trans_apply, Equiv.prodAssoc_symm_apply, Equiv.prodCongr_apply, Equiv.refl_apply, Prod.map_apply]
   rfl
 
 /-- Root reserves clear an exact source denominator without evaluating the source numerator. -/
@@ -83,6 +92,11 @@ theorem rootWeight_mass4 (label : SuppliedStage4.Source × AxisOrder) :
     Rat.cast_div, Rat.cast_natCast, Rat.cast_mul, Rat.cast_pow] using reserved_mass 6 2
       (rootNumerator label.1 * SuppliedRoleIndex.allocation4 label.1 label.2)
 
+theorem rates_one' {T : Type*} [Fintype T] {length : T → ℕ} {d : ℕ} (s : Mixed.RationalStage T length d) :
+    s.rates 1 = ∑ type, (s.weight type : ℝ)*(s.splits type).fineRetention yClass (s.law type 1) := rfl
+theorem rates_two' {T : Type*} [Fintype T] {length : T → ℕ} {d : ℕ} (s : Mixed.RationalStage T length d) :
+    s.rates 2 = ∑ type, (s.weight type : ℝ)*(s.splits type).fineRetention zClass (s.law type 2) := rfl
+
 /-- Full inherited-history level-three rates equal the complete original weighted source expression. -/
 theorem original_rate3 (axis : Fin 2) : SuppliedPathStages.level3.rates (physicalAxis axis) =
     ∑ label : SuppliedStage3.Source × AxisOrder,
@@ -92,11 +106,13 @@ theorem original_rate3 (axis : Fin 2) : SuppliedPathStages.level3.rates (physica
   have equality := sum_positive_weights role3Weight (fun label =>
     (SuppliedStage3.split label.1 label.2).fineRetention (actualClass axis)
       (SuppliedStage3.law label.1 label.2 (physicalAxis axis)))
-  fin_cases axis <;> simpa only [SuppliedFixedStages.level3, SuppliedRationalStages.stage3,
-    Mixed.RationalStage.rates, physicalAxis, actualClass, Fin.mk_zero, Fin.mk_one,
-    Fin.succ_zero_eq_one, Fin.succ_one_eq_two, Fin.isValue, Matrix.cons_val_zero,
-    Matrix.cons_val_one, Matrix.cons_val_two, Matrix.head_cons, Matrix.tail_cons,
-    if_true, if_neg (by decide : (1 : Fin 2) ≠ 0)] using equality
+  fin_cases axis
+  · refine Eq.trans ?_ equality
+    rw [show physicalAxis ((fun i => i) ⟨0, by decide⟩ : Fin 2) = 1 from rfl, rates_one']
+    convert rfl using 3 <;> rfl
+  · refine Eq.trans ?_ equality
+    rw [show physicalAxis ((fun i => i) ⟨1, by decide⟩ : Fin 2) = 2 from rfl, rates_two']
+    convert rfl using 3 <;> rfl
 
 /-- Full level-four rates equal the complete original weighted source expression. -/
 theorem original_rate4 (axis : Fin 2) : SuppliedFixedStages.level4.rates (physicalAxis axis) =
@@ -106,10 +122,13 @@ theorem original_rate4 (axis : Fin 2) : SuppliedFixedStages.level4.rates (physic
   have equality := sum_positive_weights role4Weight (fun label =>
     (SuppliedStage4.split label.1 label.2).fineRetention (actualClass axis)
       (SuppliedStage4.law label.1 label.2 (physicalAxis axis)))
-  fin_cases axis <;> simpa only [SuppliedFixedStages.level4, SuppliedRationalStages.stage4,
-    Mixed.RationalStage.rates, physicalAxis, actualClass, Fin.mk_zero, Fin.mk_one, Fin.succ_zero_eq_one, Fin.succ_one_eq_two, Fin.isValue,
-    Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.cons_val_two, Matrix.head_cons, Matrix.tail_cons,
-    if_true, if_neg (by decide : (1 : Fin 2) ≠ 0)] using equality
+  fin_cases axis
+  · refine Eq.trans ?_ equality
+    rw [show physicalAxis ((fun i => i) ⟨0, by decide⟩ : Fin 2) = 1 from rfl, rates_one']
+    convert rfl using 3 <;> rfl
+  · refine Eq.trans ?_ equality
+    rw [show physicalAxis ((fun i => i) ⟨1, by decide⟩ : Fin 2) = 2 from rfl, rates_two']
+    convert rfl using 3 <;> rfl
 
 /-- Actual level-three fine retention is its exact original logarithmic source expression at root scale. -/
 theorem stage_rate_expression3 (axis : Fin 2) :

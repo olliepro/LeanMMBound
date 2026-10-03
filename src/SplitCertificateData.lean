@@ -1,90 +1,97 @@
-import SplitCertificateData.Part000
-import SplitCertificateData.Part001
-import SplitCertificateData.Part002
-import SplitCertificateData.Part003
-import SplitCertificateData.Part004
-import SplitCertificateData.Part005
-import SplitCertificateData.Part006
-import SplitCertificateData.Part007
-import SplitCertificateData.Part008
-import SplitCertificateData.Part009
-import SplitCertificateData.Part010
-import SplitCertificateData.Part011
-import SplitCertificateData.Part012
-import SplitCertificateData.Part013
-import SplitCertificateData.Part014
-import SplitCertificateData.Part015
-import SplitCertificateData.Part016
-import SplitCertificateData.Part017
-import SplitCertificateData.Part018
-import SplitCertificateData.Part019
-import SplitCertificateData.Part020
-import SplitCertificateData.Part021
-import SplitCertificateData.Part022
-import SplitCertificateData.Part023
-import SplitCertificateData.Part024
-import SplitCertificateData.Part025
-import SplitCertificateData.Part026
-import SplitCertificateData.Part027
-import SplitCertificateData.Part028
-import SplitCertificateData.Part029
-import SplitCertificateData.Part030
-import SplitCertificateData.Part031
-import SplitCertificateData.Part032
-import SplitCertificateData.Part033
-import SplitCertificateData.Part034
-import SplitCertificateData.Part035
-import SplitCertificateData.Part036
-import SplitCertificateData.Part037
-import SplitCertificateData.Part038
-import SplitCertificateData.Part039
-import SplitCertificateData.Part040
-import SplitCertificateData.Part041
-import SplitCertificateData.Part042
-import SplitCertificateData.Part043
-import SplitCertificateData.Part044
-import SplitCertificateData.Part045
-import SplitCertificateData.Part046
-import SplitCertificateData.Part047
-import SplitCertificateData.Part048
-import SplitCertificateData.Part049
-import SplitCertificateData.Part050
-import SplitCertificateData.Part051
-import SplitCertificateData.Part052
-import SplitCertificateData.Part053
-import SplitCertificateData.Part054
-import SplitCertificateData.Part055
-import SplitCertificateData.Part056
-import SplitCertificateData.Part057
-import SplitCertificateData.Part058
-import SplitCertificateData.Part059
-import SplitCertificateData.Part060
-import SplitCertificateData.Part061
-import SplitCertificateData.Part062
-import SplitCertificateData.Part063
-import SplitCertificateData.Part064
-import SplitCertificateData.Part065
-import SplitCertificateData.Part066
-import SplitCertificateData.Part067
-import SplitCertificateData.Part068
-import SplitCertificateData.Part069
-import SplitCertificateData.Part070
-import SplitCertificateData.Part071
-import SplitCertificateData.Part072
-import SplitCertificateData.Part073
-import SplitCertificateData.Part074
-import SplitCertificateData.Part075
-import SplitCertificateData.Part076
-import SplitCertificateData.Part077
-import SplitCertificateData.Part078
-import SplitCertificateData.Part079
-import SplitCertificateData.Part080
-import SplitCertificateData.Part081
-import SplitCertificateData.Part082
-import SplitCertificateData.Part083
-import SplitCertificateData.Part084
-import SplitCertificateData.Part085
-import SplitCertificateData.Part086
+module
+
+public import SplitCertificateData.Part000
+public import SplitCertificateData.Part001
+public import SplitCertificateData.Part002
+public import SplitCertificateData.Part003
+public import SplitCertificateData.Part004
+public import SplitCertificateData.Part005
+public import SplitCertificateData.Part006
+public import SplitCertificateData.Part007
+public import SplitCertificateData.Part008
+public import SplitCertificateData.Part009
+public import SplitCertificateData.Part010
+public import SplitCertificateData.Part011
+public import SplitCertificateData.Part012
+public import SplitCertificateData.Part013
+public import SplitCertificateData.Part014
+public import SplitCertificateData.Part015
+public import SplitCertificateData.Part016
+public import SplitCertificateData.Part017
+public import SplitCertificateData.Part018
+public import SplitCertificateData.Part019
+public import SplitCertificateData.Part020
+public import SplitCertificateData.Part021
+public import SplitCertificateData.Part022
+public import SplitCertificateData.Part023
+public import SplitCertificateData.Part024
+public import SplitCertificateData.Part025
+public import SplitCertificateData.Part026
+public import SplitCertificateData.Part027
+public import SplitCertificateData.Part028
+public import SplitCertificateData.Part029
+public import SplitCertificateData.Part030
+public import SplitCertificateData.Part031
+public import SplitCertificateData.Part032
+public import SplitCertificateData.Part033
+public import SplitCertificateData.Part034
+public import SplitCertificateData.Part035
+public import SplitCertificateData.Part036
+public import SplitCertificateData.Part037
+public import SplitCertificateData.Part038
+public import SplitCertificateData.Part039
+public import SplitCertificateData.Part040
+public import SplitCertificateData.Part041
+public import SplitCertificateData.Part042
+public import SplitCertificateData.Part043
+public import SplitCertificateData.Part044
+public import SplitCertificateData.Part045
+public import SplitCertificateData.Part046
+public import SplitCertificateData.Part047
+public import SplitCertificateData.Part048
+public import SplitCertificateData.Part049
+public import SplitCertificateData.Part050
+public import SplitCertificateData.Part051
+public import SplitCertificateData.Part052
+public import SplitCertificateData.Part053
+public import SplitCertificateData.Part054
+public import SplitCertificateData.Part055
+public import SplitCertificateData.Part056
+public import SplitCertificateData.Part057
+public import SplitCertificateData.Part058
+public import SplitCertificateData.Part059
+public import SplitCertificateData.Part060
+public import SplitCertificateData.Part061
+public import SplitCertificateData.Part062
+public import SplitCertificateData.Part063
+public import SplitCertificateData.Part064
+public import SplitCertificateData.Part065
+public import SplitCertificateData.Part066
+public import SplitCertificateData.Part067
+public import SplitCertificateData.Part068
+public import SplitCertificateData.Part069
+public import SplitCertificateData.Part070
+public import SplitCertificateData.Part071
+public import SplitCertificateData.Part072
+public import SplitCertificateData.Part073
+public import SplitCertificateData.Part074
+public import SplitCertificateData.Part075
+public import SplitCertificateData.Part076
+public import SplitCertificateData.Part077
+public import SplitCertificateData.Part078
+public import SplitCertificateData.Part079
+public import SplitCertificateData.Part080
+public import SplitCertificateData.Part081
+public import SplitCertificateData.Part082
+public import SplitCertificateData.Part083
+public import SplitCertificateData.Part084
+public import SplitCertificateData.Part085
+public import SplitCertificateData.Part086
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 namespace MatrixBounds.Numeric.SplitCertificateData
 /-- All distinct split rows, retaining their parent shapes. -/

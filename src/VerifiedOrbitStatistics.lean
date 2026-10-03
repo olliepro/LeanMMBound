@@ -1,6 +1,13 @@
-import VerifiedOrbitLevel4
-import FineOrbitStatistics
-import CWZeroOrbitDimensions
+module
+
+public import VerifiedOrbitLevel4
+public import FineOrbitStatistics
+public import CWZeroOrbitDimensions
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Exact additive statistics of all supplied recursive word orbits. The
 identities concern every complete word, rather than just representatives. -/

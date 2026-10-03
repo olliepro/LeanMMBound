@@ -1,5 +1,12 @@
-import CWLawStability
-import CWMixedPrepared
+module
+
+public import CWLawStability
+public import CWMixedPrepared
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Exact child profiles near nominal child laws use an actual restriction of
 the available parent interface, with the original degeneration budget. -/

@@ -1,5 +1,12 @@
-import OrientedMatrixFactors
-import Mathlib.Analysis.SpecialFunctions.Log.Basic
+module
+
+public import OrientedMatrixFactors
+public import Mathlib.Analysis.SpecialFunctions.Log.Basic
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Canonical zero-coordinate extractions restore the original physical source,
 and their six orientations produce a genuine matrix with sixfold log volume. -/

@@ -1,7 +1,14 @@
-import SuppliedPopulationPaths
-import NamedPopulationAllocation
-import SuppliedStrategyAllocation
-import ContextHeterogeneousReductions
+module
+
+public import SuppliedPopulationPaths
+public import NamedPopulationAllocation
+public import SuppliedStrategyAllocation
+public import ContextHeterogeneousReductions
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Actual original source windows, with exact separately labelled strategy
 and role allocations at every population, including all empty sectors. -/
@@ -59,7 +66,7 @@ theorem allocate_strategies (node : Fin 945) (previous : AxisOrder) {size : ℕ}
     (fun strategy => SuppliedLeafLaws.parent3 node strategy 0)
     (fun strategy => SuppliedLeafLaws.parent3 node strategy 1)
     (fun strategy => SuppliedLeafLaws.parent3 node strategy 2) tolerance nonnegative
-  simpa only [Nat.cast_ofNat, ← SuppliedStrategyAllocation.mixture_formula] using allocation
+  simpa only [Nat.cast_ofNat, ← SuppliedStrategyAllocation.mixture_formula] using! allocation
 
 /-- Original level-three role allocation retains the strategy and all previous role labels. -/
 theorem allocate3 (source : SuppliedStage3.Source) (previous : AxisOrder) {size : ℕ} (sizePositive : 0 < size)

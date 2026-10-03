@@ -1,5 +1,12 @@
-import CWMixedPrepared
-import CWTargetSupport
+module
+
+public import CWMixedPrepared
+public import CWTargetSupport
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Every prescribed global edge realizes the same heterogeneous product of
 exact child tensors, with componentwise physical coordinate maps. -/

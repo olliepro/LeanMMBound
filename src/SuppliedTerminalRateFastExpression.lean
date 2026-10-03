@@ -1,5 +1,12 @@
-import SuppliedTerminalRateCertificates
-import SuppliedRootFineTerminalLookup
+module
+
+public import SuppliedTerminalRateCertificates
+public import SuppliedRootFineTerminalLookup
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The same exact terminal expression with proved balanced parameter lookup. -/
 namespace MatrixBounds.Numeric.SuppliedTerminalRates

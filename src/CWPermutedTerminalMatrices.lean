@@ -1,6 +1,13 @@
-import CWPermutedTerminalData
-import CWTerminalMatrixRates
-import CWOneLetterMatrixVolume
+module
+
+public import CWPermutedTerminalData
+public import CWTerminalMatrixRates
+public import CWOneLetterMatrixVolume
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Every physically oriented terminal target has actual matrix coordinate
 maps, and its matrix volume is exactly independent of that orientation. -/

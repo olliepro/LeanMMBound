@@ -1,4 +1,11 @@
-import RationalSectorAllocation
+module
+
+public import RationalSectorAllocation
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Fixed rational sector weights are integer multiples of a common growing
 scale. This is the population convention used by rational mixed extraction. -/

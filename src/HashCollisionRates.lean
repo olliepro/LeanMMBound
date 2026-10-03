@@ -1,5 +1,12 @@
-import HashEdges
-import FiniteSelection
+module
+
+public import HashEdges
+public import FiniteSelection
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Exact conditioned survival and collision probabilities for coarse edges,
 including all three choices of shared axis. -/

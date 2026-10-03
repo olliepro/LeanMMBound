@@ -1,6 +1,13 @@
-import ContextRestrictions
-import TensorTranspose
-import HeterogeneousInterface
+module
+
+public import ContextRestrictions
+public import TensorTranspose
+public import HeterogeneousInterface
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Explicit coordinate maps and their coefficient identities can be composed
 and multiplied without losing the physical tensor interpretation. -/

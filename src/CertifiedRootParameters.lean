@@ -1,7 +1,14 @@
-import CertificateData.Part000
-import DyadicShapeData
-import CWRootRationalData
-import CWShapePermutations
+module
+
+public import CertificateData.Part000
+public import DyadicShapeData
+public import CWRootRationalData
+public import CWShapePermutations
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The supplied unrestricted-root distribution is instantiated on its actual
 length-eight shape alphabet, including the verifier's physical X-Z-Y order. -/

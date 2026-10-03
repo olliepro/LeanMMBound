@@ -1,4 +1,11 @@
-import SuppliedPopulationWeights
+module
+
+public import SuppliedPopulationWeights
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Keep the full allocation history in every later population. These labelled
 counts may be summed for rates; their actual tensor windows remain separate. -/
@@ -55,7 +62,8 @@ def terminalWeight (label : TerminalLabel) : ℕ :=
 theorem node_split (node : Fin 945) (previous : AxisOrder) :
     (SuppliedTypedParameters.level4Split (nodeParent node)).childWeight
       (role4Weight (nodeParent node, previous)) (nodeChild node) = nodeWeight node previous := by
-  rw [role4Weight, child_scaled]
+  rw [role4Weight]
+  erw [child_scaled]
   unfold nodeWeight nodeNumerator inherited4 scaled
   ring
 
@@ -78,7 +86,8 @@ theorem terminal_split (source : SuppliedTerminalScaling.Source) (previous4 prev
     (SuppliedTypedParameters.level3Split source.node source.strategy).childWeight
       (weight3 ⟨(source.node, source.strategy), previous4, previous3⟩) (terminalChild source.child) =
       terminalParentWeight source previous4 previous3 := by
-  rw [weight3, child_scaled]
+  rw [weight3]
+  erw [child_scaled]
   unfold terminalParentWeight terminalNumerator scaled
   ring
 

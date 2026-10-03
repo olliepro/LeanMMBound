@@ -1,5 +1,12 @@
-import CWTerminalCounts
-import CWTerminalLaws
+module
+
+public import CWTerminalCounts
+public import CWTerminalLaws
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Exact normalization of terminal integer counts and the resulting marginal
 probability vectors used by the numerical certificate. -/

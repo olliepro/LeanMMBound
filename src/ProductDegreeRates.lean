@@ -1,4 +1,11 @@
-import CWAsymptoticDegrees
+module
+
+public import CWAsymptoticDegrees
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Independent position types multiply their actual finite degrees. Their
 exponents therefore sum on each axis before any comparison between axes. -/
@@ -13,7 +20,7 @@ theorem normalized_product_exponential {T : Type*} [Fintype T]
     ((∏ type, degrees type : ℕ) : ℝ)/(∏ type, edges type : ℕ) ≤ Real.exp (∑ type, exponent type) := by
   push_cast
   rw [← Finset.prod_div_distrib, Real.exp_sum]
-  exact Finset.prod_le_prod (fun _ _ => div_nonneg (Nat.cast_nonneg _) (Nat.cast_nonneg _))
+  exact Finset.prod_le_prod₀ (fun _ _ => div_nonneg (Nat.cast_nonneg _) (Nat.cast_nonneg _))
     (fun type _ => pointwise type)
 
 /-- A lower target retention rate gives the corresponding upper normalized degree rate. -/

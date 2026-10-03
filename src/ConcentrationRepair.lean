@@ -1,6 +1,13 @@
-import HeterogeneousConcentration
-import LinearSymmetryRepair
-import Mathlib.Data.Real.Archimedean
+module
+
+public import HeterogeneousConcentration
+public import LinearSymmetryRepair
+public import Mathlib.Algebra.Order.Archimedean.Real.Basic
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Convert finite parent-type concentration into the integer hole bounds
 required by the constructive sparse repair theorem. -/

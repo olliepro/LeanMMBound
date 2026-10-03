@@ -1,5 +1,12 @@
-import SuppliedWaitingZero2Data
-import SuppliedPhysicalZero2
+module
+
+public import SuppliedWaitingZero2Data
+public import SuppliedPhysicalZero2
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The complete original leaf support certificate proves nonempty exact
 matrix indices for every separately labelled zero2 waiting population. -/

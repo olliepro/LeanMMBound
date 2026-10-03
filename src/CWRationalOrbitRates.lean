@@ -1,4 +1,11 @@
-import CWRationalOrbitParents
+module
+
+public import CWRationalOrbitParents
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Complete compatibility pools and fine retention rates have the exact
 recursive orbit compression used by the numerical certificate. -/

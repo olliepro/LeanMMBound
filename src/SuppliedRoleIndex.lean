@@ -1,5 +1,12 @@
-import PhysicalRoles
-import SuppliedTypedParameters
+module
+
+public import PhysicalRoles
+public import SuppliedTypedParameters
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The verifier's lexicographic six-role columns and the actual tensor-axis
 order labels agree exactly, retaining every allocation column. -/

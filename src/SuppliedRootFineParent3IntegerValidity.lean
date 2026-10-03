@@ -1,4 +1,11 @@
-import SuppliedRootFineParent3Columns
+module
+
+public import SuppliedRootFineParent3Columns
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Actual parent probability laws provide integer nonnegativity and normalization for sparse checks. -/
 namespace MatrixBounds.Numeric.SuppliedRootFineParent3Columns

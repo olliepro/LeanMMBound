@@ -1,5 +1,12 @@
-import WeightedSectorAllocation
-import CWRationalPopulation
+module
+
+public import WeightedSectorAllocation
+public import CWRationalPopulation
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! A fixed extra power of the supplied denominator clears each successive
 population allocation without rounding or assumptions about asymptotic sizes. -/

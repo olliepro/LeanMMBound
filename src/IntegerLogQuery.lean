@@ -1,5 +1,12 @@
-import IntegerLogParameter
-import FixedLogGrid
+module
+
+public import IntegerLogParameter
+public import FixedLogGrid
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! A logarithm witness whose executable checks and arithmetic use integers
 only. Its interpretation is the actual logarithm of an exact rational input. -/

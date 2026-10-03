@@ -1,6 +1,13 @@
-import CWConstituents
-import WindowedInterface
-import ContextRestrictions
+module
+
+public import CWConstituents
+public import WindowedInterface
+public import ContextRestrictions
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! A one-letter child has a single fine part on each coarse axis.
 Exact and approximate interface restrictions therefore retain its full power. -/

@@ -1,5 +1,12 @@
-import SuppliedPopulationWeights
-import WeightedPools
+module
+
+public import SuppliedPopulationWeights
+public import WeightedPools
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The actual supplied population tables determine fixed, complete stages.
 Zero-population labels are removed by the existing proved neutral-pool rule. -/

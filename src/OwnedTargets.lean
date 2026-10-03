@@ -1,5 +1,12 @@
-import SequentialExtraction
-import TypePartition
+module
+
+public import SequentialExtraction
+public import TypePartition
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Identify extracted owner pieces with one common child target and its
 per-copy fine-block holes. The source and target are related by explicit maps. -/

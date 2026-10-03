@@ -1,5 +1,12 @@
-import DyadicData
-import OrbitRationalProfiles
+module
+
+public import DyadicData
+public import OrbitRationalProfiles
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Executable sparse-row support checks are sufficient for the support of
 every complete decoded fine word, including zero-coordinate matrix leaves. -/

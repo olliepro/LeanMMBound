@@ -1,51 +1,58 @@
-import RateCertificateData.Level31Block000
-import RateCertificateData.Level31Block001
-import RateCertificateData.Level31Block002
-import RateCertificateData.Level31Block003
-import RateCertificateData.Level31Block004
-import RateCertificateData.Level31Block005
-import RateCertificateData.Level31Block006
-import RateCertificateData.Level31Block007
-import RateCertificateData.Level31Block008
-import RateCertificateData.Level31Block009
-import RateCertificateData.Level31Block010
-import RateCertificateData.Level31Block011
-import RateCertificateData.Level31Block012
-import RateCertificateData.Level31Block013
-import RateCertificateData.Level31Block014
-import RateCertificateData.Level31Block015
-import RateCertificateData.Level31Block016
-import RateCertificateData.Level31Block017
-import RateCertificateData.Level31Block018
-import RateCertificateData.Level31Block019
-import RateCertificateData.Level31Block020
-import RateCertificateData.Level31Block021
-import RateCertificateData.Level31Block022
-import RateCertificateData.Level31Block023
-import RateCertificateData.Level31Block024
-import RateCertificateData.Level31Block025
-import RateCertificateData.Level31Block026
-import RateCertificateData.Level31Block027
-import RateCertificateData.Level31Block028
-import RateCertificateData.Level31Block029
-import RateCertificateData.Level31Block030
-import RateCertificateData.Level31Block031
-import RateCertificateData.Level31Block032
-import RateCertificateData.Level31Block033
-import RateCertificateData.Level31Block034
-import RateCertificateData.Level31Block035
-import RateCertificateData.Level31Block036
-import RateCertificateData.Level31Block037
-import RateCertificateData.Level31Block038
-import RateCertificateData.Level31Block039
-import RateCertificateData.Level31Block040
-import RateCertificateData.Level31Block041
-import RateCertificateData.Level31Block042
-import RateCertificateData.Level31Block043
-import RateCertificateData.Level31Block044
-import RateCertificateData.Level31Block045
-import RateCertificateData.Level31Block046
-import RateCertificateData.Level31Block047
+module
+
+public import RateCertificateData.Level31Block000
+public import RateCertificateData.Level31Block001
+public import RateCertificateData.Level31Block002
+public import RateCertificateData.Level31Block003
+public import RateCertificateData.Level31Block004
+public import RateCertificateData.Level31Block005
+public import RateCertificateData.Level31Block006
+public import RateCertificateData.Level31Block007
+public import RateCertificateData.Level31Block008
+public import RateCertificateData.Level31Block009
+public import RateCertificateData.Level31Block010
+public import RateCertificateData.Level31Block011
+public import RateCertificateData.Level31Block012
+public import RateCertificateData.Level31Block013
+public import RateCertificateData.Level31Block014
+public import RateCertificateData.Level31Block015
+public import RateCertificateData.Level31Block016
+public import RateCertificateData.Level31Block017
+public import RateCertificateData.Level31Block018
+public import RateCertificateData.Level31Block019
+public import RateCertificateData.Level31Block020
+public import RateCertificateData.Level31Block021
+public import RateCertificateData.Level31Block022
+public import RateCertificateData.Level31Block023
+public import RateCertificateData.Level31Block024
+public import RateCertificateData.Level31Block025
+public import RateCertificateData.Level31Block026
+public import RateCertificateData.Level31Block027
+public import RateCertificateData.Level31Block028
+public import RateCertificateData.Level31Block029
+public import RateCertificateData.Level31Block030
+public import RateCertificateData.Level31Block031
+public import RateCertificateData.Level31Block032
+public import RateCertificateData.Level31Block033
+public import RateCertificateData.Level31Block034
+public import RateCertificateData.Level31Block035
+public import RateCertificateData.Level31Block036
+public import RateCertificateData.Level31Block037
+public import RateCertificateData.Level31Block038
+public import RateCertificateData.Level31Block039
+public import RateCertificateData.Level31Block040
+public import RateCertificateData.Level31Block041
+public import RateCertificateData.Level31Block042
+public import RateCertificateData.Level31Block043
+public import RateCertificateData.Level31Block044
+public import RateCertificateData.Level31Block045
+public import RateCertificateData.Level31Block046
+public import RateCertificateData.Level31Block047
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 namespace MatrixBounds.Numeric.CertifiedLevel3Rate1
 set_option maxRecDepth 100000

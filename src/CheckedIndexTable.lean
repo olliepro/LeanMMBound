@@ -1,4 +1,11 @@
-import DyadicData
+module
+
+public import DyadicData
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Bounded lookup tables retain the exact source order of certificate arrays.
 A proved lookup tree avoids repeatedly traversing a large concatenated list. -/

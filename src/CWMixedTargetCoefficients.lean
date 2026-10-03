@@ -1,5 +1,12 @@
-import CWMixedTargetOwnership
-import CWTargetCoefficients
+module
+
+public import CWMixedTargetOwnership
+public import CWTargetCoefficients
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The actual globally prepared source coefficient equals the common child
 target whenever its prescribed edge and all three parent parts are retained. -/

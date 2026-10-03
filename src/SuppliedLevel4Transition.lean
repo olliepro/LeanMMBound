@@ -1,5 +1,12 @@
-import SuppliedLevel4TransitionAllocation
-import SuppliedLevel4TransitionRestoration
+module
+
+public import SuppliedLevel4TransitionAllocation
+public import SuppliedLevel4TransitionRestoration
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The checked canonical level-four output really supplies the canonical
 level-three input, with every history label and every waiting zero source. -/

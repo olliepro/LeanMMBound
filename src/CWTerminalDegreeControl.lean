@@ -1,6 +1,13 @@
-import CWTerminalRetention
-import CWDegreeControlShrink
-import CWFiniteExtraction
+module
+
+public import CWTerminalRetention
+public import CWDegreeControlShrink
+public import CWFiniteExtraction
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! A single population threshold and positive window simultaneously realize
 all three terminal rates, including endpoint laws, from the actual finite counts. -/

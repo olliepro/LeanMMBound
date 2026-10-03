@@ -1,6 +1,13 @@
-import BatchSymmetry
-import LinearSymmetryRepair
-import Mathlib.Data.Fintype.Perm
+module
+
+public import BatchSymmetry
+public import LinearSymmetryRepair
+public import Mathlib.Data.Fintype.Perm
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Repair all retained outputs together without paying separately for the
 number of outputs. Different copies may have different sparse-hole patterns. -/

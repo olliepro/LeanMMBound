@@ -1,5 +1,12 @@
-import ShapeAlphabet
-import DyadicData
+module
+
+public import ShapeAlphabet
+public import DyadicData
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Translate a checked probability row to the actual complete shape alphabet
 through the same lexicographic column enumeration used by the certificate. -/

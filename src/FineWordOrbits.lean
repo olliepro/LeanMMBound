@@ -1,6 +1,13 @@
-import PairOrbitEncoding
-import CWCoarseHalves
-import Mathlib.Algebra.BigOperators.Fin
+module
+
+public import PairOrbitEncoding
+public import CWCoarseHalves
+public import Mathlib.Algebra.BigOperators.Fin
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Recursive finite orbits refer to the same complete fine-label words used
 by the CW tensor windows, with an exact lexicographic column enumeration. -/

@@ -1,4 +1,11 @@
-import PairOrbitEncoding
+module
+
+public import PairOrbitEncoding
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Symbol relabelings descend to the checked unordered-pair orbit encoding. -/
 namespace MatrixBounds.Entropy.PairEncoding

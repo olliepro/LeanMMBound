@@ -1,4 +1,11 @@
-import CWCompatibilityRates
+module
+
+public import CWCompatibilityRates
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Express actual parent centers and pooled masses directly in normalized
 child laws. Empty child pools have zero weight and require no division premise. -/

@@ -1,8 +1,15 @@
-import SuppliedTerminalRateExpression
-import CertifiedTerminalRate0
-import CertifiedTerminalRate1
-import CertifiedTerminalRate2
-import RootFineKernelMergeNormalization
+module
+
+public import SuppliedTerminalRateExpression
+public import CertifiedTerminalRate0
+public import CertifiedTerminalRate1
+public import CertifiedTerminalRate2
+public import RootFineKernelMergeNormalization
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Complete terminal certificate blocks and their exact rational expressions. -/
 namespace MatrixBounds.Numeric.SuppliedTerminalRates

@@ -1,5 +1,12 @@
-import TerminalRateCertificateWindows
-import CertifiedLevel3Rate1
+module
+
+public import TerminalRateCertificateWindows
+public import CertifiedLevel3Rate1
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 namespace MatrixBounds.Numeric.SuppliedPairedFine.PairedFine3TableA0
 open TerminalSourceNodeLookup SuppliedTerminalRates

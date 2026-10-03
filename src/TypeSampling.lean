@@ -1,5 +1,12 @@
-import EmpiricalTypes
-import FiniteSelection
+module
+
+public import EmpiricalTypes
+public import FiniteSelection
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Sampling coordinates of exact empirical types. Coordinate permutation
 symmetry supplies the finite counting identities behind sampling without replacement. -/

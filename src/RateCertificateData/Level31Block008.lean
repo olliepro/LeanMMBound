@@ -1,4 +1,12 @@
-import CertifiedLogBlocks
+module
+
+public import CertifiedLogBlocks
+public import FKLLog.Block
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 namespace MatrixBounds.Numeric.RateCertificateData.Level31Block008
 set_option maxRecDepth 100000
@@ -521,10 +529,12 @@ def terms : List IntegerLogTerm := [
 ]
 /-- Reported integer endpoints for the complete expression at scale 2^60. -/
 def bounds : FixedBounds := ⟨23182085969252531, 23182085969271654⟩
+/-- Nat-only kernel evaluation of the parameter checks and of the endpoint sums (`FKLLog.blockCheck`). -/
+theorem fast_checked : FKLLog.blockCheck terms bounds = true := by decide +kernel
 /-- Every coefficient and analytic parameter witness is checked using exact integer arithmetic. -/
-theorem terms_checked : integerLogCheck terms = true := by decide +kernel
+theorem terms_checked : integerLogCheck terms = true := (FKLLog.blockCheck_sound terms bounds fast_checked).1
 /-- The complete integer interval calculation agrees exactly with the reported endpoints. -/
-theorem bounds_checked : integerLogBounds terms = bounds := by decide +kernel
+theorem bounds_checked : integerLogBounds terms = bounds := (FKLLog.blockCheck_sound terms bounds fast_checked).2
 /-- The reported interval encloses the exact real weighted logarithm sum represented by these records. -/
 theorem sound : (bounds.interval (2^60)).Contains (integerLogValue terms) :=
   integerLogCertificate_sound terms bounds terms_checked bounds_checked

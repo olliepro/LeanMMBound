@@ -1,5 +1,12 @@
-import CWRootCoarseEntropy
-import LogarithmicLoss
+module
+
+public import CWRootCoarseEntropy
+public import LogarithmicLoss
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The coarse rate is marginal entropy minus the Gibbs upper bound on the
 entropy penalty. Its finite counting error is explicitly logarithmic. -/

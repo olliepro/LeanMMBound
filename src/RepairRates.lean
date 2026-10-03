@@ -1,6 +1,13 @@
-import SparseRepair
-import Mathlib.Tactic.Linarith
-import Mathlib.Tactic.Positivity
+module
+
+public import SparseRepair
+public import Mathlib.Tactic.Linarith
+public import Mathlib.Tactic.Positivity
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Explicit integer schedules for subexponential repair.
 We use the unbounded subsequence N(k) = k*2^k, avoiding informal logarithmic

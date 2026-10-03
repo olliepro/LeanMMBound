@@ -1,4 +1,11 @@
-import SuppliedRootFineExpression
+module
+
+public import SuppliedRootFineExpression
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The two complete executable root expressions are the actual fine-axis
 retentions of the supplied physical root tensor extraction. -/

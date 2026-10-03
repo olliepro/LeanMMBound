@@ -1,4 +1,11 @@
-import SuppliedShapeIndices
+module
+
+public import SuppliedShapeIndices
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Balanced access to the original hierarchy records preserves their exact source order. -/
 namespace MatrixBounds.Numeric.TerminalSourceNodeLookup

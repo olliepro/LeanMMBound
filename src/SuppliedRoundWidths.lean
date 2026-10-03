@@ -1,5 +1,12 @@
-import SuppliedBatchWidths
-import PipelineActiveRates
+module
+
+public import SuppliedBatchWidths
+public import PipelineActiveRates
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Forward tolerance selection follows the actual finite batch schedule.
 An active batch records only its current phase's output; every other batch

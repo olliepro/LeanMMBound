@@ -1,5 +1,12 @@
-import SuppliedWaitingZero2Data
-import HeterogeneousProductRegrouping
+module
+
+public import SuppliedWaitingZero2Data
+public import HeterogeneousProductRegrouping
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The actual complete waiting zero2 tensor restricts to exactly its positive
 populations, retaining all original windows and complete allocation histories. -/

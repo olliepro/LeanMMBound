@@ -1,5 +1,12 @@
-import CWMixedSource
-import CWMixedDegrees
+module
+
+public import CWMixedSource
+public import CWMixedDegrees
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Concrete global owners and variable-only acceptance tests for the
 heterogeneous source. No component is required to have its own active hash. -/

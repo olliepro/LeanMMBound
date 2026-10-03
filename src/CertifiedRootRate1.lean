@@ -1,5 +1,12 @@
-import RateCertificateData.Root1Block000
-import RateCertificateData.Root1Block001
+module
+
+public import RateCertificateData.Root1Block000
+public import RateCertificateData.Root1Block001
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 namespace MatrixBounds.Numeric.CertifiedRootRate1
 set_option maxRecDepth 100000

@@ -1,5 +1,12 @@
-import PairingSectorTypes
-import ApproximateTypes
+module
+
+public import PairingSectorTypes
+public import ApproximateTypes
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Empirical laws of fixed labelled sectors combine with their actual rational
 population weights. This is the window inclusion used by strategy allocation. -/

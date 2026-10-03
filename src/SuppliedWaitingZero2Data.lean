@@ -1,7 +1,14 @@
-import SuppliedWaitingZero2Source
-import WaitingZeroMatrixCardinality
-import ZeroOrbitLawData
-import VerifiedOrbitStatistics
+module
+
+public import SuppliedWaitingZero2Source
+public import WaitingZeroMatrixCardinality
+public import ZeroOrbitLawData
+public import VerifiedOrbitStatistics
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Every full-history zero2 waiting coefficient has its actual checked source
 row, supported rational matrix indices, and complete compressed dimension rate. -/

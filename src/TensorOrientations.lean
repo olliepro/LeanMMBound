@@ -1,5 +1,12 @@
-import TensorTranspose
-import Mathlib.Tactic.DeriveFintype
+module
+
+public import TensorTranspose
+public import Mathlib.Tactic.DeriveFintype
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! All six orderings transport the actual axes, coefficients, and extraction
 transformations. Their ordering agrees with the verifier's permutation table. -/
@@ -11,7 +18,13 @@ noncomputable section
 /-- The six physical orderings of the three tensor axes. -/
 inductive AxisOrder where
   | xyz | xzy | yxz | yzx | zxy | zyx
-  deriving DecidableEq, Fintype
+  deriving DecidableEq
+
+-- v4.35 port: Mathlib's `deriving Fintype` handler for enumeration types produces an
+-- ill-typed `Finset.mk` at v4.35.0-rc2, so the instance is written out.
+instance : Fintype AxisOrder where
+  elems := {.xyz, .xzy, .yxz, .yzx, .zxy, .zyx}
+  complete := fun x => by cases x <;> decide
 
 namespace AxisOrder
 

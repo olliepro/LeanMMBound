@@ -1,4 +1,11 @@
-import SuppliedCompletedMatrixData
+module
+
+public import SuppliedCompletedMatrixData
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! All waiting and terminal factors of each actual completed batch restrict
 to its genuine complete matrix with arbitrarily small total volume loss. -/

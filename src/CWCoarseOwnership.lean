@@ -1,7 +1,14 @@
-import CWCoarseGraph
-import CWUniformPairing
-import TensorHashing
-import AcceptedRestrictions
+module
+
+public import CWCoarseGraph
+public import CWUniformPairing
+public import TensorHashing
+public import AcceptedRestrictions
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Hash and coarse-owner restrictions on the actual CW parent product. The
 coarse graph is complete by construction, and a sufficiently large prime

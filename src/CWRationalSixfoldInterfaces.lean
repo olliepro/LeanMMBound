@@ -1,6 +1,13 @@
-import CWRationalOrientedParents
-import CWRoleWindowRegions
-import SixfoldComposition
+module
+
+public import CWRationalOrientedParents
+public import CWRoleWindowRegions
+public import SixfoldComposition
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! One actual rational extraction can be routed through all six physical
 regions and restored to full original child windows, preserving every label. -/
@@ -56,7 +63,7 @@ theorem sixfold_role_extraction (splits : ∀ type, RationalSplit (length type) 
     q (fun label => length label.1) (fun label => label.2.val)
     (fun label axis => law label.1 axis label.2) (fun label => delta label.1) (fun label => role label.1)).context
   have combined := before.trans (extraction.sixfold_extraction.trans ((restoreChildren.trans restoreSources).batch))
-  simpa only [one_pow, one_mul, mul_one] using combined
+  simpa only [one_pow, one_mul, mul_one] using! combined
 
 end
 end MatrixBounds.Tensor.CW.Mixed

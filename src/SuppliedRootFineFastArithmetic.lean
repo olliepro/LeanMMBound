@@ -1,5 +1,12 @@
-import SuppliedRootFineArithmetic
-import SuppliedRootFineTerminalLookup
+module
+
+public import SuppliedRootFineArithmetic
+public import SuppliedRootFineTerminalLookup
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The executable hierarchy uses balanced original terminal lookups.
 Every optimized function is proved equal to the actual supplied rational law. -/

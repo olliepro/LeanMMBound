@@ -1,5 +1,12 @@
-import CWOneLetterInterfaces
-import CWTargetMaps
+module
+
+public import CWOneLetterInterfaces
+public import CWTargetMaps
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Canonical exact child profiles for a split into one-letter CW constituents.
 The zero-coordinate compatibility identities are proved from the shapes. -/

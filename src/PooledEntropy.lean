@@ -1,4 +1,11 @@
-import PooledCompatibility
+module
+
+public import PooledCompatibility
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Entropy bounds for compatibility sectors, including empty sectors. Zero
 allocations in the supplied parameters need no artificial positivity assumption. -/

@@ -1,5 +1,12 @@
-import CWZeroSlice
-import EmpiricalTypes
+module
+
+public import CWZeroSlice
+public import EmpiricalTypes
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Actual necessary compatibility of complete fine-block empirical types in
 zero-coordinate CW sectors. The fine alphabet is the finite set {0,1,2}. -/

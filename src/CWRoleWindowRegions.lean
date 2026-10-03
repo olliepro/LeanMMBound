@@ -1,5 +1,12 @@
-import CWRoleWindowUnrouting
-import OrientedHeterogeneousProducts
+module
+
+public import CWRoleWindowUnrouting
+public import OrientedHeterogeneousProducts
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Complete sixfold source windows and the six literal shared-extraction
 regions are mutually related by explicit tensor coordinate restrictions. -/

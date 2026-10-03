@@ -1,5 +1,12 @@
-import TerminalParameterData
-import CWTerminalProbabilities
+module
+
+public import TerminalParameterData
+public import CWTerminalProbabilities
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Every exported terminal parameter supplies positive integer split counts,
 with exactly its original dyadic value and the stated parent population. -/

@@ -1,5 +1,12 @@
-import CWContextualNearbyExtraction
-import CWContextualProfileGluing
+module
+
+public import CWContextualNearbyExtraction
+public import CWContextualProfileGluing
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Complete finite approximate mixed extraction. One fixed nominal parent
 tensor supplies a common batch in every context of the full accepted child interface.

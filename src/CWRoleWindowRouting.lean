@@ -1,5 +1,12 @@
-import PhysicalRoleRouting
-import CWPhysicalWindowInverse
+module
+
+public import PhysicalRoleRouting
+public import CWPhysicalWindowInverse
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Route actual complete CW windows from six symmetric source copies into
 physical extraction regions while retaining every source and strategy label. -/

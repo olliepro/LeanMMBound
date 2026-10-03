@@ -1,6 +1,13 @@
-import SuppliedLevel3Transition
-import WaitingZeroMatrixOrientation
-import ZeroWindowOrientation
+module
+
+public import SuppliedLevel3Transition
+public import WaitingZeroMatrixOrientation
+public import ZeroWindowOrientation
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Actual level-three waiting children keep their complete original source,
 strategy, child, and two preceding role labels and exact source windows. -/
@@ -27,7 +34,7 @@ def shape (zero : Fin 12) : Shape :=
 /-- The original complete child classification names exactly its source zero leaf. -/
 theorem child_kind (zero : Fin 12) : SuppliedChildKinds.kind2 ((shapeColumnEquiv 4).symm (child zero)) = .inl zero := by
   have selected := SuppliedChildKinds.child2Equiv.apply_symm_apply (.inl zero)
-  simpa only [SuppliedChildKinds.child2Equiv, Equiv.trans_apply, Equiv.ofBijective_apply] using selected
+  simpa only [SuppliedChildKinds.child2Equiv, Equiv.trans_apply, Equiv.ofBijective_apply] using! selected
 
 /-- Original zero-leaf source shape agrees with its complete child shape in the checked transition. -/
 theorem child_shape (zero : Fin 12) : (child zero).val = shape zero := by
@@ -35,7 +42,6 @@ theorem child_shape (zero : Fin 12) : (child zero).val = shape zero := by
   have correct := SuppliedChildKinds.kind2_correct ((shapeColumnEquiv 4).symm (child zero))
   rw [child_kind] at correct
   have column := congrArg (fun entry : Option ℕ => entry.getD 0) correct
-  dsimp only at column
   unfold shape
   rw [column]
   exact selected.symm
@@ -76,7 +82,7 @@ def sourceRestriction {K : Type} [CommRing K] (label : Label) (size : ℕ) (tole
 /-- The full word expansion denominator already divides every actual original waiting coefficient. -/
 theorem weight_divisible (label : Label) : 17592186044416*2 ∣ weight label := by
   unfold weight SuppliedLevel3Transition.childWeight weight3
-  rw [child_scaled]
+  erw [child_scaled]
   unfold scaled
   exact dvd_mul_of_dvd_left (by norm_num [denominator] : 17592186044416*2 ∣ denominator^2) _
 

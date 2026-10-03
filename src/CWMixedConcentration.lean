@@ -1,6 +1,13 @@
-import CWMixedTargetOwnership
-import CWFiniteExtraction
-import ProductHoleCounts
+module
+
+public import CWMixedTargetOwnership
+public import CWFiniteExtraction
+public import ProductHoleCounts
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Parent-window concentration and selected collision holes on the entire
 heterogeneous target. The finite constants add across parent types. -/
@@ -34,7 +41,7 @@ theorem parentHole_bound [∀ type, Nonempty (Positions type)]
     ((data type).parentWindow (P := Positions type) (profile type) (tolerance type))
   let constants := fun type => SplitRestrictionData.parentRepairConstant (length type) (multiplier type) (tolerance type)
   have localBounds (type : T) : Nat.card {parts // holes type parts}*scale ≤ constants type*Nat.card ((data type).TargetParts (profile type)) := by
-    simpa only [Nat.card_eq_fintype_card] using (data type).parentHole_bound (symmetric type) (edge type)
+    simpa only [Nat.card_eq_fintype_card] using! (data type).parentHole_bound (symmetric type) (edge type)
       (profile type) (representative type) (positive type) scale (multiplier type) (population type)
   have combined := Selection.product_holes_bound holes scale constants localBounds
   have same : Nat.card {parts // parentHole data symmetric edge profile (parentWindows (Positions := Positions) data profile tolerance) parts} =
@@ -43,7 +50,7 @@ theorem parentHole_bound [∀ type, Nonempty (Positions type)]
     intro parts
     simp only [parentHole, parentWindows, targetFine, holes, SplitRestrictionData.parentHole, not_forall]
   rw [same]
-  simpa only [← Nat.card_eq_fintype_card] using combined
+  simpa only [← Nat.card_eq_fintype_card] using! combined
 
 /-- Combining all parent holes with the selected global window collisions costs one additional unit. -/
 theorem targetHoles_windowed_bound {prime : ℕ} [Fact prime.Prime]

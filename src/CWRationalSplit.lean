@@ -1,5 +1,12 @@
-import CWRationalRates
-import VerifiedCWApproximateData
+module
+
+public import CWRationalRates
+public import VerifiedCWApproximateData
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Fixed rational split specifications retain the mathematical input checks.
 They construct all integer extraction data and exact rates at divisible sizes. -/

@@ -1,7 +1,14 @@
-import SuppliedTerminalRationalSplit
-import CWPermutedTerminalCountScaling
-import CWPermutedTerminalWindowTarget
-import CWRationalChildren
+module
+
+public import SuppliedTerminalRationalSplit
+public import CWPermutedTerminalCountScaling
+public import CWPermutedTerminalWindowTarget
+public import CWRationalChildren
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Terminal children from the shared rational extraction give the actual full
 matrix factor, with their source parameters and integer population unchanged. -/

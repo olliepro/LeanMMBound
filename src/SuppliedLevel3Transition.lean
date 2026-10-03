@@ -1,7 +1,14 @@
-import SuppliedLevel3TransitionBindings
-import Level3TransitionRegrouping
-import ContextProductReductions
-import WeightedPools
+module
+
+public import SuppliedLevel3TransitionBindings
+public import Level3TransitionRegrouping
+public import ContextProductReductions
+public import WeightedPools
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! A complete actual transition from separately constrained level-three child
 windows to waiting zero windows and the next terminal extraction interface. -/
@@ -76,7 +83,7 @@ theorem allocateTerminalSector (label : Label3) {size : ℕ} (sizePositive : 0 <
   have allocation := ContextReduction.heterogeneous (fun _ : Fin 3 => 1)
     (fun child => SuppliedAllocationWindows.allocate_terminal (K := K)
       (terminalSource label child) label.previous label.role sizePositive nonnegative)
-  simpa only [Finset.prod_const_one] using allocation
+  simpa only [Finset.prod_const_one] using! allocation
 
 /-- Reindex the allocated terminal family by its original complete-history labels. -/
 def terminalRegroupRestriction (size : ℕ) (tolerance : Label3 → ℝ) :

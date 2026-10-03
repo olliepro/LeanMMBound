@@ -1,4 +1,11 @@
-import CWRationalPermutations
+module
+
+public import CWRationalPermutations
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Physical-axis composition acts contravariantly on the labelled child
 shape alphabet, exactly as required by successive window orientations. -/

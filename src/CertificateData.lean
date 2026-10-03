@@ -1,63 +1,70 @@
-import CertificateData.Part000
-import CertificateData.Part001
-import CertificateData.Part002
-import CertificateData.Part003
-import CertificateData.Part004
-import CertificateData.Part005
-import CertificateData.Part006
-import CertificateData.Part007
-import CertificateData.Part008
-import CertificateData.Part009
-import CertificateData.Part010
-import CertificateData.Part011
-import CertificateData.Part012
-import CertificateData.Part013
-import CertificateData.Part014
-import CertificateData.Part015
-import CertificateData.Part016
-import CertificateData.Part017
-import CertificateData.Part018
-import CertificateData.Part019
-import CertificateData.Part020
-import CertificateData.Part021
-import CertificateData.Part022
-import CertificateData.Part023
-import CertificateData.Part024
-import CertificateData.Part025
-import CertificateData.Part026
-import CertificateData.Part027
-import CertificateData.Part028
-import CertificateData.Part029
-import CertificateData.Part030
-import CertificateData.Part031
-import CertificateData.Part032
-import CertificateData.Part033
-import CertificateData.Part034
-import CertificateData.Part035
-import CertificateData.Part036
-import CertificateData.Part037
-import CertificateData.Part038
-import CertificateData.Part039
-import CertificateData.Part040
-import CertificateData.Part041
-import CertificateData.Part042
-import CertificateData.Part043
-import CertificateData.Part044
-import CertificateData.Part045
-import CertificateData.Part046
-import CertificateData.Part047
-import CertificateData.Part048
-import CertificateData.Part049
-import CertificateData.Part050
-import CertificateData.Part051
-import CertificateData.Part052
-import CertificateData.Part053
-import CertificateData.Part054
-import CertificateData.Part055
-import CertificateData.Part056
-import CertificateData.Part057
-import CertificateData.Part058
-import CertificateData.Part059
+module
+
+public import CertificateData.Part000
+public import CertificateData.Part001
+public import CertificateData.Part002
+public import CertificateData.Part003
+public import CertificateData.Part004
+public import CertificateData.Part005
+public import CertificateData.Part006
+public import CertificateData.Part007
+public import CertificateData.Part008
+public import CertificateData.Part009
+public import CertificateData.Part010
+public import CertificateData.Part011
+public import CertificateData.Part012
+public import CertificateData.Part013
+public import CertificateData.Part014
+public import CertificateData.Part015
+public import CertificateData.Part016
+public import CertificateData.Part017
+public import CertificateData.Part018
+public import CertificateData.Part019
+public import CertificateData.Part020
+public import CertificateData.Part021
+public import CertificateData.Part022
+public import CertificateData.Part023
+public import CertificateData.Part024
+public import CertificateData.Part025
+public import CertificateData.Part026
+public import CertificateData.Part027
+public import CertificateData.Part028
+public import CertificateData.Part029
+public import CertificateData.Part030
+public import CertificateData.Part031
+public import CertificateData.Part032
+public import CertificateData.Part033
+public import CertificateData.Part034
+public import CertificateData.Part035
+public import CertificateData.Part036
+public import CertificateData.Part037
+public import CertificateData.Part038
+public import CertificateData.Part039
+public import CertificateData.Part040
+public import CertificateData.Part041
+public import CertificateData.Part042
+public import CertificateData.Part043
+public import CertificateData.Part044
+public import CertificateData.Part045
+public import CertificateData.Part046
+public import CertificateData.Part047
+public import CertificateData.Part048
+public import CertificateData.Part049
+public import CertificateData.Part050
+public import CertificateData.Part051
+public import CertificateData.Part052
+public import CertificateData.Part053
+public import CertificateData.Part054
+public import CertificateData.Part055
+public import CertificateData.Part056
+public import CertificateData.Part057
+public import CertificateData.Part058
+public import CertificateData.Part059
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 namespace MatrixBounds.Numeric.CertificateData
 /-- The complete deduplicated collection of supplied dyadic probability rows. -/

@@ -1,6 +1,13 @@
-import LabelledConcentration
-import GroupedMoments
-import ApproximateTypes
+module
+
+public import LabelledConcentration
+public import GroupedMoments
+public import ApproximateTypes
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The actual empirical parent distribution of independently typed labelled
 child pools concentrates around the mixture of the independent child laws. -/
@@ -63,7 +70,7 @@ theorem grouped_pattern_concentration [Nonempty Parent]
         observedPattern placement (fun pool => (words pool).val) parent = pattern := funext_iff.symm
     simp only [indicator, events, count, Nat.card_eq_fintype_card, Fintype.card_subtype,
       Finset.sum_boole]
-  simpa only [counts] using bound
+  simpa only [counts] using! bound
 
 /-- A finite union over complete parent patterns bounds failure of the actual empirical window. -/
 theorem grouped_parent_window_concentration [Nonempty Parent]

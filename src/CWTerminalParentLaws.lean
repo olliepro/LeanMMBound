@@ -1,5 +1,12 @@
-import CWTerminalProbabilities
-import CWOneLetterEntropy
+module
+
+public import CWTerminalProbabilities
+public import CWOneLetterEntropy
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The independent-concatenation parent laws of the actual terminal data
 are precisely the full two-letter fine laws used in the supplied verifier. -/
@@ -102,7 +109,7 @@ theorem ternary_parent_entropy (mu : ℝ) :
   rw [← (finTwoArrowEquiv (Fin 3)).symm.sum_comp]
   norm_num [ternaryParentLaw, finTwoArrowEquiv, Fintype.sum_prod_type,
     Fin.sum_univ_succ, funext_iff, Fin.forall_fin_succ]
-  norm_num only [Fin.ext_iff, show (0 : Fin 3).val = 0 from rfl,
+  all_goals norm_num only [Fin.ext_iff, show (0 : Fin 3).val = 0 from rfl,
     show (1 : Fin 3).val = 1 from rfl, show (2 : Fin 3).val = 2 from rfl, ite_false, ite_true]
   all_goals ring
 

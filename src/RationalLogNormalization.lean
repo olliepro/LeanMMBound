@@ -1,4 +1,11 @@
-import RationalLogExpressions
+module
+
+public import RationalLogExpressions
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Exact symbolic simplification combines repeated logarithms while preserving
 their actual real value. Equality after normalization is a checkable bridge

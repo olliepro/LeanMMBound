@@ -1,4 +1,11 @@
-import CWMixedGraph
+module
+
+public import CWMixedGraph
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Conditional collision counts on the entire heterogeneous CW graph.
 All factor types share one weight vector and the same two offsets. -/

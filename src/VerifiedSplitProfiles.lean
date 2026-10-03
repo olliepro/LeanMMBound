@@ -1,8 +1,15 @@
-import ShapeAlphabet
-import SplitPairing
-import TypeDenominators
-import VerifiedSplitData
-import CWTypedInterfaces
+module
+
+public import ShapeAlphabet
+public import SplitPairing
+public import TypeDenominators
+public import VerifiedSplitData
+public import CWTypedInterfaces
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The kernel-checked split tables now supply feasible symmetric empirical
 profiles and actual labelled parent/child slot bijections at every divisible size. -/

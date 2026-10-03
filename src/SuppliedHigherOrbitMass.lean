@@ -1,6 +1,13 @@
-import SuppliedHigherLaws
-import SuppliedLeafOrbitMass
-import RationalOrbitValidity
+module
+
+public import SuppliedHigherLaws
+public import SuppliedLeafOrbitMass
+public import RationalOrbitValidity
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Exact rational orbit masses at every higher source hierarchy position,
 proved to decode to the corresponding actual complete tensor laws. -/

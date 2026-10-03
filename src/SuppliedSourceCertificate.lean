@@ -1,5 +1,12 @@
-import SuppliedSixfoldRoot
-import OrientedCertificates
+module
+
+public import SuppliedSixfoldRoot
+public import OrientedCertificates
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Explicit CW polynomial certificates for the actual sixfold supplied source
 and any fixed finite number of separately labelled source batches. -/
@@ -18,7 +25,7 @@ def source {K : Type} [CommRing K] (size : ℕ) :
     (fun _ => 7^(8*(rootWeight*size))) (fun _ => 24*(rootWeight*size))
     (fun order => by simpa only [Fintype.card_fin, Nat.reduceAdd, Nat.reduceMul] using
       (rootPowerCertificate (K := K) (P := Fin (rootWeight*size)) 5 8).orient order)
-  simpa only [Finset.prod_const, Finset.sum_const, Finset.card_univ, axisOrder_card, smul_eq_mul] using certificate
+  simpa only [Finset.prod_const, Finset.sum_const, Finset.card_univ, axisOrder_card, smul_eq_mul] using! certificate
 
 /-- Independent finite source batches retain the product rank budget and additive polynomial degree. -/
 def batches {K : Type} [CommRing K] (count size : ℕ) :

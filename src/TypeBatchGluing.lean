@@ -1,4 +1,11 @@
-import SubtypeExtension
+module
+
+public import SubtypeExtension
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Glue a common number of independent output copies across all exact type
 triples. The budget is multiplied by the finite number of type triples once. -/
@@ -45,7 +52,7 @@ theorem glue_exact_type_batches (tensor : Coeff K X Y Z)
   have budgets (labels : PX × PY × PZ) : RankLE (directSum (fun _ : Fin copies => family labels)) rank := by
     dsimp only [family]
     split_ifs with accepted
-    · simpa only [acceptedTensor, exactPiece, id_eq] using rankLE_extend_subtype_batch tensor
+    · simpa only [acceptedTensor, exactPiece, id_eq] using! rankLE_extend_subtype_batch tensor
         (fun x => typeX x = labels.1) (fun y => typeY y = labels.2.1) (fun z => typeZ z = labels.2.2)
         (algorithms labels accepted.1 accepted.2.1 accepted.2.2)
     · convert rankLE_zero (K := K) (X := Fin copies × X) (Y := Fin copies × Y) (Z := Fin copies × Z) rank using 1

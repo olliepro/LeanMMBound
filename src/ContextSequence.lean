@@ -1,5 +1,12 @@
-import ContextComposition
-import ContextRank
+module
+
+public import ContextComposition
+public import ContextRank
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! A finite sequence of actual contextual extractions multiplies all output
 counts and overheads, with one initial polynomial coefficient extraction. -/
@@ -41,7 +48,7 @@ theorem contextReduction_sequence {X Y Z : ℕ → Type*}
       (directSum (fun _ : Fin (∏ stage ∈ Finset.range length, copies stage) => tensors length))
       (∏ stage ∈ Finset.range length, overhead stage) := by
   induction length with
-  | zero => simpa only [Finset.range_zero, Finset.prod_empty] using contextReduction_singleton (tensors 0)
+  | zero => simpa only [Finset.range_zero, Finset.prod_empty] using! contextReduction_singleton (tensors 0)
   | succ length induction =>
     have earlier := induction (fun stage before => stages stage (Nat.lt_succ_of_lt before))
     have combined := earlier.compose_fin_extractions (stages length (Nat.lt_succ_self length))

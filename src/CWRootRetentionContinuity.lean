@@ -1,4 +1,11 @@
-import CWRootProfileLaws
+module
+
+public import CWRootProfileLaws
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! One positive child-window tolerance controls root retention for every
 population, split profile, and compatibility grouping, including empty pools. -/

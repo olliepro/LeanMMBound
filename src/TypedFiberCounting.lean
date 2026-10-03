@@ -1,4 +1,11 @@
-import ExactInterface
+module
+
+public import ExactInterface
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Count actual coordinates inside exact empirical interfaces. The result
 includes unequal fine-block sizes, which contribute to zero-leaf matrix dimensions. -/

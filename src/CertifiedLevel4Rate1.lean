@@ -1,8 +1,15 @@
-import RateCertificateData.Level41Block000
-import RateCertificateData.Level41Block001
-import RateCertificateData.Level41Block002
-import RateCertificateData.Level41Block003
-import RateCertificateData.Level41Block004
+module
+
+public import RateCertificateData.Level41Block000
+public import RateCertificateData.Level41Block001
+public import RateCertificateData.Level41Block002
+public import RateCertificateData.Level41Block003
+public import RateCertificateData.Level41Block004
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 namespace MatrixBounds.Numeric.CertifiedLevel4Rate1
 set_option maxRecDepth 100000

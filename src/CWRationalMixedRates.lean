@@ -1,6 +1,13 @@
-import CWRationalSplit
-import CWNominalRetentionLoss
-import CWWindowedInterfaces
+module
+
+public import CWRationalSplit
+public import CWNominalRetentionLoss
+public import CWWindowedInterfaces
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Integer multiples of one common scale realize fixed rational mixed-stage
 populations, centers, and the minimum of the three total rate sums. -/

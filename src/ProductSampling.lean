@@ -1,4 +1,11 @@
-import BlockConcentration
+module
+
+public import BlockConcentration
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Independent finite sample spaces and perturbation of product probabilities. -/
 namespace MatrixBounds.Sampling
@@ -53,7 +60,7 @@ theorem probability_product_bound {Index : Type*} [Fintype Index] (left right : 
       rw [identity]
       have right_nonneg : 0 ≤ ∏ i ∈ rest, right i := Finset.prod_nonneg (fun i _ => (right_bounds i).1)
       have right_bound : (∏ i ∈ rest, right i) ≤ 1 :=
-        Finset.prod_le_one (fun i _ => (right_bounds i).1) (fun i _ => (right_bounds i).2)
+        Finset.prod_le_one₀ (fun i _ => (right_bounds i).1) (fun i _ => (right_bounds i).2)
       calc
         _ ≤ |left index * ((∏ i ∈ rest, left i) - ∏ i ∈ rest, right i)| +
             |(left index-right index) * (∏ i ∈ rest, right i)| := abs_add_le _ _

@@ -1,0 +1,94 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: "v0.4"
+
+project:
+  name: "LeanMMBound: the matrix multiplication exponent is below 2.3710449"
+  description: >-
+    A complete Lean 4 / Mathlib proof that the algebraic matrix multiplication exponent ω over every
+    commutative ring is below 2.3710449. The proof formalizes the laser-method pipeline from the
+    Coppersmith–Winograd tensor (tensor powers, hashing with Behrend-type progression-free sets, repair of
+    damaged copies, asymptotic sum inequality for rectangular products) and checks an explicit numerical
+    certificate for the resulting rate optimization entirely in the Lean kernel with exact integer and
+    dyadic arithmetic.
+  authors:
+    - "Oliver Proudfoot"
+    - "Andrew Perrault"
+  license: "Apache-2.0"
+  responsible_maintainers:
+    - "Oliver Proudfoot"
+    - "Andrew Perrault"
+
+classification:
+  arxiv: ["cs.CC", "math.CO"]
+  msc2020: ["68Q17", "68Q25", "15A69", "68V20"]
+
+sources:
+  - title: "New upper bound ω < 2.3710449 on the matrix multiplication exponent, first presented with this formalization"
+    type: original-proof
+    relationship: other
+    note: "Accompanying paper: paper/matrix-multiplication-exponent.pdf in this repository."
+  - title: "Matrix multiplication via arithmetic progressions"
+    authors: ["Don Coppersmith", "Shmuel Winograd"]
+    type: article
+    location: "Journal of Symbolic Computation 9 (1990) 251–280"
+    relationship: background
+  - title: "More asymmetry yields faster matrix multiplication"
+    authors: ["Josh Alman", "Ran Duan", "Virginia Vassilevska Williams", "Yinzhan Xu", "Zixuan Xu", "Renfei Zhou"]
+    type: article
+    id: "arXiv:2404.16349"
+    relationship: background
+
+status:
+  scope: >-
+    Formalizes the full statement exponent K < 23710449/10000000 for every commutative ring K : Type, where
+    exponent is the infimum of τ ≥ 0 with matrixRank K n ≤ C·n^τ for all n ≥ 1 and matrixRank is the exact
+    tensor rank of n×n matrix multiplication (MatrixBounds.MatrixComplexity, restated in Challenge.lean). Border rank and degenerations appear only
+    inside the proof. All numerical work is checked by the Lean kernel; no floating point or external
+    oracle is trusted.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms: []
+
+automation:
+  methods:
+    - method: agent
+      models: ["GPT-6 Astra", "Claude Fable 5.1", "Claude Opus 5", "Claude Opus 5.5"]
+      framework: "Codex and Claude Code"
+      tool_setup: >-
+        AI coding agents wrote the Lean development, the certificate generators and the kernel-performance
+        layer, running builds on a Slurm cluster; humans directed the work and chose the parameters.
+      cost:
+        wall_time: "about 60 hours"
+        spend_usd: "subscription-based"
+        hardware: "Ohio Supercomputer Center CPU nodes and a local Mac"
+      prompting_notes: "n/a"
+  spend_usd: "subscription-based"
+  notes: >-
+    Human-directed, agent-implemented formalization; the numerical certificate was produced by an external
+    search and then re-derived and verified exactly in Lean.
+
+fidelity:
+  divergences: "none known"
+
+review:
+  status: "self-assessed"
+  reviewers:
+    - "Andrew Perrault"
+  notes: >-
+    Andrew Perrault independently audited the statement (20-22 September 2026): the standalone
+    Challenge.lean copies the project's definitions of tensor rank, the matrix multiplication tensor and
+    the exponent verbatim, imports only Mathlib, and Comparator confirmed that the project's exponent_lt
+    proves exactly it. He also rebuilt the project from scratch, replayed it with lean4checker and a second
+    kernel, and checked the numerical certificate with an independent Python interval verifier. The
+    submitted Challenge.lean is that file ported to Lean 4.35's module system (header, options and a porting note; every declaration unchanged).
+
+alignment:
+  namespace: "MatrixBounds"
+  statements:
+    - source: "Main theorem: ω < 2.3710449"
+      lean: "MatrixBounds.Numeric.SuppliedCertifiedPipeline.exponent_lt"
+      module: "SuppliedCertifiedPipeline"
+      status: "proved"
+      note: "exponent K is the algebraic rank exponent over the commutative ring K."
+
+acknowledgements: "Built on Mathlib. Kernel checking by Lean, NanoDa and con-ron via Palomar's Comparator."

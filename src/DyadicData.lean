@@ -1,7 +1,14 @@
-import Mathlib.Algebra.BigOperators.Field
-import Mathlib.Data.Real.Basic
-import Mathlib.Data.Fintype.BigOperators
-import Mathlib.Tactic.NormNum
+module
+
+public import Mathlib.Algebra.BigOperators.Field
+public import Mathlib.Basic.Real.Basic
+public import Mathlib.Data.Fintype.BigOperators
+public import Mathlib.Tactic.NormNum
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Sparse integer data for exact dyadic distributions. Executable row checks
 are connected to real nonnegativity and normalization by theorems below. -/

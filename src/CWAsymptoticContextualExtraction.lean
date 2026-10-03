@@ -1,5 +1,12 @@
-import CWExtractionSchedule
-import CWContextualApproximateExtraction
+module
+
+public import CWExtractionSchedule
+public import CWContextualApproximateExtraction
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Quantified complete mixed extraction. The child windows and threshold
 are fixed before all populations and integer profiles. Actual approximate

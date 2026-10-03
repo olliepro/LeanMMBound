@@ -1,7 +1,14 @@
-import CWRootProfiles
-import CWRootGraph
-import ProfileCountRates
-import CWApproximateCosts
+module
+
+public import CWRootProfiles
+public import CWRootGraph
+public import ProfileCountRates
+public import CWApproximateCosts
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Every root pool has at most the source population, so gluing every exact
 profile tuple costs a polynomial whose degree depends only on the root length. -/

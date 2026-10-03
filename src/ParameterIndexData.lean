@@ -1,16 +1,24 @@
-import ParameterIndexData.DyadicRootA
-import ParameterIndexData.DyadicRootAlpha
-import ParameterIndexData.DyadicA3
-import ParameterIndexData.DyadicAlpha3
-import ParameterIndexData.DyadicAlpha4
-import ParameterIndexData.DyadicLeafzero
-import ParameterIndexData.DyadicZero3
-import ParameterIndexData.DyadicZero4
-import ParameterIndexData.DyadicTerminalroles
-import ParameterIndexData.DyadicAlloc4
-import ParameterIndexData.DyadicAlloc3
-import ParameterIndexData.GibbsU3
-import ParameterIndexData.GibbsU4
-import ParameterIndexData.GibbsUR
-import ParameterIndexData.SplitAlpha3
-import ParameterIndexData.SplitAlpha4
+module
+
+public import ParameterIndexData.DyadicRootA
+public import ParameterIndexData.DyadicRootAlpha
+public import ParameterIndexData.DyadicA3
+public import ParameterIndexData.DyadicAlpha3
+public import ParameterIndexData.DyadicAlpha4
+public import ParameterIndexData.DyadicLeafzero
+public import ParameterIndexData.DyadicZero3
+public import ParameterIndexData.DyadicZero4
+public import ParameterIndexData.DyadicTerminalroles
+public import ParameterIndexData.DyadicAlloc4
+public import ParameterIndexData.DyadicAlloc3
+public import ParameterIndexData.GibbsU3
+public import ParameterIndexData.GibbsU4
+public import ParameterIndexData.GibbsUR
+public import ParameterIndexData.SplitAlpha3
+public import ParameterIndexData.SplitAlpha4
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
+

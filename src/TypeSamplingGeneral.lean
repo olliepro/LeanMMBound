@@ -1,5 +1,12 @@
-import FiniteSampling
-import Mathlib.GroupTheory.GroupAction.MultipleTransitivity
+module
+
+public import FiniteSampling
+public import Mathlib.GroupTheory.GroupAction.MultipleTransitivity
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Uniform empirical-type words at distinct slots have the same law as
 sampling distinct coordinates of any one word of that type. -/

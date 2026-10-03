@@ -1,5 +1,12 @@
-import PooledCompatibility
-import ShapeAlphabet
+module
+
+public import PooledCompatibility
+public import ShapeAlphabet
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The actual asymmetric CW sector labels: zero-coordinate child shapes keep
 their individual types, while the other children pool by their own axis index. -/

@@ -1,5 +1,12 @@
-import MatrixBatching
-import PolynomialDegeneration
+module
+
+public import MatrixBatching
+public import PolynomialDegeneration
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Tensor powers of independent matrix products, with explicit coordinate
 regrouping shared by exact decompositions and polynomial degenerations. -/
@@ -25,7 +32,8 @@ theorem squareBatch_product_identity {s t b n : ℕ}
   funext x y z
   have ec (a b : Fin (s*t)) : a = b ↔ copies a = copies b := copies.injective.eq_iff.symm
   have es (a b : Fin (b*n)) : a = b ↔ size a = size b := size.injective.eq_iff.symm
-  simp only [product, squareBatch, directSum, tensor, batchProductMap, ec, es, Prod.ext_iff]
+  unfold product squareBatch directSum tensor batchProductMap
+  simp only [ec, es, Prod.ext_iff]
   split_ifs <;> simp_all
 
 /-- Exact batch algorithms combine with multiplied copy counts, dimensions, and ranks. -/
@@ -45,7 +53,7 @@ theorem squareBatch_power {copies base rank : ℕ}
   | zero =>
     have scalar : RankLE (tensor (K := K) (I := Fin 1) (J := Fin 1) (L := Fin 1)) 1 := by
       simpa using (schoolbook_rank (K := K) (I := Fin 1) (J := Fin 1) (L := Fin 1))
-    simpa only [pow_zero, Nat.mul_one, Fintype.card_fin] using
+    simpa only [pow_zero, Nat.mul_one, Fintype.card_fin] using!
       rankLE_directSum (fun _ : Fin 1 => tensor (K := K) (I := Fin 1)
         (J := Fin 1) (L := Fin 1)) 1 (fun _ => scalar)
   | succ power ih =>
@@ -72,7 +80,7 @@ def batchCertificatePower {copies base rank degree : ℕ}
         rankLE_directSum (fun _ : Fin 1 => tensor (K := K) (I := Fin 1)
           (J := Fin 1) (L := Fin 1)) 1 (fun _ => by simpa using
             (schoolbook_rank (K := K) (I := Fin 1) (J := Fin 1) (L := Fin 1)))
-    simpa only [pow_zero, Nat.mul_zero] using Certificate.ofDecomposition (Classical.choice scalar)
+    simpa only [pow_zero, Nat.mul_zero] using! Certificate.ofDecomposition (Classical.choice scalar)
   | succ power ih =>
     rw [pow_succ, pow_succ, pow_succ, Nat.mul_succ]
     exact batchCertificateProduct ih certificate

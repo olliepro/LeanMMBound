@@ -1,5 +1,12 @@
-import SuppliedPairedFinePoolArithmetic
-import SuppliedRootFineParent4Integers
+module
+
+public import SuppliedPairedFinePoolArithmetic
+public import SuppliedRootFineParent4Integers
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Original complete parent entropies may be read from verified integer hierarchy caches. -/
 namespace MatrixBounds.Numeric.SuppliedPairedFine

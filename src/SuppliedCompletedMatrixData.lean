@@ -1,6 +1,13 @@
-import SuppliedWaitingMatrixPositivity
-import SuppliedWaitingZero2Sixfold
-import SuppliedTerminalSixfoldMatrix
+module
+
+public import SuppliedWaitingMatrixPositivity
+public import SuppliedWaitingZero2Sixfold
+public import SuppliedTerminalSixfoldMatrix
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Complete final matrix dimensions of one supplied batch: every original
 waiting matrix and every terminal child matrix appears exactly once. -/

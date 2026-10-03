@@ -1,4 +1,11 @@
-import ContextRestrictions
+module
+
+public import ContextRestrictions
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Copy selection and flattening are context-preserving coordinate maps.
 Earlier and newly extracted copy labels remain independent on every axis. -/

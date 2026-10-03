@@ -1,4 +1,11 @@
-import MassEntropy
+module
+
+public import MassEntropy
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Exact entropy of distributions supported at one symbol, including empty
 mass. This removes the terminal one-letter compatibility penalty. -/

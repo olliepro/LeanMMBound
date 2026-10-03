@@ -1,5 +1,12 @@
-import SuppliedRootFineParent4Integers
-import RootFineColumnConvolution
+module
+
+public import SuppliedRootFineParent4Integers
+public import RootFineColumnConvolution
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Verified parent3 integer tables can be substituted into complete finite-column parent4 arithmetic. -/
 namespace MatrixBounds.Numeric.RootFineCachedParent4
@@ -37,7 +44,7 @@ theorem child_eq (parent3 : Parent3Values)
     (parent : Fin 105) (column : Fin 45) (axis : Fin 3) (orbit : Fin 21) :
     child parent3 parent column axis orbit =
       SuppliedRootFineChild3Integers.numerator parent (shapeColumnEquiv 8 column) axis orbit := by
-  simp only [child, SuppliedRootFineChild3Integers.numerator, Equiv.symm_apply_apply,
+  simp only [child, SuppliedRootFineChild3Integers.numerator, (shapeColumnEquiv 8).symm_apply_apply column,
     mixed_eq parent3 sourceEq]
   rfl
 
@@ -80,9 +87,11 @@ theorem numerator_eq (parent3 : Parent3Values)
   have children : (fun column => child parent3 parent column axis) =
       (fun column => SuppliedRootFineChild3Integers.numerator parent (shapeColumnEquiv 8 column) axis) :=
     funext (fun column => funext (child_eq parent3 sourceEq parent column axis))
-  simpa only [numerator, SuppliedRootFineParent4Integers.numerator,
-    SuppliedRootFineParent3Integers.sparseIntegerParent_eq, weights, children, complement, split]
-    using identity.symm
+  unfold numerator complement
+  refine (SuppliedRootFineParent3Integers.sparseIntegerParent_eq ..).trans ?_
+  simpa only [SuppliedRootFineParent4Integers.numerator,
+    SuppliedRootFineParent3Integers.sparseIntegerParent_eq, weights, children, split]
+    using! identity.symm
 
 end
 end MatrixBounds.Numeric.RootFineCachedParent4

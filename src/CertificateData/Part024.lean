@@ -1,4 +1,12 @@
-import DyadicData
+module
+
+public import DyadicData
+public import FKLMeta.RowFast
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Exact dyadic rows from the supplied certificate; generated, then checked by Lean. -/
 namespace MatrixBounds.Numeric.CertificateData.Part024
@@ -265,7 +273,10 @@ def rows : List DyadicRow := [
   ⟨45, [(3,44741618010),(4,1170940644576),(5,2803791411930),(6,484949871836),(7,8630298778),(8,1112),(11,2567711922),(12,307610633160),(13,3972860830884),(14,3972860830884),(15,307610633160),(16,2567711922),(18,1112),(19,8630298778),(20,484949871836),(21,2803791411930),(22,1170940644576),(23,44741618010)]⟩
 ]
 
+theorem fkl_st_checked : FKLMeta.RowFast.dyAll 17592186044416 rows = true := by decide +kernel
+
 /-- Every row has valid support and exact numerator sum 2^44. -/
-theorem rows_checked : rows.all (fun row => row.check 17592186044416) = true := by decide
+theorem rows_checked : rows.all (fun row => row.check 17592186044416) = true :=
+  FKLMeta.RowFast.dyAll_sound 17592186044416 rows fkl_st_checked
 
 end MatrixBounds.Numeric.CertificateData.Part024

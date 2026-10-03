@@ -1,5 +1,12 @@
-import HashCollisionRates
-import ProgressionBuckets
+module
+
+public import HashCollisionRates
+public import ProgressionBuckets
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Natural coarse words embed into the prime field without aliasing. The
 explicit coordinate bound is required before applying the 1/M collision law. -/

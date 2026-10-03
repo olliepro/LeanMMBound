@@ -1,4 +1,11 @@
-import MatrixExponent
+module
+
+public import MatrixExponent
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Padding and powering connect finite matrix algorithms to uniform asymptotic
 rank bounds, retaining the constants needed for all matrix sizes. -/

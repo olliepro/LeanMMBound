@@ -1,4 +1,11 @@
-import SuppliedTerminalRationalSplit
+module
+
+public import SuppliedTerminalRationalSplit
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The supplied rational terminal stage has exactly the three terminal entropy
 rates, so it can share a bottleneck with the higher stages without extra loss. -/

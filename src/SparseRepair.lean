@@ -1,5 +1,12 @@
-import FiniteRepair
-import FiniteCover
+module
+
+public import FiniteRepair
+public import FiniteCover
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Combines finite counting with tensor restrictions to repair sparse holes.
 The hypotheses are local missing-outcome counts, not an assumed existence of a

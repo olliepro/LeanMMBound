@@ -1,5 +1,12 @@
-import RationalIntervalOperations
-import Mathlib.Data.Int.DivMod
+module
+
+public import RationalIntervalOperations
+public import Mathlib.Data.Int.DivMod
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Integer interval arithmetic on a fixed dyadic scale. Kernel checks use only
 integer operations; the proved interpretation supplies real-number soundness. -/

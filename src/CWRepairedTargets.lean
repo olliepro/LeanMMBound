@@ -1,5 +1,12 @@
-import CWTargetSymmetry
-import RepairedTargets
+module
+
+public import CWTargetSymmetry
+public import RepairedTargets
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Simultaneous sparse repair instantiated for the actual selected CW child
 targets, their concrete coordinate maps, and their derived symmetry action. -/

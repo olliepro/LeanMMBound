@@ -1,6 +1,13 @@
-import SuppliedWaitingZero3Sixfold
-import SuppliedWaitingZero4Sixfold
-import MatrixProductVolume
+module
+
+public import SuppliedWaitingZero3Sixfold
+public import SuppliedWaitingZero4Sixfold
+public import MatrixProductVolume
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! All actual selected waiting matrix indices are nonempty at every original
 population, including zero; logarithmic volumes can therefore be combined. -/

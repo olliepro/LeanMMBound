@@ -1,5 +1,12 @@
-import MatrixCoordinateRestrictions
-import SixfoldComposition
+module
+
+public import MatrixCoordinateRestrictions
+public import SixfoldComposition
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Every physical matrix orientation yields an actual matrix factor with
 permuted index sets and exactly the same full volume. -/

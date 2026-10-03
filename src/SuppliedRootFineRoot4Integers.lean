@@ -1,4 +1,11 @@
-import SuppliedRootFineParent4Integers
+module
+
+public import SuppliedRootFineParent4Integers
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Every complete original root child has an exact integer orbit law at denominator 2^406. -/
 namespace MatrixBounds.Numeric.SuppliedRootFineRoot4Integers

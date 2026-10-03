@@ -1,4 +1,11 @@
-import WeightedPools
+module
+
+public import WeightedPools
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Zero-population factors can also be restored after an extraction, since
 their complete empirical windows are the scalar one on their empty axes. -/

@@ -1,4 +1,11 @@
-import SuppliedPairedFinePoolArithmetic
+module
+
+public import SuppliedPairedFinePoolArithmetic
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Physical paired pools can use original child columns without merging any labelled sector. -/
 namespace MatrixBounds.Numeric.SuppliedPairedFine

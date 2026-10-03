@@ -1,5 +1,12 @@
-import CWFiberCounts
-import TypeEntropy
+module
+
+public import CWFiberCounts
+public import TypeEntropy
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Actual coordinate dimensions of exact CW interfaces, with the entropy
 and middle-coordinate contribution used for the zero-coordinate leaves. -/

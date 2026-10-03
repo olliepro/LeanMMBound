@@ -1,5 +1,12 @@
-import CWRationalStage
-import HeterogeneousRegrouping
+module
+
+public import CWRationalStage
+public import HeterogeneousRegrouping
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Combine fixed rational stages of different lengths into one genuine shared
 extraction. Physical rate vectors are added before the bottleneck is taken. -/
@@ -61,7 +68,8 @@ def combineChildrenRestriction (stages : ∀ sector, RationalStage (Types sector
   left entries index := entries index.1.1 ⟨index.1.2, index.2⟩
   middle entries index := entries index.1.1 ⟨index.1.2, index.2⟩
   right entries index := entries index.1.1 ⟨index.1.2, index.2⟩
-  coefficient x y z := by simp only [children, rationalChildren, Interface.heterogeneous, Fintype.prod_sigma, combine]
+  coefficient x y z := by
+    simp only [children, rationalChildren, Interface.heterogeneous, Fintype.prod_sigma, combine] <;> rfl
 
 /-- Arbitrarily many fixed rational active stages share one extraction and earn the bottleneck of their summed rates. -/
 theorem eventual_shared_extraction

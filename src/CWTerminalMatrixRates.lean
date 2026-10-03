@@ -1,5 +1,12 @@
-import CWTerminalMatrices
-import CWTerminalProbabilities
+module
+
+public import CWTerminalMatrices
+public import CWTerminalProbabilities
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The numerical terminal side exponents are exact logarithms of the
 matrix dimensions supplied by the actual coordinate restrictions. -/

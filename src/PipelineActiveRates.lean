@@ -1,5 +1,12 @@
-import PipelineTensorSchedule
-import PipelineScheduleRates
+module
+
+public import PipelineTensorSchedule
+public import PipelineScheduleRates
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Match the physical rates of actual labelled active batches to the rate
 vectors used by the finite schedule accounting. -/

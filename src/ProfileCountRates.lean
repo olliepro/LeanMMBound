@@ -1,5 +1,12 @@
-import HeterogeneousTypeGluing
-import LogarithmicLoss
+module
+
+public import HeterogeneousTypeGluing
+public import LogarithmicLoss
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The number of all heterogeneous exact-profile tuples is polynomial in the
 common population scale, and its full gluing cost is subexponential. -/

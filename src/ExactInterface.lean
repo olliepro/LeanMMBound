@@ -1,5 +1,12 @@
-import EmpiricalTypes
-import TensorSymmetry
+module
+
+public import EmpiricalTypes
+public import TensorSymmetry
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Exact empirical interfaces for tensor powers with arbitrary variable parts.
 A part may contain several variables: symmetry acts on positions, not on the

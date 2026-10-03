@@ -1,4 +1,11 @@
-import SuppliedTerminalRationalChildren
+module
+
+public import SuppliedTerminalRationalChildren
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The matrix obtained from the shared terminal output has exactly its claimed
 volume rate at every positive divisible population, before asymptotic limits. -/

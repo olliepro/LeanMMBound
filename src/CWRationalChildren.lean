@@ -1,5 +1,12 @@
-import CWRationalPopulation
-import WindowedReindexing
+module
+
+public import CWRationalPopulation
+public import WindowedReindexing
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Complete rational split outputs have the same fixed population convention
 as subsequent stages. The transition is an actual coordinate renaming. -/

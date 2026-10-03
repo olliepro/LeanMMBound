@@ -1,4 +1,11 @@
-import CWConstituents
+module
+
+public import CWConstituents
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Supported empirical fine profiles describe actual nonempty CW fine parts,
 not merely formal labels. Canonical lifts realize every feasible fine-type word. -/

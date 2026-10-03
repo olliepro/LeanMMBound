@@ -1,5 +1,12 @@
-import CWMixedRepairedTargets
-import CWMixedConcentration
+module
+
+public import CWMixedRepairedTargets
+public import CWMixedConcentration
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Complete finite mixed extraction using one global hash across parent types:
 actual restrictions, quantitative selection, parent concentration, and repair. -/

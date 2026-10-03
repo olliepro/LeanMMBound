@@ -1,4 +1,11 @@
-import ZeroWeightRestoration
+module
+
+public import ZeroWeightRestoration
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Restoring an empty parent restores only empty child windows. This retains
 the complete original parent labels after a positive-parent extraction. -/

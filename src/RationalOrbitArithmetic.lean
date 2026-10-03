@@ -1,5 +1,12 @@
-import CWRationalOrbitParents
-import Mathlib.Data.Rat.Cast.Lemmas
+module
+
+public import CWRationalOrbitParents
+public import Mathlib.Data.Rat.Cast.Lemmas
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Computable rational arithmetic for compressed parent laws and strategy
 mixtures agrees exactly with the actual real laws used by extraction. -/

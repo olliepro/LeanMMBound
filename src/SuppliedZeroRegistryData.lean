@@ -1,4 +1,11 @@
-import CheckedIndexTable
+module
+
+public import CheckedIndexTable
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Exact target registry over the original deduplicated probability rows.
 Zero means unused by zero-leaf extraction; positive codes are one plus the required coarse total. -/

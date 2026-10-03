@@ -1,6 +1,13 @@
-import CWCompatibilityNecessary
-import CWCoarseHalves
-import CWPooledDegrees
+module
+
+public import CWCompatibilityNecessary
+public import CWCoarseHalves
+public import CWPooledDegrees
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Necessary asymmetric compatibility for actual parent tensor coefficients.
 Splitting the physical coordinates produces the child variables to which the
@@ -95,12 +102,20 @@ theorem parent_y_compatibility {q length total : ℕ} (parent : Shape) (balanced
     (fun position => congrArg Shape.y (shapes position)) y agreesY
   let childZ := parentAxisChildren (fun slot => (children slot).val.z)
     (fun position => congrArg Shape.z (shapes position)) z agreesZ
+  -- v4.35 port: simp no longer instantiates `parentAxisChildren_fine` here (its `agrees`
+  -- argument only matches up to unfolding `childLabels`), so the instances are given.
+  have fineX := parentAxisChildren_fine (fun slot => (children slot).val.x)
+    (fun position => congrArg Shape.x (shapes position)) x agreesX
+  have fineY := parentAxisChildren_fine (fun slot => (children slot).val.y)
+    (fun position => congrArg Shape.y (shapes position)) y agreesY
+  have fineZ := parentAxisChildren_fine (fun slot => (children slot).val.z)
+    (fun position => congrArg Shape.z (shapes position)) z agreesZ
   refine ⟨agreesY, ?_⟩
   have result := y_compatibility_necessary children childX childY childZ
     (parent_children_nonzero parent (fun slot => (children slot).val) shapes x y z agreesX agreesY agreesZ nonzero)
-    profileX profileY (by simpa only [childX, parentAxisChildren_fine] using typedX) complementary
-    (by simpa only [childY, parentAxisChildren_fine] using pooledY)
-  simpa only [childY, parentAxisChildren_fine] using result
+    profileX profileY (by simpa only [childX, fineX] using! typedX) complementary
+    (by simpa only [childY, fineY] using! pooledY)
+  simpa only [childY, fineY] using! result
 
 /-- Once full Y types are imposed, actual parent support forces Z's asymmetric compatibility. -/
 theorem parent_z_compatibility {q length total : ℕ} (parent : Shape) (balanced : parent.total = 2*total)
@@ -133,13 +148,21 @@ theorem parent_z_compatibility {q length total : ℕ} (parent : Shape) (balanced
     (fun position => congrArg Shape.y (shapes position)) y agreesY
   let childZ := parentAxisChildren (fun slot => (children slot).val.z)
     (fun position => congrArg Shape.z (shapes position)) z agreesZ
+  -- v4.35 port: simp no longer instantiates `parentAxisChildren_fine` here (its `agrees`
+  -- argument only matches up to unfolding `childLabels`), so the instances are given.
+  have fineX := parentAxisChildren_fine (fun slot => (children slot).val.x)
+    (fun position => congrArg Shape.x (shapes position)) x agreesX
+  have fineY := parentAxisChildren_fine (fun slot => (children slot).val.y)
+    (fun position => congrArg Shape.y (shapes position)) y agreesY
+  have fineZ := parentAxisChildren_fine (fun slot => (children slot).val.z)
+    (fun position => congrArg Shape.z (shapes position)) z agreesZ
   refine ⟨agreesZ, ?_⟩
   have result := z_compatibility_necessary children childX childY childZ
     (parent_children_nonzero parent (fun slot => (children slot).val) shapes x y z agreesX agreesY agreesZ nonzero)
-    profileX profileY profileZ (by simpa only [childX, parentAxisChildren_fine] using typedX)
-    (by simpa only [childY, parentAxisChildren_fine] using typedY) complementaryX complementaryY
-    (by simpa only [childZ, parentAxisChildren_fine] using pooledZ)
-  simpa only [childZ, parentAxisChildren_fine] using result
+    profileX profileY profileZ (by simpa only [childX, fineX] using! typedX)
+    (by simpa only [childY, fineY] using! typedY) complementaryX complementaryY
+    (by simpa only [childZ, fineZ] using! pooledZ)
+  simpa only [childZ, fineZ] using! result
 
 end
 end MatrixBounds.Tensor.CW

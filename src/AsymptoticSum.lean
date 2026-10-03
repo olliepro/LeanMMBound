@@ -1,5 +1,12 @@
-import BatchPowers
-import DegenerationExponent
+module
+
+public import BatchPowers
+public import DegenerationExponent
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The asymptotic sum inequality for identical square matrix summands.
 An explicit batching construction removes rounding after taking tensor powers;

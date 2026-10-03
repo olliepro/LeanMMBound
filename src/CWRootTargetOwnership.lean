@@ -1,5 +1,12 @@
-import CWRootOwnership
-import CWRootTargetMaps
+module
+
+public import CWRootOwnership
+public import CWRootTargetMaps
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Exact root ownership tests on the mapped target. Root X parts have no
 parent-window holes, while Y and Z parts lose only actual compatible collisions. -/

@@ -1,4 +1,11 @@
-import HashCollisionRates
+module
+
+public import HashCollisionRates
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Markov control of collision holes uses only per-block collision counts.
 No independence between blocks or successive zero-out stages is assumed. -/

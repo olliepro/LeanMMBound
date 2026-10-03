@@ -1,4 +1,11 @@
-import CWCoarseEntropy
+module
+
+public import CWCoarseEntropy
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! If the three prescribed marginals determine the joint type, the complete
 coarse graph has no entropy penalty. Its actual maximum degree has a direct

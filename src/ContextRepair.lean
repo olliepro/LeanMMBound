@@ -1,5 +1,12 @@
-import ContextOperations
-import LinearSymmetryRepair
+module
+
+public import ContextOperations
+public import LinearSymmetryRepair
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The explicit sparse-hole repair matrices preserve an arbitrary companion
 tensor. Their cost depends only on the repaired tensor's own coordinate cube. -/
@@ -70,17 +77,17 @@ theorem contextReduction_symmetric_repair {G BX BY BZ : Type*} [Group G] [Fintyp
       funext x
       simp only [keepPart, Function.comp_def, MulAction.toPerm_apply]
       congr 1
-      rw [one_smul, equivX]
+      rw [one_smul, MulAction.toPerm_apply, equivX]
     have my : (keepPart holesY partY (1 : G) ∘ MulAction.toPerm g) = keepPart holesY partY g := by
       funext y
       simp only [keepPart, Function.comp_def, MulAction.toPerm_apply]
       congr 1
-      rw [one_smul, equivY]
+      rw [one_smul, MulAction.toPerm_apply, equivY]
     have mz : (keepPart holesZ partZ (1 : G) ∘ MulAction.toPerm g) = keepPart holesZ partZ g := by
       funext z
       simp only [keepPart, Function.comp_def, MulAction.toPerm_apply]
       congr 1
-      rw [one_smul, equivZ]
+      rw [one_smul, MulAction.toPerm_apply, equivZ]
     simpa only [Repair.broken, mx, my, mz] using available g
   simpa only [mul_one] using contextReduction_from_repair _ tensor _ _ _ _ 1 certificate moved
 

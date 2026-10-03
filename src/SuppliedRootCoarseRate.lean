@@ -1,5 +1,12 @@
-import SuppliedRootCoarseBinding
-import SuppliedRootCoarseCheck
+module
+
+public import SuppliedRootCoarseBinding
+public import FKLCoarseData.RootCheck
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The checked root coarse numerical certificate is exactly the actual
 supplied tensor-extraction rate, with no numerical identification hypothesis. -/
@@ -15,7 +22,7 @@ theorem rate_eq :
       (SuppliedRootStage.potential 0) (SuppliedRootStage.potential 1) (SuppliedRootStage.potential 2) =
       CertifiedRootRate0.value := by
   rw [← expression_value]
-  rw [rationalLogValue_of_kernelNormalized_eq normalized_checked, ← integerLogValue_expression]
+  rw [FKLCoarseData.Root.value_eq, ← integerLogValue_expression]
   simp only [CertifiedRootRate0.value, CertifiedRootRate0.blocks, certifiedBlocksValue,
     RateCertificateData.Root0Block000.certificate, add_zero]
 

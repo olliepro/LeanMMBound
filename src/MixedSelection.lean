@@ -1,4 +1,12 @@
-import HashSurvivors
+module
+
+public import HashSurvivors
+public import Mathlib.Tactic.FinCases
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The finite selection step of mixed-level extraction: one common hash keeps
 many prescribed edges with small fine-Y and fine-Z collision-hole sets. -/
@@ -19,9 +27,9 @@ theorem three_events_half {Outcome : Type*} [Fintype Outcome]
   have bound := three_stage_half bad (by
     intro stage
     fin_cases stage
-    · simpa only [bad, ↓reduceIte] using smallX
-    · simpa only [bad, ↓reduceIte] using smallY
-    · simpa only [bad, ↓reduceIte] using smallZ)
+    · simpa only [bad, ↓reduceIte] using! smallX
+    · simpa only [bad, ↓reduceIte] using! smallY
+    · simpa only [bad, ↓reduceIte] using! smallZ)
   simpa [bad, Fin.exists_fin_succ] using bound
 
 /-- Coarse uniqueness plus Markov bounds for both fine axes gives half-survival.

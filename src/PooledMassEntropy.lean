@@ -1,5 +1,12 @@
-import PooledEntropy
-import MassEntropy
+module
+
+public import PooledEntropy
+public import MassEntropy
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The combinatorial sector-count exponent is precisely the unnormalized
 pooled entropy used in the supplied certificate's retention formula. -/

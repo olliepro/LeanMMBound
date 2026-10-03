@@ -1,4 +1,11 @@
-import RationalOrbitArithmetic
+module
+
+public import RationalOrbitArithmetic
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Probability validity transfers between exact rational orbit masses and the
 actual complete fine laws, with no numerical approximation. -/

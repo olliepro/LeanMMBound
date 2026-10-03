@@ -1,5 +1,12 @@
-import ProgressionBuckets
-import Mathlib.NumberTheory.Bertrand
+module
+
+public import ProgressionBuckets
+public import Mathlib.NumberTheory.Bertrand
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Choose an odd prime hash modulus with only a factor-two size overhead.
 The progression-free bucket size remains an explicit real lower bound. -/

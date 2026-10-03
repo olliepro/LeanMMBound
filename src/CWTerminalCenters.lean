@@ -1,5 +1,12 @@
-import CWTerminalParentLaws
-import CWOneLetterProfileLaws
+module
+
+public import CWTerminalParentLaws
+public import CWOneLetterProfileLaws
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Identify the centers of the actual terminal parent windows. These equalities
 include empty child pools, whose contribution is removed by its zero weight. -/

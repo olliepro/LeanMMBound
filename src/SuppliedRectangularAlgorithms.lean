@@ -1,7 +1,14 @@
-import SuppliedPipelineMatrix
-import SuppliedPipelineRank
-import RectangularExtractionExponent
-import TypeDenominators
+module
+
+public import SuppliedPipelineMatrix
+public import SuppliedPipelineRank
+public import RectangularExtractionExponent
+public import TypeDenominators
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Concrete rectangular finite-rank algorithms from the original complete
 supplied source construction, with arbitrarily small rank, copy, and volume losses. -/

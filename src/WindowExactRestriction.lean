@@ -1,5 +1,12 @@
-import WindowedInterface
-import CoordinateRestriction
+module
+
+public import WindowedInterface
+public import CoordinateRestriction
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Exact empirical types inside an available window are actual coordinate
 restrictions, uniformly for empty and nonempty position pools. -/

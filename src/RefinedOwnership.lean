@@ -1,4 +1,11 @@
-import SequentialExtraction
+module
+
+public import SequentialExtraction
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Additional acceptance windows can refine already disjoint owner maps.
 This records both interface holes and collision holes in the final owners. -/

@@ -1,4 +1,11 @@
-import SuppliedRootStage
+module
+
+public import SuppliedRootStage
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Executable rational hierarchy arithmetic replaces actual orbit fiber
 cardinalities by their independently checked finite size tables. -/

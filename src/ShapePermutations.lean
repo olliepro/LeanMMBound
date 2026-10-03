@@ -1,7 +1,14 @@
-import ShapeAlphabet
-import Mathlib.Tactic.FinCases
-import Mathlib.Data.Fin.VecNotation
-import Mathlib.Algebra.BigOperators.Fin
+module
+
+public import ShapeAlphabet
+public import Mathlib.Tactic.FinCases
+public import Mathlib.Data.Fin.VecNotation
+public import Mathlib.Algebra.BigOperators.Fin
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Coarse shapes and admissible complements transport through actual
 coordinate permutations. This keeps physical role choices tied to the tensors. -/
@@ -99,12 +106,12 @@ theorem shapeAlphabetPermutation_complement (axes : Equiv.Perm (Fin 3))
       (Shape.permute_fits axes child.val parent).mpr fits
     apply Subtype.ext
     simp only [complementSymbol, dif_pos fits, shapeAlphabetPermutation, Equiv.coe_fn_mk,
-      dif_pos permutedFits]
+      permutedFits, ↓reduceDIte]
     exact Shape.permute_complement axes parent child.val
   · have permutedOutside : ¬(child.val.permute axes).Fits (parent.permute axes) :=
       fun inside => fits ((Shape.permute_fits axes child.val parent).mp inside)
     simp only [complementSymbol, dif_neg fits, shapeAlphabetPermutation, Equiv.coe_fn_mk,
-      dif_neg permutedOutside]
+      permutedOutside, ↓reduceDIte]
 
 end
 end MatrixBounds.Numeric

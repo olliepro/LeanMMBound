@@ -1,7 +1,14 @@
-import CWPermutedTerminalRateBounds
-import CWTerminalInterfaces
-import ContextUniformCopies
-import CWExtractionSchedule
+module
+
+public import CWPermutedTerminalRateBounds
+public import CWTerminalInterfaces
+public import ContextUniformCopies
+public import CWExtractionSchedule
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The shared extraction across physical terminal orientations has arbitrarily small finite losses.
 Its positive input window and all thresholds are chosen before populations. -/
@@ -91,7 +98,7 @@ theorem eventual_permuted_terminal_extraction (q bits : ℕ) (alphabet : q+2 ≤
         (permutedParentTensor (K := K) axes q extreme middle tolerance) 1 := by
       apply Mixed.contextReduction_narrowerParent
       all_goals intro type fine inside; exact within_mono _ fine smaller inside
-    simpa only [mul_one] using narrower.trans extracted
+    simpa only [mul_one] using! narrower.trans extracted
 
 end
 end MatrixBounds.Tensor.CW.Terminal

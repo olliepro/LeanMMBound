@@ -1,4 +1,11 @@
-import TensorOrientations
+module
+
+public import TensorOrientations
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Actual polynomial degeneration certificates preserve their original rank
 and leading degree under every physical coordinate ordering. -/

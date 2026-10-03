@@ -1,6 +1,13 @@
-import CWCoarseData
-import CWRationalRates
-import CWRootNearbyRates
+module
+
+public import CWCoarseData
+public import CWRationalRates
+public import CWRootNearbyRates
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The unrestricted root uses the same exact rational certificate law at
 every divisible size, with one child occurrence per coarse root position. -/

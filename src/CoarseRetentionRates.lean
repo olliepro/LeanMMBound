@@ -1,4 +1,11 @@
-import IncidenceRates
+module
+
+public import IncidenceRates
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The X competitor rate follows from the complete marginal graph, Gibbs
 counting, and the exact multinomial sizes of prescribed edges and coarse vertices. -/

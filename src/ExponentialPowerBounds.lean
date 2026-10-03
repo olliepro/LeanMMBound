@@ -1,4 +1,11 @@
-import Mathlib.Analysis.SpecialFunctions.Exp
+module
+
+public import Mathlib.Analysis.SpecialFunctions.Exp
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Raising an actual integer copy or overhead bound to a fixed finite power
 multiplies its exponent by exactly that power. -/

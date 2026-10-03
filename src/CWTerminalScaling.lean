@@ -1,6 +1,13 @@
-import CWTerminalCenters
-import CWTerminalMatrixRates
-import CertifiedTerminalParameters
+module
+
+public import CWTerminalCenters
+public import CWTerminalMatrixRates
+public import CertifiedTerminalParameters
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The terminal integer construction realizes one fixed rational law at
 arbitrarily large common multiples, with exact parent centers and dimensions. -/

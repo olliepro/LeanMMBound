@@ -1,5 +1,12 @@
-import CWShapePermutations
-import CWTerminalCounts
+module
+
+public import CWShapePermutations
+public import CWTerminalCounts
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! All terminal physical role choices are actual feasible split data. Their
 profiles, complementary symmetry, and reference words are transported rather

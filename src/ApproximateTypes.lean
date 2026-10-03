@@ -1,6 +1,13 @@
-import AcceptedRestrictions
-import InterfaceContinuity
-import EmpiricalTypes
+module
+
+public import AcceptedRestrictions
+public import InterfaceContinuity
+public import EmpiricalTypes
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Empirical tolerance windows and the exact inclusion needed to feed nearby
 child types into the same available parent interface. -/

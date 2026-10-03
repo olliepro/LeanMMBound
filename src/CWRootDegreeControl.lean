@@ -1,5 +1,12 @@
-import CWRootCoarseRates
-import CWRootFineRates
+module
+
+public import CWRootCoarseRates
+public import CWRootFineRates
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The root's three actual collision degrees share one entropy retention
 rate and one threshold chosen before all exact profiles and positive potentials. -/

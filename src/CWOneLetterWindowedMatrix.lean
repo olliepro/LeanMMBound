@@ -1,4 +1,11 @@
-import CWOneLetterMatrices
+module
+
+public import CWOneLetterMatrices
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Full one-letter child windows produced by a mixed extraction already
 contain their complete matrix factors, including zero-sized child pools. -/

@@ -1,21 +1,28 @@
-import CertifiedRootRate0
-import CertifiedRootRate1
-import CertifiedRootRate2
-import CertifiedLevel4Rate0
-import CertifiedLevel4Rate1
-import CertifiedLevel4Rate2
-import CertifiedLevel3Rate0
-import CertifiedLevel3Rate1
-import CertifiedLevel3Rate2
-import CertifiedTerminalRate0
-import CertifiedTerminalRate1
-import CertifiedTerminalRate2
-import CertifiedDimensionRate0
-import CertifiedDimensionRate1
-import CertifiedDimensionRate2
-import CertifiedLogTraces
-import PipelineNumericIntervals
-import RectangularExtractionExponent
+module
+
+public import CertifiedRootRate0
+public import CertifiedRootRate1
+public import CertifiedRootRate2
+public import CertifiedLevel4Rate0
+public import CertifiedLevel4Rate1
+public import CertifiedLevel4Rate2
+public import CertifiedLevel3Rate0
+public import CertifiedLevel3Rate1
+public import CertifiedLevel3Rate2
+public import CertifiedTerminalRate0
+public import CertifiedTerminalRate1
+public import CertifiedTerminalRate2
+public import CertifiedDimensionRate0
+public import CertifiedDimensionRate1
+public import CertifiedDimensionRate2
+public import CertifiedLogTraces
+public import PipelineNumericIntervals
+public import RectangularExtractionExponent
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Checked finite-pipeline scalar accounting for the exact supplied logarithmic
 expressions. `SuppliedCertifiedPipeline` identifies these expressions with the actual
@@ -91,7 +98,7 @@ def bounds : PipelineBounds where
 
 /-- The original level-four q=5 rank budget has natural logarithmic rate 8 log 7. -/
 theorem cost_sound : bounds.cost.Contains (8*Real.log 7) := by
-  simpa only [CertifiedLogTraces.Seven.input, Rat.cast_div, Rat.cast_ofNat, div_one] using
+  simpa only [CertifiedLogTraces.Seven.input, Rat.cast_div, Rat.cast_ofNat, div_one] using!
     Interval.scale_sound 8 CertifiedLogTraces.Seven.log_bounds
 
 /-- The proposed intermediate exponent is a rational strictly below the requested target. -/

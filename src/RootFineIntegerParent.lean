@@ -1,4 +1,11 @@
-import SuppliedRootFineArithmetic
+module
+
+public import SuppliedRootFineArithmetic
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Parent convolution may be checked by integer arithmetic at one common
 binary denominator, then interpreted as the actual rational orbit masses. -/

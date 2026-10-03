@@ -1,5 +1,12 @@
-import SplitData
-import Mathlib.Data.List.Nodup
+module
+
+public import SplitData
+public import Mathlib.Data.List.Nodup
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The executable split checks refer to the actual integer distribution columns
 and to the complete coarse-shape alphabet, without ambiguous repeated labels. -/

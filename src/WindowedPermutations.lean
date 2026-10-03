@@ -1,5 +1,12 @@
-import WindowedInterface
-import TensorTranspose
+module
+
+public import WindowedInterface
+public import TensorTranspose
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Axis permutations move the actual empirical windows with their axes. -/
 namespace MatrixBounds.Interface

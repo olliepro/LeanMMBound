@@ -1,6 +1,13 @@
-import NormalizedLogTrace
-import CertifiedConstants
-import Mathlib.Data.Rat.Cast.CharZero
+module
+
+public import NormalizedLogTrace
+public import CertifiedConstants
+public import Mathlib.Data.Rat.Cast.CharZero
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Exact binary range reduction extends checked finite logarithm certificates
 to every positive rational input, including very small dyadic masses. -/

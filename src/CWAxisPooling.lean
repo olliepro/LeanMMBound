@@ -1,5 +1,12 @@
-import CWParentCompatibility
-import CWCoarseOwnership
+module
+
+public import CWParentCompatibility
+public import CWCoarseOwnership
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The pooled tests are legitimate one-axis restrictions: their sector labels
 are read directly from that axis's own coordinate word. -/

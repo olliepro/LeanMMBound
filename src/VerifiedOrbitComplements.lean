@@ -1,5 +1,12 @@
-import VerifiedOrbitLevel4
-import FineOrbitComplement
+module
+
+public import VerifiedOrbitLevel4
+public import FineOrbitComplement
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Supplied recursive orbit coordinates support the exact fine-symbol
 complement required for the other nonzero axis of every zero leaf. -/

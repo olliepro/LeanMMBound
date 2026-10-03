@@ -1,5 +1,12 @@
-import CWRootSelection
-import CWRootRepair
+module
+
+public import CWRootSelection
+public import CWRootRepair
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Complete finite extraction and repair starting from the unrestricted CW
 source. The graph, ownership, collision, target, and repair proofs are supplied. -/

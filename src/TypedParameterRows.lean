@@ -1,7 +1,14 @@
-import CheckedIndexTable
-import GibbsData
-import CWRationalSplit
-import Mathlib.Logic.Equiv.Fin.Basic
+module
+
+public import CheckedIndexTable
+public import GibbsData
+public import CWRationalSplit
+public import Mathlib.Logic.Equiv.Fin.Basic
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Fixed-width semantic views of accepted sparse parameters. The original
 row payload is retained while its alphabet size is supplied by a checked binding. -/

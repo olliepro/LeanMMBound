@@ -1,5 +1,12 @@
-import TensorSymmetry
-import FiniteSelection
+module
+
+public import TensorSymmetry
+public import FiniteSelection
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Independent identical output tensors can be repaired as one batch. A common
 internal symmetry and a permutation of copies are enough for transitivity. -/

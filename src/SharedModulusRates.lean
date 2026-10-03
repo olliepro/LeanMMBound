@@ -1,5 +1,12 @@
-import ProductDegreeRates
-import BehrendRetention
+module
+
+public import ProductDegreeRates
+public import BehrendRetention
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! A concrete shared modulus requirement bounds all three product degrees.
 The maximum retention cost is taken after forming each full product. -/

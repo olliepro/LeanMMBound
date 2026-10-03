@@ -1,4 +1,11 @@
-import RootFineSparseVectorCheck
+module
+
+public import RootFineSparseVectorCheck
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Small reusable finite-case proofs keep each generated cache module compact. -/
 namespace MatrixBounds.Numeric

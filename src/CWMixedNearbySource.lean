@@ -1,5 +1,12 @@
-import CWNearbyWindows
-import CWMixedConcentration
+module
+
+public import CWNearbyWindows
+public import CWMixedConcentration
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! All nearby exact child-type tuples start from the same available nominal
 parent interface. The three derived window inclusions give actual independent

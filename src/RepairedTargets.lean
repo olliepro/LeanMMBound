@@ -1,6 +1,13 @@
-import OwnedTargets
-import BatchRepair
-import Mathlib.Data.Finite.Card
+module
+
+public import OwnedTargets
+public import BatchRepair
+public import Mathlib.SetTheory.Cardinal.NatCard
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Connect the extracted damaged batch to the complete target batch with an
 explicit finite rank budget. Parent and collision hole counts add without independence. -/

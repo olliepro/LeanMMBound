@@ -1,5 +1,12 @@
-import CWMixedTargetCoefficients
-import SelectedTargets
+module
+
+public import CWMixedTargetCoefficients
+public import SelectedTargets
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The actual global restriction supplies independent copies of the common
 heterogeneous target with exactly the proved parent and collision holes. -/

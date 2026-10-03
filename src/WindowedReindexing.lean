@@ -1,5 +1,12 @@
-import WindowedInterface
-import CoordinateRestriction
+module
+
+public import WindowedInterface
+public import CoordinateRestriction
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Bijective position renaming preserves complete empirical windows and the
 actual tensor coefficients, including neutral empty pools. -/

@@ -1,4 +1,11 @@
-import OwnedTargets
+module
+
+public import OwnedTargets
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Retain an injected subfamily of the actual independent owner pieces, then
 identify its coordinate maps with a common target and per-copy fine-block holes. -/

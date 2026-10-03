@@ -1,4 +1,11 @@
-import SuppliedSourceRank
+module
+
+public import SuppliedSourceRank
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Unconditional finite-rank algorithms for the actual complete output tensors
 of every sufficiently large admissible supplied pipeline. -/

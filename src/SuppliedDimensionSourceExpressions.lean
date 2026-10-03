@@ -1,6 +1,13 @@
-import SuppliedDimensionMasses
-import OrbitLogExpressions
-import SuppliedTerminalMatrix
+module
+
+public import SuppliedDimensionMasses
+public import OrbitLogExpressions
+public import SuppliedTerminalMatrix
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Exact executable logarithmic expressions for all original source matrix
 dimensions, before numerical normalization or interval bounds are applied. -/

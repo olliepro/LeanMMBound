@@ -1,7 +1,14 @@
-import PipelineSchedule
-import HeterogeneousPartition
-import ContextProductReductions
-import ContextSequence
+module
+
+public import PipelineSchedule
+public import HeterogeneousPartition
+public import ContextProductReductions
+public import ContextSequence
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The finite pipeline acts on actual labelled tensor products. Every round
 extracts its active product while preserving all other batch factors. -/
@@ -104,7 +111,7 @@ theorem round_extraction
   have restored := ((productSwapRestriction waiting (advancedTensor tensors round)).trans
     ((CoordinateRestriction.refl (advancedTensor tensors round)).product (waitingRestriction tensors round))).trans
       (restorePartitionRestriction (active round) (fun batch => tensors batch (completedBefore batch.val (round+1))))
-  simpa only [one_mul, mul_one] using extracted.trans (restored.context.batch (I := Fin copies))
+  simpa only [one_mul, mul_one] using! extracted.trans (restored.context.batch (I := Fin copies))
 
 /-- Every scheduled shared extraction composes into the complete pipeline with all integer copy counts and costs multiplied. -/
 theorem pipeline_extraction

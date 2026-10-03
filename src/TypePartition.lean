@@ -1,5 +1,12 @@
-import EmpiricalTypes
-import TensorCore
+module
+
+public import EmpiricalTypes
+public import TensorCore
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Exact-type partitions of approximate interfaces. An arbitrary accepted set
 of integer profiles covers tolerance windows and other finite type restrictions. -/

@@ -1,6 +1,13 @@
-import CWRootDegrees
-import FiniteMaximumRates
-import LogarithmicLoss
+module
+
+public import CWRootDegrees
+public import FiniteMaximumRates
+public import LogarithmicLoss
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Exact root fine types give entropy retention without a parent-window
 approximation. The error is uniform over every feasible root profile. -/
@@ -41,12 +48,12 @@ theorem pooled_count_bound (data : RootRestrictionData length)
     ⟨data.targetFine reference profile representative, compatible⟩
   apply (pooled_mass_entropy_upper label (pooledProfile profile axisClass) sectors
     (Fintype.card P : ℝ) (by exact_mod_cast (Fintype.card_pos (α := P)).ne')).trans
-  apply add_le_add_left
+  apply add_le_add_right
   calc
     _ ≤ ∑ _ : CompatibilityClass (2*length), (Real.log ((Fintype.card P : ℝ)+1)+1) := by
       apply Finset.sum_le_sum
       intro sector _
-      apply add_le_add_right
+      apply add_le_add_left
       apply Real.log_le_log (by positivity)
       have bound := Nat.add_le_add_right (Fintype.card_subtype_le (fun position => label position = sector)) 1
       simp only [← Nat.card_eq_fintype_card] at bound ⊢

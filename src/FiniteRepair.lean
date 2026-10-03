@@ -1,6 +1,13 @@
-import TensorCore
-import Mathlib.Data.Fintype.Pi
-import Mathlib.Tactic.SplitIfs
+module
+
+public import TensorCore
+public import Mathlib.Data.Fintype.Pi
+public import Mathlib.Tactic.SplitIfs
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! A finite repair theorem using membership signatures.
 

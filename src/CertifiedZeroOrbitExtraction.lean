@@ -1,5 +1,12 @@
-import ZeroOrbitLawData
-import CWZeroOrbitExtraction
+module
+
+public import ZeroOrbitLawData
+public import CWZeroOrbitExtraction
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Accepted supplied orbit rows instantiate the actual zero-leaf matrix
 extraction theorem with no numerical feasibility assumptions left to discharge. -/

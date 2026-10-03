@@ -1,5 +1,12 @@
-import CWCoarseGraph
-import Mathlib.Tactic.FinCases
+module
+
+public import CWCoarseGraph
+public import Mathlib.Tactic.FinCases
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The terminal positive constituent (1,1,2) has exactly four admissible
 one-letter child shapes. Its three marginals determine the joint split law. -/

@@ -1,6 +1,13 @@
-import CWMixedContextualTargets
-import CWMixedRepairedTargets
-import ContextBatchRepair
+module
+
+public import CWMixedContextualTargets
+public import CWMixedRepairedTargets
+public import ContextBatchRepair
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Complete actual mixed-target repair is valid beside arbitrary waiting
 factors and previously extracted batches, with no repeated charge for them. -/

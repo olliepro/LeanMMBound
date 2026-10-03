@@ -1,6 +1,13 @@
-import SuppliedTerminalScaling
-import CWRationalStage
-import CWPermutedTerminalNominal
+module
+
+public import SuppliedTerminalScaling
+public import CWRationalStage
+public import CWPermutedTerminalNominal
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Original terminal counts form genuine rational length-one split data in
 the same shared-stage representation used by the higher paired levels. -/
@@ -17,7 +24,7 @@ theorem counts_total (source : Source) (role : AxisOrder) :
     (∑ child, permutedCounts (axes source role) (extreme source) (middle source) child) = 17592186044416 := by
   have total := profile_total _ ((permutedData (axes source role) (extreme source) (middle source)).prescribedWord
     (permutedReference (axes source role) (extreme source) (middle source)))
-  simpa only [Fintype.card_fin, population] using total
+  simpa only [Fintype.card_fin, population] using! total
 
 /-- The original terminal counts are an actual normalized supported symmetric rational split in every physical role. -/
 def split (source : Source) (role : AxisOrder) : RationalSplit 1 17592186044416 where

@@ -1,5 +1,12 @@
-import SplitCertificateData
-import SplitSemantics
+module
+
+public import SplitCertificateData
+public import SplitSemantics
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Semantic conclusions for every contextual split distribution in the supplied
 certificate, obtained from the kernel-checked integer data. -/

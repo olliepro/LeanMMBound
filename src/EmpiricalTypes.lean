@@ -1,6 +1,13 @@
-import SymmetryCounts
-import Mathlib.Logic.Equiv.Basic
-import Mathlib.Data.Fintype.Perm
+module
+
+public import SymmetryCounts
+public import Mathlib.Logic.Equiv.Basic
+public import Mathlib.Data.Fintype.Perm
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Exact empirical types and their permutation symmetry. Counts are natural
 numbers, so all type-integrality requirements are explicit. -/
@@ -46,7 +53,7 @@ theorem same_type_permutation (left right : P → B)
   funext p
   have h := Equiv.ofFiberEquiv_map fibers (permutation.symm p)
   change right (permutation (permutation.symm p)) = left (permutation.symm p) at h
-  simpa only [Equiv.apply_symm_apply] using h.symm
+  simpa only [Equiv.apply_symm_apply] using! h.symm
 
 /-- Permuting positions acts on exact-type words without changing their profile. -/
 instance typedWordAction (profile : B → ℕ) : MulAction (Equiv.Perm P) (TypedWord (P := P) profile) where

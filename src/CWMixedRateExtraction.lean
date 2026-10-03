@@ -1,6 +1,13 @@
-import CWMixedPrimeExtraction
-import CWMixedDegreeRates
-import SharedModulusRates
+module
+
+public import CWMixedPrimeExtraction
+public import CWMixedDegreeRates
+public import SharedModulusRates
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Finite heterogeneous extraction with quantified retention rates. One shared
 modulus is constructed from the three product degrees; the retained exponent
@@ -75,7 +82,7 @@ theorem finite_mixed_rate_extraction (data : ∀ type, SplitRestrictionData (len
   have primeUpper : (prime : ℝ) ≤ 2*modulusFactor base (scale k)*
       ((Fintype.card (PrescribedEdges Positions data) : ℝ)*Real.exp (-mixedRetention rateX rateY rateZ)) := by
     have upperReal : (prime : ℝ) ≤ 2*(sharedRequirement base (scale k) dx dy dz : ℝ) := by exact_mod_cast upper
-    exact upperReal.trans (by simpa only [mul_assoc] using
+    exact upperReal.trans (by simpa only [mul_assoc] using!
       mul_le_mul_of_nonneg_left requirementUpper (by norm_num : (0 : ℝ) ≤ 2))
   have factorPositive : 0 < 2*modulusFactor base (scale k) := by unfold modulusFactor; positivity
   have result := shared_modulus_retention (prescribed_positive data reference) primality.pos factorPositive primeUpper retained

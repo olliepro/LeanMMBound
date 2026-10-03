@@ -1,7 +1,14 @@
-import SuppliedZeroRegistryData
-import SuppliedTypedParameters
-import SuppliedLeafLaws
-import FiniteIndexBlockComposition
+module
+
+public import SuppliedZeroRegistryData
+public import SuppliedTypedParameters
+public import SuppliedLeafLaws
+public import FiniteIndexBlockComposition
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Balanced exact lookup aliases preserve every original source entry, while
 reducing the kernel evaluation depth of the large finite support certificate. -/

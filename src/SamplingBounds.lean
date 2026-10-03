@@ -1,4 +1,11 @@
-import TypeSampling
+module
+
+public import TypeSampling
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Explicit finite-population errors and second-moment concentration estimates. -/
 namespace MatrixBounds.Sampling

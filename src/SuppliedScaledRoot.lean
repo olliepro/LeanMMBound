@@ -1,6 +1,13 @@
-import SuppliedRootStage
-import SuppliedPopulationWeights
-import CWRootWeightedExtraction
+module
+
+public import SuppliedRootStage
+public import SuppliedPopulationWeights
+public import CWRootWeightedExtraction
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The supplied unrestricted source now has the same fixed integer root
 coefficient and growing scale as its complete labelled descendants. -/

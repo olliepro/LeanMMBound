@@ -1,4 +1,11 @@
-import RootFineCachedRootExpression
+module
+
+public import RootFineCachedRootExpression
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Singleton compatibility sectors can be evaluated directly while preserving all original labels. -/
 namespace MatrixBounds.Numeric

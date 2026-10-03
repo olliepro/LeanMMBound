@@ -1,6 +1,13 @@
-import SuppliedZeroRegistrySemantics
-import SuppliedZeroLeafTargets
-import CertifiedZeroOrbitExtraction
+module
+
+public import SuppliedZeroRegistrySemantics
+public import SuppliedZeroLeafTargets
+public import CertifiedZeroOrbitExtraction
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! All 68040 original leaf-zero positions inherit their complete fine support
 from the deduplicated row registry, with the actual original coarse targets. -/

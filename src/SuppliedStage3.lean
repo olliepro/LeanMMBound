@@ -1,7 +1,14 @@
-import SuppliedHigherLaws
-import CWRationalPermutations
-import CWRationalMixedExtraction
-import PhysicalRoles
+module
+
+public import SuppliedHigherLaws
+public import CWRationalPermutations
+public import CWRationalMixedExtraction
+public import PhysicalRoles
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Actual level-3 shared extraction with all original source parameters and
 physical role choices instantiated. Labels may retain arbitrary source multiplicities. -/

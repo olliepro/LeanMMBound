@@ -1,5 +1,12 @@
-import CWTargetConcentration
-import ApproximateTypes
+module
+
+public import CWTargetConcentration
+public import ApproximateTypes
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Probability-cube bounds for the actual independent-child parent centers,
 including child pools with zero positions and zero profile counts. -/

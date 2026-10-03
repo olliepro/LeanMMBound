@@ -1,8 +1,15 @@
-import SuppliedLeafLaws
-import SuppliedZeroLaws
-import SuppliedNodeLookup
-import SuppliedHierarchyParents
-import CWRationalSupportedTotals
+module
+
+public import SuppliedLeafLaws
+public import SuppliedZeroLaws
+public import SuppliedNodeLookup
+public import SuppliedHierarchyParents
+public import CWRationalSupportedTotals
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Actual complete fine laws throughout the original higher hierarchy. Missing
 source children retain their original zero law and are proved irrelevant to normalized parents. -/

@@ -1,7 +1,14 @@
-import SuppliedRootFineRate1
-import SuppliedRootFineRate2
-import SuppliedRootFineRateExpressions
-import CertifiedPipelineScalar
+module
+
+public import SuppliedRootFineRate1
+public import SuppliedRootFineRate2
+public import SuppliedRootFineRateExpressions
+public import CertifiedPipelineScalar
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! All three actual supplied root components are identified with the original complete numerical certificate. -/
 namespace MatrixBounds.Numeric.SuppliedRootFineCertifiedRates

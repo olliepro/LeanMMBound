@@ -1,5 +1,12 @@
-import ContextSequence
-import Mathlib.Analysis.SpecialFunctions.Exp
+module
+
+public import ContextSequence
+public import Mathlib.Analysis.SpecialFunctions.Exp
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Finite products of the actually retained integer copies and overheads
 satisfy the sums of their stage exponent bounds. -/
@@ -14,7 +21,7 @@ theorem copy_product_lower (copies : ℕ → ℕ) (growth : ℕ → ℝ) (length
     (bounds : ∀ stage, stage < length → Real.exp (growth stage) ≤ copies stage) :
     Real.exp (∑ stage ∈ Finset.range length, growth stage) ≤ (∏ stage ∈ Finset.range length, copies stage : ℕ) := by
   rw [Real.exp_sum, Nat.cast_prod]
-  exact Finset.prod_le_prod (fun stage _ => (Real.exp_pos _).le)
+  exact Finset.prod_le_prod₀ (fun stage _ => (Real.exp_pos _).le)
     (fun stage inside => bounds stage (Finset.mem_range.mp inside))
 
 /-- Multiplying integer overheads adds their proved logarithmic upper bounds. -/
@@ -22,7 +29,7 @@ theorem overhead_product_upper (overhead : ℕ → ℕ) (loss : ℕ → ℝ) (le
     (bounds : ∀ stage, stage < length → (overhead stage : ℝ) ≤ Real.exp (loss stage)) :
     (∏ stage ∈ Finset.range length, overhead stage : ℕ) ≤ Real.exp (∑ stage ∈ Finset.range length, loss stage) := by
   rw [Real.exp_sum, Nat.cast_prod]
-  exact Finset.prod_le_prod (fun stage _ => Nat.cast_nonneg _)
+  exact Finset.prod_le_prod₀ (fun stage _ => Nat.cast_nonneg _)
     (fun stage inside => bounds stage (Finset.mem_range.mp inside))
 
 /-- A finite sequence of actual extractions has the product copy count, summed exponent rates, and a checked final rank decomposition. -/

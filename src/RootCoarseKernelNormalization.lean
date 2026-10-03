@@ -1,5 +1,12 @@
-import RationalLogNormalization
-import Mathlib.Data.List.Sort
+module
+
+public import RationalLogNormalization
+public import Mathlib.Data.List.Sort
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Kernel-executable normalization uses a structural insertion sort.
 The logarithmic meaning is unchanged, including all repeated arguments. -/

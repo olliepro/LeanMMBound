@@ -1,4 +1,11 @@
-import FiniteOrbitProducts
+module
+
+public import FiniteOrbitProducts
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Orbit decoding is compatible with exact changes of the complete word
 coordinates, such as the concatenation of two child words. -/

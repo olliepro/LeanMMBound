@@ -1,7 +1,14 @@
-import CWTerminalDegreeControl
-import CWTerminalMixedTarget
-import ContextComposition
-import CWMixedContextualRates
+module
+
+public import CWTerminalDegreeControl
+public import CWTerminalMixedTarget
+public import ContextComposition
+public import CWMixedContextualRates
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! A terminal extraction with its actual parent tensors and actual matrix
 outputs. The entropy bounds, feasible profiles, and coordinate maps are proved

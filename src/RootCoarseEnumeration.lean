@@ -1,5 +1,12 @@
-import CoarseLogExpressions
-import CWRootGraph
+module
+
+public import CoarseLogExpressions
+public import CWRootGraph
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Reindex the complete unrestricted root by executable source columns. -/
 namespace MatrixBounds.Numeric

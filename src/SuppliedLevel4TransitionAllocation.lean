@@ -1,5 +1,12 @@
-import SuppliedLevel4TransitionWindows
-import HeterogeneousDependentSum
+module
+
+public import SuppliedLevel4TransitionWindows
+public import HeterogeneousDependentSum
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Reindex the actual level-four children and perform both prescribed positive
 node allocations, retaining every previous role and every waiting zero factor. -/
@@ -56,7 +63,7 @@ theorem identify_nodes (size : ℕ) (tolerance : Fin 105 × AxisOrder → ℝ) :
     simpa only [Finset.prod_const_one] using ContextReduction.heterogeneous (fun _ : Fin 840 => 1)
       (fun node => zero_node (K := K) node previous size
         (tolerance ((SuppliedNodePartialIndexing.decode (.inr node)).1, previous))))
-  simpa only [Finset.prod_const_one, one_mul] using
+  simpa only [Finset.prod_const_one, one_mul] using!
     (separateNodesRestriction (K := K) size tolerance).context.trans (positives.product zeros)
 
 /-- Reassociate all allocated source labels into their declared next-stage history type. -/
@@ -78,7 +85,7 @@ def allocatedRestriction (size : ℕ) (tolerance : Fin 105 × AxisOrder → ℝ)
       right_inv := by intro label; rfl }
     have equal := Equiv.prod_comp labels (fun label => SuppliedAllocationWindows.strategy3 (K := K) label.source
       (weight3 label*size) (tolerance (nodeParent label.source.1, label.previous)) (x label) (y label) (z label))
-    simpa only [active3, heterogeneous, Fintype.prod_prod_type] using equal
+    simpa only [active3, heterogeneous, Fintype.prod_prod_type] using! equal
 
 /-- Both actual positive-node allocations produce precisely the full-history next-stage windows. -/
 theorem allocate_positive {size : ℕ} (sizePositive : 0 < size)
@@ -88,7 +95,7 @@ theorem allocate_positive {size : ℕ} (sizePositive : 0 < size)
     simpa only [Finset.prod_const_one] using ContextReduction.heterogeneous (fun _ : Fin 945 => 1)
       (fun node => SuppliedAllocationWindows.allocate_node3 (K := K) node previous sizePositive
         (nonnegative (nodeParent node, previous))))
-  simpa only [Finset.prod_const_one, mul_one] using
+  simpa only [Finset.prod_const_one, mul_one] using!
     allocations.trans (allocatedRestriction (K := K) size tolerance).context
 
 /-- The complete level-four output gives every allocated next-stage source and every waiting zero factor at unit cost. -/

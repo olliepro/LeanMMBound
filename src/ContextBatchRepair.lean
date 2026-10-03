@@ -1,5 +1,12 @@
-import ContextRepair
-import RepairedTargets
+module
+
+public import ContextRepair
+public import RepairedTargets
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Simultaneous repair preserves the context of the whole extracted batch;
 previous copies and waiting factors are not charged again in the cover size. -/

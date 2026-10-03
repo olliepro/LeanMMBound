@@ -1,5 +1,12 @@
-import MassEntropy
-import InterfaceContinuity
+module
+
+public import MassEntropy
+public import InterfaceContinuity
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Uniform continuity of pooled mass entropy includes zero-mass sectors and
 works on any fixed bounded mass cube. -/

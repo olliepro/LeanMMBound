@@ -1,5 +1,12 @@
-import WindowedInterface
-import ContextRestrictions
+module
+
+public import WindowedInterface
+public import ContextRestrictions
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Empty labelled powers contribute the scalar one. Dropping them is an
 explicit coordinate restriction, allowing extraction on nonempty parent pools. -/

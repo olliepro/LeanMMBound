@@ -1,5 +1,12 @@
-import CWMixedDegrees
-import ProductDegreeRates
+module
+
+public import CWMixedDegrees
+public import ProductDegreeRates
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Product degree estimates are normalized by the actual prescribed global
 graph size, with feasibility and positivity supplied by a real reference edge. -/

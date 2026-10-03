@@ -1,4 +1,11 @@
-import TensorSymmetry
+module
+
+public import TensorSymmetry
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The inverse-linear concentration bounds feed into explicit symmetric tensor repair. -/
 namespace MatrixBounds.Symmetry
@@ -91,7 +98,7 @@ theorem symmetric_linear_repair_rank {K G X Y Z BX BY BZ : Type*} [CommSemiring 
     (MulAction.toPerm g) (preserves g) (keepPart holesX partX (1 : G))
     (keepPart holesY partY (1 : G)) (keepPart holesZ partZ (1 : G)) rank budget
   simpa only [Repair.broken, keepPart, Function.comp_def, MulAction.toPerm_apply,
-    one_smul, equivX, equivY, equivZ] using moved
+    one_smul, equivX, equivY, equivZ] using! moved
 
 end
 end MatrixBounds.Tensor.Symmetry

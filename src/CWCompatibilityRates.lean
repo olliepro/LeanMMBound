@@ -1,6 +1,13 @@
-import CWUniformWindowEntropy
-import PooledMassEntropy
-import LogarithmicLoss
+module
+
+public import CWUniformWindowEntropy
+public import PooledMassEntropy
+public import LogarithmicLoss
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Normalize the actual compatibility count to the pooled mass-entropy rate.
 All finite errors are bounded uniformly by a constant times log(2N+1)+1. -/
@@ -46,12 +53,12 @@ theorem compatibilityCost_bound (data : SplitRestrictionData length) (symmetric 
   simp only [← Nat.card_eq_fintype_card] at main ⊢
   rw [main]
   simp only [Nat.card_eq_fintype_card]
-  apply add_le_add_left
+  apply add_le_add_right
   calc
     _ ≤ ∑ _ : CompatibilityClass (2*length), (Real.log (2*(Fintype.card P : ℝ)+1)+1) := by
       apply Finset.sum_le_sum
       intro sector _
-      apply add_le_add_right
+      apply add_le_add_left
       apply Real.log_le_log (by positivity)
       have size := Fintype.card_subtype_le (fun slot : P ⊕ P => label slot = sector)
       simp only [Fintype.card_sum] at size
@@ -66,9 +73,9 @@ theorem fine_error_bound (Positions : Type*) [Fintype Positions] (length : ℕ) 
   unfold parentTypeError fineErrorConstant
   push_cast
   rw [add_mul]
-  apply add_le_add_left
-  apply mul_le_mul_of_nonneg_left _ (Nat.cast_nonneg _)
   apply add_le_add_right
+  apply mul_le_mul_of_nonneg_left _ (Nat.cast_nonneg _)
+  apply add_le_add_left
   exact Real.log_le_log (by positivity) (by have := Nat.cast_nonneg (Fintype.card Positions) (α := ℝ); linarith)
 
 /-- One tolerance, chosen before all populations and profiles, bounds the actual maximum degree by the normalized fine-axis rate. -/

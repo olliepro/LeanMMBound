@@ -1,5 +1,12 @@
-import CWMixedContextualSource
-import CWMixedExtractedTargets
+module
+
+public import CWMixedContextualSource
+public import CWMixedExtractedTargets
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Identify the selected damaged targets while preserving arbitrary batches
 and waiting factors carried by the input interface. -/

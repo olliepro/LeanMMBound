@@ -1,7 +1,14 @@
-import CheckedIndexTable
-import CertificateData
-import SplitCertificateData
-import GibbsCertificateData
+module
+
+public import CheckedIndexTable
+public import CertificateData
+public import SplitCertificateData
+public import GibbsCertificateData
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Source-indexed access to all supplied rows. Bounds select actual existing
 records, and acceptance follows from their original independent kernel checks. -/

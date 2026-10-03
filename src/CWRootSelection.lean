@@ -1,5 +1,12 @@
-import CWRootDegrees
-import MixedSelection
+module
+
+public import CWRootDegrees
+public import MixedSelection
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! One shared root hash retains many prescribed edges with no coarse
 collisions and sparse actual fine-part holes on both later axes. -/
@@ -42,9 +49,9 @@ theorem exists_actual_selection (data : RootRestrictionData length) (buckets : F
   obtain ⟨seed, retained⟩ := exists_mixed_selection (fun edge => (edges edge).x) (fun edge => (edges edge).y)
     buckets badX holesY holesZ (data.coarseDegree (P := P))
     (data.fineDegree (P := P) Shape.y yClass data.fineY) (data.fineDegree (P := P) Shape.z zClass data.fineZ) scale
-    (fun edge bucket _ => by simpa only [ZMod.card] using data.uniform_coarse_collision_count edge large bucket)
-    (fun edge bucket _ parts => by simpa only [ZMod.card] using data.uniform_y_collision_count edge supportY parts large bucket)
-    (fun edge bucket _ parts => by simpa only [ZMod.card] using data.uniform_z_collision_count edge supportZ parts large bucket)
+    (fun edge bucket _ => by simpa only [ZMod.card] using! data.uniform_coarse_collision_count edge large bucket)
+    (fun edge bucket _ parts => by simpa only [ZMod.card] using! data.uniform_y_collision_count edge supportY parts large bucket)
+    (fun edge bucket _ parts => by simpa only [ZMod.card] using! data.uniform_z_collision_count edge supportZ parts large bucket)
     (by simpa only [ZMod.card] using largeX) (by simpa only [ZMod.card] using largeY)
     (by simpa only [ZMod.card] using largeZ)
   have activeIff (edge : data.PrescribedEdges (P := P)) : data.active seed edge.val ↔

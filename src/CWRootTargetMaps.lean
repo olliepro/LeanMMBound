@@ -1,5 +1,12 @@
-import CWRootCompatibility
-import CWTypedInterfaces
+module
+
+public import CWRootCompatibility
+public import CWTypedInterfaces
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The unrestricted root's explicit target maps preserve complete profiles,
 all pooled tests, and the physical coarse coordinate word. -/

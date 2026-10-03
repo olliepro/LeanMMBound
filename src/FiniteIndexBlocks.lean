@@ -1,4 +1,11 @@
-import Mathlib.Data.Fin.Basic
+module
+
+public import Mathlib.Data.Fin.Basic
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Exact finite checks can be split into bounded blocks without changing the
 assertion checked by Lean's kernel. This avoids deep reduction stacks. -/

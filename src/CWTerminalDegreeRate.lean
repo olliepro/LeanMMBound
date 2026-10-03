@@ -1,5 +1,12 @@
-import CWTerminalData
-import CWCoarseEntropy
+module
+
+public import CWTerminalData
+public import CWCoarseEntropy
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The terminal coarse degree has its marginal-entropy bound without positive
 Gibbs potentials. Endpoint split laws therefore require no limiting argument. -/

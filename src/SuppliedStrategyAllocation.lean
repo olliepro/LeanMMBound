@@ -1,6 +1,13 @@
-import SuppliedLeafLaws
-import SuppliedHierarchyParents
-import WeightedSectorAllocation
+module
+
+public import SuppliedLeafLaws
+public import SuppliedHierarchyParents
+public import WeightedSectorAllocation
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The supplied six-strategy mixture is realized by an actual unit-cost tensor
 restriction to labelled sectors with the original integer numerator weights. -/

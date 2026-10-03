@@ -1,6 +1,13 @@
-import CWRootDegreeControl
-import CWRootRetentionContinuity
-import CWRootProfiles
+module
+
+public import CWRootDegreeControl
+public import CWRootRetentionContinuity
+public import CWRootProfiles
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! One child-window tolerance and population threshold control the real
 collision degrees of every accepted exact tuple against fixed nominal laws. -/

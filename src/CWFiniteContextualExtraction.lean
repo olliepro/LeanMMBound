@@ -1,5 +1,12 @@
-import CWMixedContextualRepair
-import CWMixedConcentration
+module
+
+public import CWMixedContextualRepair
+public import CWMixedConcentration
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The complete finite mixed extraction constructs a context-preserving
 transformation, independent of any particular incoming rank certificate. -/

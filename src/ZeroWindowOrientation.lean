@@ -1,7 +1,14 @@
-import CanonicalZeroShape
-import CWPhysicalWindows
-import CWZeroOrbitExtraction
-import DyadicOrbitSupport
+module
+
+public import CanonicalZeroShape
+public import CWPhysicalWindows
+public import CWZeroOrbitExtraction
+public import DyadicOrbitSupport
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Physical permutations carry the complete supplied zero-law tensor window
 to the exact canonical window used by the proved matrix extraction. -/

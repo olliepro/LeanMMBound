@@ -1,5 +1,12 @@
-import TensorBatching
-import PolynomialDegeneration
+module
+
+public import TensorBatching
+public import PolynomialDegeneration
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Extract independent tensor pieces by legitimate variable restrictions.
 Unique compatibility determines the owner of each retained variable. -/

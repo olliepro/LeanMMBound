@@ -1,4 +1,11 @@
-import CWRootRationalExtraction
+module
+
+public import CWRootRationalExtraction
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! A fixed integer root population coefficient uses the same growing schedule
 as every later rational stage, with one arbitrary positive asymptotic loss. -/

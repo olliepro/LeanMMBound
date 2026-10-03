@@ -1,5 +1,12 @@
-import CWRootHashing
-import CWRootCompatibility
+module
+
+public import CWRootHashing
+public import CWRootCompatibility
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Sequential, variable-only root ownership. The source is the unrestricted
 CW power; compatibility is forced by actual coefficients on single positions. -/

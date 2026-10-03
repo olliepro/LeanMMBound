@@ -1,5 +1,12 @@
-import VerifiedOrbitLevel2
-import CWPermutedTerminalLaws
+module
+
+public import VerifiedOrbitLevel2
+public import CWPermutedTerminalLaws
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The supplied terminal fine laws are exactly their six-coordinate orbit
 representations, and coincide with the actual terminal extraction centers. -/
@@ -59,7 +66,7 @@ theorem ternaryOrbitMass_valid {mu : ℝ} (nonnegative : 0 ≤ mu) (upper : mu �
   · intro orbit
     unfold ternaryOrbitMass
     split_ifs <;> linarith
-  · norm_num [ternaryOrbitMass, Fin.sum_univ_succ, Fin.ext_iff]
+  · norm_num [ternaryOrbitMass, Fin.sum_univ_succ]
 
 /-- The actual terminal parent laws, in every physical orientation, equal the supplied compressed expansions. -/
 theorem permuted_parent_orbits (axes : Equiv.Perm (Fin 3)) (extreme middle : ℕ)

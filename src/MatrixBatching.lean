@@ -1,5 +1,12 @@
-import TensorBatching
-import RankAmplification
+module
+
+public import TensorBatching
+public import RankAmplification
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Reusing a batch algorithm recursively gives single-matrix algorithms with
 the amortized rank per batch, rounded upward to an integer. -/
@@ -46,7 +53,7 @@ theorem squareBatch_iterate {copies base terms groups : ℕ}
   | zero =>
     have scalar : RankLE (tensor (K := K) (I := Fin 1) (J := Fin 1) (L := Fin 1)) 1 := by
       simpa using (schoolbook_rank (K := K) (I := Fin 1) (J := Fin 1) (L := Fin 1))
-    simpa only [pow_zero, Nat.mul_one, Fintype.card_fin] using
+    simpa only [pow_zero, Nat.mul_one, Fintype.card_fin] using!
       rankLE_directSum (fun _ : Fin copies => tensor (K := K) (I := Fin 1)
         (J := Fin 1) (L := Fin 1)) 1 (fun _ => scalar)
   | succ power ih =>

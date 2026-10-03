@@ -1,6 +1,13 @@
-import SectorWindows
-import WindowedInterface
-import ContextExtraction
+module
+
+public import SectorWindows
+public import WindowedInterface
+public import ContextExtraction
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Strategy allocation is an actual variable restriction into labelled sectors.
 Its law is the mixture with the exact sector population proportions. -/

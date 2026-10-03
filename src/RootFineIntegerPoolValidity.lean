@@ -1,4 +1,11 @@
-import SuppliedRootFineRoot4IntegerValidity
+module
+
+public import SuppliedRootFineRoot4IntegerValidity
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Exact source totals certify complete integer root mixtures and compatibility pools. -/
 namespace MatrixBounds.Numeric.RootFineIntegerPools
@@ -45,8 +52,9 @@ theorem mixture_normalized (axis : Fin 2) :
     ∑ orbit, mixture parent4 axis orbit = (2:ℤ)^450 := by
   simp only [mixture]
   rw [Finset.sum_comm]
-  simp only [contribution_normalized parent4 sourceEq, ← Finset.sum_mul,
-    weight, ← Nat.cast_sum, TypedProbabilityRow.numerator_total]
+  simp only [contribution_normalized parent4 sourceEq, ← Finset.sum_mul]
+  simp only [weight]
+  rw [← Nat.cast_sum, TypedProbabilityRow.numerator_total]
   norm_num
 
 omit sourceEq in

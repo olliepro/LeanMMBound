@@ -1,5 +1,12 @@
-import CWRootRationalData
-import FiniteOrbitData
+module
+
+public import CWRootRationalData
+public import FiniteOrbitData
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Root extraction uses single child multiplicities. Its complete mixture
 and every compatibility pool have exact compressed orbit formulas. -/

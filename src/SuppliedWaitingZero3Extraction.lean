@@ -1,5 +1,12 @@
-import SuppliedWaitingZero3Data
-import HeterogeneousProductRegrouping
+module
+
+public import SuppliedWaitingZero3Data
+public import HeterogeneousProductRegrouping
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Every complete waiting zero3 family yields its actual matrix, with one
 common threshold and its original coefficient-weighted dimension rate. -/
@@ -71,8 +78,8 @@ theorem eventual_factor (label : Active) (tolerance : Fin 105 × AxisOrder → �
   refine ⟨?_, restore_matrix (SuppliedZeroShapeBindings.order3 label.val.2) ?_⟩
   swap
   · convert reduction using 1
-    congr 1 <;> exact Subsingleton.elim _ _
-  simpa only [Indices, Nat.card_eq_fintype_card, Nat.cast_mul] using dimension
+    all_goals (congr 1 <;> exact Subsingleton.elim _ _)
+  simpa only [Indices, Nat.card_eq_fintype_card, Nat.cast_mul] using! dimension
 
 /-- Dropping only zero weights preserves the exact total rate and the distributed error term. -/
 theorem rate_sum (error : ℝ) :

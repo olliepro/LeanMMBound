@@ -1,6 +1,13 @@
-import PipelineRateScaling
-import SuppliedPipelineRank
-import SuppliedPipelineMatrix
+module
+
+public import PipelineRateScaling
+public import SuppliedPipelineRank
+public import SuppliedPipelineMatrix
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Express the actual construction in the source certificate's original
 population unit, without altering any finite startup or drain term. -/

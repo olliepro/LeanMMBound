@@ -1,4 +1,11 @@
-import CWRationalLawValidity
+module
+
+public import CWRationalLawValidity
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Exact normalization of actual recursive parent laws and strategy mixtures.
 These identities discharge the probability hypotheses in the entropy bindings. -/

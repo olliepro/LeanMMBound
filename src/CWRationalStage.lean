@@ -1,7 +1,14 @@
-import CWRationalMixedExtraction
-import CWRationalChildren
-import ContextComposition
-import MatrixBounds
+module
+
+public import CWRationalMixedExtraction
+public import CWRationalChildren
+public import ContextComposition
+public import MatrixBounds
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! A checked rational stage packages its fixed mathematical parameters.
 Its extraction theorem has one arbitrary error and no graph or count premises. -/

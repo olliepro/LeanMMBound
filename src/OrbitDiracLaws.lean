@@ -1,4 +1,11 @@
-import FiniteOrbitData
+module
+
+public import FiniteOrbitData
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Singleton word orbits represent exact point masses, including all-zero
 fine-coordinate laws used by zero-coordinate matrix leaves. -/

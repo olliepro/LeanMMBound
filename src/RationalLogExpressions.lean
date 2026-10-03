@@ -1,6 +1,13 @@
-import IntegerLogLinearCertificates
-import FiniteOrbitData
-import Mathlib.Algebra.BigOperators.Fin
+module
+
+public import IntegerLogLinearCertificates
+public import FiniteOrbitData
+public import Mathlib.Algebra.BigOperators.Fin
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Exact symbolic logarithmic expressions connect finite entropy formulas to
 the real values represented by the numerical certificates. -/

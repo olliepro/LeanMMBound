@@ -1,10 +1,17 @@
-import SuppliedAllocationWindows
-import SuppliedRootPopulation
-import SuppliedChildEquivalences
-import HeterogeneousProductRegrouping
-import CWPhysicalWindowFamilies
-import SuppliedStagePresentations
-import HeterogeneousDependentSum
+module
+
+public import SuppliedAllocationWindows
+public import SuppliedRootPopulation
+public import SuppliedChildEquivalences
+public import HeterogeneousProductRegrouping
+public import CWPhysicalWindowFamilies
+public import SuppliedStagePresentations
+public import HeterogeneousDependentSum
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Original root-child windows split into waiting zero-coordinate factors and
 the exact allocated positive level-four parents, preserving all source labels. -/
@@ -22,7 +29,8 @@ theorem positive_child (parent : Fin 105) :
   apply SuppliedChildKinds.child4Equiv.injective
   rw [Equiv.apply_symm_apply]
   simpa only [SuppliedChildKinds.child4Equiv, Equiv.trans_apply, Equiv.ofBijective_apply,
-    Equiv.symm_apply_apply] using (SuppliedShapeInterfaceBindings.root_kind parent).symm
+    (shapeColumnEquiv 16).symm_apply_apply (rootColumn parent)] using!
+    (SuppliedShapeInterfaceBindings.root_kind parent).symm
 
 /-- One original complete root-child window at its exact fixed coefficient. -/
 def childWindow (size : ℕ) (tolerance : ℝ) (child : ShapeAlphabet 16) :=
@@ -80,7 +88,7 @@ theorem allocate_positive {size : ℕ} (sizePositive : 0 < size) {tolerance : �
     (fun _ x => fineWord x.val) (fun _ y => fineWord y.val) (fun _ z => fineWord z.val)
     (fun label => SuppliedHigherLaws.parent4 label.1 0) (fun label => SuppliedHigherLaws.parent4 label.1 1)
     (fun label => SuppliedHigherLaws.parent4 label.1 2) (fun _ => tolerance)).context
-  simpa only [Finset.prod_const_one, one_mul, mul_one] using (allocation.trans flatten).trans retain
+  simpa only [Finset.prod_const_one, one_mul, mul_one] using! (allocation.trans flatten).trans retain
 
 /-- Complete root children actually produce all waiting zero factors and all active first-stage parents at unit cost. -/
 theorem allocate_all {size : ℕ} (sizePositive : 0 < size) {tolerance : ℝ} (nonnegative : 0 ≤ tolerance) :

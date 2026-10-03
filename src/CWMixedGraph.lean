@@ -1,5 +1,12 @@
-import CWPrescribedGraph
-import HashIntegerWords
+module
+
+public import CWPrescribedGraph
+public import HashIntegerWords
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The actual product coarse graph for different parent types and recursion
 levels, with all positions in one disjoint union for a single global hash. -/

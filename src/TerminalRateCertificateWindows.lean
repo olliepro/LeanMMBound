@@ -1,6 +1,13 @@
-import TerminalSourceNodeLookup
-import SuppliedTerminalRateCertificates
-import Mathlib.Algebra.BigOperators.Intervals
+module
+
+public import TerminalSourceNodeLookup
+public import SuppliedTerminalRateCertificates
+public import Mathlib.Algebra.BigOperators.Intervals
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Contiguous exact certificate windows support bounded source-to-certificate comparisons. -/
 namespace MatrixBounds.Numeric.SuppliedTerminalRates
@@ -48,8 +55,9 @@ theorem certificateTermAt_sum {count : ℕ} (table : SourceTable IntegerLogTerm 
   rw [sourceTable_sum table (fun term => term.monomial.value)]
   have identity : ∀ terms : List IntegerLogTerm, (terms.map (fun term => term.monomial.value)).sum = integerLogValue terms := by
     intro terms
-    simpa only [rationalLogValue, List.map_map, Function.comp_apply] using
-      (integerLogValue_expression terms).symm
+    rw [integerLogValue_expression]
+    simp only [rationalLogValue, List.map_map]
+    rfl
   exact identity table.entries
 
 /-- Adjacent windows partition the complete original certificate, with no missing or duplicate term. -/

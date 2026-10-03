@@ -16,8 +16,9 @@ theorem exponent_lt {K : Type} [CommRing K] :
 theorem exponent_rat_lt : MatrixComplexity.exponent ℚ < (23710449 : ℝ)/10000000
 ```
 
-**What is bounded.** `MatrixComplexity.exponent K` (`MatrixExponent.lean`) is the
-standard algebraic matrix multiplication exponent over `K`: `matrixRank K n` is the
+**What is bounded.** `MatrixComplexity.exponent K` (`MatrixBoundsStatement.lean`, which is
+`Challenge.lean` without the final theorem; `TensorCore`, `MatrixTensor` and `MatrixExponent`
+build on it) is the standard algebraic matrix multiplication exponent over `K`: `matrixRank K n` is the
 minimal length of an exact rank decomposition of the `n×n×n` matrix multiplication
 tensor (`TensorCore`, `MatrixTensor`; its evaluation equals Mathlib matrix
 multiplication), a real `τ` is `Admissible K τ` when `0 ≤ τ` and one constant `C > 0`
@@ -39,56 +40,62 @@ together with the actual rectangular algorithms of
 discharges every hypothesis with the proved identities listed under
 [Numerical identification](#numerical-identification).
 
-**How to check.**
+**How to check.** The repository follows the Palomar registry layout. `Challenge.lean` restates
+the definitions and the theorem with `sorry`, importing only Mathlib; `Solution.lean` imports
+`SuppliedCertifiedPipeline`; `comparator.json` names the theorem and the permitted axioms.
 
 ```sh
 lake exe cache get
 lake build
+./scripts/verify-comparator.sh
 ```
 
-* `lake build` compiles every local module, including the generated audit parts.
-* `Audit.lean` imports the 119 generated `AuditPartNNN` modules, which report the
-  axiom dependencies of every named local theorem, definition, instance, abbreviation,
-  and structure (`#print axioms` is transitive over all dependencies); the only foundational
-  dependencies that occur are `propext`, `Classical.choice`, and `Quot.sound`.
+* `lake build` builds `Challenge` and `Solution`, and with them the 2,170 modules of the
+  proof's import closure.
+* `verify-comparator.sh` runs Lake's Comparator: it rebuilds both modules in a sandbox, exports
+  them, checks that `exponent_lt` has exactly the statement of `Challenge.lean` over exactly the
+  same definitions, checks that only `propext`, `Classical.choice` and `Quot.sound` are used,
+  and replays the whole proof through three kernels (con-ron, nanoda and Lean's own).
 * `#print axioms MatrixBounds.Numeric.SuppliedCertifiedPipeline.exponent_lt` in a
   file importing `SuppliedCertifiedPipeline` shows the same three axioms.
-* `verification/verification.log` is the complete log of the shipped build (see below).
 
-**Resources.** A full build is heavy: 8,949 Lake jobs. Many generated modules need
-4–10 GiB of memory each and a large thread stack (`weakLeanArgs = ["--tstack=262144"]`
-in `lakefile.toml`), and Lake's parallelism follows `LEAN_NUM_THREADS` for the `lake`
-process. The shipped build ran on a 96-core Linux node with 1.8 TB of memory
-(`LEAN_NUM_THREADS=48`, about fifty concurrent Lean processes, well under 200 GB in use)
-in about 70 minutes; on a 16–32 GB machine use `LEAN_NUM_THREADS=2` or `3`
-and expect many hours.
+**Resources.** On a 16-vCPU, 32 GB machine a from-scratch run takes about 1 h 45 min (6,286 s
+in the recorded run): about 4 min for the Mathlib cache, about 25 min for `lake build` (4,762 Lake
+jobs, with `LEAN_NUM_THREADS=16`) and about 76 min for Comparator. The whole job peaked at about
+20 GB of memory. Generated modules use a large thread stack (`weakLeanArgs = ["--tstack=262144"]`
+in `lakefile.toml`). The record of that run is in `verification/palomar-dry-run/`.
 
 ## Layout
 
-* `src/` — all Lean modules (flat module names; `lakefile.toml` sets `srcDir = "src"`), with the
-  generated data modules in `src/CertificateData`, `src/RateCertificateData`, etc.
-* `verification/` — `verification.log` (complete build log) and `verification-summary.json`.
-* `docs/` — this document and design notes for the paired-fine identification stream.
+* `Challenge.lean`, `Solution.lean`, `comparator.json`, `formalization.yaml` — the Palomar
+  submission surface.
+* `src/` — all Lean modules (flat module names; `lakefile.toml` sets `srcDir = "src"`). The
+  generated data modules are in `src/CertificateData`, `src/RateCertificateData`, etc., and
+  the fast kernel checks in `src/FKL*` (see [`fast-kernel-checks.md`](fast-kernel-checks.md)).
+* `verification/` — the Palomar dry-run record, and `independent/`, Andrew Perrault's audit
+  of the Lean 4.24 release.
+* `docs/` — this document, the fast-kernel-check notes, and design notes for the paired-fine
+  identification stream.
 * `numerical-certificate/` — the supplied external certificate and its report (documentation only).
+* `scripts/` — Palomar's Comparator, source-check and metadata-validator scripts.
 
 ## Build and audit
 
-Lean is pinned to 4.24.0 and Mathlib to commit
-`f897ebcf72cd16f89ab4577d0c826cd14afaafc7`. The default build checks every local
-module: 5,492 root modules with 47,316 named theorems and 88,134 named declarations,
-plus 119 generated audit parts. The source uses no `sorry`, `admit`, custom `axiom`,
-or `native_decide`; every numeric comparison is checked by the kernel (`decide`, with `decide +kernel`
-for the large ones; no `native_decide`) on exact rationals. Allowed foundational dependencies are `propext`,
-`Classical.choice`, and `Quot.sound`.
+Lean is pinned to `v4.35.0-rc2` and Mathlib to its `v4.35.0-rc2` tag, and every file uses the
+module system. The 2,170 modules in `src/` are exactly the import closure of
+`SuppliedCertifiedPipeline` (modules that described alternative routes, and the earlier
+generated audit modules, were removed in this release; they remain in the Lean 4.24 release,
+commit `884a354`). The source uses no `sorry`, `admit`, custom `axiom` or `native_decide`;
+every numeric comparison is checked by the kernel on exact integers and rationals. Allowed
+foundational dependencies are `propext`, `Classical.choice` and `Quot.sound`, and Comparator
+checks this for the final theorem.
 
-The shipped `verification/verification.log` is the complete log of the `lake build` of exactly
-these sources on a Linux x86_64 node (Lean 4.24.0, the same Mathlib commit, Mathlib binaries
-from the official cache). Every local module was compiled from scratch in a single `lake build` on that node in
-this directory layout, so the file records the audit line of every named declaration
-(8,899 jobs). Development builds on macOS and earlier cluster builds of the previous
-parameters gave identical audit structure. A few modules
-describe alternative routes and are not in the import closure of
-`SuppliedCertifiedPipeline`; they are built and audited like the rest.
+The large table checks of the numerical identification are carried out by the fast kernel
+checks of `src/FKL*`: each table is packed into natural numbers, a generic checker is proved
+sound once, and the kernel evaluates the checker with GMP-accelerated `Nat` arithmetic. This
+replaced the earlier per-node certificate, cache and correction modules. Some module names in
+the sections below refer to those superseded modules or to removed alternative routes; they can
+be read in commit `884a354`.
 
 ## Tensor algorithms and exponent bounds
 

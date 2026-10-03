@@ -1,5 +1,12 @@
-import CWPermutedTerminalAsymptotic
-import CWTerminalScaling
+module
+
+public import CWPermutedTerminalAsymptotic
+public import CWTerminalScaling
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Common integer repetition preserves every terminal law and scales the
 actual shared terminal extraction rate exactly, before numerical bounds. -/

@@ -1,4 +1,11 @@
-import CWMixedOwnershipData
+module
+
+public import CWMixedOwnershipData
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Global sequential ownership is an actual tensor restriction for parents of
 different types and lengths. The necessary compatibility follows from physical

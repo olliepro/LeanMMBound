@@ -1,5 +1,12 @@
-import CWMixedContextualPrime
-import CWMixedRateExtraction
+module
+
+public import CWMixedContextualPrime
+public import CWMixedRateExtraction
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! The minimum-after-summation retention rate is supplied by an actual
 context-preserving extraction, so its outputs can participate in later stages. -/
@@ -70,7 +77,7 @@ theorem finite_contextual_rate_extraction (data : ∀ type, SplitRestrictionData
   have primeUpper : (prime : ℝ) ≤ 2*modulusFactor base (scale k)*
       ((Fintype.card (PrescribedEdges Positions data) : ℝ)*Real.exp (-mixedRetention rateX rateY rateZ)) := by
     have upperReal : (prime : ℝ) ≤ 2*(sharedRequirement base (scale k) dx dy dz : ℝ) := by exact_mod_cast upper
-    exact upperReal.trans (by simpa only [mul_assoc] using
+    exact upperReal.trans (by simpa only [mul_assoc] using!
       mul_le_mul_of_nonneg_left requirementUpper (by norm_num : (0 : ℝ) ≤ 2))
   have factorPositive : 0 < 2*modulusFactor base (scale k) := by unfold modulusFactor; positivity
   have result := shared_modulus_retention (prescribed_positive data reference) primality.pos factorPositive primeUpper retained

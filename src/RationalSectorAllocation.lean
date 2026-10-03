@@ -1,5 +1,12 @@
-import SectorAllocation
-import TypeDenominators
+module
+
+public import SectorAllocation
+public import TypeDenominators
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Rational strategy weights give actual disjoint position sectors at every
 divisible size. Their tensor restriction has exactly the certified mixture law. -/

@@ -1,5 +1,12 @@
-import CWExactGibbs
-import CWPermutedTerminalRates
+module
+
+public import CWExactGibbs
+public import CWPermutedTerminalRates
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Physical terminal types have positive exact Gibbs potentials in every
 interior case. They can therefore share the general mixed extraction theorem
@@ -67,7 +74,7 @@ theorem permutedCounts_gibbs (axes : Equiv.Perm (Fin 3)) (extreme middle : ℕ) 
   have normalized := congrFun (counts_probability extreme middle positive) original
   change (fullProfile (counts extreme middle) original.val : ℝ)/Fintype.card (Fin (2*(extreme+middle))) = _
   rw [fullProfile_supported]
-  simpa only [Fintype.card_fin, Nat.cast_mul, Nat.cast_add, Nat.cast_ofNat, splitLaw, zPotential] using normalized
+  simpa only [Fintype.card_fin, Nat.cast_mul, Nat.cast_add, Nat.cast_ofNat, splitLaw, zPotential] using! normalized
 
 /-- The general mixed extraction's coarse rate is exactly the physical terminal entropy, with no penalty. -/
 theorem permuted_coarseRetention_exact (axes : Equiv.Perm (Fin 3)) (extreme middle : ℕ)

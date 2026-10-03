@@ -1,4 +1,11 @@
-import IntegerLogQuery
+module
+
+public import IntegerLogQuery
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Weighted logarithm certificates whose complete checks use integer
 arithmetic. The soundness conclusion is still about exact real logarithms. -/

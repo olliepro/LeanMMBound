@@ -1,12 +1,19 @@
-import ParameterIndexData.GibbsU3Part000
-import ParameterIndexData.GibbsU3Part001
-import ParameterIndexData.GibbsU3Part002
-import ParameterIndexData.GibbsU3Part003
-import ParameterIndexData.GibbsU3Part004
-import ParameterIndexData.GibbsU3Part005
-import ParameterIndexData.GibbsU3Part006
-import ParameterIndexData.GibbsU3Part007
-import ParameterIndexData.GibbsU3Part008
+module
+
+public import ParameterIndexData.GibbsU3Part000
+public import ParameterIndexData.GibbsU3Part001
+public import ParameterIndexData.GibbsU3Part002
+public import ParameterIndexData.GibbsU3Part003
+public import ParameterIndexData.GibbsU3Part004
+public import ParameterIndexData.GibbsU3Part005
+public import ParameterIndexData.GibbsU3Part006
+public import ParameterIndexData.GibbsU3Part007
+public import ParameterIndexData.GibbsU3Part008
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 namespace MatrixBounds.Numeric.ParameterIndexData.GibbsU3
 

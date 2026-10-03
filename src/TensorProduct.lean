@@ -1,4 +1,11 @@
-import TensorCore
+module
+
+public import TensorCore
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Products of finite coefficient tensors and constructive multiplicativity
 of rank budgets. No asymptotic rank theorem is assumed. -/

@@ -1,5 +1,12 @@
-import CWRootTargetMaps
-import PooledMassEntropy
+module
+
+public import CWRootTargetMaps
+public import PooledMassEntropy
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Root target fine words have one exact global type. Joint position symmetry
 therefore gives the root compatibility count directly, without parent windows. -/

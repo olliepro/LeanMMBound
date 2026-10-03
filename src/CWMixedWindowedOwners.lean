@@ -1,5 +1,12 @@
-import CWMixedPrepared
-import RefinedOwnership
+module
+
+public import CWMixedPrepared
+public import RefinedOwnership
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Record the parent windows in the final global owner maps, so ownership
 holes and missing parent-interface blocks are accounted for exactly. -/

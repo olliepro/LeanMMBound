@@ -1,5 +1,12 @@
-import ContextSequenceRates
-import RepairRates
+module
+
+public import ContextSequenceRates
+public import RepairRates
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Finite forward selection of shrinking window parameters. Parameters are
 chosen before the growing scale, and one threshold serves the entire sequence. -/

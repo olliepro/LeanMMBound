@@ -1,5 +1,12 @@
-import MatrixBounds
-import Mathlib.Algebra.BigOperators.Fin
+module
+
+public import MatrixBounds
+public import Mathlib.Algebra.BigOperators.Fin
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! A finite three-stage pipeline labels every batch and stage explicitly.
 The schedule visits every labelled stage once and records each batch's exact

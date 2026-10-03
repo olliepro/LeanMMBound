@@ -1,50 +1,6 @@
-import SuppliedWaitingZero2TargetBlock000
-import SuppliedWaitingZero2TargetBlock001
-import SuppliedWaitingZero2TargetBlock002
-import SuppliedWaitingZero2TargetBlock003
-import SuppliedWaitingZero2TargetBlock004
-import SuppliedWaitingZero2TargetBlock005
-import SuppliedWaitingZero2TargetBlock006
-import SuppliedWaitingZero2TargetBlock007
-import SuppliedWaitingZero2TargetBlock008
-import SuppliedWaitingZero2TargetBlock009
-import SuppliedWaitingZero2TargetBlock010
-import SuppliedWaitingZero2TargetBlock011
-import SuppliedWaitingZero2TargetBlock012
-import SuppliedWaitingZero2TargetBlock013
-import SuppliedWaitingZero2TargetBlock014
-import SuppliedWaitingZero2TargetBlock015
-import SuppliedWaitingZero2TargetBlock016
-import SuppliedWaitingZero2TargetBlock017
-import SuppliedWaitingZero2TargetBlock018
-import SuppliedWaitingZero2TargetBlock019
-import SuppliedWaitingZero2TargetBlock020
-import SuppliedWaitingZero2TargetBlock021
-import SuppliedWaitingZero2TargetBlock022
-import SuppliedWaitingZero2TargetBlock023
-import SuppliedWaitingZero2TargetBlock024
-import SuppliedWaitingZero2TargetBlock025
-import SuppliedWaitingZero2TargetBlock026
-import SuppliedWaitingZero2TargetBlock027
-import SuppliedWaitingZero2TargetBlock028
-import SuppliedWaitingZero2TargetBlock029
-import SuppliedWaitingZero2TargetBlock030
-import SuppliedWaitingZero2TargetBlock031
-import SuppliedWaitingZero2TargetBlock032
-import SuppliedWaitingZero2TargetBlock033
+module
 
-/-! The independent finite checks jointly cover all 68040 original support targets. -/
-namespace MatrixBounds.Numeric.SuppliedWaitingZero2TargetCertificates
-open SuppliedWaitingZero2TargetPredicate
+public import FKLDim.WaitingZero2
 
-/-- All original source leaf references pass the proved balanced target predicate. -/
-theorem complete : IndexBlockCertificate valid 0 68040 :=
-  (((((((((((((((((((((((((((((((((SuppliedWaitingZero2TargetBlock000.complete).append SuppliedWaitingZero2TargetBlock001.complete).append SuppliedWaitingZero2TargetBlock002.complete).append SuppliedWaitingZero2TargetBlock003.complete).append SuppliedWaitingZero2TargetBlock004.complete).append SuppliedWaitingZero2TargetBlock005.complete).append SuppliedWaitingZero2TargetBlock006.complete).append SuppliedWaitingZero2TargetBlock007.complete).append SuppliedWaitingZero2TargetBlock008.complete).append SuppliedWaitingZero2TargetBlock009.complete).append SuppliedWaitingZero2TargetBlock010.complete).append SuppliedWaitingZero2TargetBlock011.complete).append SuppliedWaitingZero2TargetBlock012.complete).append SuppliedWaitingZero2TargetBlock013.complete).append SuppliedWaitingZero2TargetBlock014.complete).append SuppliedWaitingZero2TargetBlock015.complete).append SuppliedWaitingZero2TargetBlock016.complete).append SuppliedWaitingZero2TargetBlock017.complete).append SuppliedWaitingZero2TargetBlock018.complete).append SuppliedWaitingZero2TargetBlock019.complete).append SuppliedWaitingZero2TargetBlock020.complete).append SuppliedWaitingZero2TargetBlock021.complete).append SuppliedWaitingZero2TargetBlock022.complete).append SuppliedWaitingZero2TargetBlock023.complete).append SuppliedWaitingZero2TargetBlock024.complete).append SuppliedWaitingZero2TargetBlock025.complete).append SuppliedWaitingZero2TargetBlock026.complete).append SuppliedWaitingZero2TargetBlock027.complete).append SuppliedWaitingZero2TargetBlock028.complete).append SuppliedWaitingZero2TargetBlock029.complete).append SuppliedWaitingZero2TargetBlock030.complete).append SuppliedWaitingZero2TargetBlock031.complete).append SuppliedWaitingZero2TargetBlock032.complete).append SuppliedWaitingZero2TargetBlock033.complete
-
-/-- Every original flat leaf position has its exact checked source support code. -/
-theorem original_valid (index : Fin ((945*12)*6)) :
-    (SuppliedZeroRegistry.table.get (ParameterIndexData.DyadicLeafzero.table.get index)).val =
-      sourceTarget index.divNat.modNat+1 :=
-  SuppliedWaitingZero2TargetPredicate.original_valid index (complete.complete index)
-
-end MatrixBounds.Numeric.SuppliedWaitingZero2TargetCertificates
+/-! Forwarding module. `FKLDim.WaitingZero2` proves the declarations of this module under the same names
+and with the same statements, using fast kernel checks. -/

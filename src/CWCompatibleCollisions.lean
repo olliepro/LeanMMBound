@@ -1,6 +1,13 @@
-import CWCollisionCounts
-import CWPooledDegrees
-import SupportedTypes
+module
+
+public import CWCollisionCounts
+public import CWPooledDegrees
+public import SupportedTypes
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Actual fine-block compatibility degrees bound the collision holes used by
 Y/Z ownership. Competitors are prescribed exact split words, excluding the owner. -/

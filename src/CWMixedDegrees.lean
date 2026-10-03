@@ -1,5 +1,12 @@
-import CWMixedGraph
-import CWWindowCollisionRates
+module
+
+public import CWMixedGraph
+public import CWWindowCollisionRates
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Global compatibility degrees factor across the parent types before any
 minimum over axes is taken. These are degrees for a single global hash. -/
@@ -56,7 +63,7 @@ theorem window_degree_le (data : ∀ type, SplitRestrictionData (length type)) (
     Nat.card {edge : PrescribedEdges Positions data // Compatible data axis axisClass profile (forget data edge) fine} ≤
       ∏ type, (data type).windowDegree axis (axisClass type) (profile type) (accept type) := by
   apply (compatible_degree_le data axis axisClass profile fine).trans
-  apply Finset.prod_le_prod (fun _ _ => Nat.zero_le _)
+  apply Finset.prod_le_prod₀ (fun _ _ => Nat.zero_le _)
   intro type _
   exact (data type).degree_le_windowDegree axis (axisClass type) (profile type) (accept type) (fine type) (accepted type)
 
@@ -81,7 +88,7 @@ theorem coarse_degree_le (data : ∀ type, SplitRestrictionData (length type)) (
       ∏ type, Nat.card (fiber type) := by
     simpa only [Nat.card_eq_fintype_card, Fintype.card_pi] using Nat.card_le_card_of_injective mapping injective
   apply count.trans
-  apply Finset.prod_le_prod (fun _ _ => Nat.zero_le _)
+  apply Finset.prod_le_prod₀ (fun _ _ => Nat.zero_le _)
   intro type _
   unfold SplitRestrictionData.coarseDegree
   exact Finset.le_sup (f := fun ref => Nat.card {other : (data type).Edges (P := Positions type) //

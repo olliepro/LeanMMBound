@@ -1,4 +1,11 @@
-import RootFineExecutablePools
+module
+
+public import RootFineExecutablePools
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Exact integer root mixtures and pools postpone all rational division until after summation. -/
 namespace MatrixBounds.Numeric.RootFineIntegerPools

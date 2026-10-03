@@ -1,4 +1,11 @@
-import SuppliedPopulationWeights
+module
+
+public import SuppliedPopulationWeights
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Complete child windows have exactly the coarse shapes and complete laws of
 the next original source interface; these are source bindings, not assumptions. -/
@@ -21,6 +28,7 @@ theorem terminal_kind : ∀ child : Fin 3,
 theorem root_shape (parent : Fin 105) :
     (shapeColumnEquiv 16 (rootColumn parent)).val = SuppliedHierarchyParents.parent4 parent := by
   have selected := SuppliedNodeLookup.shapeAt_column 16 (shapeColumnEquiv 16 (rootColumn parent))
+  rw [(shapeColumnEquiv 16).symm_apply_apply (rootColumn parent)] at selected
   simpa only [Equiv.symm_apply_apply, rootColumn, SuppliedHierarchyParents.parent4] using selected.symm
 
 /-- Every actual source node child has exactly the next level-three parent shape. -/
@@ -35,20 +43,21 @@ theorem terminal_shape : ∀ child : Fin 3,
 /-- The complete root-child law is the complete parent center of the next original level-four extraction. -/
 theorem root_law (parent : Fin 105) (axis : Fin 3) :
     SuppliedHigherLaws.root4 (shapeColumnEquiv 16 (rootColumn parent)) axis = SuppliedHigherLaws.parent4 parent axis := by
-  simp only [SuppliedHigherLaws.root4, Equiv.symm_apply_apply, root_kind]
+  simp only [SuppliedHigherLaws.root4, (shapeColumnEquiv 16).symm_apply_apply (rootColumn parent), root_kind]
 
 /-- The complete positive level-three child law is exactly its original six-strategy mixture center. -/
 theorem node_law (node : Fin 945) (axis : Fin 3) :
     SuppliedHigherLaws.child3 (nodeParent node) (nodeChild node) axis = SuppliedLeafLaws.mixed3 node axis := by
   unfold SuppliedHigherLaws.child3
   simp only [nodeChild, Equiv.symm_apply_apply, nodeParent]
-  rw [SuppliedNodeLookup.positive_inverse]
+  erw [SuppliedNodeLookup.positive_inverse]
 
 /-- The complete original terminal-child law is exactly the original terminal parameter's decoded fine law. -/
 theorem terminal_law (node : Fin 945) (strategy : Fin 6) (child : Fin 3) (axis : Fin 3) :
     SuppliedLeafLaws.law node strategy (terminalChild child) axis =
       OrbitLevel2.orbits.decode (fun orbit => (SuppliedTerminalLaws.mass node child strategy axis orbit : ℝ)) := by
-  simp only [SuppliedLeafLaws.law, SuppliedLeafLaws.mass, terminalChild, Equiv.symm_apply_apply, terminal_kind]
+  simp only [SuppliedLeafLaws.law, SuppliedLeafLaws.mass, terminalChild,
+    (shapeColumnEquiv 4).symm_apply_apply (terminalColumn child), terminal_kind]
 
 end
 end MatrixBounds.Numeric.SuppliedShapeInterfaceBindings

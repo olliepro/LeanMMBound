@@ -1,4 +1,11 @@
-import RegularFibers
+module
+
+public import RegularFibers
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 /-! Compatibility degrees remain uniform after fixing a coarse word. The
 stabilizer argument supplies the pointwise symmetry needed by double counting. -/
@@ -68,7 +75,7 @@ theorem invariant_incidence_identity [Fintype Edge] [Fintype Block]
       ∑ e : Edge, Nat.card {b // compatible e b} := by
     have indicator := Finset.sum_comm (s := Finset.univ) (t := Finset.univ)
       (f := fun b e => if compatible e b then (1 : ℕ) else 0)
-    simpa only [Finset.sum_boole, Nat.card_eq_fintype_card, Fintype.card_subtype] using indicator
+    simpa only [Finset.sum_boole, Nat.card_eq_fintype_card, Fintype.card_subtype] using! indicator
   simpa only [columns, rows, Finset.sum_const, Finset.card_univ, smul_eq_mul] using incidence
 
 end

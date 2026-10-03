@@ -1,4 +1,12 @@
-import SplitData
+module
+
+public import SplitData
+public import FKLMeta.SplitFast
+
+@[expose] public section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.dsimp.instances true
 
 namespace MatrixBounds.Numeric.SplitCertificateData.Part085
 set_option maxRecDepth 100000
@@ -72,7 +80,10 @@ def rows : List SplitRow := [
   ⟨⟨6,7,3⟩,8,⟨45, [(5,2471405904),(6,346952102),(7,11333858),(13,167584318524),(14,69881954682),(15,5208127272),(16,77786594),(20,1122216264202),(21,2383940859350),(22,492036862028),(23,16818988124),(26,417840624728),(27,4117657544840),(28,4117657544840),(29,417840624728),(31,16818988124),(32,492036862028),(33,2383940859350),(34,1122216264202),(35,77786594),(36,5208127272),(37,69881954682),(38,167584318524),(39,11333858),(40,346952102),(41,2471405904)]⟩⟩
 ]
 
+theorem fkl_checked : FKLMeta.SplitFast.allFast 17592186044416 rows = true := by decide +kernel
+
 /-- Lean checks normalization, shape support, and complement symmetry for every row. -/
-theorem rows_checked : rows.all (fun row => row.check 17592186044416) = true := by decide
+theorem rows_checked : rows.all (fun row => row.check 17592186044416) = true :=
+  FKLMeta.SplitFast.allFast_sound 17592186044416 rows fkl_checked
 
 end MatrixBounds.Numeric.SplitCertificateData.Part085
