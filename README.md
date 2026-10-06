@@ -5,7 +5,8 @@
 **Blog post: [Pocket-Sized Super Mathematical Intelligence](https://oliverproudfoot.substack.com/p/pocket-sized-super-mathematical-intelligence)**
 
 This repository contains a complete, machine-checked proof in Lean 4 that the algebraic
-matrix multiplication exponent is strictly below 2.3710449. The extraction pipeline is
+matrix multiplication exponent is strictly below 2.3710449, improving the previous bound
+ω < 2.371177 of Dupont et al. (2026, arXiv:2608.16884). The extraction pipeline is
 constructed in full, its rates are identified with exact rational logarithmic expressions,
 and Lean's kernel decides every numerical comparison in exact arithmetic. The proof depends
 only on Lean's three standard foundations, `propext`, `Classical.choice` and `Quot.sound`,
@@ -31,6 +32,15 @@ on packed natural numbers ([`docs/fast-kernel-checks.md`](docs/fast-kernel-check
 statement's definitions, the construction and the numerical identification are documented in
 [`docs/technical-overview.md`](docs/technical-overview.md). Submissions to the registry go
 through https://submit.palomar-registry.org/.
+
+## How it was made
+
+The shared-extraction idea, its natural-language proof and the Lean development were produced
+largely by AI systems (GPT-6 Astra, Claude Fable 5.1, Claude Opus 5 and Opus 5.5) under the
+authors' direction; the final numerical search ran with Meta Muse Spark 1.3. The authors chose the
+problem, directed the work, audited the formal statement and reproduced the build. They have not
+verified every step of the natural-language proof; correctness rests on the formal proof. The
+paper's appendix gives the full timeline, and `formalization.yaml` records the details.
 
 ## Independent verification
 

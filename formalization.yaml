@@ -5,11 +5,15 @@ project:
   name: "LeanMMBound: the matrix multiplication exponent is below 2.3710449"
   description: >-
     A complete Lean 4 / Mathlib proof that the algebraic matrix multiplication exponent ω over every
-    commutative ring is below 2.3710449. The proof formalizes the laser-method pipeline from the
-    Coppersmith–Winograd tensor (tensor powers, hashing with Behrend-type progression-free sets, repair of
-    damaged copies, asymptotic sum inequality for rectangular products) and checks an explicit numerical
-    certificate for the resulting rate optimization entirely in the Lean kernel with exact integer and
-    dyadic arithmetic.
+    commutative ring is below 2.3710449, improving the previous bound ω < 2.371177 of Dupont et al.
+    (2026). The mathematical novelty is a shared extraction step for the asymmetric laser method:
+    factors from different recursion levels share one asymmetric hash, and a finite, staggered
+    pipeline combines their contributions before the minimum over axes is taken. The formalization
+    covers the whole argument: the Coppersmith–Winograd degeneration, tensor powers, hashing with
+    Behrend progression-free sets, repair of damaged copies, the shared extraction pipeline, the
+    asymptotic sum inequality for rectangular products, and an exact rational certificate for the
+    resulting optimization, checked in the Lean kernel with exact arithmetic. The construction and
+    its proof were produced largely by AI systems under the authors' direction (see automation).
   authors:
     - "Oliver Proudfoot"
     - "Andrew Perrault"
@@ -23,28 +27,77 @@ classification:
   msc2020: ["68Q17", "68Q25", "15A69", "68V20"]
 
 sources:
-  - title: "New upper bound ω < 2.3710449 on the matrix multiplication exponent, first presented with this formalization"
+  - title: "New upper bound ω < 2.3710449 on the matrix multiplication exponent via shared extraction across recursion levels, first presented with this formalization"
     type: original-proof
     relationship: other
-    note: "Accompanying paper: paper/matrix-multiplication-exponent.pdf in this repository."
+    note: >-
+      Accompanying paper: paper/matrix-multiplication-exponent.pdf in this repository ("Cross-Level
+      Laser Extraction for Faster Matrix Multiplication"). The paper states the rounded bound ω < 2.371045;
+      the formal bound 2.3710449 is slightly stronger.
+  - title: "Improving the Matrix Multiplication Exponent with Modern Optimization and AlphaEvolve"
+    authors: ["Emilien Dupont", "Marvin Eisenberger", "Borislav Kozlovskii", "Abbas Mehrabian", "Francisco J. R. Ruiz", "Abigail See", "Renfei Zhou", "Josh Alman", "Virginia Vassilevska Williams", "Matej Balog"]
+    type: paper
+    id: "arXiv:2608.16884"
+    relationship: background
+    note: >-
+      Previous best bound ω < 2.371177. This work uses its notation and optimization formulation and the
+      same source tensor CW_5^⊗8 for the level-four construction, and replaces its level-by-level
+      extraction with shared extraction.
+  - title: "More Asymmetry Yields Faster Matrix Multiplication"
+    authors: ["Josh Alman", "Ran Duan", "Virginia Vassilevska Williams", "Yinzhan Xu", "Zixuan Xu", "Renfei Zhou"]
+    type: paper
+    id: "arXiv:2404.16349"
+    location: "Proceedings of the 2025 ACM–SIAM Symposium on Discrete Algorithms (SODA), 2005–2039"
+    relationship: background
+    note: "Asymmetric laser method on which the extraction analysis builds (SODA bound ω < 2.371339)."
+  - title: "New Bounds for Matrix Multiplication: From Alpha to Omega"
+    authors: ["Virginia Vassilevska Williams", "Yinzhan Xu", "Zixuan Xu", "Renfei Zhou"]
+    type: paper
+    id: "arXiv:2307.07970"
+    location: "Proceedings of the 2024 ACM–SIAM Symposium on Discrete Algorithms (SODA), 3792–3835"
+    relationship: background
   - title: "Matrix multiplication via arithmetic progressions"
     authors: ["Don Coppersmith", "Shmuel Winograd"]
-    type: article
-    location: "Journal of Symbolic Computation 9 (1990) 251–280"
+    type: paper
+    id: "doi:10.1016/S0747-7171(08)80013-2"
+    location: "Journal of Symbolic Computation 9(3) (1990) 251–280"
     relationship: background
-  - title: "More asymmetry yields faster matrix multiplication"
-    authors: ["Josh Alman", "Ran Duan", "Virginia Vassilevska Williams", "Yinzhan Xu", "Zixuan Xu", "Renfei Zhou"]
-    type: article
-    id: "arXiv:2404.16349"
+  - title: "On Sets of Integers Which Contain No Three Terms in Arithmetical Progression"
+    authors: ["Felix A. Behrend"]
+    type: paper
+    id: "doi:10.1073/pnas.32.12.331"
+    location: "Proceedings of the National Academy of Sciences 32(12) (1946) 331–332"
     relationship: background
+    note: "Used through Mathlib's formalization of Behrend's construction."
+  - title: "Improve Matrix Multiplication Exponent"
+    authors: ["Eric Naslund"]
+    type: web post
+    location: "https://chatgpt.com/share/6aa0442c-7c34-83e8-8ba7-403131b52304"
+    relationship: background
+    note: >-
+      Concurrent public transcript reporting ω < 2.371161 within the level-by-level formulation, with a
+      standalone interval-arithmetic verifier (not a Lean formalization).
+
+related_formalizations:
+  - id: "https://arxiv.org/abs/2608.28433"
+    relationship: independent
+    note: >-
+      Prove2Me hosts a community campaign formalizing upper bounds on ω in Lean against an
+      operation-count definition. This development is independent of it, and relating the two
+      definitions is not formalized. We know of no earlier formalization of a laser-method bound.
 
 status:
   scope: >-
-    Formalizes the full statement exponent K < 23710449/10000000 for every commutative ring K : Type, where
-    exponent is the infimum of τ ≥ 0 with matrixRank K n ≤ C·n^τ for all n ≥ 1 and matrixRank is the exact
-    tensor rank of n×n matrix multiplication (MatrixBounds.MatrixComplexity, restated in Challenge.lean). Border rank and degenerations appear only
-    inside the proof. All numerical work is checked by the Lean kernel; no floating point or external
-    oracle is trusted.
+    Formalizes exponent K < 23710449/10000000 for every commutative ring K : Type, where exponent K is the
+    infimum of the τ ≥ 0 such that matrixRank K n ≤ C·n^τ for one constant C > 0 and all n ≥ 1, and
+    matrixRank K n is the exact tensor rank (minimal length of a rank decomposition) of the n×n matrix
+    multiplication tensor; the definitions are in Challenge.lean. The development also proves that this
+    tensor's bilinear evaluation is Mathlib's matrix product and that 0 ≤ exponent K ≤ 3. Not formalized:
+    the conventional equivalence between rank and arithmetic operation counts, which is needed to read the
+    result as a bound on the number of operations; rings in universes above Type. Border rank and
+    degenerations appear only inside the proof. The numerical parameters came from an unverified
+    floating-point search; only the exact rational witness derived from them is checked, entirely in the
+    Lean kernel.
   sorry_count: 0
   sorry_in_definitions: 0
   axioms: []
@@ -55,32 +108,61 @@ automation:
       models: ["GPT-6 Astra", "Claude Fable 5.1", "Claude Opus 5", "Claude Opus 5.5"]
       framework: "Codex and Claude Code"
       tool_setup: >-
-        AI coding agents wrote the Lean development, the certificate generators and the kernel-performance
-        layer, running builds on a Slurm cluster; humans directed the work and chose the parameters.
+        GPT-6 Astra (Pro) produced the shared-extraction idea, its natural-language proof and the first
+        numerical search. Astra in Codex and Claude Fable 5.1 in Claude Code wrote the Lean development and
+        certificate generators, running builds on a Slurm cluster. Claude Opus 5 and Opus 5.5 ported the
+        development to Lean 4.35 and the Palomar layout and wrote the fast kernel-check layer (src/FKL*).
+        Fable drafted the paper, which was edited with Astra and by the authors.
       cost:
         wall_time: "about 60 hours"
         spend_usd: "subscription-based"
         hardware: "Ohio Supercomputer Center CPU nodes and a local Mac"
+      prompting_notes: >-
+        Simple high-level prompts, for example "make significant analytical progress on [improving the
+        bound]" and "Formalize the proof."; the paper's appendix gives the full timeline.
+    - method: other
+      models: ["Meta Muse Spark 1.3"]
+      framework: "n/a"
+      tool_setup: >-
+        Ran the final constrained numerical optimization to convergence on Ohio Supercomputer Center GPUs.
+        The search is a discovery step only; the theorem depends only on the exact rational witness.
+      cost:
+        wall_time: "included above"
+        spend_usd: "subscription-based"
+        hardware: "Ohio Supercomputer Center GPU nodes"
       prompting_notes: "n/a"
   spend_usd: "subscription-based"
   notes: >-
-    Human-directed, agent-implemented formalization; the numerical certificate was produced by an external
-    search and then re-derived and verified exactly in Lean.
+    The authors chose the problem, directed the process, audited the formal statement and independently
+    reproduced the build. They have not verified every step of the natural-language proof in the paper;
+    correctness rests on the formal proof.
 
 fidelity:
-  divergences: "none known"
+  divergences: >-
+    The paper's exposition works over a characteristic-zero field; the formal theorem is the exact-rank
+    statement over every commutative ring in Type. The paper's proof uses a bounded-differences
+    concentration estimate for readability; the formal proof uses a second-moment estimate sufficient for
+    subexponential repair. The paper states the rounded bound 2.371045; the formal bound is 2.3710449.
+    The paper's formalization appendix describes the Lean 4.24 release (commit 884a354); this Lean 4.35
+    release checks the same rate identities with generic fast kernel checkers (docs/fast-kernel-checks.md)
+    in place of node-by-node certificate windows.
 
 review:
   status: "self-assessed"
   reviewers:
     - "Andrew Perrault"
   notes: >-
-    Andrew Perrault independently audited the statement (20-22 September 2026): the standalone
-    Challenge.lean copies the project's definitions of tensor rank, the matrix multiplication tensor and
-    the exponent verbatim, imports only Mathlib, and Comparator confirmed that the project's exponent_lt
-    proves exactly it. He also rebuilt the project from scratch, replayed it with lean4checker and a second
-    kernel, and checked the numerical certificate with an independent Python interval verifier. The
-    submitted Challenge.lean is that file ported to Lean 4.35's module system (header, options and a porting note; every declaration unchanged).
+    Andrew Perrault, assisted by Claude Fable 5.1, independently audited the statement of the Lean 4.24
+    release (20-22 September 2026): the standalone challenge file copies the project's definitions of
+    tensor rank, the matrix multiplication tensor and the exponent verbatim, imports only Mathlib, and
+    Comparator confirmed that the project's exponent_lt proves exactly it. He also rebuilt that release
+    from scratch, replayed it with lean4checker and a second kernel, and reran the independent Python
+    interval verifier on the certificate. The submitted Challenge.lean is his file ported to Lean 4.35:
+    the module header, public imports, four backward.* options (including backward.proofsInPublic, so
+    that proof helpers get the same names in every module) and a porting note were added, and every
+    declaration is unchanged. The port and the fast kernel-check layer postdate his audit; they are
+    checked by Comparator and by three kernels (Lean, NanoDa, con-ron) but have not had a separate human
+    review.
 
 alignment:
   namespace: "MatrixBounds"
@@ -89,6 +171,8 @@ alignment:
       lean: "MatrixBounds.Numeric.SuppliedCertifiedPipeline.exponent_lt"
       module: "SuppliedCertifiedPipeline"
       status: "proved"
-      note: "exponent K is the algebraic rank exponent over the commutative ring K."
+      note: >-
+        The paper's main theorem (stated there as ω < 2.371045, rounded). exponent K is the algebraic
+        exact-rank exponent over the commutative ring K.
 
 acknowledgements: "Built on Mathlib. Kernel checking by Lean, NanoDa and con-ron via Palomar's Comparator."

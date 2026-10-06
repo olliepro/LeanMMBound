@@ -1,10 +1,11 @@
 # Independent verification (A. Perrault, 20–22 September 2026)
 
-These runs concern the Lean 4.24 release (commit `884a354`). The audited challenge file is kept as
-`Challenge.lean.orig`; it was renamed because the registry requires every `.lean` file to use the
-module system. The repository's root `Challenge.lean` is this file ported to Lean 4.35 (module header,
-`public` imports, four `backward.*` options and a porting note in the opening comment were
-added; every declaration is unchanged).
+These runs concern the Lean 4.24 release (commit `884a354`). The audited challenge file and its Comparator
+configuration are kept as `Challenge.lean.orig` and `comparator.json.orig`: the registry requires every
+`.lean` file to use the module system and expects one Comparator configuration per repository. The
+repository's root `Challenge.lean` is this file ported to Lean 4.35 (module header, `public` imports, four
+`backward.*` options and a porting note in the opening comment were added; every declaration is
+unchanged).
 
 Everything here was run on the Ohio Supercomputer Center (Cardinal, 96-core CPU nodes) from a
 fresh checkout of the sources at Lean tree `bb7aadd4c1d08f949ddfd20aec1f5a11ccacd884`
