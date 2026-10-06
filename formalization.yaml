@@ -4,22 +4,13 @@ version: "v0.4"
 project:
   name: "LeanMMBound: the matrix multiplication exponent is below 2.3710449"
   description: >-
-    The matrix multiplication exponent ω is the smallest number such that two n×n matrices can be
-    multiplied with n^(ω+o(1)) arithmetic operations. Schoolbook multiplication gives ω ≤ 3, Strassen's
-    algorithm gave ω < 2.81, and since Coppersmith and Winograd every improvement has come from
-    increasingly refined analyses of their tensor (the laser method). Because inverting matrices, solving
-    linear systems and many graph and combinatorial algorithms reduce to matrix multiplication, ω also
-    governs their complexity. This repository contains a complete Lean 4 / Mathlib proof that ω is below
-    2.3710449 over every commutative ring, improving the previous bound ω < 2.371177 of Dupont et al.
-    (2026). Here ω is defined as the exponent of the exact tensor rank of n×n matrix multiplication,
-    the standard algebraic definition. The mathematical novelty is a shared extraction step for the
-    asymmetric laser method: factors from different recursion levels share one asymmetric hash, and a
-    finite, staggered pipeline combines their contributions before the minimum over axes is taken. The
-    formalization covers the whole argument: the Coppersmith–Winograd degeneration, tensor powers, hashing
-    with Behrend progression-free sets, repair of damaged copies, the shared extraction pipeline, the
-    asymptotic sum inequality for rectangular products, and an exact rational certificate for the
-    resulting optimization, checked in the Lean kernel with exact arithmetic. The construction and its
-    proof were produced largely by AI systems under the authors' direction (see automation).
+    The matrix multiplication exponent ω is the least exponent such that n×n matrices can be multiplied
+    in n^(ω+o(1)) operations. This repository proves in Lean 4 / Mathlib that ω < 2.3710449 over every
+    commutative ring, improving the previous bound ω < 2.371177 (Dupont et al. 2026). ω is defined via
+    the exact tensor rank of n×n matrix multiplication. The new ingredient is shared extraction across
+    recursion levels of the asymmetric laser method. The formalization covers the full argument, from the
+    Coppersmith–Winograd degeneration to an exact rational certificate checked in the Lean kernel. The
+    construction and proof were produced largely by AI systems under the authors' direction.
   authors:
     - "Oliver Proudfoot"
     - "Andrew Perrault"
